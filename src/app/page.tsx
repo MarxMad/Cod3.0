@@ -83,125 +83,105 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-blue-900 relative overflow-hidden">
-      {/* Advanced Tech Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Tech Particles */}
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-green-400 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0, 1, 0],
-              scale: [0, 1, 0],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 3,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
-        
-        {/* Glowing Orbs */}
-        <motion.div
-          className="absolute top-20 left-10 w-32 h-32 bg-green-500/10 rounded-full blur-xl"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute top-40 right-20 w-24 h-24 bg-blue-500/10 rounded-full blur-xl"
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 60, 0],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-1/4 w-40 h-40 bg-green-400/5 rounded-full blur-2xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
-        {/* Tech Grid Lines */}
-        <div className="absolute inset-0 opacity-10">
+      <div className="min-h-screen bg-black relative overflow-hidden pixel-grid">
+        {/* Matrix Rain Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(50)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-green-400 text-xs font-mono opacity-20"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+              }}
+              animate={{
+                y: [0, "100vh"],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            >
+              {String.fromCharCode(0x30A0 + Math.random() * 96)}
+            </motion.div>
+          ))}
+          
+          {/* Floating Pixels */}
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-full h-px bg-green-400"
-              style={{ top: `${i * 5}%` }}
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
+              className="absolute w-1 h-1 bg-green-400"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -50, 0],
+                opacity: [0, 1, 0],
+                scale: [0, 1, 0],
+              }}
               transition={{
-                duration: 2,
-                delay: i * 0.1,
-                ease: "easeOut"
+                duration: 4 + Math.random() * 3,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+                ease: "easeInOut"
               }}
             />
           ))}
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute h-full w-px bg-blue-400"
-              style={{ left: `${i * 5}%` }}
-              initial={{ scaleY: 0 }}
-              animate={{ scaleY: 1 }}
-              transition={{
-                duration: 2,
-                delay: i * 0.1,
-                ease: "easeOut"
-              }}
-            />
-          ))}
+          
+          {/* Tech Grid Lines */}
+          <div className="absolute inset-0 opacity-20">
+            {[...Array(25)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-full h-px bg-green-400"
+                style={{ top: `${i * 4}%` }}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{
+                  duration: 3,
+                  delay: i * 0.1,
+                  ease: "easeOut"
+                }}
+              />
+            ))}
+            {[...Array(25)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute h-full w-px bg-green-400"
+                style={{ left: `${i * 4}%` }}
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{
+                  duration: 3,
+                  delay: i * 0.1,
+                  ease: "easeOut"
+                }}
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
       {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-black/30 backdrop-blur-xl border-b border-green-500/20">
+      <nav className="fixed w-full z-50 bg-black/90 backdrop-blur-xl border-b-2 border-green-400 scan-line">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <motion.div 
-              className="flex items-center space-x-3"
+              className="flex items-center"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="relative w-10 h-10">
-                <Image
+              <div className="relative w-12 h-12">
+        <Image
                   src="/CODEB.png"
                   alt="CODEB Logo"
                   fill
                   className="object-contain"
                 />
               </div>
-              <span className="text-2xl font-bold text-white">COD3.0</span>
             </motion.div>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -209,22 +189,22 @@ export default function Home() {
                 <motion.a
                   key={section}
                   href={`#${section}`}
-                  className={`text-gray-300 hover:text-green-400 transition-colors relative ${
+                  className={`text-gray-300 hover:text-green-400 transition-colors relative font-mono ${
                     activeSection === section ? 'text-green-400' : ''
                   }`}
                   onClick={() => setActiveSection(section)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {section === 'home' && 'Inicio'}
-                  {section === 'about' && 'Acerca de'}
-                  {section === 'schedule' && 'Programa'}
-                  {section === 'prizes' && 'Premios'}
-                  {section === 'sponsors' && 'Patrocinadores'}
-                  {section === 'register' && 'Registro'}
+                  {section === 'home' && '<INICIO/>'}
+                  {section === 'about' && '<ACERCA/>'}
+                  {section === 'schedule' && '<PROGRAMA/>'}
+                  {section === 'prizes' && '<PREMIOS/>'}
+                  {section === 'sponsors' && '<SPONSORS/>'}
+                  {section === 'register' && '<REGISTRO/>'}
                   {activeSection === section && (
                     <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-green-400"
+                      className="absolute -bottom-1 left-0 right-0 h-1 bg-green-400"
                       layoutId="activeSection"
                       initial={false}
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -235,14 +215,14 @@ export default function Home() {
             </div>
 
             <motion.button
-              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-green-500/25"
+              className="tech-button px-8 py-3 font-bold transition-all duration-300"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              ¡Regístrate!
+              &lt;REGÍSTRATE/&gt;
             </motion.button>
           </div>
         </div>
@@ -263,8 +243,8 @@ export default function Home() {
               initial="initial"
               animate="animate"
             >
-              <div className="relative w-32 h-32">
-                <Image
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64">
+            <Image
                   src="/CODEB.png"
                   alt="CODEB Logo"
                   fill
@@ -274,29 +254,29 @@ export default function Home() {
             </motion.div>
 
             <motion.h1 
-              className="text-6xl md:text-8xl font-black text-white mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-6 tech-title leading-tight"
               variants={fadeInUp}
             >
-              COD3.0
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-green-600">
-                Hackathon
+              &lt;COD3.0
+              <span className="block text-green-400 neon-glow">
+                HACKATHON
               </span>
             </motion.h1>
             
             <motion.p 
-              className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed font-mono px-4"
               variants={fadeInUp}
             >
-              El evento de programación más innovador del año. 
+              &lt;ROAD TO/&gt; El evento de programación más innovador del año. 
               Construye el futuro con código, creatividad y colaboración.
             </motion.p>
 
             <motion.div 
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 px-4"
               variants={fadeInUp}
             >
               <motion.button
-                className="bg-green-500 hover:bg-green-600 text-white px-10 py-5 rounded-full font-bold text-xl flex items-center space-x-3 transition-all duration-300 shadow-2xl hover:shadow-green-500/30 relative overflow-hidden group"
+                className="tech-button px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -307,12 +287,12 @@ export default function Home() {
                   whileHover={{ x: "100%" }}
                   transition={{ duration: 0.6 }}
                 />
-                <span className="relative z-10">Regístrate Ahora</span>
-                <ArrowRight className="h-6 w-6 relative z-10" />
+                <span className="relative z-10 text-center">&lt;REGÍSTRATE/&gt;</span>
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 relative z-10" />
               </motion.button>
               
               <motion.button
-                className="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-10 py-5 rounded-full font-bold text-xl transition-all duration-300 backdrop-blur-sm relative overflow-hidden group"
+                className="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 font-bold text-base sm:text-lg md:text-xl transition-all duration-300 backdrop-blur-sm relative overflow-hidden group font-mono w-full sm:w-auto justify-center"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -323,24 +303,24 @@ export default function Home() {
                   whileHover={{ x: "100%" }}
                   transition={{ duration: 0.6 }}
                 />
-                <span className="relative z-10">Ver Programa</span>
+                <span className="relative z-10 text-center">&lt;PROGRAMA/&gt;</span>
               </motion.button>
             </motion.div>
 
             {/* Enhanced Countdown Timer */}
             <motion.div 
-              className="grid grid-cols-4 gap-6 max-w-2xl mx-auto"
+              className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-6 max-w-4xl mx-auto px-4"
               variants={fadeInUp}
             >
               {[
-                { value: days, label: 'Días', color: 'green' },
-                { value: hours, label: 'Horas', color: 'blue' },
-                { value: minutes, label: 'Minutos', color: 'green' },
-                { value: seconds, label: 'Segundos', color: 'blue' }
+                { value: days, label: 'DÍAS', color: 'green' },
+                { value: hours, label: 'HORAS', color: 'green' },
+                { value: minutes, label: 'MIN', color: 'green' },
+                { value: seconds, label: 'SEG', color: 'green' }
               ].map((item, index) => (
                 <motion.div
                   key={item.label}
-                  className={`bg-black/40 backdrop-blur-xl rounded-2xl p-6 border border-${item.color}-500/30 relative overflow-hidden group`}
+                  className="tech-card p-2 sm:p-4 md:p-6 relative overflow-hidden group min-w-0"
                   variants={glowAnimation}
                   initial="initial"
                   animate="animate"
@@ -349,22 +329,17 @@ export default function Home() {
                 >
                   {/* Shine Effect */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent -skew-x-12"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
                     transition={{ duration: 0.8 }}
                   />
                   
-                  {/* Glow Border Effect */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r from-${item.color}-400/20 to-transparent blur-sm`} />
-                  </div>
-                  
-                  <div className="relative z-10">
-                    <div className={`text-4xl font-black text-${item.color}-400 mb-2 group-hover:text-white transition-colors duration-300`}>
+                  <div className="relative z-10 text-center">
+                    <div className="text-lg sm:text-2xl md:text-4xl font-black text-green-400 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-300 font-mono leading-tight">
                       {item.value}
                     </div>
-                    <div className="text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300">{item.label}</div>
+                    <div className="text-xs sm:text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300 font-mono leading-tight">{item.label}</div>
                   </div>
                 </motion.div>
               ))}
@@ -1111,7 +1086,7 @@ export default function Home() {
             <div>
               <div className="flex items-center space-x-3 mb-6">
                 <div className="relative w-10 h-10">
-                  <Image
+          <Image
                     src="/CODEB.png"
                     alt="CODEB Logo"
                     fill

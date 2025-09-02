@@ -7,3 +7,4 @@ Sitemap: https://cod3-hackathon.vercel.app/sitemap.xml
 # Disallow admin areas
 Disallow: /admin/
 Disallow: /api/
+
