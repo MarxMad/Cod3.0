@@ -214,8 +214,9 @@ export default function Home() {
               ))}
             </div>
 
-            <motion.button
-              className="tech-button px-8 py-3 font-bold transition-all duration-300"
+            <motion.a
+              href="/registro"
+              className="tech-button px-4 py-2 text-sm font-bold transition-all duration-300 inline-block"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
@@ -223,7 +224,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               &lt;REGÍSTRATE/&gt;
-            </motion.button>
+            </motion.a>
           </div>
         </div>
       </nav>
@@ -275,8 +276,9 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 px-4"
               variants={fadeInUp}
             >
-              <motion.button
-                className="tech-button px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
+              <motion.a
+                href="/registro"
+                className="tech-button px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center inline-block"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -289,7 +291,7 @@ export default function Home() {
                 />
                 <span className="relative z-10 text-center">&lt;REGÍSTRATE/&gt;</span>
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 relative z-10" />
-              </motion.button>
+              </motion.a>
               
               <motion.button
                 className="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 font-bold text-base sm:text-lg md:text-xl transition-all duration-300 backdrop-blur-sm relative overflow-hidden group font-mono w-full sm:w-auto justify-center"
@@ -1060,8 +1062,9 @@ export default function Home() {
                 </div>
               </div>
 
-              <motion.button
-                className="bg-green-500 hover:bg-green-600 text-white px-16 py-5 rounded-full font-bold text-2xl transition-all duration-300 shadow-2xl hover:shadow-green-500/30 relative overflow-hidden group"
+              <motion.a
+                href="/registro"
+                className="bg-green-500 hover:bg-green-600 text-white px-16 py-5 rounded-full font-bold text-2xl transition-all duration-300 shadow-2xl hover:shadow-green-500/30 relative overflow-hidden group inline-block"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -1073,7 +1076,7 @@ export default function Home() {
                   transition={{ duration: 0.8 }}
                 />
                 <span className="relative z-10">¡Regístrate Ahora - Gratis!</span>
-              </motion.button>
+              </motion.a>
             </motion.div>
           </motion.div>
         </div>
