@@ -60,13 +60,6 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        {/* Fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Press+Start+2P&family=Oxanium:wght@400;600;700;800&family=Exo+2:wght@400;600;700;800&family=Chakra+Petch:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />

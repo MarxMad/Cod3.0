@@ -5,17 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { 
   ArrowLeft, 
-  User, 
-  Mail, 
-  Phone, 
-  Users, 
-  Code, 
-  Github, 
-  Linkedin, 
-  Globe,
-  CheckCircle,
-  AlertCircle
+  CheckCircle
 } from 'lucide-react';
+import Link from 'next/link';
 
 export default function RegistroPage() {
   const [formData, setFormData] = useState({
@@ -83,15 +75,15 @@ export default function RegistroPage() {
               key={i}
               className="absolute text-green-400 text-xs font-mono opacity-20"
               style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
+                left: `${(i * 3.33) % 100}%`,
+                animationDelay: `${(i * 0.067) % 2}s`,
               }}
               animate={{
                 y: [0, "100vh"],
                 opacity: [0, 1, 0],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: 3 + (i * 0.067) % 2,
                 repeat: Infinity,
                 ease: "linear"
               }}
@@ -106,8 +98,8 @@ export default function RegistroPage() {
               key={i}
               className="absolute w-2 h-2 bg-green-400 rounded-full opacity-30"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${(i * 5) % 100}%`,
+                top: `${(i * 5) % 100}%`,
               }}
               animate={{
                 y: [0, -20, 0],
@@ -115,7 +107,7 @@ export default function RegistroPage() {
                 scale: [1, 1.2, 1],
               }}
               transition={{
-                duration: 4 + Math.random() * 2,
+                duration: 4 + (i * 0.1) % 2,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
@@ -173,13 +165,13 @@ export default function RegistroPage() {
             <motion.div
               variants={fadeInUp}
             >
-              <a
+              <Link
                 href="/"
                 className="tech-button px-8 py-4 text-lg font-bold inline-flex items-center space-x-3"
               >
                 <ArrowLeft className="w-5 h-5" />
                 <span>Volver al Inicio</span>
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
@@ -189,52 +181,52 @@ export default function RegistroPage() {
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden pixel-grid">
-      {/* Matrix Rain Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-green-400 text-xs font-mono opacity-20"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 2}s`,
-            }}
-            animate={{
-              y: [0, "100vh"],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        ))}
-      </div>
+              {/* Matrix Rain Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(30)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-green-400 text-xs font-mono opacity-20"
+              style={{
+                left: `${(i * 3.33) % 100}%`,
+                animationDelay: `${(i * 0.067) % 2}s`,
+              }}
+              animate={{
+                y: [0, "100vh"],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + (i * 0.067) % 2,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            />
+          ))}
+        </div>
 
-      {/* Floating Pixels */}
-      <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-green-400 rounded-full opacity-30"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              x: [0, 10, 0],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
-      </div>
+        {/* Floating Pixels */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-green-400 rounded-full opacity-30"
+              style={{
+                left: `${(i * 5) % 100}%`,
+                top: `${(i * 5) % 100}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                x: [0, 10, 0],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 4 + (i * 0.1) % 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
 
       {/* Tech Grid Lines */}
       <div className="absolute inset-0">
@@ -246,8 +238,7 @@ export default function RegistroPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-green-400/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <motion.a
-              href="/"
+            <motion.div
               className="flex items-center space-x-3 group"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
@@ -263,16 +254,16 @@ export default function RegistroPage() {
               <span className="text-2xl font-bold text-white font-mono group-hover:text-green-400 transition-colors duration-300">
                 COD3.0
               </span>
-            </motion.a>
+            </motion.div>
 
-            <motion.a
-              href="/"
-              className="tech-button px-4 py-2 text-sm font-bold transition-all duration-300"
+            <motion.div
+              className="tech-button px-4 py-2 text-sm font-bold transition-all duration-300 cursor-pointer"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.history.back()}
             >
               &lt;VOLVER/&gt;
-            </motion.a>
+            </motion.div>
           </div>
         </div>
       </nav>

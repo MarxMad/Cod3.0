@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { 
-  Code, 
   Users, 
   Trophy, 
   Calendar, 
@@ -15,16 +14,13 @@ import {
   Linkedin,
   Zap,
   Target,
-  Award,
   Clock,
-  Globe,
   Star,
   Sparkles
 } from 'lucide-react';
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
@@ -91,20 +87,20 @@ export default function Home() {
               key={i}
               className="absolute text-green-400 text-xs font-mono opacity-20"
               style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
+                left: `${(i * 2) % 100}%`,
+                animationDelay: `${(i * 0.1) % 2}s`,
               }}
               animate={{
                 y: [0, "100vh"],
                 opacity: [0, 1, 0],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: 3 + (i * 0.1) % 2,
                 repeat: Infinity,
                 ease: "linear"
               }}
             >
-              {String.fromCharCode(0x30A0 + Math.random() * 96)}
+              {String.fromCharCode(0x30A0 + (i * 3) % 96)}
             </motion.div>
           ))}
           
@@ -114,8 +110,8 @@ export default function Home() {
               key={i}
               className="absolute w-1 h-1 bg-green-400"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${(i * 5) % 100}%`,
+                top: `${(i * 5) % 100}%`,
               }}
               animate={{
                 y: [0, -50, 0],
@@ -123,9 +119,9 @@ export default function Home() {
                 scale: [0, 1, 0],
               }}
               transition={{
-                duration: 4 + Math.random() * 3,
+                duration: 4 + (i * 0.15) % 3,
                 repeat: Infinity,
-                delay: Math.random() * 2,
+                delay: (i * 0.1) % 2,
                 ease: "easeInOut"
               }}
             />
@@ -268,7 +264,7 @@ export default function Home() {
               className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed font-mono px-4"
               variants={fadeInUp}
             >
-              &lt;ROAD TO/&gt; El evento de programación más innovador del año. 
+              El evento de programación más innovador del año. 
               Construye el futuro con código, creatividad y colaboración.
             </motion.p>
 
