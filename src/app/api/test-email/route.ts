@@ -36,7 +36,7 @@ export async function POST() {
     `;
 
     const result = await resend.emails.send({
-      from: 'COD3.0 <noreply@cod3-0.vercel.app>',
+      from: 'COD3.0 <onboarding@resend.dev>',
       to: ['criptounam@gmail.com'], // Email de prueba
       subject: '🧪 Prueba de Email - COD3.0 HACKATHON',
       html: testEmailContent,
