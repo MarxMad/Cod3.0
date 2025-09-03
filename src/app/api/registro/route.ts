@@ -157,21 +157,32 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>COD3.0 HACKATHON - Registro Confirmado</title>
+      <style>
+        @media only screen and (max-width: 600px) {
+          .mobile-container { padding: 20px 15px !important; }
+          .mobile-header { padding: 20px 15px !important; }
+          .mobile-title { font-size: 20px !important; }
+          .mobile-subtitle { font-size: 14px !important; }
+          .mobile-section { padding: 20px 15px !important; margin: 15px 0 !important; }
+          .mobile-text { font-size: 15px !important; line-height: 1.6 !important; }
+          .mobile-button { padding: 12px 20px !important; font-size: 14px !important; margin: 8px !important; }
+        }
+      </style>
     </head>
     <body style="margin: 0; padding: 0; background-color: #0a0a0a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
       <div style="max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 255, 0, 0.1);">
         
         <!-- Header con Logo -->
-        <div style="background: linear-gradient(90deg, #00ff00 0%, #00cc00 100%); padding: 30px; text-align: center;">
+        <div class="mobile-header" style="background: linear-gradient(90deg, #00ff00 0%, #00cc00 100%); padding: 30px; text-align: center;">
           <div style="background: #000; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border: 3px solid #00ff00;">
             <span style="color: #00ff00; font-size: 24px; font-weight: bold; font-family: 'Courier New', monospace;">COD3.0</span>
           </div>
-          <h1 style="color: #000; margin: 0; font-size: 28px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">HACKATHON</h1>
-          <p style="color: #000; margin: 10px 0 0 0; font-size: 16px; font-weight: 600;">¡Registro Confirmado!</p>
+          <h1 class="mobile-title" style="color: #000; margin: 0; font-size: 28px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">HACKATHON</h1>
+          <p class="mobile-subtitle" style="color: #000; margin: 10px 0 0 0; font-size: 16px; font-weight: 600;">¡Registro Confirmado!</p>
         </div>
         
         <!-- Contenido Principal -->
-        <div style="padding: 40px 30px;">
+        <div class="mobile-container" style="padding: 40px 30px;">
           <div style="background: rgba(0, 255, 0, 0.05); padding: 30px; border-radius: 12px; border: 2px solid #00ff00; margin-bottom: 30px;">
             <h2 style="color: #00ff00; margin: 0 0 20px 0; font-size: 24px; font-weight: 700;">¡Hola ${registro.nombre} ${registro.apellido}!</h2>
             
@@ -180,103 +191,103 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
             </p>
             
             <!-- Detalles del Registro -->
-            <div style="background: rgba(0, 0, 0, 0.4); padding: 25px; border-radius: 10px; margin: 25px 0; border-left: 4px solid #00ff00;">
+            <div class="mobile-section" style="background: rgba(0, 0, 0, 0.6); padding: 25px; border-radius: 10px; margin: 25px 0; border-left: 4px solid #00ff00;">
               <h3 style="color: #00ff00; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">📋 Detalles de tu Registro</h3>
               <div style="color: #ffffff; line-height: 1.8;">
-                <p style="margin: 8px 0;"><strong style="color: #00ff00;">📧 Email:</strong> ${registro.email}</p>
-                <p style="margin: 8px 0;"><strong style="color: #00ff00;">🎯 Nivel de Experiencia:</strong> ${registro.experiencia.charAt(0).toUpperCase() + registro.experiencia.slice(1)}</p>
-                <p style="margin: 8px 0;"><strong style="color: #00ff00;">👥 Participación:</strong> ${registro.equipo === 'equipo' ? 'Con Equipo' : 'Individual'}</p>
-                ${registro.equipo === 'equipo' && registro.nombreEquipo ? `<p style="margin: 8px 0;"><strong style="color: #00ff00;">🏆 Nombre del Equipo:</strong> ${registro.nombreEquipo}</p>` : ''}
-                ${registro.universidad ? `<p style="margin: 8px 0;"><strong style="color: #00ff00;">🎓 Universidad:</strong> ${registro.universidad}</p>` : ''}
-                ${registro.carrera ? `<p style="margin: 8px 0;"><strong style="color: #00ff00;">📚 Carrera:</strong> ${registro.carrera}</p>` : ''}
+                <p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">📧 Email:</strong> ${registro.email}</p>
+                <p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">🎯 Nivel de Experiencia:</strong> ${registro.experiencia.charAt(0).toUpperCase() + registro.experiencia.slice(1)}</p>
+                <p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">👥 Participación:</strong> ${registro.equipo === 'equipo' ? 'Con Equipo' : 'Individual'}</p>
+                ${registro.equipo === 'equipo' && registro.nombreEquipo ? `<p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">🏆 Nombre del Equipo:</strong> ${registro.nombreEquipo}</p>` : ''}
+                ${registro.universidad ? `<p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">🎓 Universidad:</strong> ${registro.universidad}</p>` : ''}
+                ${registro.carrera ? `<p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">📚 Carrera:</strong> ${registro.carrera}</p>` : ''}
               </div>
             </div>
             
             <!-- Información del Hackathon -->
-            <div style="background: rgba(0, 100, 255, 0.1); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #0066ff;">
+            <div class="mobile-section" style="background: rgba(0, 100, 255, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #0066ff;">
               <h3 style="color: #0066ff; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">🚀 ¿Qué sigue ahora?</h3>
               <ul style="color: #ffffff; line-height: 1.8; margin: 0; padding-left: 20px;">
-                <li><strong>📅 Fecha del Evento:</strong> 15-17 de Diciembre, 2024</li>
-                <li><strong>📍 Ubicación:</strong> Centro de Innovación Tech</li>
-                <li><strong>⏰ Duración:</strong> 48 horas continuas de programación intensiva</li>
-                <li><strong>🏆 Premios:</strong> Más de $50,000 en premios increíbles</li>
-                <li><strong>🍕 Comida:</strong> Comidas y bebidas incluidas durante el evento</li>
-                <li><strong>💻 Equipamiento:</strong> Trae tu laptop y cargador</li>
-                <li><strong>👥 Equipos:</strong> Máximo 4 personas por equipo</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">📅 Fecha del Evento:</strong> 15-17 de Diciembre, 2024</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">📍 Ubicación:</strong> Centro de Innovación Tech</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">⏰ Duración:</strong> 48 horas continuas de programación intensiva</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">🏆 Premios:</strong> Más de $50,000 en premios increíbles</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">🍕 Comida:</strong> Comidas y bebidas incluidas durante el evento</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">💻 Equipamiento:</strong> Trae tu laptop y cargador</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">👥 Equipos:</strong> Máximo 4 personas por equipo</li>
               </ul>
             </div>
             
             <!-- Programa del Evento -->
-            <div style="background: rgba(255, 165, 0, 0.1); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #ffa500;">
+            <div class="mobile-section" style="background: rgba(255, 165, 0, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #ffa500;">
               <h3 style="color: #ffa500; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">📅 Programa del Evento</h3>
               <div style="color: #ffffff; line-height: 1.8;">
                 <div style="margin-bottom: 15px;">
                   <strong style="color: #ffa500;">Día 1 - Viernes:</strong><br>
-                  <span style="margin-left: 20px;">09:00 - Registro y Check-in</span><br>
-                  <span style="margin-left: 20px;">10:00 - Ceremonia de Apertura</span><br>
-                  <span style="margin-left: 20px;">11:00 - Presentación de Desafíos</span><br>
-                  <span style="margin-left: 20px;">12:00 - Formación de Equipos</span><br>
-                  <span style="margin-left: 20px;">13:00 - ¡Comienza la Programación!</span>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">09:00 - Registro y Check-in</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">10:00 - Ceremonia de Apertura</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">11:00 - Presentación de Desafíos</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">12:00 - Formación de Equipos</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">13:00 - ¡Comienza la Programación!</span>
                 </div>
                 <div style="margin-bottom: 15px;">
                   <strong style="color: #ffa500;">Día 2 - Sábado:</strong><br>
-                  <span style="margin-left: 20px;">00:00 - Programación Continúa</span><br>
-                  <span style="margin-left: 20px;">12:00 - Mentoring Sessions</span><br>
-                  <span style="margin-left: 20px;">18:00 - Networking Event</span><br>
-                  <span style="margin-left: 20px;">20:00 - Charlas Técnicas</span><br>
-                  <span style="margin-left: 20px;">24:00 - Programación Nocturna</span>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">00:00 - Programación Continúa</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">12:00 - Mentoring Sessions</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">18:00 - Networking Event</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">20:00 - Charlas Técnicas</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">24:00 - Programación Nocturna</span>
                 </div>
                 <div>
                   <strong style="color: #ffa500;">Día 3 - Domingo:</strong><br>
-                  <span style="margin-left: 20px;">09:00 - Últimas Horas</span><br>
-                  <span style="margin-left: 20px;">12:00 - Deadline de Entrega</span><br>
-                  <span style="margin-left: 20px;">14:00 - Presentaciones</span><br>
-                  <span style="margin-left: 20px;">16:00 - Evaluación del Jurado</span><br>
-                  <span style="margin-left: 20px;">18:00 - Ceremonia de Premiación</span>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">09:00 - Últimas Horas</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">12:00 - Deadline de Entrega</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">14:00 - Presentaciones</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">16:00 - Evaluación del Jurado</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">18:00 - Ceremonia de Premiación</span>
                 </div>
               </div>
             </div>
             
             <!-- Premios -->
-            <div style="background: rgba(128, 0, 128, 0.1); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #800080;">
+            <div class="mobile-section" style="background: rgba(128, 0, 128, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #800080;">
               <h3 style="color: #800080; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">🏆 Premios Increíbles</h3>
               <div style="color: #ffffff; line-height: 1.8;">
                 <div style="margin-bottom: 15px;">
                   <strong style="color: #800080;">🥇 1er Lugar - $25,000:</strong><br>
-                  <span style="margin-left: 20px;">• Premio en efectivo</span><br>
-                  <span style="margin-left: 20px;">• Mentoring con expertos</span><br>
-                  <span style="margin-left: 20px;">• Incubación de startup</span><br>
-                  <span style="margin-left: 20px;">• Viaje a conferencia tech</span>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Premio en efectivo</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Mentoring con expertos</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Incubación de startup</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Viaje a conferencia tech</span>
                 </div>
                 <div style="margin-bottom: 15px;">
                   <strong style="color: #800080;">🥈 2do Lugar - $15,000:</strong><br>
-                  <span style="margin-left: 20px;">• Premio en efectivo</span><br>
-                  <span style="margin-left: 20px;">• Acceso a coworking</span><br>
-                  <span style="margin-left: 20px;">• Networking premium</span><br>
-                  <span style="margin-left: 20px;">• Certificaciones tech</span>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Premio en efectivo</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Acceso a coworking</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Networking premium</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Certificaciones tech</span>
                 </div>
                 <div>
                   <strong style="color: #800080;">🥉 3er Lugar - $10,000:</strong><br>
-                  <span style="margin-left: 20px;">• Premio en efectivo</span><br>
-                  <span style="margin-left: 20px;">• Cursos online premium</span><br>
-                  <span style="margin-left: 20px;">• Hardware de desarrollo</span><br>
-                  <span style="margin-left: 20px;">• Membresía a comunidad</span>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Premio en efectivo</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Cursos online premium</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Hardware de desarrollo</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Membresía a comunidad</span>
                 </div>
               </div>
             </div>
             
             <!-- Preparación -->
-            <div style="background: rgba(0, 255, 0, 0.1); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #00ff00;">
+            <div class="mobile-section" style="background: rgba(0, 255, 0, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #00ff00;">
               <h3 style="color: #00ff00; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">⚡ Prepárate para el Hackathon</h3>
               <ul style="color: #ffffff; line-height: 1.8; margin: 0; padding-left: 20px;">
-                <li><strong>💡 Ideas:</strong> Comienza a pensar en ideas innovadoras</li>
-                <li><strong>🛠️ Herramientas:</strong> Familiarízate con las tecnologías que planeas usar</li>
-                <li><strong>👥 Networking:</strong> Conecta con otros participantes en nuestras redes</li>
-                <li><strong>📚 Recursos:</strong> Revisa la documentación técnica que te enviaremos</li>
-                <li><strong>🎯 Objetivos:</strong> Define qué quieres lograr en el hackathon</li>
-                <li><strong>🔧 APIs:</strong> Acceso a APIs y herramientas premium</li>
-                <li><strong>👨‍🏫 Mentoring:</strong> Mentoring con expertos de la industria</li>
-                <li><strong>📜 Certificado:</strong> Certificado de participación incluido</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">💡 Ideas:</strong> Comienza a pensar en ideas innovadoras</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">🛠️ Herramientas:</strong> Familiarízate con las tecnologías que planeas usar</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">👥 Networking:</strong> Conecta con otros participantes en nuestras redes</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">📚 Recursos:</strong> Revisa la documentación técnica que te enviaremos</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">🎯 Objetivos:</strong> Define qué quieres lograr en el hackathon</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">🔧 APIs:</strong> Acceso a APIs y herramientas premium</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">👨‍🏫 Mentoring:</strong> Mentoring con expertos de la industria</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">📜 Certificado:</strong> Certificado de participación incluido</li>
               </ul>
             </div>
             
