@@ -56,7 +56,7 @@ export async function POST() {
     return NextResponse.json(
       { 
         error: 'Error al enviar email de prueba',
-        details: error.message,
+        details: error instanceof Error ? error.message : String(error),
         type: typeof error
       },
       { status: 500 }
