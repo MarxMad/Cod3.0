@@ -121,9 +121,9 @@ export async function POST(request: NextRequest) {
     } catch (emailError) {
       console.error('❌ Error al enviar email:', emailError);
       console.error('📋 Detalles del error:', {
-        message: emailError.message,
-        name: emailError.name,
-        stack: emailError.stack
+        message: emailError instanceof Error ? emailError.message : String(emailError),
+        name: emailError instanceof Error ? emailError.name : 'Unknown',
+        stack: emailError instanceof Error ? emailError.stack : undefined
       });
       // No fallamos si el email falla, solo lo registramos
     }

@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     console.log('🧪 Iniciando prueba de email...');
     console.log('🔑 RESEND_API_KEY configurada:', !!process.env.RESEND_API_KEY);
