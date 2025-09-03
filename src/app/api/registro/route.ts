@@ -115,9 +115,16 @@ export async function POST(request: NextRequest) {
 
     // Enviar email de confirmación
     try {
+      console.log('📧 Intentando enviar email de confirmación...');
       await sendConfirmationEmail(body);
+      console.log('✅ Email de confirmación enviado exitosamente');
     } catch (emailError) {
-      console.error('Error al enviar email:', emailError);
+      console.error('❌ Error al enviar email:', emailError);
+      console.error('📋 Detalles del error:', {
+        message: emailError.message,
+        name: emailError.name,
+        stack: emailError.stack
+      });
       // No fallamos si el email falla, solo lo registramos
     }
 
@@ -137,6 +144,10 @@ export async function POST(request: NextRequest) {
 }
 
 async function sendConfirmationEmail(registro: RegistroHackathon) {
+  console.log('📧 Iniciando envío de email de confirmación...');
+  console.log('🔑 RESEND_API_KEY configurada:', !!process.env.RESEND_API_KEY);
+  console.log('📧 Email destino:', registro.email);
+  
   const resend = new Resend(process.env.RESEND_API_KEY);
   
   const emailContent = `
@@ -308,7 +319,8 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
   `;
 
   try {
-    await resend.emails.send({
+    console.log('📤 Enviando email con Resend...');
+    const result = await resend.emails.send({
       from: 'COD3.0 <onboarding@resend.dev>',
       to: [registro.email],
       subject: '¡Registro Confirmado - COD3.0 HACKATHON!',
@@ -316,8 +328,11 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
     });
     
     console.log('✅ Email de confirmación enviado exitosamente a:', registro.email);
+    console.log('📧 ID del email:', result.data?.id);
   } catch (error) {
     console.error('❌ Error al enviar email:', error);
+    console.error('📋 Tipo de error:', typeof error);
+    console.error('📋 Error completo:', JSON.stringify(error, null, 2));
     throw error;
   }
 }
