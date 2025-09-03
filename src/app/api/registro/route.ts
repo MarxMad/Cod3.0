@@ -321,7 +321,7 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
   try {
     console.log('📤 Enviando email con Resend...');
     const result = await resend.emails.send({
-      from: 'COD3.0 <onboarding@resend.dev>',
+      from: 'COD3.0 <noreply@cod3-0.vercel.app>',
       to: [registro.email],
       subject: '¡Registro Confirmado - COD3.0 HACKATHON!',
       html: emailContent,
