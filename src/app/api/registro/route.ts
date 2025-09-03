@@ -164,45 +164,108 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
           <div style="background: rgba(0, 255, 0, 0.05); padding: 30px; border-radius: 12px; border: 2px solid #00ff00; margin-bottom: 30px;">
             <h2 style="color: #00ff00; margin: 0 0 20px 0; font-size: 24px; font-weight: 700;">¡Hola ${registro.nombre} ${registro.apellido}!</h2>
             
-            <p style="color: #000000 !important; line-height: 1.7; margin-bottom: 25px; font-size: 16px; background: #ffffff; padding: 15px; border-radius: 8px; border: 2px solid #00ff00;">
-              🎉 <strong style="color: #000000 !important;">¡Felicidades!</strong> Tu registro para el <strong style="color: #00ff00 !important;">COD3.0 HACKATHON</strong> ha sido confirmado exitosamente. Estamos emocionados de tenerte como parte de esta experiencia tecnológica única.
+            <p style="color: #ffffff; line-height: 1.7; margin-bottom: 25px; font-size: 16px;">
+              🎉 <strong>¡Felicidades!</strong> Tu registro para el <strong style="color: #00ff00;">COD3.0 HACKATHON</strong> ha sido confirmado exitosamente. Estamos emocionados de tenerte como parte de esta experiencia tecnológica única.
             </p>
             
             <!-- Detalles del Registro -->
-            <div style="background: #ffffff; padding: 25px; border-radius: 10px; margin: 25px 0; border: 3px solid #00ff00; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.2);">
-              <h3 style="color: #00ff00 !important; margin: 0 0 20px 0; font-size: 18px; font-weight: 700; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">📋 Detalles de tu Registro</h3>
-              <div style="color: #000000 !important; line-height: 1.8;">
-                <p style="margin: 8px 0; color: #000000 !important;"><strong style="color: #00ff00 !important;">📧 Email:</strong> ${registro.email}</p>
-                <p style="margin: 8px 0; color: #000000 !important;"><strong style="color: #00ff00 !important;">🎯 Nivel de Experiencia:</strong> ${registro.experiencia.charAt(0).toUpperCase() + registro.experiencia.slice(1)}</p>
-                <p style="margin: 8px 0; color: #000000 !important;"><strong style="color: #00ff00 !important;">👥 Participación:</strong> ${registro.equipo === 'equipo' ? 'Con Equipo' : 'Individual'}</p>
-                ${registro.equipo === 'equipo' && registro.nombreEquipo ? `<p style="margin: 8px 0; color: #000000 !important;"><strong style="color: #00ff00 !important;">🏆 Nombre del Equipo:</strong> ${registro.nombreEquipo}</p>` : ''}
-                ${registro.universidad ? `<p style="margin: 8px 0; color: #000000 !important;"><strong style="color: #00ff00 !important;">🎓 Universidad:</strong> ${registro.universidad}</p>` : ''}
-                ${registro.carrera ? `<p style="margin: 8px 0; color: #000000 !important;"><strong style="color: #00ff00 !important;">📚 Carrera:</strong> ${registro.carrera}</p>` : ''}
+            <div style="background: rgba(0, 0, 0, 0.4); padding: 25px; border-radius: 10px; margin: 25px 0; border-left: 4px solid #00ff00;">
+              <h3 style="color: #00ff00; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">📋 Detalles de tu Registro</h3>
+              <div style="color: #ffffff; line-height: 1.8;">
+                <p style="margin: 8px 0;"><strong style="color: #00ff00;">📧 Email:</strong> ${registro.email}</p>
+                <p style="margin: 8px 0;"><strong style="color: #00ff00;">🎯 Nivel de Experiencia:</strong> ${registro.experiencia.charAt(0).toUpperCase() + registro.experiencia.slice(1)}</p>
+                <p style="margin: 8px 0;"><strong style="color: #00ff00;">👥 Participación:</strong> ${registro.equipo === 'equipo' ? 'Con Equipo' : 'Individual'}</p>
+                ${registro.equipo === 'equipo' && registro.nombreEquipo ? `<p style="margin: 8px 0;"><strong style="color: #00ff00;">🏆 Nombre del Equipo:</strong> ${registro.nombreEquipo}</p>` : ''}
+                ${registro.universidad ? `<p style="margin: 8px 0;"><strong style="color: #00ff00;">🎓 Universidad:</strong> ${registro.universidad}</p>` : ''}
+                ${registro.carrera ? `<p style="margin: 8px 0;"><strong style="color: #00ff00;">📚 Carrera:</strong> ${registro.carrera}</p>` : ''}
               </div>
             </div>
             
             <!-- Información del Hackathon -->
-            <div style="background: #ffffff; padding: 25px; border-radius: 10px; margin: 25px 0; border: 3px solid #0066ff; box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);">
-              <h3 style="color: #0066ff !important; margin: 0 0 20px 0; font-size: 18px; font-weight: 700; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">🚀 ¿Qué sigue ahora?</h3>
-              <ul style="color: #000000 !important; line-height: 1.8; margin: 0; padding-left: 20px;">
-                <li style="color: #000000 !important; margin: 8px 0;"><strong style="color: #0066ff !important;">📅 Fecha del Evento:</strong> Próximamente te enviaremos la fecha exacta</li>
-                <li style="color: #000000 !important; margin: 8px 0;"><strong style="color: #0066ff !important;">📍 Ubicación:</strong> Se confirmará en los próximos días</li>
-                <li style="color: #000000 !important; margin: 8px 0;"><strong style="color: #0066ff !important;">⏰ Duración:</strong> 24-48 horas de programación intensiva</li>
-                <li style="color: #000000 !important; margin: 8px 0;"><strong style="color: #0066ff !important;">🏆 Premios:</strong> Premios increíbles para los mejores proyectos</li>
-                <li style="color: #000000 !important; margin: 8px 0;"><strong style="color: #0066ff !important;">🍕 Comida:</strong> Comidas y snacks incluidos durante el evento</li>
-                <li style="color: #000000 !important; margin: 8px 0;"><strong style="color: #0066ff !important;">💻 Equipamiento:</strong> Trae tu laptop y cargador</li>
+            <div style="background: rgba(0, 100, 255, 0.1); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #0066ff;">
+              <h3 style="color: #0066ff; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">🚀 ¿Qué sigue ahora?</h3>
+              <ul style="color: #ffffff; line-height: 1.8; margin: 0; padding-left: 20px;">
+                <li><strong>📅 Fecha del Evento:</strong> 15-17 de Diciembre, 2024</li>
+                <li><strong>📍 Ubicación:</strong> Centro de Innovación Tech</li>
+                <li><strong>⏰ Duración:</strong> 48 horas continuas de programación intensiva</li>
+                <li><strong>🏆 Premios:</strong> Más de $50,000 en premios increíbles</li>
+                <li><strong>🍕 Comida:</strong> Comidas y bebidas incluidas durante el evento</li>
+                <li><strong>💻 Equipamiento:</strong> Trae tu laptop y cargador</li>
+                <li><strong>👥 Equipos:</strong> Máximo 4 personas por equipo</li>
               </ul>
             </div>
             
+            <!-- Programa del Evento -->
+            <div style="background: rgba(255, 165, 0, 0.1); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #ffa500;">
+              <h3 style="color: #ffa500; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">📅 Programa del Evento</h3>
+              <div style="color: #ffffff; line-height: 1.8;">
+                <div style="margin-bottom: 15px;">
+                  <strong style="color: #ffa500;">Día 1 - Viernes:</strong><br>
+                  <span style="margin-left: 20px;">09:00 - Registro y Check-in</span><br>
+                  <span style="margin-left: 20px;">10:00 - Ceremonia de Apertura</span><br>
+                  <span style="margin-left: 20px;">11:00 - Presentación de Desafíos</span><br>
+                  <span style="margin-left: 20px;">12:00 - Formación de Equipos</span><br>
+                  <span style="margin-left: 20px;">13:00 - ¡Comienza la Programación!</span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                  <strong style="color: #ffa500;">Día 2 - Sábado:</strong><br>
+                  <span style="margin-left: 20px;">00:00 - Programación Continúa</span><br>
+                  <span style="margin-left: 20px;">12:00 - Mentoring Sessions</span><br>
+                  <span style="margin-left: 20px;">18:00 - Networking Event</span><br>
+                  <span style="margin-left: 20px;">20:00 - Charlas Técnicas</span><br>
+                  <span style="margin-left: 20px;">24:00 - Programación Nocturna</span>
+                </div>
+                <div>
+                  <strong style="color: #ffa500;">Día 3 - Domingo:</strong><br>
+                  <span style="margin-left: 20px;">09:00 - Últimas Horas</span><br>
+                  <span style="margin-left: 20px;">12:00 - Deadline de Entrega</span><br>
+                  <span style="margin-left: 20px;">14:00 - Presentaciones</span><br>
+                  <span style="margin-left: 20px;">16:00 - Evaluación del Jurado</span><br>
+                  <span style="margin-left: 20px;">18:00 - Ceremonia de Premiación</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Premios -->
+            <div style="background: rgba(128, 0, 128, 0.1); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #800080;">
+              <h3 style="color: #800080; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">🏆 Premios Increíbles</h3>
+              <div style="color: #ffffff; line-height: 1.8;">
+                <div style="margin-bottom: 15px;">
+                  <strong style="color: #800080;">🥇 1er Lugar - $25,000:</strong><br>
+                  <span style="margin-left: 20px;">• Premio en efectivo</span><br>
+                  <span style="margin-left: 20px;">• Mentoring con expertos</span><br>
+                  <span style="margin-left: 20px;">• Incubación de startup</span><br>
+                  <span style="margin-left: 20px;">• Viaje a conferencia tech</span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                  <strong style="color: #800080;">🥈 2do Lugar - $15,000:</strong><br>
+                  <span style="margin-left: 20px;">• Premio en efectivo</span><br>
+                  <span style="margin-left: 20px;">• Acceso a coworking</span><br>
+                  <span style="margin-left: 20px;">• Networking premium</span><br>
+                  <span style="margin-left: 20px;">• Certificaciones tech</span>
+                </div>
+                <div>
+                  <strong style="color: #800080;">🥉 3er Lugar - $10,000:</strong><br>
+                  <span style="margin-left: 20px;">• Premio en efectivo</span><br>
+                  <span style="margin-left: 20px;">• Cursos online premium</span><br>
+                  <span style="margin-left: 20px;">• Hardware de desarrollo</span><br>
+                  <span style="margin-left: 20px;">• Membresía a comunidad</span>
+                </div>
+              </div>
+            </div>
+            
             <!-- Preparación -->
-            <div style="background: #ffffff; padding: 25px; border-radius: 10px; margin: 25px 0; border: 3px solid #ffa500; box-shadow: 0 4px 15px rgba(255, 165, 0, 0.2);">
-              <h3 style="color: #ffa500 !important; margin: 0 0 20px 0; font-size: 18px; font-weight: 700; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">⚡ Prepárate para el Hackathon</h3>
-              <ul style="color: #000000 !important; line-height: 1.8; margin: 0; padding-left: 20px;">
-                <li style="color: #000000 !important; margin: 8px 0;"><strong style="color: #ffa500 !important;">💡 Ideas:</strong> Comienza a pensar en ideas innovadoras</li>
-                <li style="color: #000000 !important; margin: 8px 0;"><strong style="color: #ffa500 !important;">🛠️ Herramientas:</strong> Familiarízate con las tecnologías que planeas usar</li>
-                <li style="color: #000000 !important; margin: 8px 0;"><strong style="color: #ffa500 !important;">👥 Networking:</strong> Conecta con otros participantes en nuestras redes</li>
-                <li style="color: #000000 !important; margin: 8px 0;"><strong style="color: #ffa500 !important;">📚 Recursos:</strong> Revisa la documentación técnica que te enviaremos</li>
-                <li style="color: #000000 !important; margin: 8px 0;"><strong style="color: #ffa500 !important;">🎯 Objetivos:</strong> Define qué quieres lograr en el hackathon</li>
+            <div style="background: rgba(0, 255, 0, 0.1); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #00ff00;">
+              <h3 style="color: #00ff00; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">⚡ Prepárate para el Hackathon</h3>
+              <ul style="color: #ffffff; line-height: 1.8; margin: 0; padding-left: 20px;">
+                <li><strong>💡 Ideas:</strong> Comienza a pensar en ideas innovadoras</li>
+                <li><strong>🛠️ Herramientas:</strong> Familiarízate con las tecnologías que planeas usar</li>
+                <li><strong>👥 Networking:</strong> Conecta con otros participantes en nuestras redes</li>
+                <li><strong>📚 Recursos:</strong> Revisa la documentación técnica que te enviaremos</li>
+                <li><strong>🎯 Objetivos:</strong> Define qué quieres lograr en el hackathon</li>
+                <li><strong>🔧 APIs:</strong> Acceso a APIs y herramientas premium</li>
+                <li><strong>👨‍🏫 Mentoring:</strong> Mentoring con expertos de la industria</li>
+                <li><strong>📜 Certificado:</strong> Certificado de participación incluido</li>
               </ul>
             </div>
             
@@ -217,16 +280,16 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
             </div>
             
             <!-- Mensaje Final -->
-            <div style="background: #ffffff; padding: 20px; border-radius: 8px; text-align: center; margin: 25px 0; border: 3px solid #00ff00; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.2);">
-              <p style="color: #000000 !important; line-height: 1.6; margin: 0; font-size: 16px;">
-                <strong style="color: #00ff00 !important;">¡Estamos emocionados de verte en el COD3.0 HACKATHON!</strong><br>
+            <div style="background: rgba(0, 255, 0, 0.1); padding: 20px; border-radius: 8px; text-align: center; margin: 25px 0;">
+              <p style="color: #ffffff; line-height: 1.6; margin: 0; font-size: 16px;">
+                <strong style="color: #00ff00;">¡Estamos emocionados de verte en el COD3.0 HACKATHON!</strong><br>
                 Prepárate para una experiencia increíble llena de innovación, aprendizaje y diversión.
               </p>
             </div>
             
-            <p style="color: #000000 !important; line-height: 1.6; margin: 20px 0 0 0; font-size: 14px; text-align: center; background: #ffffff; padding: 15px; border-radius: 8px; border: 2px solid #00ff00;">
+            <p style="color: #cccccc; line-height: 1.6; margin: 20px 0 0 0; font-size: 14px; text-align: center;">
               Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.<br>
-              <strong style="color: #00ff00 !important;">¡Nos vemos pronto en el hackathon!</strong>
+              <strong style="color: #00ff00;">¡Nos vemos pronto en el hackathon!</strong>
             </p>
           </div>
         </div>
