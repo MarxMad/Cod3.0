@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { 
   ArrowLeft, 
@@ -28,7 +28,6 @@ export default function RegistroPage() {
     motivacion: ''
   });
 
-  const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
@@ -44,11 +43,30 @@ export default function RegistroPage() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simular envío
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
+    try {
+      const response = await fetch('/api/registro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Error al enviar el registro');
+      }
+
+      // Registro exitoso
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      
+    } catch (error) {
+      console.error('Error:', error);
+      setIsSubmitting(false);
+      alert(error instanceof Error ? error.message : 'Error al enviar el registro');
+    }
   };
 
   const fadeInUp = {
@@ -290,24 +308,7 @@ export default function RegistroPage() {
               </p>
             </motion.div>
 
-            {/* Progress Bar */}
-            <motion.div
-              className="mb-8"
-              variants={fadeInUp}
-            >
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-green-400 font-mono">Paso {step} de 3</span>
-                <span className="text-gray-400 font-mono">{Math.round((step / 3) * 100)}%</span>
-              </div>
-              <div className="w-full bg-gray-800 rounded-full h-2">
-                <motion.div
-                  className="bg-green-400 h-2 rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${(step / 3) * 100}%` }}
-                  transition={{ duration: 0.5 }}
-                />
-              </div>
-            </motion.div>
+
 
             {/* Form */}
             <motion.form
@@ -315,278 +316,233 @@ export default function RegistroPage() {
               className="bg-black/50 backdrop-blur-md border-2 border-green-400 p-8 rounded-lg"
               variants={fadeInUp}
             >
-              <AnimatePresence mode="wait">
-                {step === 1 && (
-                  <motion.div
-                    key="step1"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    className="space-y-6"
-                  >
-                    <h2 className="text-3xl font-bold text-white mb-6 font-mono">
-                      &lt;INFORMACIÓN PERSONAL/&gt;
-                    </h2>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">Nombre *</label>
-                        <input
-                          type="text"
-                          name="nombre"
-                          value={formData.nombre}
-                          onChange={handleInputChange}
-                          required
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                          placeholder="Tu nombre"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">Apellido *</label>
-                        <input
-                          type="text"
-                          name="apellido"
-                          value={formData.apellido}
-                          onChange={handleInputChange}
-                          required
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                          placeholder="Tu apellido"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">Email *</label>
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          required
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                          placeholder="tu@email.com"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">Teléfono</label>
-                        <input
-                          type="tel"
-                          name="telefono"
-                          value={formData.telefono}
-                          onChange={handleInputChange}
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                          placeholder="+1234567890"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">Universidad/Institución</label>
-                        <input
-                          type="text"
-                          name="universidad"
-                          value={formData.universidad}
-                          onChange={handleInputChange}
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                          placeholder="Nombre de tu universidad"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">Carrera/Estudios</label>
-                        <input
-                          type="text"
-                          name="carrera"
-                          value={formData.carrera}
-                          onChange={handleInputChange}
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                          placeholder="Tu carrera o campo de estudio"
-                        />
-                      </div>
+              <div className="space-y-8">
+                {/* Información Personal */}
+                <div>
+                  <h2 className="text-3xl font-bold text-white mb-6 font-mono">
+                    &lt;INFORMACIÓN PERSONAL/&gt;
+                  </h2>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">Nombre *</label>
+                      <input
+                        type="text"
+                        name="nombre"
+                        value={formData.nombre}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                        placeholder="Tu nombre"
+                      />
                     </div>
-                  </motion.div>
-                )}
-
-                {step === 2 && (
-                  <motion.div
-                    key="step2"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    className="space-y-6"
-                  >
-                    <h2 className="text-3xl font-bold text-white mb-6 font-mono">
-                      &lt;PERFIL TÉCNICO/&gt;
-                    </h2>
                     
-                    <div className="space-y-6">
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">Nivel de Experiencia *</label>
-                        <select
-                          name="experiencia"
-                          value={formData.experiencia}
-                          onChange={handleInputChange}
-                          required
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                        >
-                          <option value="principiante">Principiante</option>
-                          <option value="intermedio">Intermedio</option>
-                          <option value="avanzado">Avanzado</option>
-                          <option value="experto">Experto</option>
-                        </select>
-                      </div>
-                      
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">GitHub</label>
-                        <input
-                          type="url"
-                          name="github"
-                          value={formData.github}
-                          onChange={handleInputChange}
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                          placeholder="https://github.com/tuusuario"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">LinkedIn</label>
-                        <input
-                          type="url"
-                          name="linkedin"
-                          value={formData.linkedin}
-                          onChange={handleInputChange}
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                          placeholder="https://linkedin.com/in/tuusuario"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">Portfolio/Website</label>
-                        <input
-                          type="url"
-                          name="portfolio"
-                          value={formData.portfolio}
-                          onChange={handleInputChange}
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                          placeholder="https://tuwebsite.com"
-                        />
-                      </div>
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">Apellido *</label>
+                      <input
+                        type="text"
+                        name="apellido"
+                        value={formData.apellido}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                        placeholder="Tu apellido"
+                      />
                     </div>
-                  </motion.div>
-                )}
-
-                {step === 3 && (
-                  <motion.div
-                    key="step3"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    className="space-y-6"
-                  >
-                    <h2 className="text-3xl font-bold text-white mb-6 font-mono">
-                      &lt;PROYECTO & MOTIVACIÓN/&gt;
-                    </h2>
                     
-                    <div className="space-y-6">
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">Tipo de Participación *</label>
-                        <select
-                          name="equipo"
-                          value={formData.equipo}
-                          onChange={handleInputChange}
-                          required
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                        >
-                          <option value="individual">Individual</option>
-                          <option value="equipo">Con Equipo</option>
-                        </select>
-                      </div>
-                      
-                      {formData.equipo === 'equipo' && (
-                        <div>
-                          <label className="block text-green-400 font-mono mb-2">Nombre del Equipo</label>
-                          <input
-                            type="text"
-                            name="nombreEquipo"
-                            value={formData.nombreEquipo}
-                            onChange={handleInputChange}
-                            className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
-                            placeholder="Nombre de tu equipo"
-                          />
-                        </div>
-                      )}
-                      
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">Idea de Proyecto</label>
-                        <textarea
-                          name="proyecto"
-                          value={formData.proyecto}
-                          onChange={handleInputChange}
-                          rows={4}
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors resize-none"
-                          placeholder="Describe brevemente tu idea de proyecto para el hackathon..."
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-green-400 font-mono mb-2">Motivación para Participar *</label>
-                        <textarea
-                          name="motivacion"
-                          value={formData.motivacion}
-                          onChange={handleInputChange}
-                          required
-                          rows={4}
-                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors resize-none"
-                          placeholder="¿Por qué quieres participar en COD3.0? ¿Qué esperas aprender o lograr?"
-                        />
-                      </div>
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">Email *</label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                        placeholder="tu@email.com"
+                      />
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">Teléfono</label>
+                      <input
+                        type="tel"
+                        name="telefono"
+                        value={formData.telefono}
+                        onChange={handleInputChange}
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                        placeholder="+1234567890"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">Universidad/Institución</label>
+                      <input
+                        type="text"
+                        name="universidad"
+                        value={formData.universidad}
+                        onChange={handleInputChange}
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                        placeholder="Nombre de tu universidad"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">Carrera/Estudios</label>
+                      <input
+                        type="text"
+                        name="carrera"
+                        value={formData.carrera}
+                        onChange={handleInputChange}
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                        placeholder="Tu carrera o campo de estudio"
+                      />
+                    </div>
+                  </div>
+                </div>
 
-              {/* Navigation Buttons */}
-              <div className="flex justify-between mt-8">
-                {step > 1 && (
-                  <motion.button
-                    type="button"
-                    onClick={() => setStep(step - 1)}
-                    className="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-6 py-3 font-bold transition-all duration-300 font-mono"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    &lt;ANTERIOR/&gt;
-                  </motion.button>
-                )}
-                
-                {step < 3 ? (
-                  <motion.button
-                    type="button"
-                    onClick={() => setStep(step + 1)}
-                    className="tech-button px-6 py-3 font-bold font-mono"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    &lt;SIGUIENTE/&gt;
-                  </motion.button>
-                ) : (
-                  <motion.button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="tech-button px-8 py-3 text-lg font-bold font-mono disabled:opacity-50 disabled:cursor-not-allowed"
-                    whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
-                    whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                  >
-                    {isSubmitting ? (
-                      <span className="flex items-center space-x-2">
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        <span>ENVIANDO...</span>
-                      </span>
-                    ) : (
-                      '&lt;COMPLETAR REGISTRO/&gt;'
+                {/* Perfil Técnico */}
+                <div>
+                  <h2 className="text-3xl font-bold text-white mb-6 font-mono">
+                    &lt;PERFIL TÉCNICO/&gt;
+                  </h2>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">Nivel de Experiencia *</label>
+                      <select
+                        name="experiencia"
+                        value={formData.experiencia}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                      >
+                        <option value="principiante">Principiante</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                        <option value="experto">Experto</option>
+                      </select>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">GitHub</label>
+                      <input
+                        type="url"
+                        name="github"
+                        value={formData.github}
+                        onChange={handleInputChange}
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                        placeholder="https://github.com/tuusuario"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">LinkedIn</label>
+                      <input
+                        type="url"
+                        name="linkedin"
+                        value={formData.linkedin}
+                        onChange={handleInputChange}
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                        placeholder="https://linkedin.com/in/tuusuario"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">Portfolio/Website</label>
+                      <input
+                        type="url"
+                        name="portfolio"
+                        value={formData.portfolio}
+                        onChange={handleInputChange}
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                        placeholder="https://tuwebsite.com"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Proyecto & Motivación */}
+                <div>
+                  <h2 className="text-3xl font-bold text-white mb-6 font-mono">
+                    &lt;PROYECTO & MOTIVACIÓN/&gt;
+                  </h2>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">Tipo de Participación *</label>
+                      <select
+                        name="equipo"
+                        value={formData.equipo}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                      >
+                        <option value="individual">Individual</option>
+                        <option value="equipo">Con Equipo</option>
+                      </select>
+                    </div>
+                    
+                    {formData.equipo === 'equipo' && (
+                      <div>
+                        <label className="block text-green-400 font-mono mb-2">Nombre del Equipo</label>
+                        <input
+                          type="text"
+                          name="nombreEquipo"
+                          value={formData.nombreEquipo}
+                          onChange={handleInputChange}
+                          className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors"
+                          placeholder="Nombre de tu equipo"
+                        />
+                      </div>
                     )}
-                  </motion.button>
-                )}
+                    
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">Idea de Proyecto</label>
+                      <textarea
+                        name="proyecto"
+                        value={formData.proyecto}
+                        onChange={handleInputChange}
+                        rows={4}
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors resize-none"
+                        placeholder="Describe brevemente tu idea de proyecto para el hackathon..."
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-green-400 font-mono mb-2">Motivación para Participar *</label>
+                      <textarea
+                        name="motivacion"
+                        value={formData.motivacion}
+                        onChange={handleInputChange}
+                        required
+                        rows={4}
+                        className="w-full bg-black/50 border-2 border-green-400/50 text-white px-4 py-3 rounded font-mono focus:border-green-400 focus:outline-none transition-colors resize-none"
+                        placeholder="¿Por qué quieres participar en COD3.0? ¿Qué esperas aprender o lograr?"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Submit Button */}
+              <div className="flex justify-center mt-8">
+                <motion.button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="tech-button px-8 py-4 text-lg font-bold font-mono disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center space-x-2">
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>ENVIANDO REGISTRO...</span>
+                    </span>
+                  ) : (
+                    '&lt;COMPLETAR REGISTRO/&gt;'
+                  )}
+                </motion.button>
               </div>
             </motion.form>
           </motion.div>

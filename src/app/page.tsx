@@ -22,6 +22,11 @@ import {
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [activeSection, setActiveSection] = useState('home');
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -33,10 +38,10 @@ export default function Home() {
   const hackathonDate = new Date('2024-12-15T09:00:00');
   const timeLeft = hackathonDate.getTime() - currentTime.getTime();
   
-  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  const days = isClient ? Math.floor(timeLeft / (1000 * 60 * 60 * 24)) : 0;
+  const hours = isClient ? Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) : 0;
+  const minutes = isClient ? Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)) : 0;
+  const seconds = isClient ? Math.floor((timeLeft % (1000 * 60)) / 1000) : 0;
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -335,7 +340,7 @@ export default function Home() {
                   
                   <div className="relative z-10 text-center">
                     <div className="text-lg sm:text-2xl md:text-4xl font-black text-green-400 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-300 font-mono leading-tight">
-                      {item.value}
+                      {isClient ? item.value : '--'}
                     </div>
                     <div className="text-xs sm:text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300 font-mono leading-tight">{item.label}</div>
                   </div>
