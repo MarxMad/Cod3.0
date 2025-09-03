@@ -13,15 +13,15 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://cod3-hackathon.vercel.app'),
+  metadataBase: new URL('https://cod3-0.vercel.app'),
   openGraph: {
     title: "COD3.0 Hackathon - El evento de programación más innovador del año",
     description: "Únete al hackathon COD3.0, donde desarrolladores, diseñadores y emprendedores se unen para crear soluciones innovadoras que cambien el mundo.",
-    url: 'https://cod3-hackathon.vercel.app',
+    url: 'https://cod3-0.vercel.app',
     siteName: 'COD3.0 Hackathon',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/CODEN.png',
         width: 1200,
         height: 630,
         alt: 'COD3.0 Hackathon',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "COD3.0 Hackathon - El evento de programación más innovador del año",
     description: "Únete al hackathon COD3.0, donde desarrolladores, diseñadores y emprendedores se unen para crear soluciones innovadoras que cambien el mundo.",
-    images: ['/og-image.jpg'],
+    images: ['/CODEN.png'],
   },
   robots: {
     index: true,
@@ -60,9 +60,16 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/CODEN.png" type="image/png" />
+        <link rel="shortcut icon" href="/CODEN.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/CODEN.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/CODEN.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/CODEN.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/CODEN.png" />
         <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#00ff00" />
+        <meta name="msapplication-TileColor" content="#00ff00" />
+        <meta name="msapplication-TileImage" content="/CODEN.png" />
       </head>
       <body className="antialiased">
         {children}
