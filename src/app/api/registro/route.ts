@@ -1,13 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { RegistroHackathon } from '@/lib/supabase';
+import { Resend } from 'resend';
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('🔗 API Route: /api/registro recibida');
+    console.log('🔧 Variables de entorno:');
+    console.log('  - SUPABASE_URL:', process.env.NEXT_PUBLIC_SUPABASE_URL ? '✅ Configurada' : '❌ No configurada');
+    console.log('  - SUPABASE_KEY:', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? '✅ Configurada' : '❌ No configurada');
+    console.log('  - RESEND_KEY:', process.env.RESEND_API_KEY ? '✅ Configurada' : '❌ No configurada');
+    
     const body: RegistroHackathon = await request.json();
+    console.log('📋 Datos recibidos:', body);
+    console.log('📋 Tipo de datos:', typeof body);
+    console.log('📋 Keys del objeto:', Object.keys(body));
     
     // Validar campos requeridos
     if (!body.nombre || !body.apellido || !body.email || !body.experiencia || !body.equipo || !body.motivacion) {
+      console.log('❌ Faltan campos requeridos');
       return NextResponse.json(
         { error: 'Faltan campos requeridos' },
         { status: 400 }
@@ -24,6 +35,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Verificar si el email ya está registrado
+    console.log('🔍 Verificando si el email ya existe...');
     const { data: existingUser } = await supabase
       .from('registros_hackathon')
       .select('id')
@@ -31,6 +43,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (existingUser) {
+      console.log('❌ Email ya registrado');
       return NextResponse.json(
         { error: 'Este email ya está registrado' },
         { status: 409 }
@@ -38,31 +51,64 @@ export async function POST(request: NextRequest) {
     }
 
     // Insertar en Supabase
-    const { data, error } = await supabase
-      .from('registros_hackathon')
-      .insert([{
-        nombre: body.nombre,
-        apellido: body.apellido,
-        email: body.email,
-        telefono: body.telefono || null,
-        universidad: body.universidad || null,
-        carrera: body.carrera || null,
-        github: body.github || null,
-        linkedin: body.linkedin || null,
-        portfolio: body.portfolio || null,
-        experiencia: body.experiencia,
-        equipo: body.equipo,
-        nombreEquipo: body.nombreEquipo || null,
-        proyecto: body.proyecto || null,
-        motivacion: body.motivacion
-      }])
-      .select()
-      .single();
+    console.log('💾 Insertando datos en Supabase...');
+    console.log('📝 Datos a insertar:', {
+      nombre: body.nombre,
+      apellido: body.apellido,
+      email: body.email,
+      telefono: body.telefono || null,
+      universidad: body.universidad || null,
+      carrera: body.carrera || null,
+      github: body.github || null,
+      linkedin: body.linkedin || null,
+      portfolio: body.portfolio || null,
+      experiencia: body.experiencia,
+      equipo: body.equipo,
+      nombreequipo: body.nombreEquipo || null,
+      proyecto: body.proyecto || null,
+      motivacion: body.motivacion
+    });
+    
+    let data;
+    try {
+      const result = await supabase
+        .from('registros_hackathon')
+        .insert([{
+          nombre: body.nombre,
+          apellido: body.apellido,
+          email: body.email,
+          telefono: body.telefono || null,
+          universidad: body.universidad || null,
+          carrera: body.carrera || null,
+          github: body.github || null,
+          linkedin: body.linkedin || null,
+          portfolio: body.portfolio || null,
+          experiencia: body.experiencia,
+          equipo: body.equipo,
+          nombreequipo: body.nombreEquipo || null,
+          proyecto: body.proyecto || null,
+          motivacion: body.motivacion
+        }])
+        .select()
+        .single();
 
-    if (error) {
-      console.error('Error al insertar en Supabase:', error);
+      if (result.error) {
+        console.error('❌ Error al insertar en Supabase:', result.error);
+        console.error('❌ Código de error:', result.error.code);
+        console.error('❌ Mensaje de error:', result.error.message);
+        console.error('❌ Detalles del error:', result.error.details);
+        return NextResponse.json(
+          { error: 'Error al guardar el registro', details: result.error.message },
+          { status: 500 }
+        );
+      }
+      
+      data = result.data;
+      console.log('✅ Datos guardados en Supabase:', data);
+    } catch (supabaseError) {
+      console.error('❌ Error de conexión a Supabase:', supabaseError);
       return NextResponse.json(
-        { error: 'Error al guardar el registro' },
+        { error: 'Error de conexión a la base de datos' },
         { status: 500 }
       );
     }
@@ -91,8 +137,7 @@ export async function POST(request: NextRequest) {
 }
 
 async function sendConfirmationEmail(registro: RegistroHackathon) {
-  // Aquí puedes integrar con tu servicio de email preferido
-  // Por ejemplo: Resend, SendGrid, AWS SES, etc.
+  const resend = new Resend(process.env.RESEND_API_KEY);
   
   const emailContent = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -150,20 +195,17 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
     </div>
   `;
 
-  // Por ahora, solo simulamos el envío del email
-  // En producción, integra con tu servicio de email preferido
-  console.log('Email de confirmación enviado a:', registro.email);
-  console.log('Contenido del email:', emailContent);
-  
-  // Ejemplo de integración con Resend (descomenta cuando tengas la API key):
-  /*
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  
-  await resend.emails.send({
-    from: 'COD3.0 <noreply@cod3-hackathon.com>',
-    to: [registro.email],
-    subject: '¡Registro Confirmado - COD3.0 HACKATHON!',
-    html: emailContent,
-  });
-  */
+  try {
+    await resend.emails.send({
+      from: 'COD3.0 <onboarding@resend.dev>',
+      to: [registro.email],
+      subject: '¡Registro Confirmado - COD3.0 HACKATHON!',
+      html: emailContent,
+    });
+    
+    console.log('✅ Email de confirmación enviado exitosamente a:', registro.email);
+  } catch (error) {
+    console.error('❌ Error al enviar email:', error);
+    throw error;
+  }
 }

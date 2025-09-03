@@ -41,9 +41,34 @@ export default function RegistroPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('🚀 Iniciando envío del formulario...');
+    console.log('📋 Datos del formulario:', formData);
+    
+    // Validar campos requeridos
+    const camposRequeridos = [
+      { campo: 'nombre', label: 'Nombre' },
+      { campo: 'apellido', label: 'Apellido' },
+      { campo: 'email', label: 'Email' },
+      { campo: 'experiencia', label: 'Nivel de experiencia' },
+      { campo: 'equipo', label: 'Tipo de participación' },
+      { campo: 'motivacion', label: 'Motivación' }
+    ];
+    
+    const camposFaltantes = camposRequeridos.filter(({ campo }) => {
+      const valor = formData[campo as keyof typeof formData];
+      return !valor || valor.toString().trim() === '';
+    });
+    
+    if (camposFaltantes.length > 0) {
+      const nombresCampos = camposFaltantes.map(({ label }) => label).join(', ');
+      alert(`Por favor completa los siguientes campos requeridos: ${nombresCampos}`);
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
+      console.log('📤 Enviando datos a la API...');
       const response = await fetch('/api/registro', {
         method: 'POST',
         headers: {
@@ -52,18 +77,21 @@ export default function RegistroPage() {
         body: JSON.stringify(formData),
       });
 
+      console.log('📥 Respuesta recibida:', response.status, response.statusText);
       const result = await response.json();
+      console.log('📄 Resultado:', result);
 
       if (!response.ok) {
         throw new Error(result.error || 'Error al enviar el registro');
       }
 
       // Registro exitoso
+      console.log('✅ Registro exitoso!');
       setIsSubmitting(false);
       setSubmitSuccess(true);
       
     } catch (error) {
-      console.error('Error:', error);
+      console.error('❌ Error:', error);
       setIsSubmitting(false);
       alert(error instanceof Error ? error.message : 'Error al enviar el registro');
     }
@@ -315,6 +343,7 @@ export default function RegistroPage() {
               onSubmit={handleSubmit}
               className="bg-black/50 backdrop-blur-md border-2 border-green-400 p-8 rounded-lg"
               variants={fadeInUp}
+              noValidate
             >
               <div className="space-y-8">
                 {/* Información Personal */}
@@ -427,7 +456,7 @@ export default function RegistroPage() {
                     <div>
                       <label className="block text-green-400 font-mono mb-2">GitHub</label>
                       <input
-                        type="url"
+                        type="text"
                         name="github"
                         value={formData.github}
                         onChange={handleInputChange}
@@ -439,7 +468,7 @@ export default function RegistroPage() {
                     <div>
                       <label className="block text-green-400 font-mono mb-2">LinkedIn</label>
                       <input
-                        type="url"
+                        type="text"
                         name="linkedin"
                         value={formData.linkedin}
                         onChange={handleInputChange}
@@ -451,7 +480,7 @@ export default function RegistroPage() {
                     <div>
                       <label className="block text-green-400 font-mono mb-2">Portfolio/Website</label>
                       <input
-                        type="url"
+                        type="text"
                         name="portfolio"
                         value={formData.portfolio}
                         onChange={handleInputChange}

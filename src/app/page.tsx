@@ -694,17 +694,17 @@ export default function Home() {
                 key={i}
                 className="absolute w-1 h-1 bg-green-400 rounded-full"
                 style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
+                  left: `${(i * 5) % 100}%`,
+                  top: `${(i * 5) % 100}%`,
                 }}
                 animate={{
                   opacity: [0, 1, 0],
                   scale: [0, 1, 0],
                 }}
                 transition={{
-                  duration: 3 + Math.random() * 2,
+                  duration: 3 + (i * 0.1) % 2,
                   repeat: Infinity,
-                  delay: Math.random() * 2,
+                  delay: (i * 0.1) % 2,
                 }}
               />
             ))}
