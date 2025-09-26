@@ -333,7 +333,7 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
     console.log('📤 Enviando email con Resend...');
     
     // Intentar primero con el dominio personalizado, si falla usar onboarding
-    let fromEmail = 'COD3.0 <hola@code3mx.com>';
+    let fromEmail = 'COD3.0 <hola@cod3mx.com>';
     let result;
     
     try {
@@ -343,9 +343,10 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
         subject: '¡Registro Confirmado - COD3.0 HACKATHON!',
         html: emailContent,
       });
-      console.log('✅ Email enviado con dominio personalizado');
+      console.log('✅ Email enviado con dominio personalizado hola@cod3mx.com');
     } catch (domainError) {
       console.log('⚠️ Dominio personalizado no disponible, usando onboarding...');
+      console.log('📋 Error del dominio:', domainError);
       fromEmail = 'COD3.0 <onboarding@resend.dev>';
       result = await resend.emails.send({
         from: fromEmail,
