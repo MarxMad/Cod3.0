@@ -1,45 +1,35 @@
 -- Script para configurar la base de datos en Supabase
 -- Ejecuta este script en el SQL Editor de Supabase
--- Versión actualizada con todos los campos del formulario
 
--- Eliminar tabla si existe (solo para recrear)
-DROP TABLE IF EXISTS registros_hackathon CASCADE;
+-- Eliminar la tabla existente si existe (CUIDADO: esto borrará todos los datos)
+-- DROP TABLE IF EXISTS registros_hackathon CASCADE;
 
--- Crear la tabla de registros del hackathon con todos los campos del formulario
-CREATE TABLE registros_hackathon (
+-- Crear la tabla de registros del hackathon
+CREATE TABLE IF NOT EXISTS registros_hackathon (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  
-  -- Información Personal
   nombre VARCHAR(255) NOT NULL,
   apellido VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   telefono VARCHAR(50),
   universidad VARCHAR(255),
   carrera VARCHAR(255),
-  
-  -- Perfil Técnico
   github VARCHAR(500),
   linkedin VARCHAR(500),
   portfolio VARCHAR(500),
   experiencia VARCHAR(50) NOT NULL CHECK (experiencia IN ('principiante', 'intermedio', 'avanzado', 'experto')),
-  
-  -- Proyecto & Motivación
   equipo VARCHAR(50) NOT NULL CHECK (equipo IN ('individual', 'equipo')),
-  nombreEquipo VARCHAR(255), -- Solo se llena si equipo = 'equipo'
+  nombreEquipo VARCHAR(255),
   proyecto TEXT,
   motivacion TEXT NOT NULL,
-  
-  -- Campos de auditoría
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
 -- Crear índices para mejorar el rendimiento
-CREATE INDEX idx_registros_email ON registros_hackathon(email);
-CREATE INDEX idx_registros_created_at ON registros_hackathon(created_at);
-CREATE INDEX idx_registros_experiencia ON registros_hackathon(experiencia);
-CREATE INDEX idx_registros_equipo ON registros_hackathon(equipo);
-CREATE INDEX idx_registros_universidad ON registros_hackathon(universidad);
+CREATE INDEX IF NOT EXISTS idx_registros_email ON registros_hackathon(email);
+CREATE INDEX IF NOT EXISTS idx_registros_created_at ON registros_hackathon(created_at);
+CREATE INDEX IF NOT EXISTS idx_registros_experiencia ON registros_hackathon(experiencia);
+CREATE INDEX IF NOT EXISTS idx_registros_equipo ON registros_hackathon(equipo);
 
 -- Crear función para actualizar updated_at automáticamente
 CREATE OR REPLACE FUNCTION update_updated_at_column()
@@ -56,10 +46,10 @@ CREATE TRIGGER update_registros_updated_at
     FOR EACH ROW 
     EXECUTE FUNCTION update_updated_at_column();
 
--- Configurar Row Level Security (RLS)
+-- Crear políticas de seguridad RLS (Row Level Security)
 ALTER TABLE registros_hackathon ENABLE ROW LEVEL SECURITY;
 
--- Política para permitir inserción de nuevos registros (público)
+-- Política para permitir inserción de nuevos registros
 CREATE POLICY "Permitir inserción de registros" ON registros_hackathon
     FOR INSERT WITH CHECK (true);
 
@@ -79,9 +69,7 @@ SELECT
     COUNT(CASE WHEN experiencia = 'experto' THEN 1 END) as expertos,
     COUNT(CASE WHEN universidad IS NOT NULL THEN 1 END) as con_universidad,
     COUNT(CASE WHEN github IS NOT NULL THEN 1 END) as con_github,
-    COUNT(CASE WHEN linkedin IS NOT NULL THEN 1 END) as con_linkedin,
-    COUNT(CASE WHEN portfolio IS NOT NULL THEN 1 END) as con_portfolio,
-    COUNT(CASE WHEN proyecto IS NOT NULL THEN 1 END) as con_proyecto
+    COUNT(CASE WHEN linkedin IS NOT NULL THEN 1 END) as con_linkedin
 FROM registros_hackathon;
 
 -- Comentarios sobre la estructura
@@ -90,19 +78,9 @@ COMMENT ON COLUMN registros_hackathon.id IS 'Identificador único del registro';
 COMMENT ON COLUMN registros_hackathon.nombre IS 'Nombre del participante';
 COMMENT ON COLUMN registros_hackathon.apellido IS 'Apellido del participante';
 COMMENT ON COLUMN registros_hackathon.email IS 'Email único del participante';
-COMMENT ON COLUMN registros_hackathon.telefono IS 'Teléfono del participante (opcional)';
-COMMENT ON COLUMN registros_hackathon.universidad IS 'Universidad o institución del participante (opcional)';
-COMMENT ON COLUMN registros_hackathon.carrera IS 'Carrera o campo de estudio del participante (opcional)';
-COMMENT ON COLUMN registros_hackathon.github IS 'Perfil de GitHub del participante (opcional)';
-COMMENT ON COLUMN registros_hackathon.linkedin IS 'Perfil de LinkedIn del participante (opcional)';
-COMMENT ON COLUMN registros_hackathon.portfolio IS 'Portfolio o website del participante (opcional)';
-COMMENT ON COLUMN registros_hackathon.experiencia IS 'Nivel de experiencia técnica (principiante, intermedio, avanzado, experto)';
+COMMENT ON COLUMN registros_hackathon.experiencia IS 'Nivel de experiencia técnica';
 COMMENT ON COLUMN registros_hackathon.equipo IS 'Tipo de participación (individual o equipo)';
-COMMENT ON COLUMN registros_hackathon.nombreEquipo IS 'Nombre del equipo (solo si equipo = equipo)';
-COMMENT ON COLUMN registros_hackathon.proyecto IS 'Idea de proyecto del participante (opcional)';
+COMMENT ON COLUMN registros_hackathon.nombreEquipo IS 'Nombre del equipo (si aplica)';
 COMMENT ON COLUMN registros_hackathon.motivacion IS 'Motivación del participante para participar';
 COMMENT ON COLUMN registros_hackathon.created_at IS 'Fecha y hora de creación del registro';
 COMMENT ON COLUMN registros_hackathon.updated_at IS 'Fecha y hora de última actualización';
-
--- Verificar que la tabla se creó correctamente
-SELECT 'Tabla registros_hackathon creada exitosamente' as status;

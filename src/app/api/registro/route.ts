@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
       portfolio: body.portfolio || null,
       experiencia: body.experiencia,
       equipo: body.equipo,
-      nombreequipo: body.nombreEquipo || null,
+      nombreEquipo: body.nombreEquipo || null,
       proyecto: body.proyecto || null,
       motivacion: body.motivacion
     });
@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
           portfolio: body.portfolio || null,
           experiencia: body.experiencia,
           equipo: body.equipo,
-          nombreequipo: body.nombreEquipo || null,
+          nombreEquipo: body.nombreEquipo || null,
           proyecto: body.proyecto || null,
           motivacion: body.motivacion
         }])
