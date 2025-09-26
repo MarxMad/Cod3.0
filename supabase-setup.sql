@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS registros_hackathon (
 
 -- Crear índices para mejorar el rendimiento
 CREATE INDEX IF NOT EXISTS idx_registros_email ON registros_hackathon(email);
-CREATE INDEX IF NOT NOT EXISTS idx_registros_created_at ON registros_hackathon(created_at);
+CREATE INDEX IF NOT EXISTS idx_registros_created_at ON registros_hackathon(created_at);
 CREATE INDEX IF NOT EXISTS idx_registros_experiencia ON registros_hackathon(experiencia);
 CREATE INDEX IF NOT EXISTS idx_registros_equipo ON registros_hackathon(equipo);
 
