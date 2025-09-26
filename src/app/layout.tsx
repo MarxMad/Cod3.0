@@ -60,16 +60,18 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        <link rel="icon" href="/CODEN.png" type="image/png" />
-        <link rel="shortcut icon" href="/CODEN.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/CODEN.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/CODEN.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/CODEN.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/CODEN.png" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/favicon-180x180.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#00ff00" />
         <meta name="msapplication-TileColor" content="#00ff00" />
-        <meta name="msapplication-TileImage" content="/CODEN.png" />
+        <meta name="msapplication-TileImage" content="/favicon-192x192.png" />
       </head>
       <body className="antialiased">
         {children}
