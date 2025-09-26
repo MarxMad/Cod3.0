@@ -71,6 +71,28 @@ export async function POST(request: NextRequest) {
     
     let data;
     try {
+      console.log('🔗 Intentando conectar con Supabase...');
+      
+      // Probar conexión primero
+      const { data: testData, error: testError } = await supabase
+        .from('registros_hackathon')
+        .select('count')
+        .limit(1);
+      
+      if (testError) {
+        console.error('❌ Error de conexión inicial:', testError);
+        return NextResponse.json(
+          { 
+            error: 'Error de conexión a la base de datos', 
+            details: testError.message,
+            code: testError.code 
+          },
+          { status: 500 }
+        );
+      }
+      
+      console.log('✅ Conexión con Supabase establecida');
+      
       const result = await supabase
         .from('registros_hackathon')
         .insert([{
@@ -98,7 +120,11 @@ export async function POST(request: NextRequest) {
         console.error('❌ Mensaje de error:', result.error.message);
         console.error('❌ Detalles del error:', result.error.details);
         return NextResponse.json(
-          { error: 'Error al guardar el registro', details: result.error.message },
+          { 
+            error: 'Error al guardar el registro', 
+            details: result.error.message,
+            code: result.error.code 
+          },
           { status: 500 }
         );
       }
@@ -107,8 +133,13 @@ export async function POST(request: NextRequest) {
       console.log('✅ Datos guardados en Supabase:', data);
     } catch (supabaseError) {
       console.error('❌ Error de conexión a Supabase:', supabaseError);
+      console.error('❌ Tipo de error:', typeof supabaseError);
+      console.error('❌ Stack trace:', supabaseError instanceof Error ? supabaseError.stack : 'No stack available');
       return NextResponse.json(
-        { error: 'Error de conexión a la base de datos' },
+        { 
+          error: 'Error de conexión a la base de datos',
+          details: supabaseError instanceof Error ? supabaseError.message : String(supabaseError)
+        },
         { status: 500 }
       );
     }
