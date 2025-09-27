@@ -371,12 +371,25 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
   try {
     console.log('📤 Enviando email con Resend...');
     
-    // Usar dominio de respaldo que sabemos que funciona
-    let fromEmail = 'COD3.0 <onboarding@resend.dev>';
+    // Usar el dominio verificado en Resend
+    let fromEmail = 'COD3.0 <hola@code3mx.com>';
     let result;
     
     try {
-      console.log('📤 Enviando email con dominio de respaldo...');
+      console.log('📤 Enviando email con dominio verificado...');
+      result = await resend.emails.send({
+        from: fromEmail,
+        to: [registro.email],
+        subject: '¡Registro Confirmado - COD3.0 HACKATHON!',
+        html: emailContent,
+      });
+      console.log('✅ Email enviado con hola@code3mx.com');
+    } catch (emailError) {
+      console.error('❌ Error con dominio verificado, usando respaldo...');
+      console.error('📋 Error:', emailError.message);
+      
+      // Fallback a onboarding@resend.dev
+      fromEmail = 'COD3.0 <onboarding@resend.dev>';
       result = await resend.emails.send({
         from: fromEmail,
         to: [registro.email],
@@ -384,9 +397,6 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
         html: emailContent,
       });
       console.log('✅ Email enviado con onboarding@resend.dev');
-    } catch (emailError) {
-      console.error('❌ Error al enviar email:', emailError);
-      throw emailError;
     }
     
     console.log('✅ Email de confirmación enviado exitosamente a:', registro.email);
