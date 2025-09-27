@@ -386,7 +386,7 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
       console.log('✅ Email enviado con hola@code3mx.com');
     } catch (emailError) {
       console.log('⚠️ Error con hola@code3mx.com, usando respaldo...');
-      console.log('📋 Error:', emailError.message);
+      console.log('📋 Error:', emailError instanceof Error ? emailError.message : String(emailError));
       
       fromEmail = 'COD3.0 <onboarding@resend.dev>';
       result = await resend.emails.send({
