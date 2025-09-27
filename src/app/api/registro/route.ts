@@ -147,8 +147,12 @@ export async function POST(request: NextRequest) {
     // Enviar email de confirmación
     try {
       console.log('📧 Intentando enviar email de confirmación...');
-      await sendConfirmationEmail(body);
+      console.log('📧 Email destino:', body.email);
+      console.log('📧 RESEND_API_KEY configurada:', !!process.env.RESEND_API_KEY);
+      
+      const emailResult = await sendConfirmationEmail(body);
       console.log('✅ Email de confirmación enviado exitosamente');
+      console.log('📧 Resultado del email:', emailResult);
     } catch (emailError) {
       console.error('❌ Error al enviar email:', emailError);
       console.error('📋 Detalles del error:', {
@@ -390,6 +394,8 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
     
     console.log('✅ Email de confirmación enviado exitosamente a:', registro.email);
     console.log('📧 ID del email:', result.data?.id);
+    
+    return result;
   } catch (error) {
     console.error('❌ Error al enviar email:', error);
     console.error('📋 Tipo de error:', typeof error);
