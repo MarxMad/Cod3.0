@@ -48,6 +48,7 @@ CREATE TRIGGER update_registros_updated_at
 ALTER TABLE registros_hackathon ENABLE ROW LEVEL SECURITY;
 
 -- Política para permitir inserción de nuevos registros
+DROP POLICY IF EXISTS "Permitir inserción de registros" ON registros_hackathon;
 CREATE POLICY "Permitir inserción de registros" ON registros_hackathon
     FOR INSERT WITH CHECK (true);
 
@@ -56,6 +57,7 @@ CREATE POLICY "Permitir inserción de registros" ON registros_hackathon
 --     FOR SELECT USING (auth.role() = 'authenticated');
 
 -- Política para permitir lectura pública (para estadísticas)
+DROP POLICY IF EXISTS "Permitir lectura pública" ON registros_hackathon;
 CREATE POLICY "Permitir lectura pública" ON registros_hackathon
     FOR SELECT USING (true);
 
