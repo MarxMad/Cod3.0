@@ -79,6 +79,18 @@ FROM registros_hackathon;
 -- ('María', 'García', 'maria@example.com', 'avanzado', 'equipo', 'Me interesa trabajar en proyectos innovadores y compartir conocimientos.'),
 -- ('Carlos', 'López', 'carlos@example.com', 'principiante', 'individual', 'Es mi primer hackathon y estoy emocionado por participar.');
 
+-- Agregar columna nombreEquipo si no existe
+DO $$ 
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM information_schema.columns 
+        WHERE table_name = 'registros_hackathon' 
+        AND column_name = 'nombreEquipo'
+    ) THEN
+        ALTER TABLE registros_hackathon ADD COLUMN nombreEquipo VARCHAR(255);
+    END IF;
+END $$;
+
 -- Comentarios sobre la estructura
 COMMENT ON TABLE registros_hackathon IS 'Tabla para almacenar registros de participantes del COD3.0 HACKATHON';
 COMMENT ON COLUMN registros_hackathon.id IS 'Identificador único del registro';
@@ -87,6 +99,7 @@ COMMENT ON COLUMN registros_hackathon.apellido IS 'Apellido del participante';
 COMMENT ON COLUMN registros_hackathon.email IS 'Email único del participante';
 COMMENT ON COLUMN registros_hackathon.experiencia IS 'Nivel de experiencia técnica';
 COMMENT ON COLUMN registros_hackathon.equipo IS 'Tipo de participación (individual o equipo)';
+COMMENT ON COLUMN registros_hackathon.nombreEquipo IS 'Nombre del equipo (si aplica)';
 COMMENT ON COLUMN registros_hackathon.motivacion IS 'Motivación del participante para participar';
 COMMENT ON COLUMN registros_hackathon.created_at IS 'Fecha y hora de creación del registro';
 COMMENT ON COLUMN registros_hackathon.updated_at IS 'Fecha y hora de última actualización';
