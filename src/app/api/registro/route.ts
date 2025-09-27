@@ -145,22 +145,26 @@ export async function POST(request: NextRequest) {
     }
 
     // Enviar email de confirmación
-    try {
-      console.log('📧 Intentando enviar email de confirmación...');
-      console.log('📧 Email destino:', body.email);
-      console.log('📧 RESEND_API_KEY configurada:', !!process.env.RESEND_API_KEY);
-      
-      const emailResult = await sendConfirmationEmail(body);
-      console.log('✅ Email de confirmación enviado exitosamente');
-      console.log('📧 Resultado del email:', emailResult);
-    } catch (emailError) {
-      console.error('❌ Error al enviar email:', emailError);
-      console.error('📋 Detalles del error:', {
-        message: emailError instanceof Error ? emailError.message : String(emailError),
-        name: emailError instanceof Error ? emailError.name : 'Unknown',
-        stack: emailError instanceof Error ? emailError.stack : undefined
-      });
-      // No fallamos si el email falla, solo lo registramos
+    console.log('📧 Iniciando proceso de envío de email...');
+    console.log('📧 Email destino:', body.email);
+    console.log('📧 RESEND_API_KEY configurada:', !!process.env.RESEND_API_KEY);
+    
+    if (!process.env.RESEND_API_KEY) {
+      console.error('❌ RESEND_API_KEY no está configurada en el servidor');
+    } else {
+      try {
+        console.log('📧 Intentando enviar email de confirmación...');
+        const emailResult = await sendConfirmationEmail(body);
+        console.log('✅ Email de confirmación enviado exitosamente');
+        console.log('📧 Resultado del email:', emailResult);
+      } catch (emailError) {
+        console.error('❌ Error al enviar email:', emailError);
+        console.error('📋 Detalles del error:', {
+          message: emailError instanceof Error ? emailError.message : String(emailError),
+          name: emailError instanceof Error ? emailError.name : 'Unknown',
+          stack: emailError instanceof Error ? emailError.stack : undefined
+        });
+      }
     }
 
     return NextResponse.json({
