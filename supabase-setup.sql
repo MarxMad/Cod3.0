@@ -37,7 +37,8 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
--- Crear trigger para actualizar updated_at
+-- Crear trigger para actualizar updated_at (solo si no existe)
+DROP TRIGGER IF EXISTS update_registros_updated_at ON registros_hackathon;
 CREATE TRIGGER update_registros_updated_at 
     BEFORE UPDATE ON registros_hackathon 
     FOR EACH ROW 
@@ -80,16 +81,7 @@ FROM registros_hackathon;
 -- ('Carlos', 'López', 'carlos@example.com', 'principiante', 'individual', 'Es mi primer hackathon y estoy emocionado por participar.');
 
 -- Agregar columna nombreEquipo si no existe
-DO $$ 
-BEGIN
-    IF NOT EXISTS (
-        SELECT 1 FROM information_schema.columns 
-        WHERE table_name = 'registros_hackathon' 
-        AND column_name = 'nombreEquipo'
-    ) THEN
-        ALTER TABLE registros_hackathon ADD COLUMN nombreEquipo VARCHAR(255);
-    END IF;
-END $$;
+ALTER TABLE registros_hackathon ADD COLUMN IF NOT EXISTS nombreEquipo VARCHAR(255);
 
 -- Comentarios sobre la estructura
 COMMENT ON TABLE registros_hackathon IS 'Tabla para almacenar registros de participantes del COD3.0 HACKATHON';
