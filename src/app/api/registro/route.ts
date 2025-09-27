@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
           portfolio: body.portfolio || null,
           experiencia: body.experiencia,
           equipo: body.equipo,
-          nombreEquipo: body.nombreEquipo || null,
+          // nombreEquipo: body.nombreEquipo || null, // Temporalmente comentado
           proyecto: body.proyecto || null,
           motivacion: body.motivacion
         }])
