@@ -246,7 +246,7 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
             <div class="mobile-section" style="background: rgba(0, 100, 255, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #0066ff;">
               <h3 style="color: #0066ff; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">🚀 ¿Qué sigue ahora?</h3>
               <ul style="color: #ffffff; line-height: 1.8; margin: 0; padding-left: 20px;">
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">📅 Fecha del Evento:</strong> 15-17 de Diciembre, 2024</li>
+                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">📅 Fecha del Evento:</strong> 27-28 de Marzo, 2026</li>
                 <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">📍 Ubicación:</strong> Centro de Innovación Tech</li>
                 <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">⏰ Duración:</strong> 48 horas continuas de programación intensiva</li>
                 <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">🏆 Premios:</strong> Más de $50,000 en premios increíbles</li>
@@ -359,7 +359,7 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
         <div style="background: #000; padding: 25px; text-align: center; border-top: 2px solid #00ff00;">
           <div style="color: #00ff00; font-size: 18px; font-weight: bold; margin-bottom: 10px; font-family: 'Courier New', monospace;">COD3.0 HACKATHON</div>
           <p style="color: #888; margin: 0; font-size: 12px;">
-            © 2024 COD3.0 HACKATHON. Todos los derechos reservados.<br>
+            © 2026 COD3.0 HACKATHON. Todos los derechos reservados.<br>
             Construyendo el futuro, un código a la vez.
           </p>
         </div>
