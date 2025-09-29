@@ -542,7 +542,6 @@ const SponsorshipProposal = () => {
           <p>Para más información o para personalizar tu paquete de patrocinio:</p>
           <div style={{marginTop: '20px'}}>
             <a href="mailto:hola@code3mx.com" className="cta-button">ENVIAR EMAIL</a>
-            <a href="tel:+525512345678" className="cta-button">LLAMAR AHORA</a>
           </div>
           <p style={{marginTop: '30px', opacity: 0.7}}>
             COD3.0 HACKATHON © 2026 | Construyendo el futuro con código
