@@ -10,6 +10,9 @@ const SponsorshipProposal = () => {
       
       <div className="sponsor-container">
         <div className="sponsor-header">
+          <div className="logo-container">
+            <img src="/CODEB.png" alt="CODEB Logo" className="main-logo" />
+          </div>
           <div className="sponsor-logo">&lt;COD3.0&gt;</div>
           <div className="sponsor-subtitle">CODE TRES PUNTO CERO</div>
           <h1>&lt;HACKATHON/&gt;</h1>
@@ -23,6 +26,30 @@ const SponsorshipProposal = () => {
           <p><strong>Alcance estimado:</strong> 500+ participantes presenciales | 2,000+ seguidores en streaming | 50,000+ impresiones en redes sociales</p>
           <p><strong>Duración:</strong> 48 horas de programación intensiva</p>
           <p><strong>Público objetivo:</strong> Desarrolladores, estudiantes de tecnología, startups, empresas tech, inversionistas</p>
+        </div>
+
+        <h2>&lt;GALERÍA_DEL_EVENTO/&gt;</h2>
+        <div className="gallery">
+          <div className="gallery-item">
+            <img src="/Espectacular.jpeg" alt="Espectacular WTC CDMX" className="gallery-image" />
+            <div className="gallery-caption">Espectacular WTC CDMX - 70m x 10m</div>
+          </div>
+          <div className="gallery-item">
+            <img src="/Led.jpeg" alt="Panel LED" className="gallery-image" />
+            <div className="gallery-caption">Panel LED - 100cm x 50cm</div>
+          </div>
+          <div className="gallery-item">
+            <img src="/Letra.jpeg" alt="Letra 400K30" className="gallery-image" />
+            <div className="gallery-caption">Letra 400K30 - Iluminación LED</div>
+          </div>
+          <div className="gallery-item">
+            <img src="/Stage.jpeg" alt="Stage Principal" className="gallery-image" />
+            <div className="gallery-caption">Stage Principal - Evento Exterior</div>
+          </div>
+          <div className="gallery-item">
+            <img src="/Stage2.jpeg" alt="Stage Interior" className="gallery-image" />
+            <div className="gallery-caption">Stage Interior - WEB3 HACKATHON</div>
+          </div>
         </div>
 
         <h2>&lt;PAQUETES_DE_PATROCINIO/&gt;</h2>
