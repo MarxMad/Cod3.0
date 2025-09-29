@@ -31,7 +31,7 @@ const SponsorshipProposal = () => {
           <div className="package">
             <div className="package-header">
               <div className="package-title">🏆 PLATINUM</div>
-              <div className="package-price">$20,000 - $35,000 USD</div>
+              <div className="package-price">$35,000 USD</div>
             </div>
             <ul className="benefits-list">
               <li>Logo tamaño ESTELAR en escenario principal (3m x 2m)</li>
@@ -53,7 +53,7 @@ const SponsorshipProposal = () => {
           <div className="package">
             <div className="package-header">
               <div className="package-title">🥈 SILVER</div>
-              <div className="package-price">$8,000 - $12,000 USD</div>
+              <div className="package-price">$12,000 USD</div>
             </div>
             <ul className="benefits-list">
               <li>Logo GRANDE en escenario (2m x 1.5m)</li>
@@ -73,7 +73,7 @@ const SponsorshipProposal = () => {
           <div className="package">
             <div className="package-header">
               <div className="package-title">🥉 BRONZE</div>
-              <div className="package-price">$4,000 - $6,000 USD</div>
+              <div className="package-price">$6,000 USD</div>
             </div>
             <ul className="benefits-list">
               <li>Logo MEDIANO en escenario (1.5m x 1m)</li>
@@ -441,9 +441,9 @@ const SponsorshipProposal = () => {
             <tbody>
               <tr>
                 <td>Inversión</td>
-                <td>$20,000 - $35,000</td>
-                <td>$8,000 - $12,000</td>
-                <td>$4,000 - $6,000</td>
+                <td>$35,000</td>
+                <td>$12,000</td>
+                <td>$6,000</td>
               </tr>
               <tr>
                 <td>Logo en Escenario</td>
@@ -517,21 +517,21 @@ const SponsorshipProposal = () => {
             <tbody>
               <tr>
                 <td><strong>PLATINUM</strong></td>
-                <td>$20,000 - $35,000 USD</td>
+                <td>$35,000 USD</td>
                 <td>$67,200+ USD</td>
-                <td>Hasta 48% de ahorro</td>
+                <td>48% de ahorro</td>
               </tr>
               <tr>
                 <td><strong>SILVER</strong></td>
-                <td>$8,000 - $12,000 USD</td>
+                <td>$12,000 USD</td>
                 <td>$28,800+ USD</td>
-                <td>Hasta 58% de ahorro</td>
+                <td>58% de ahorro</td>
               </tr>
               <tr>
                 <td><strong>BRONZE</strong></td>
-                <td>$4,000 - $6,000 USD</td>
+                <td>$6,000 USD</td>
                 <td>$14,400+ USD</td>
-                <td>Hasta 58% de ahorro</td>
+                <td>58% de ahorro</td>
               </tr>
             </tbody>
           </table>

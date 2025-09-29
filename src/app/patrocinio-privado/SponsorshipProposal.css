@@ -277,62 +277,37 @@ h3 {
 /* Responsive Design */
 @media (max-width: 768px) {
   .sponsor-container {
-    padding: 20px 15px;
-    margin: 10px;
+    padding: 15px 10px;
+    margin: 5px;
+    border-radius: 10px;
   }
   
   .sponsor-header {
-    padding: 30px 20px;
+    padding: 25px 15px;
+    border-radius: 10px;
   }
   
   .sponsor-logo {
-    font-size: 36px;
+    font-size: 32px;
   }
   
   .sponsor-header h1 {
-    font-size: 28px;
+    font-size: 24px;
+  }
+  
+  .sponsor-header p {
+    font-size: 14px;
   }
   
   .packages {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 15px;
+    margin: 30px 0;
   }
   
   .package {
-    padding: 20px;
-  }
-  
-  .detail-table {
-    font-size: 12px;
-  }
-  
-  .detail-table th,
-  .detail-table td {
-    padding: 8px 6px;
-  }
-  
-  h2 {
-    font-size: 24px;
-  }
-  
-  h3 {
-    font-size: 20px;
-  }
-  
-  .cta-button {
-    padding: 12px 20px;
-    font-size: 14px;
-    margin: 5px;
-  }
-}
-
-@media (max-width: 480px) {
-  .sponsor-logo {
-    font-size: 28px;
-  }
-  
-  .sponsor-header h1 {
-    font-size: 24px;
+    padding: 15px;
+    border-radius: 10px;
   }
   
   .package-title {
@@ -343,13 +318,166 @@ h3 {
     font-size: 28px;
   }
   
+  .benefits-list li {
+    font-size: 13px;
+    padding: 10px 0;
+  }
+  
   .detail-table {
     font-size: 11px;
+    margin: 15px 0;
   }
   
   .detail-table th,
   .detail-table td {
     padding: 6px 4px;
+    word-wrap: break-word;
+  }
+  
+  .detail-table th {
+    font-size: 10px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin: 30px 0 20px 0;
+  }
+  
+  h3 {
+    font-size: 18px;
+    margin: 20px 0 15px 0;
+  }
+  
+  .info-box {
+    padding: 20px 15px;
+    margin: 20px 0;
+  }
+  
+  .info-box h2 {
+    font-size: 18px;
+  }
+  
+  .info-box h3 {
+    font-size: 16px;
+  }
+  
+  .info-box p {
+    font-size: 14px;
+  }
+  
+  .cta-button {
+    padding: 12px 20px;
+    font-size: 14px;
+    margin: 5px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .footer {
+    padding: 30px 15px;
+    margin-top: 40px;
+  }
+  
+  .footer h2 {
+    font-size: 20px;
+  }
+  
+  .footer p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsor-container {
+    padding: 10px 5px;
+    margin: 2px;
+  }
+  
+  .sponsor-header {
+    padding: 20px 10px;
+  }
+  
+  .sponsor-logo {
+    font-size: 24px;
+  }
+  
+  .sponsor-header h1 {
+    font-size: 20px;
+  }
+  
+  .sponsor-header p {
+    font-size: 12px;
+  }
+  
+  .package {
+    padding: 12px;
+  }
+  
+  .package-title {
+    font-size: 18px;
+  }
+  
+  .package-price {
+    font-size: 24px;
+  }
+  
+  .benefits-list li {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+  
+  .detail-table {
+    font-size: 10px;
+  }
+  
+  .detail-table th,
+  .detail-table td {
+    padding: 4px 2px;
+  }
+  
+  .detail-table th {
+    font-size: 9px;
+  }
+  
+  h2 {
+    font-size: 18px;
+  }
+  
+  h3 {
+    font-size: 16px;
+  }
+  
+  .info-box {
+    padding: 15px 10px;
+  }
+  
+  .info-box h2 {
+    font-size: 16px;
+  }
+  
+  .info-box h3 {
+    font-size: 14px;
+  }
+  
+  .info-box p {
+    font-size: 12px;
+  }
+  
+  .cta-button {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+  
+  .footer {
+    padding: 20px 10px;
+  }
+  
+  .footer h2 {
+    font-size: 18px;
+  }
+  
+  .footer p {
+    font-size: 12px;
   }
 }
 
