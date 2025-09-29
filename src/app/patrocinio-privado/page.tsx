@@ -133,19 +133,19 @@ const SponsorshipProposal = () => {
               <td>Logo ESTELAR (Platinum)</td>
               <td>3m x 2m</td>
               <td>Posición central, máxima exposición</td>
-              <td>$6,000 - $10,500 USD</td>
+              <td>$10,500 USD</td>
             </tr>
             <tr>
               <td>Logo GRANDE (Silver)</td>
               <td>2m x 1.5m</td>
               <td>Posición lateral destacada</td>
-              <td>$2,400 - $3,600 USD</td>
+              <td>$3,600 USD</td>
             </tr>
             <tr>
               <td>Logo MEDIANO (Bronze)</td>
               <td>1.5m x 1m</td>
               <td>Panel lateral</td>
-              <td>$1,200 - $1,800 USD</td>
+              <td>$1,800 USD</td>
             </tr>
           </tbody>
         </table>
@@ -165,19 +165,19 @@ const SponsorshipProposal = () => {
               <td>Stand PREMIUM</td>
               <td>3m x 3m</td>
               <td>Mobiliario, iluminación, electricidad, internet dedicado</td>
-              <td>$6,000 - $10,500 USD</td>
+              <td>$10,500 USD</td>
             </tr>
             <tr>
               <td>Stand ESTÁNDAR</td>
               <td>2m x 2m</td>
               <td>Mesa, sillas, electricidad, internet compartido</td>
-              <td>$2,400 - $3,600 USD</td>
+              <td>$3,600 USD</td>
             </tr>
             <tr>
               <td>Stand BÁSICO</td>
               <td>2m x 1.5m</td>
               <td>Mesa, sillas, electricidad</td>
-              <td>$1,200 - $1,800 USD</td>
+              <td>$1,800 USD</td>
             </tr>
           </tbody>
         </table>
@@ -197,19 +197,19 @@ const SponsorshipProposal = () => {
               <td>Plática Magistral ESTELAR</td>
               <td>45 minutos</td>
               <td>Horario prime (inauguración/clausura)</td>
-              <td>$6,000 - $10,500 USD</td>
+              <td>$10,500 USD</td>
             </tr>
             <tr>
               <td>Workshop Técnico</td>
               <td>30 minutos</td>
               <td>Horario regular</td>
-              <td>$2,400 - $3,600 USD</td>
+              <td>$3,600 USD</td>
             </tr>
             <tr>
               <td>Charla Lightning</td>
               <td>15 minutos</td>
               <td>Entre eventos</td>
-              <td>$1,200 - $1,800 USD</td>
+              <td>$1,800 USD</td>
             </tr>
           </tbody>
         </table>
@@ -229,55 +229,55 @@ const SponsorshipProposal = () => {
               <td>Playeras (Logo pecho)</td>
               <td>500 unidades</td>
               <td>Pecho, 15cm x 10cm</td>
-              <td>$6,000 - $10,500 USD</td>
+              <td>$10,500 USD</td>
             </tr>
             <tr>
               <td>Playeras (Logo manga)</td>
               <td>500 unidades</td>
               <td>Manga, 8cm x 6cm</td>
-              <td>$2,400 - $3,600 USD</td>
+              <td>$3,600 USD</td>
             </tr>
             <tr>
               <td>Termos personalizados</td>
               <td>500 unidades</td>
               <td>Estampado 360°</td>
-              <td>$4,800 - $8,400 USD</td>
+              <td>$8,400 USD</td>
             </tr>
             <tr>
               <td>Flyers (Logo grande)</td>
               <td>2,000 unidades</td>
               <td>Portada/contraportada</td>
-              <td>$1,920 - $3,360 USD</td>
+              <td>$3,360 USD</td>
             </tr>
             <tr>
               <td>Flyers (Logo mediano)</td>
               <td>2,000 unidades</td>
               <td>Interior destacado</td>
-              <td>$1,200 - $2,100 USD</td>
+              <td>$2,100 USD</td>
             </tr>
             <tr>
               <td>Flyers (Logo pequeño)</td>
               <td>2,000 unidades</td>
               <td>Sección patrocinadores</td>
-              <td>$720 - $1,260 USD</td>
+              <td>$1,260 USD</td>
             </tr>
             <tr>
               <td>Gafetes/Credenciales</td>
               <td>500 unidades</td>
               <td>Reverso</td>
-              <td>$960 - $1,680 USD</td>
+              <td>$1,680 USD</td>
             </tr>
             <tr>
               <td>Certificados</td>
               <td>500 unidades</td>
               <td>Pie de página</td>
-              <td>$720 - $1,260 USD</td>
+              <td>$1,260 USD</td>
             </tr>
             <tr>
               <td>Stickers oficiales</td>
               <td>1,000 unidades</td>
               <td>Logo completo</td>
-              <td>$600 - $1,050 USD</td>
+              <td>$1,050 USD</td>
             </tr>
           </tbody>
         </table>
@@ -297,49 +297,49 @@ const SponsorshipProposal = () => {
               <td>Sitio Web (Header principal)</td>
               <td>Logo prominente en home</td>
               <td>10,000+ visitas</td>
-              <td>$1,920 - $3,360 USD</td>
+              <td>$3,360 USD</td>
             </tr>
             <tr>
               <td>Sitio Web (Destacado)</td>
               <td>Sección patrocinadores premium</td>
               <td>10,000+ visitas</td>
-              <td>$1,200 - $2,100 USD</td>
+              <td>$2,100 USD</td>
             </tr>
             <tr>
               <td>Sitio Web (Estándar)</td>
               <td>Lista de patrocinadores</td>
               <td>10,000+ visitas</td>
-              <td>$600 - $1,050 USD</td>
+              <td>$1,050 USD</td>
             </tr>
             <tr>
               <td>Redes Sociales (15 posts)</td>
               <td>Instagram, Twitter, LinkedIn, Facebook</td>
               <td>50,000+ impresiones</td>
-              <td>$3,600 - $6,300 USD</td>
+              <td>$6,300 USD</td>
             </tr>
             <tr>
               <td>Redes Sociales (10 posts)</td>
               <td>Instagram, Twitter, LinkedIn, Facebook</td>
               <td>35,000+ impresiones</td>
-              <td>$2,400 - $4,200 USD</td>
+              <td>$4,200 USD</td>
             </tr>
             <tr>
               <td>Redes Sociales (5 posts)</td>
               <td>Instagram, Twitter, LinkedIn, Facebook</td>
               <td>20,000+ impresiones</td>
-              <td>$1,200 - $2,100 USD</td>
+              <td>$2,100 USD</td>
             </tr>
             <tr>
               <td>Pantallas durante evento</td>
               <td>Rotación cada 5 minutos (48h)</td>
               <td>500+ asistentes presenciales</td>
-              <td>$1,440 - $2,520 USD</td>
+              <td>$2,520 USD</td>
             </tr>
             <tr>
               <td>Stream oficial (logo overlay)</td>
               <td>Logo permanente en transmisión</td>
               <td>2,000+ espectadores online</td>
-              <td>$2,400 - $4,200 USD</td>
+              <td>$4,200 USD</td>
             </tr>
           </tbody>
         </table>
@@ -357,22 +357,22 @@ const SponsorshipProposal = () => {
             <tr>
               <td>Internet Dedicado (100 Mbps)</td>
               <td>Conexión exclusiva, IP fija, soporte 24/7</td>
-              <td>$1,920 - $3,360 USD</td>
+              <td>$3,360 USD</td>
             </tr>
             <tr>
               <td>Internet Compartido (50 Mbps)</td>
               <td>Conexión compartida con otros stands</td>
-              <td>$720 - $1,260 USD</td>
+              <td>$1,260 USD</td>
             </tr>
             <tr>
               <td>Internet Básico</td>
               <td>Acceso WiFi general del evento</td>
-              <td>$240 - $420 USD</td>
+              <td>$420 USD</td>
             </tr>
             <tr>
               <td>Electricidad (toma dedicada)</td>
               <td>20 amperes, circuito exclusivo</td>
-              <td>$600 - $1,050 USD</td>
+              <td>$1,050 USD</td>
             </tr>
           </tbody>
         </table>
@@ -390,17 +390,17 @@ const SponsorshipProposal = () => {
             <tr>
               <td>Pase VIP</td>
               <td>Acceso completo, zona VIP, comidas, networking exclusivo</td>
-              <td>$840 - $1,470 USD</td>
+              <td>$1,470 USD</td>
             </tr>
             <tr>
               <td>Pase Completo</td>
               <td>Acceso a todas las áreas, comidas incluidas</td>
-              <td>$480 - $840 USD</td>
+              <td>$840 USD</td>
             </tr>
             <tr>
               <td>Pase Básico</td>
               <td>Acceso general al evento</td>
-              <td>$288 - $504 USD</td>
+              <td>$504 USD</td>
             </tr>
           </tbody>
         </table>
@@ -418,22 +418,22 @@ const SponsorshipProposal = () => {
             <tr>
               <td>Naming Rights</td>
               <td>Patrocinio titular de categoría o premio principal</td>
-              <td>$6,000 - $10,500 USD</td>
+              <td>$10,500 USD</td>
             </tr>
             <tr>
               <td>Mención Inauguración/Clausura</td>
               <td>Reconocimiento verbal en ceremonias principales</td>
-              <td>$1,920 - $3,360 USD</td>
+              <td>$3,360 USD</td>
             </tr>
             <tr>
               <td>Mención Premiación</td>
               <td>Reconocimiento en entrega de premios</td>
-              <td>$1,200 - $2,100 USD</td>
+              <td>$2,100 USD</td>
             </tr>
             <tr>
               <td>Base de datos participantes</td>
               <td>Contactos de asistentes (con consentimiento)</td>
-              <td>$1,680 - $2,940 USD</td>
+              <td>$2,940 USD</td>
             </tr>
           </tbody>
         </table>
