@@ -16,8 +16,8 @@ const SponsorshipProposal = () => {
           <div className="sponsor-logo">&lt;COD3.0&gt;</div>
           <div className="sponsor-subtitle">CODE TRES PUNTO CERO</div>
           <h1>&lt;HACKATHON/&gt;</h1>
-          <p style={{ fontSize: '18px' }}>El evento de programación más innovador del año</p>
-          <p>Construye el futuro con código, creatividad y colaboración</p>
+          <p className="header-description">El evento de programación más innovador del año</p>
+          <p className="header-description">Construye el futuro con código, creatividad y colaboración</p>
         </div>
 
         <div className="info-box">
