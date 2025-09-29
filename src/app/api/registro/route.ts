@@ -287,30 +287,105 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
               </div>
             </div>
             
-            <!-- Premios -->
+            <!-- Premios Generales -->
             <div class="mobile-section" style="background: rgba(128, 0, 128, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #800080;">
-              <h3 style="color: #800080; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">🏆 Premios Increíbles</h3>
+              <h3 style="color: #800080; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">🏆 PREMIOS GENERALES</h3>
               <div style="color: #ffffff; line-height: 1.8;">
                 <div style="margin-bottom: 15px;">
-                  <strong style="color: #800080;">🥇 1er Lugar - $25,000:</strong><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Premio en efectivo</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Mentoring con expertos</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Incubación de startup</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Viaje a conferencia tech</span>
+                  <strong style="color: #800080;">🥇 1er Lugar - $25,000 USD:</strong><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• $25,000 USD en efectivo</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Incubación de proyecto (6 meses)</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Viaje a evento tech internacional</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Acceso a red de inversionistas</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Mentoring con expertos de la industria</span>
                 </div>
                 <div style="margin-bottom: 15px;">
-                  <strong style="color: #800080;">🥈 2do Lugar - $15,000:</strong><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Premio en efectivo</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Acceso a coworking</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Networking premium</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Certificaciones tech</span>
+                  <strong style="color: #800080;">🥈 2do Lugar - $15,000 USD:</strong><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• $15,000 USD en efectivo</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Acceso a coworking premium (3 meses)</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Networking con líderes tech</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Certificaciones tech premium</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Hardware de desarrollo avanzado</span>
                 </div>
                 <div>
-                  <strong style="color: #800080;">🥉 3er Lugar - $10,000:</strong><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Premio en efectivo</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Cursos online premium</span><br>
+                  <strong style="color: #800080;">🥉 3er Lugar - $10,000 USD:</strong><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• $10,000 USD en efectivo</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Cursos online premium (1 año)</span><br>
                   <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Hardware de desarrollo</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Membresía a comunidad</span>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Membresía a comunidad tech</span><br>
+                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Acceso a eventos exclusivos</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tracks Especializados -->
+            <div class="mobile-section" style="background: rgba(0, 100, 255, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #0066ff;">
+              <h3 style="color: #0066ff; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">🚀 TRACKS ESPECIALIZADOS</h3>
+              
+              <!-- Track 1: Medio Ambiente -->
+              <div style="margin-bottom: 20px; padding: 15px; background: rgba(0, 255, 0, 0.1); border-radius: 8px; border-left: 4px solid #00ff00;">
+                <h4 style="color: #00ff00; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">🌱 TRACK: SOLUCIONES VERDES</h4>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $5,000 USD + Incubación verde</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> Apps para monitoreo ambiental, reducción de carbono, energía renovable, reciclaje inteligente</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> IoT, Machine Learning, Blockchain para trazabilidad</p>
+              </div>
+
+              <!-- Track 2: DeFi -->
+              <div style="margin-bottom: 20px; padding: 15px; background: rgba(255, 165, 0, 0.1); border-radius: 8px; border-left: 4px solid #ffa500;">
+                <h4 style="color: #ffa500; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">💰 TRACK: DEFI & FINANZAS DESCENTRALIZADAS</h4>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $8,000 USD + Acceso a VCs crypto</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> DEXs, yield farming, lending protocols, stablecoins, cross-chain bridges</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> Solidity, Rust, Web3, Smart Contracts</p>
+              </div>
+
+              <!-- Track 3: Apps Móviles -->
+              <div style="margin-bottom: 20px; padding: 15px; background: rgba(255, 0, 255, 0.1); border-radius: 8px; border-left: 4px solid #ff00ff;">
+                <h4 style="color: #ff00ff; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">📱 TRACK: APPS MÓVILES INNOVADORAS</h4>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $6,000 USD + Publicación en app stores</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> Apps sociales, productividad, gaming, AR/VR, IoT mobile</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> React Native, Flutter, Swift, Kotlin, Unity</p>
+              </div>
+
+              <!-- Track 4: Solidity & Smart Contracts -->
+              <div style="margin-bottom: 20px; padding: 15px; background: rgba(0, 255, 255, 0.1); border-radius: 8px; border-left: 4px solid #00ffff;">
+                <h4 style="color: #00ffff; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">⛓️ TRACK: SMART CONTRACTS & SOLIDITY</h4>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $7,000 USD + Audits de seguridad</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> NFTs, DAOs, governance tokens, insurance protocols, supply chain</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> Solidity, Hardhat, Foundry, OpenZeppelin</p>
+              </div>
+
+              <!-- Track 5: Rust & Soroban -->
+              <div style="margin-bottom: 20px; padding: 15px; background: rgba(255, 69, 0, 0.1); border-radius: 8px; border-left: 4px solid #ff4500;">
+                <h4 style="color: #ff4500; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">🦀 TRACK: RUST & SOROBAN</h4>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $9,000 USD + Mentoring con Stellar Foundation</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> Smart contracts en Soroban, DeFi en Stellar, cross-chain solutions</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> Rust, Soroban SDK, Stellar Network, WebAssembly</p>
+              </div>
+
+              <!-- Track 6: Innovación -->
+              <div style="margin-bottom: 20px; padding: 15px; background: rgba(128, 0, 128, 0.1); border-radius: 8px; border-left: 4px solid #800080;">
+                <h4 style="color: #800080; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">💡 TRACK: INNOVACIÓN DISRUPTIVA</h4>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $10,000 USD + Patente y comercialización</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> AI/ML, Quantum computing, Biotech, Space tech, Metaverse</p>
+                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> Python, TensorFlow, WebGL, Three.js, APIs avanzadas</p>
+              </div>
+            </div>
+
+            <!-- Premios Especiales -->
+            <div class="mobile-section" style="background: rgba(255, 215, 0, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #ffd700;">
+              <h3 style="color: #ffd700; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">⭐ PREMIOS ESPECIALES</h3>
+              <div style="color: #ffffff; line-height: 1.8;">
+                <div style="margin-bottom: 15px;">
+                  <strong style="color: #ffd700;">👥 Mejor Trabajo en Equipo:</strong> $3,000 USD + Workshop de liderazgo<br>
+                  <strong style="color: #ffd700;">🎨 Mejor Diseño UX/UI:</strong> $2,500 USD + Herramientas de diseño<br>
+                  <strong style="color: #ffd700;">🚀 Mejor Pitch:</strong> $2,000 USD + Coaching de presentación<br>
+                  <strong style="color: #ffd700;">💻 Mejor Código:</strong> $2,500 USD + Licencias de desarrollo<br>
+                  <strong style="color: #ffd700;">🌍 Impacto Social:</strong> $4,000 USD + Mentoring social<br>
+                  <strong style="color: #ffd700;">🔧 Mejor Uso de APIs:</strong> $1,500 USD + Acceso a APIs premium<br>
+                  <strong style="color: #ffd700;">📊 Mejor Análisis de Datos:</strong> $2,000 USD + Herramientas de analytics<br>
+                  <strong style="color: #ffd700;">🎮 Mejor Gaming:</strong> $3,500 USD + Hardware gaming<br>
+                  <strong style="color: #ffd700;">🔒 Mejor Seguridad:</strong> $2,500 USD + Certificaciones de seguridad<br>
+                  <strong style="color: #ffd700;">🌐 Mejor Web3:</strong> $3,000 USD + Acceso a redes blockchain
                 </div>
               </div>
             </div>
