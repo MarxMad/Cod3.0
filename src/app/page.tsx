@@ -29,6 +29,7 @@ import {
   Building,
   Navigation
 } from 'lucide-react';
+import Spline from '@splinetool/react-spline/next';
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -656,7 +657,32 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          {/* Two Column Layout: Spline + Prizes */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Spline 3D Scene */}
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden border border-purple-400/30"
+            >
+              <Spline
+                scene="https://prod.spline.design/2q0dmovGgiPvvFq5/scene.splinecode"
+                style={{ width: '100%', height: '100%' }}
+              />
+              {/* Overlay for better integration */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+            </motion.div>
+
+            {/* Prizes Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
             {[
               {
                 place: "1er Lugar",
@@ -694,51 +720,56 @@ export default function Home() {
             ].map((prize, index) => (
               <motion.div
                 key={prize.place}
-                initial={{ opacity: 0, y: 60 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
                 className="group"
               >
                 <motion.div
-                  className={`bg-gradient-to-br from-${prize.color}-500/20 to-${prize.color === 'green' ? 'blue' : 'green'}-500/20 backdrop-blur-xl rounded-2xl p-8 border border-${prize.color}-400/30 text-center h-full`}
-                  whileHover={{ y: -15, scale: 1.03 }}
+                  className={`bg-gradient-to-br from-${prize.color}-500/20 to-${prize.color === 'green' ? 'blue' : 'green'}-500/20 backdrop-blur-xl rounded-xl p-6 border border-${prize.color}-400/30 hover:border-${prize.color}-400/60 transition-all duration-300`}
+                  whileHover={{ y: -5, scale: 1.02 }}
                   initial={false}
                 >
-                  <motion.div
-                    className={`w-20 h-20 bg-gradient-to-br from-${prize.color}-500/30 to-${prize.color === 'green' ? 'blue' : 'green'}-500/30 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.8 }}
-                  >
-                    <Trophy className={`h-10 w-10 text-${prize.color}-400`} />
-                  </motion.div>
-                  
-                  <h3 className="text-3xl font-black text-white mb-2 group-hover:text-green-400 transition-colors duration-300">
-                    {prize.place}
-                  </h3>
-                  
-                  <p className={`text-5xl font-black text-${prize.color}-400 mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    {prize.prize}
-                  </p>
-                  
-                  <ul className="space-y-3 text-left">
-                    {prize.benefits.map((benefit, benefitIndex) => (
-                      <motion.li
-                        key={benefitIndex}
-                        className="text-gray-300 flex items-center group-hover:text-gray-200 transition-colors duration-300"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: benefitIndex * 0.1 }}
-                        viewport={{ once: true }}
-                      >
-                        <Star className="h-4 w-4 mr-3 text-green-400" />
-                        <span>{benefit}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
+                  <div className="flex items-center space-x-4">
+                    <motion.div
+                      className={`w-16 h-16 bg-gradient-to-br from-${prize.color}-500/30 to-${prize.color === 'green' ? 'blue' : 'green'}-500/30 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.8 }}
+                    >
+                      <Trophy className={`h-8 w-8 text-${prize.color}-400`} />
+                    </motion.div>
+                    
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-black text-white mb-1 group-hover:text-green-400 transition-colors duration-300">
+                        {prize.place}
+                      </h3>
+                      
+                      <p className={`text-3xl font-black text-${prize.color}-400 mb-3 group-hover:scale-105 transition-transform duration-300`}>
+                        {prize.prize}
+                      </p>
+                      
+                      <ul className="space-y-2">
+                        {prize.benefits.map((benefit, benefitIndex) => (
+                          <motion.li
+                            key={benefitIndex}
+                            className="text-gray-300 flex items-center group-hover:text-gray-200 transition-colors duration-300 text-sm"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4, delay: benefitIndex * 0.1 }}
+                            viewport={{ once: true }}
+                          >
+                            <Star className="h-3 w-3 mr-2 text-green-400 flex-shrink-0" />
+                            <span>{benefit}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </motion.div>
               </motion.div>
             ))}
+            </motion.div>
           </div>
         </div>
       </section>
@@ -1468,7 +1499,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <p>&copy; 2024 COD3.0 Hackathon. Todos los derechos reservados.</p>
+            <p>&copy; 2026 COD3.0 Hackathon. Todos los derechos reservados.</p>
           </motion.div>
         </div>
       </footer>
