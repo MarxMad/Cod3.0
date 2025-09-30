@@ -309,7 +309,7 @@ export default function Home() {
                 initial="initial"
                 animate="animate"
               >
-                <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64">
+                <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56">
               <Image
                     src="/CODEB.png"
                     alt="CODEB Logo"
@@ -320,7 +320,7 @@ export default function Home() {
               </motion.div>
 
               <motion.h1 
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 tech-title leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 tech-title leading-tight"
                 variants={fadeInUp}
               >
                 &lt;COD3.0
@@ -330,7 +330,7 @@ export default function Home() {
               </motion.h1>
               
               <motion.p 
-                className="text-lg md:text-xl text-gray-300 mb-6 max-w-3xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
+                className="text-base md:text-lg text-gray-300 mb-6 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
                 variants={fadeInUp}
               >
                 El evento de programación más innovador del año. 
