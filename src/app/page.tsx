@@ -398,7 +398,7 @@ export default function Home() {
               {/* Spline Animation */}
               <div className="relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm">
                 <SplineScene 
-                  sceneUrl="https://prod.spline.design/GPSpOPzRbLFvtJsa/scene.splinecode"
+                  sceneUrl="https://prod.spline.design/uG2xGUiKaj-e7URU/scene.splinecode"
                   className="w-full h-full"
                 />
                 {/* Overlay to ensure proper alignment */}
