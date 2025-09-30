@@ -291,10 +291,29 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section - Two Column Layout */}
+      {/* Hero Section - Full Width Layout */}
       <section id="home" className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative min-h-screen">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh]">
+          {/* Full Width HACKATHON Title */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.h1 
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 tech-title leading-tight"
+              variants={fadeInUp}
+            >
+              &lt;COD3.0
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400 animate-pulse text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+                HACKATHON
+              </span>
+            </motion.h1>
+          </motion.div>
+
+          {/* Two Column Layout */}
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start min-h-[60vh]">
             {/* Left Column - Content */}
             <motion.div
               className="text-center lg:text-left"
@@ -309,7 +328,7 @@ export default function Home() {
                 initial="initial"
                 animate="animate"
               >
-                <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48">
               <Image
                     src="/CODEB.png"
                     alt="CODEB Logo"
@@ -318,61 +337,14 @@ export default function Home() {
                   />
                 </div>
               </motion.div>
-
-              <motion.h1 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 tech-title leading-tight"
-                variants={fadeInUp}
-              >
-                &lt;COD3.0
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400 animate-pulse">
-                  HACKATHON
-                </span>
-              </motion.h1>
               
               <motion.p 
-                className="text-base md:text-lg text-gray-300 mb-6 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
+                className="text-base md:text-lg text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
                 variants={fadeInUp}
               >
                 El evento de programación más innovador del año. 
                 Construye el futuro con código, creatividad y colaboración.
               </motion.p>
-
-              <motion.div 
-                className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start items-center mb-16 px-4 lg:px-0"
-                variants={fadeInUp}
-              >
-                <motion.a
-                  href="/registro"
-                  className="tech-button px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center inline-block"
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {/* Shine Effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
-                  />
-                  <span className="relative z-10 text-center">&lt;REGÍSTRATE/&gt;</span>
-                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 relative z-10" />
-                </motion.a>
-                
-                <motion.button
-                  className="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 font-bold text-base sm:text-lg md:text-xl transition-all duration-300 backdrop-blur-sm relative overflow-hidden group font-mono w-full sm:w-auto justify-center"
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {/* Shine Effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent -skew-x-12"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
-                  />
-                  <span className="relative z-10 text-center">&lt;PROGRAMA/&gt;</span>
-                </motion.button>
-              </motion.div>
 
               {/* Enhanced Countdown Timer */}
               <motion.div 
@@ -413,17 +385,60 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Right Column - Spline Animation */}
+            {/* Right Column - Spline Animation + Buttons */}
             <motion.div
-              className="relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border border-green-400/30 order-first lg:order-last"
+              className="space-y-6"
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <SplineScene 
-                sceneUrl="https://prod.spline.design/GPSpOPzRbLFvtJsa/scene.splinecode"
-                className="w-full h-full"
-              />
+              {/* Spline Animation */}
+              <div className="relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border border-green-400/30">
+                <SplineScene 
+                  sceneUrl="https://prod.spline.design/GPSpOPzRbLFvtJsa/scene.splinecode"
+                  className="w-full h-full"
+                />
+              </div>
+
+              {/* Enhanced Action Buttons */}
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start items-center"
+                variants={fadeInUp}
+              >
+                <motion.a
+                  href="/registro"
+                  className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center space-x-3 relative overflow-hidden w-full sm:w-auto justify-center transition-all duration-300 shadow-lg hover:shadow-green-500/25"
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {/* Animated Background */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  <span className="relative z-10 flex items-center">
+                    <span>&lt;REGÍSTRATE/&gt;</span>
+                    <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                </motion.a>
+                
+                <motion.button
+                  className="group relative bg-transparent border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 backdrop-blur-sm relative overflow-hidden w-full sm:w-auto justify-center"
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {/* Animated Border */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent -skew-x-12"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  <span className="relative z-10">&lt;PROGRAMA/&gt;</span>
+                </motion.button>
+              </motion.div>
             </motion.div>
           </div>
         </div>
