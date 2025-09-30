@@ -291,7 +291,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative">
+      <section id="home" className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             variants={staggerContainer}
@@ -316,17 +316,17 @@ export default function Home() {
             </motion.div>
 
             <motion.h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-6 tech-title leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 tech-title leading-tight"
               variants={fadeInUp}
             >
               &lt;COD3.0
-              <span className="block text-green-400 neon-glow">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400 animate-pulse">
                 HACKATHON
               </span>
             </motion.h1>
             
             <motion.p 
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed font-mono px-4"
+              className="text-lg md:text-xl text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed font-mono px-4"
               variants={fadeInUp}
             >
               El evento de programación más innovador del año. 
@@ -377,9 +377,9 @@ export default function Home() {
             >
               {[
                 { value: days, label: 'DÍAS', color: 'green' },
-                { value: hours, label: 'HORAS', color: 'green' },
-                { value: minutes, label: 'MIN', color: 'green' },
-                { value: seconds, label: 'SEG', color: 'green' }
+                { value: hours, label: 'HORAS', color: 'cyan' },
+                { value: minutes, label: 'MIN', color: 'purple' },
+                { value: seconds, label: 'SEG', color: 'pink' }
               ].map((item, index) => (
                 <motion.div
                   key={item.label}
@@ -623,7 +623,7 @@ export default function Home() {
       </section>
 
       {/* Prizes Section */}
-      <section id="prizes" className="py-20 px-4 sm:px-6 lg:px-8 bg-black/20 relative">
+      <section id="prizes" className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-purple-900/20 to-black relative">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -643,15 +643,15 @@ export default function Home() {
               <span className="font-semibold">Premios Increíbles</span>
             </motion.div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
               Más de{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400">
                 $50,000
               </span>{' '}
               en premios
             </h2>
             
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
               Para los mejores proyectos que marquen la diferencia
             </p>
           </motion.div>
@@ -672,7 +672,7 @@ export default function Home() {
               {
                 place: "2do Lugar",
                 prize: "$15,000",
-                color: "blue",
+                color: "cyan",
                 benefits: [
                   "Premio en efectivo",
                   "Acceso a coworking",
@@ -683,7 +683,7 @@ export default function Home() {
               {
                 place: "3er Lugar",
                 prize: "$10,000",
-                color: "green",
+                color: "purple",
                 benefits: [
                   "Premio en efectivo",
                   "Cursos online premium",
@@ -744,7 +744,7 @@ export default function Home() {
       </section>
 
       {/* Sponsors & Allies Section */}
-      <section id="sponsors" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section id="sponsors" className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-cyan-900/10 to-black">
         {/* Animated Tech Background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black/80" />
@@ -790,12 +790,12 @@ export default function Home() {
               <span className="font-semibold">Patrocinadores & Aliados</span>
             </motion.div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
               Empresas que{' '}
               <span className="relative">
-                <span className="text-green-400">apoyan</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">apoyan</span>
                 <motion.div
-                  className="absolute inset-0 bg-green-400/20 rounded-lg"
+                  className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 rounded-lg"
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1, delay: 0.5 }}
@@ -805,7 +805,7 @@ export default function Home() {
               la innovación
             </h2>
             
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
               Colaboramos con las empresas más innovadoras del mundo tech
             </p>
           </motion.div>
@@ -1030,7 +1030,7 @@ export default function Home() {
       </section>
 
       {/* Gallery Carousel Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-purple-900/10 to-black">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -1050,14 +1050,14 @@ export default function Home() {
               <span className="font-semibold">Galería del Evento</span>
             </motion.div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
               Espacios{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400">
                 espectaculares
               </span>
             </h2>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Descubre los increíbles espacios donde se desarrollará el COD3.0 HACKATHON
             </p>
           </motion.div>
@@ -1136,7 +1136,7 @@ export default function Home() {
       </section>
 
       {/* Venue Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-black/20">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-black via-pink-900/10 to-black">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -1156,14 +1156,14 @@ export default function Home() {
               <span className="font-semibold">Venue & Ubicación</span>
             </motion.div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
               Centro de{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-pink-400">
                 Innovación Tech
               </span>
             </h2>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Un espacio diseñado para la innovación y la creatividad tecnológica
             </p>
           </motion.div>
@@ -1252,7 +1252,7 @@ export default function Home() {
       </section>
 
       {/* Registration Section */}
-      <section id="register" className="py-20 px-4 sm:px-6 lg:px-8 relative">
+      <section id="register" className="py-16 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-black via-green-900/10 to-black">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -1271,15 +1271,15 @@ export default function Home() {
               <span className="font-semibold">¡Únete a COD3.0!</span>
             </motion.div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
               No te pierdas la oportunidad de ser parte del{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400">
                 hackathon más innovador
               </span>{' '}
               del año
             </h2>
             
-            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
               Construye el futuro con nosotros
             </p>
 
