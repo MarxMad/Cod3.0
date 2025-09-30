@@ -341,7 +341,7 @@ export default function Home() {
                 </motion.div>
                 
                 <motion.p 
-                  className="text-base md:text-lg text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
+                  className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
                   variants={fadeInUp}
                 >
                   El evento de programación más innovador del año. 
@@ -396,11 +396,13 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               {/* Spline Animation */}
-              <div className="relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border border-green-400/30">
+              <div className="relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm">
                 <SplineScene 
                   sceneUrl="https://prod.spline.design/GPSpOPzRbLFvtJsa/scene.splinecode"
                   className="w-full h-full"
                 />
+                {/* Overlay to ensure proper alignment */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Enhanced Action Buttons */}
