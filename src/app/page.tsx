@@ -96,7 +96,7 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  const hackathonDate = new Date('2024-12-15T09:00:00');
+  const hackathonDate = new Date('2025-03-27T09:00:00');
   const timeLeft = hackathonDate.getTime() - currentTime.getTime();
   
   const days = isClient ? Math.floor(timeLeft / (1000 * 60 * 60 * 24)) : 0;
