@@ -305,7 +305,7 @@ export default function Home() {
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 tech-title leading-tight"
               variants={fadeInUp}
             >
-              &lt;COD3.0
+              
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400 animate-pulse text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
                 HACKATHON
               </span>
