@@ -316,37 +316,40 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start min-h-[60vh]">
             {/* Left Column - Content */}
             <motion.div
-              className="text-center lg:text-left"
+              className="text-center lg:text-left flex flex-col justify-between min-h-[600px]"
               variants={staggerContainer}
               initial="initial"
               animate="animate"
             >
-              {/* Floating Logo - Much Larger */}
-              <motion.div 
-                className="flex justify-center lg:justify-start mb-12"
-                variants={floatingAnimation}
-                initial="initial"
-                animate="animate"
-              >
-                <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 2xl:w-72 2xl:h-72">
-              <Image
-                    src="/CODEB.png"
-                    alt="CODEB Logo"
-                    fill
-                    className="object-contain drop-shadow-2xl"
-                  />
-                </div>
-              </motion.div>
-              
-              <motion.p 
-                className="text-base md:text-lg text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
-                variants={fadeInUp}
-              >
-                El evento de programación más innovador del año. 
-                Construye el futuro con código, creatividad y colaboración.
-              </motion.p>
+              {/* Top Section - Logo and Description */}
+              <div>
+                {/* Floating Logo - Massive Size */}
+                <motion.div 
+                  className="flex justify-center lg:justify-start mb-8"
+                  variants={floatingAnimation}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 2xl:w-[28rem] 2xl:h-[28rem]">
+                <Image
+                      src="/CODEB.png"
+                      alt="CODEB Logo"
+                      fill
+                      className="object-contain drop-shadow-2xl"
+                    />
+                  </div>
+                </motion.div>
+                
+                <motion.p 
+                  className="text-base md:text-lg text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
+                  variants={fadeInUp}
+                >
+                  El evento de programación más innovador del año. 
+                  Construye el futuro con código, creatividad y colaboración.
+                </motion.p>
+              </div>
 
-              {/* Enhanced Countdown Timer */}
+              {/* Bottom Section - Countdown Timer */}
               <motion.div 
                 className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-6 max-w-4xl mx-auto lg:mx-0 px-4 lg:px-0"
                 variants={fadeInUp}
@@ -387,7 +390,7 @@ export default function Home() {
 
             {/* Right Column - Spline Animation + Buttons */}
             <motion.div
-              className="space-y-6"
+              className="space-y-6 flex flex-col justify-between min-h-[600px]"
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
