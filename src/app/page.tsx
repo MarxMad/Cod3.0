@@ -306,7 +306,7 @@ export default function Home() {
               variants={fadeInUp}
             >
               
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400 animate-pulse text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
                 HACKATHON
               </span>
             </motion.h1>
