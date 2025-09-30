@@ -29,7 +29,7 @@ import {
   Building,
   Navigation
 } from 'lucide-react';
-import Spline from '@splinetool/react-spline/next';
+// import Spline from '@splinetool/react-spline/next';
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -659,20 +659,19 @@ export default function Home() {
 
           {/* Two Column Layout: Spline + Prizes */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Spline 3D Scene */}
+            {/* Placeholder for Spline 3D Scene */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden border border-purple-400/30"
+              className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden border border-purple-400/30 bg-gradient-to-br from-purple-500/20 to-cyan-500/20 flex items-center justify-center"
             >
-              <Spline
-                scene="https://prod.spline.design/2q0dmovGgiPvvFq5/scene.splinecode"
-                style={{ width: '100%', height: '100%' }}
-              />
-              {/* Overlay for better integration */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+              <div className="text-center">
+                <div className="w-32 h-32 bg-gradient-to-br from-purple-400 to-cyan-400 rounded-full mx-auto mb-4 animate-pulse"></div>
+                <h3 className="text-2xl font-bold text-white mb-2">Escena 3D</h3>
+                <p className="text-gray-300">Spline 3D Scene</p>
+              </div>
             </motion.div>
 
             {/* Prizes Cards */}
