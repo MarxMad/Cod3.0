@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Users, 
   Trophy, 
@@ -16,13 +17,24 @@ import {
   Target,
   Clock,
   Star,
-  Sparkles
+  Sparkles,
+  ChevronLeft,
+  ChevronRight,
+  Wifi,
+  Coffee,
+  Car,
+  ParkingMeter,
+  Utensils,
+  Shield,
+  Building,
+  Navigation
 } from 'lucide-react';
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [activeSection, setActiveSection] = useState('home');
   const [isClient, setIsClient] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     setIsClient(true);
@@ -33,6 +45,54 @@ export default function Home() {
       setCurrentTime(new Date());
     }, 1000);
     return () => clearInterval(timer);
+  }, []);
+
+  // Carrusel de imágenes
+  const galleryImages = [
+    {
+      src: '/Espectacular.jpeg',
+      alt: 'Espectacular WTC CDMX',
+      title: 'Espectacular WTC CDMX',
+      description: '70m x 10m - Máxima visibilidad'
+    },
+    {
+      src: '/Led.jpeg',
+      alt: 'Panel LED',
+      title: 'Panel LED',
+      description: '100cm x 50cm - Tecnología de vanguardia'
+    },
+    {
+      src: '/Letra.jpeg',
+      alt: 'Letra 400K30',
+      title: 'Letra 400K30',
+      description: 'Iluminación LED - Impacto visual'
+    },
+    {
+      src: '/Stage.jpeg',
+      alt: 'Stage Principal',
+      title: 'Stage Principal',
+      description: 'Evento Exterior - Espectacular'
+    },
+    {
+      src: '/Stage2.jpeg',
+      alt: 'Stage Interior',
+      title: 'Stage Interior',
+      description: 'WEB3 HACKATHON - Ambiente tech'
+    }
+  ];
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
+  // Auto-advance carrusel
+  useEffect(() => {
+    const interval = setInterval(nextImage, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   const hackathonDate = new Date('2024-12-15T09:00:00');
@@ -966,6 +1026,228 @@ export default function Home() {
               </div>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Gallery Carousel Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.div
+              className="inline-flex items-center space-x-2 bg-green-500/20 text-green-400 px-6 py-3 rounded-full mb-6 border border-green-400/30"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Sparkles className="h-5 w-5" />
+              <span className="font-semibold">Galería del Evento</span>
+            </motion.div>
+            
+            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
+              Espacios{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
+                espectaculares
+              </span>
+            </h2>
+            
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Descubre los increíbles espacios donde se desarrollará el COD3.0 HACKATHON
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="relative bg-black/40 backdrop-blur-xl rounded-2xl p-8 border border-green-400/30 overflow-hidden">
+              {/* Main Image Display */}
+              <div className="relative h-96 md:h-[500px] rounded-xl overflow-hidden mb-6">
+                <motion.div
+                  key={currentImageIndex}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.5 }}
+                  className="relative w-full h-full"
+                >
+                  <Image
+                    src={galleryImages[currentImageIndex].src}
+                    alt={galleryImages[currentImageIndex].alt}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-6 left-6 text-white">
+                    <h3 className="text-2xl font-bold mb-2">{galleryImages[currentImageIndex].title}</h3>
+                    <p className="text-gray-200">{galleryImages[currentImageIndex].description}</p>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Navigation Buttons */}
+              <button
+                onClick={prevImage}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+              
+              <button
+                onClick={nextImage}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+
+              {/* Thumbnail Navigation */}
+              <div className="flex justify-center space-x-4">
+                {galleryImages.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`relative w-16 h-16 rounded-lg overflow-hidden transition-all duration-300 ${
+                      currentImageIndex === index 
+                        ? 'ring-2 ring-green-400 scale-110' 
+                        : 'opacity-60 hover:opacity-100 hover:scale-105'
+                    }`}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Venue Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-black/20">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.div
+              className="inline-flex items-center space-x-2 bg-blue-500/20 text-blue-400 px-6 py-3 rounded-full mb-6 border border-blue-400/30"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Building className="h-5 w-5" />
+              <span className="font-semibold">Venue & Ubicación</span>
+            </motion.div>
+            
+            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
+              Centro de{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
+                Innovación Tech
+              </span>
+            </h2>
+            
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Un espacio diseñado para la innovación y la creatividad tecnológica
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Venue Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="bg-black/40 backdrop-blur-xl rounded-2xl p-8 border border-blue-400/30">
+                <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
+                  <MapPin className="h-8 w-8 mr-3 text-blue-400" />
+                  Información del Venue
+                </h3>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start">
+                    <Navigation className="h-6 w-6 mr-4 text-blue-400 mt-1" />
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-1">Dirección</h4>
+                      <p className="text-gray-300">Centro de Innovación Tech<br />Av. Tecnología 123, CDMX</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <Car className="h-6 w-6 mr-4 text-blue-400 mt-1" />
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-1">Estacionamiento</h4>
+                      <p className="text-gray-300">Estacionamiento gratuito disponible<br />Capacidad para 200+ vehículos</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <Wifi className="h-6 w-6 mr-4 text-blue-400 mt-1" />
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-1">Conectividad</h4>
+                      <p className="text-gray-300">Internet de alta velocidad (1Gbps)<br />Red WiFi dedicada para participantes</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <Utensils className="h-6 w-6 mr-4 text-blue-400 mt-1" />
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-1">Servicios</h4>
+                      <p className="text-gray-300">Cafetería 24/7, áreas de descanso<br />Servicios médicos de emergencia</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Venue Features */}
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { icon: Wifi, title: "Internet 1Gbps", description: "Conexión ultra rápida" },
+                  { icon: Coffee, title: "Cafetería 24/7", description: "Comida y bebidas" },
+                  { icon: ParkingMeter, title: "Estacionamiento", description: "200+ espacios" },
+                  { icon: Shield, title: "Seguridad 24/7", description: "Vigilancia completa" }
+                ].map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="bg-black/40 backdrop-blur-xl rounded-xl p-6 border border-blue-400/20 text-center hover:border-blue-400/40 transition-all duration-300 hover:scale-105"
+                  >
+                    <feature.icon className="h-8 w-8 text-blue-400 mx-auto mb-4" />
+                    <h4 className="text-lg font-semibold text-white mb-2">{feature.title}</h4>
+                    <p className="text-gray-300 text-sm">{feature.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
