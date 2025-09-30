@@ -236,7 +236,7 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="relative w-12 h-12">
+              <div className="relative w-16 h-16">
         <Image
                   src="/CODEB.png"
                   alt="CODEB Logo"
@@ -321,14 +321,14 @@ export default function Home() {
               initial="initial"
               animate="animate"
             >
-              {/* Floating Logo */}
+              {/* Floating Logo - Much Larger */}
               <motion.div 
-                className="flex justify-center lg:justify-start mb-8"
+                className="flex justify-center lg:justify-start mb-12"
                 variants={floatingAnimation}
                 initial="initial"
                 animate="animate"
               >
-                <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48">
+                <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 2xl:w-72 2xl:h-72">
               <Image
                     src="/CODEB.png"
                     alt="CODEB Logo"
@@ -1431,8 +1431,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-10">
             <div>
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="relative w-10 h-10">
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="relative w-14 h-14">
           <Image
                     src="/CODEB.png"
                     alt="CODEB Logo"
@@ -1440,7 +1440,7 @@ export default function Home() {
                     className="object-contain"
                   />
                 </div>
-                <span className="text-2xl font-bold text-white">COD3.0</span>
+                <span className="text-3xl font-bold text-white">COD3.0</span>
               </div>
               <p className="text-gray-300 leading-relaxed">
                 El hackathon más innovador del año, donde la creatividad y la tecnología se encuentran.
