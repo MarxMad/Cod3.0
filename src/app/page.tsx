@@ -291,124 +291,141 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            animate="animate"
-          >
-            {/* Floating Logo */}
-            <motion.div 
-              className="flex justify-center mb-8"
-              variants={floatingAnimation}
+      {/* Hero Section - Two Column Layout */}
+      <section id="home" className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative min-h-screen">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh]">
+            {/* Left Column - Content */}
+            <motion.div
+              className="text-center lg:text-left"
+              variants={staggerContainer}
               initial="initial"
               animate="animate"
             >
-              <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64">
-            <Image
-                  src="/CODEB.png"
-                  alt="CODEB Logo"
-                  fill
-                  className="object-contain drop-shadow-2xl"
-                />
-              </div>
-            </motion.div>
-
-            <motion.h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 tech-title leading-tight"
-              variants={fadeInUp}
-            >
-              &lt;COD3.0
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400 animate-pulse">
-                HACKATHON
-              </span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-lg md:text-xl text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed font-mono px-4"
-              variants={fadeInUp}
-            >
-              El evento de programación más innovador del año. 
-              Construye el futuro con código, creatividad y colaboración.
-            </motion.p>
-
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 px-4"
-              variants={fadeInUp}
-            >
-              <motion.a
-                href="/registro"
-                className="tech-button px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center inline-block"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
+              {/* Floating Logo */}
+              <motion.div 
+                className="flex justify-center lg:justify-start mb-8"
+                variants={floatingAnimation}
+                initial="initial"
+                animate="animate"
               >
-                {/* Shine Effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6 }}
-                />
-                <span className="relative z-10 text-center">&lt;REGÍSTRATE/&gt;</span>
-                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 relative z-10" />
-              </motion.a>
+                <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64">
+              <Image
+                    src="/CODEB.png"
+                    alt="CODEB Logo"
+                    fill
+                    className="object-contain drop-shadow-2xl"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.h1 
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 tech-title leading-tight"
+                variants={fadeInUp}
+              >
+                &lt;COD3.0
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400 animate-pulse">
+                  HACKATHON
+                </span>
+              </motion.h1>
               
-              <motion.button
-                className="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 font-bold text-base sm:text-lg md:text-xl transition-all duration-300 backdrop-blur-sm relative overflow-hidden group font-mono w-full sm:w-auto justify-center"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
+              <motion.p 
+                className="text-lg md:text-xl text-gray-300 mb-6 max-w-3xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
+                variants={fadeInUp}
               >
-                {/* Shine Effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent -skew-x-12"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6 }}
-                />
-                <span className="relative z-10 text-center">&lt;PROGRAMA/&gt;</span>
-              </motion.button>
-            </motion.div>
+                El evento de programación más innovador del año. 
+                Construye el futuro con código, creatividad y colaboración.
+              </motion.p>
 
-            {/* Enhanced Countdown Timer */}
-            <motion.div 
-              className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-6 max-w-4xl mx-auto px-4"
-              variants={fadeInUp}
-            >
-              {[
-                { value: days, label: 'DÍAS', color: 'green' },
-                { value: hours, label: 'HORAS', color: 'cyan' },
-                { value: minutes, label: 'MIN', color: 'purple' },
-                { value: seconds, label: 'SEG', color: 'pink' }
-              ].map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  className="tech-card p-2 sm:p-4 md:p-6 relative overflow-hidden group min-w-0"
-                  variants={glowAnimation}
-                  initial="initial"
-                  animate="animate"
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ delay: index * 0.1 }}
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start items-center mb-16 px-4 lg:px-0"
+                variants={fadeInUp}
+              >
+                <motion.a
+                  href="/registro"
+                  className="tech-button px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center inline-block"
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {/* Shine Effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  <span className="relative z-10 text-center">&lt;REGÍSTRATE/&gt;</span>
+                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 relative z-10" />
+                </motion.a>
+                
+                <motion.button
+                  className="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 font-bold text-base sm:text-lg md:text-xl transition-all duration-300 backdrop-blur-sm relative overflow-hidden group font-mono w-full sm:w-auto justify-center"
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {/* Shine Effect */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent -skew-x-12"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.6 }}
                   />
-                  
-                  <div className="relative z-10 text-center">
-                    <div className="text-lg sm:text-2xl md:text-4xl font-black text-green-400 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-300 font-mono leading-tight">
-                      {isClient ? item.value : '--'}
+                  <span className="relative z-10 text-center">&lt;PROGRAMA/&gt;</span>
+                </motion.button>
+              </motion.div>
+
+              {/* Enhanced Countdown Timer */}
+              <motion.div 
+                className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-6 max-w-4xl mx-auto lg:mx-0 px-4 lg:px-0"
+                variants={fadeInUp}
+              >
+                {[
+                  { value: days, label: 'DÍAS', color: 'green' },
+                  { value: hours, label: 'HORAS', color: 'cyan' },
+                  { value: minutes, label: 'MIN', color: 'purple' },
+                  { value: seconds, label: 'SEG', color: 'pink' }
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    className="tech-card p-2 sm:p-4 md:p-6 relative overflow-hidden group min-w-0"
+                    variants={glowAnimation}
+                    initial="initial"
+                    animate="animate"
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {/* Shine Effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent -skew-x-12"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.8 }}
+                    />
+                    
+                    <div className="relative z-10 text-center">
+                      <div className="text-lg sm:text-2xl md:text-4xl font-black text-green-400 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-300 font-mono leading-tight">
+                        {isClient ? item.value : '--'}
+                      </div>
+                      <div className="text-xs sm:text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300 font-mono leading-tight">{item.label}</div>
                     </div>
-                    <div className="text-xs sm:text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300 font-mono leading-tight">{item.label}</div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            {/* Right Column - Spline Animation */}
+            <motion.div
+              className="relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border border-green-400/30 order-first lg:order-last"
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <SplineScene 
+                sceneUrl="https://prod.spline.design/GPSpOPzRbLFvtJsa/scene.splinecode"
+                className="w-full h-full"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
