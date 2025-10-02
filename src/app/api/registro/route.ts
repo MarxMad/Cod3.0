@@ -200,242 +200,106 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
         @media only screen and (max-width: 600px) {
           .mobile-container { padding: 20px 15px !important; }
           .mobile-header { padding: 20px 15px !important; }
-          .mobile-title { font-size: 20px !important; }
-          .mobile-subtitle { font-size: 14px !important; }
-          .mobile-section { padding: 20px 15px !important; margin: 15px 0 !important; }
-          .mobile-text { font-size: 15px !important; line-height: 1.6 !important; }
+          .mobile-title { font-size: 24px !important; }
+          .mobile-subtitle { font-size: 16px !important; }
+          .mobile-text { font-size: 16px !important; line-height: 1.6 !important; }
           .mobile-button { padding: 12px 20px !important; font-size: 14px !important; margin: 8px !important; }
+          .mobile-logo { width: 120px !important; height: 120px !important; }
         }
       </style>
     </head>
-    <body style="margin: 0; padding: 0; background-color: #0a0a0a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-      <div style="max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 255, 0, 0.1);">
+    <body style="margin: 0; padding: 0; background-color: #ffffff; font-family: Arial, sans-serif;">
+      <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 0; overflow: hidden;">
         
         <!-- Header con Logo -->
-        <div class="mobile-header" style="background: linear-gradient(90deg, #00ff00 0%, #00cc00 100%); padding: 30px; text-align: center;">
-          <div style="background: #000; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border: 3px solid #00ff00;">
-            <span style="color: #00ff00; font-size: 24px; font-weight: bold; font-family: 'Courier New', monospace;">COD3.0</span>
-          </div>
-          <h1 class="mobile-title" style="color: #000; margin: 0; font-size: 28px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">HACKATHON</h1>
-          <p class="mobile-subtitle" style="color: #000; margin: 10px 0 0 0; font-size: 16px; font-weight: 600;">¡Registro Confirmado!</p>
+        <div class="mobile-header" style="background: #000000; padding: 40px 30px; text-align: center;">
+          <img src="https://cod3-0.vercel.app/CODEN.png" alt="COD3.0 Logo" class="mobile-logo" style="width: 150px; height: 150px; margin: 0 auto 20px; display: block;">
+          <h1 class="mobile-title" style="color: #00ff00; margin: 0; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">¡REGISTRO CONFIRMADO!</h1>
+          <p class="mobile-subtitle" style="color: #ffffff; margin: 10px 0 0 0; font-size: 18px; font-weight: 600;">COD3.0 HACKATHON</p>
         </div>
         
         <!-- Contenido Principal -->
-        <div class="mobile-container" style="padding: 40px 30px;">
-          <div style="background: rgba(0, 255, 0, 0.05); padding: 30px; border-radius: 12px; border: 2px solid #00ff00; margin-bottom: 30px;">
-            <h2 style="color: #00ff00; margin: 0 0 20px 0; font-size: 24px; font-weight: 700;">¡Hola ${registro.nombre} ${registro.apellido}!</h2>
-            
-            <p style="color: #ffffff; line-height: 1.7; margin-bottom: 25px; font-size: 16px;">
-              🎉 <strong>¡Felicidades!</strong> Tu registro para el <strong style="color: #00ff00;">COD3.0 HACKATHON</strong> ha sido confirmado exitosamente. Estamos emocionados de tenerte como parte de esta experiencia tecnológica única.
-            </p>
-            
-            <!-- Detalles del Registro -->
-            <div class="mobile-section" style="background: rgba(0, 0, 0, 0.6); padding: 25px; border-radius: 10px; margin: 25px 0; border-left: 4px solid #00ff00;">
-              <h3 style="color: #00ff00; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">📋 Detalles de tu Registro</h3>
-              <div style="color: #ffffff; line-height: 1.8;">
-                <p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">📧 Email:</strong> ${registro.email}</p>
-                <p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">🎯 Nivel de Experiencia:</strong> ${registro.experiencia.charAt(0).toUpperCase() + registro.experiencia.slice(1)}</p>
-                <p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">👥 Participación:</strong> ${registro.equipo === 'equipo' ? 'Con Equipo' : 'Individual'}</p>
-                ${registro.equipo === 'equipo' && registro.nombreEquipo ? `<p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">🏆 Nombre del Equipo:</strong> ${registro.nombreEquipo}</p>` : ''}
-                ${registro.universidad ? `<p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">🎓 Universidad:</strong> ${registro.universidad}</p>` : ''}
-                ${registro.carrera ? `<p class="mobile-text" style="margin: 8px 0; color: #ffffff;"><strong style="color: #00ff00;">📚 Carrera:</strong> ${registro.carrera}</p>` : ''}
-              </div>
-            </div>
-            
-            <!-- Información del Hackathon -->
-            <div class="mobile-section" style="background: rgba(0, 100, 255, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #0066ff;">
-              <h3 style="color: #0066ff; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">🚀 ¿Qué sigue ahora?</h3>
-              <ul style="color: #ffffff; line-height: 1.8; margin: 0; padding-left: 20px;">
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">📅 Fecha del Evento:</strong> 27-28 de Marzo, 2026</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">📍 Ubicación:</strong> Centro de Innovación Tech</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">⏰ Duración:</strong> 48 horas continuas de programación intensiva</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">🏆 Premios:</strong> Más de $50,000 en premios increíbles</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">🍕 Comida:</strong> Comidas y bebidas incluidas durante el evento</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">💻 Equipamiento:</strong> Trae tu laptop y cargador</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">👥 Equipos:</strong> Máximo 4 personas por equipo</li>
-              </ul>
-            </div>
-            
-            <!-- Programa del Evento -->
-            <div class="mobile-section" style="background: rgba(255, 165, 0, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #ffa500;">
-              <h3 style="color: #ffa500; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">📅 Programa del Evento</h3>
-              <div style="color: #ffffff; line-height: 1.8;">
-                <div style="margin-bottom: 15px;">
-                  <strong style="color: #ffa500;">Día 1 - Viernes:</strong><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">09:00 - Registro y Check-in</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">10:00 - Ceremonia de Apertura</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">11:00 - Presentación de Desafíos</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">12:00 - Formación de Equipos</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">13:00 - ¡Comienza la Programación!</span>
-                </div>
-                <div style="margin-bottom: 15px;">
-                  <strong style="color: #ffa500;">Día 2 - Sábado:</strong><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">00:00 - Programación Continúa</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">12:00 - Mentoring Sessions</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">18:00 - Networking Event</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">20:00 - Charlas Técnicas</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">24:00 - Programación Nocturna</span>
-                </div>
-                <div>
-                  <strong style="color: #ffa500;">Día 3 - Domingo:</strong><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">09:00 - Últimas Horas</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">12:00 - Deadline de Entrega</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">14:00 - Presentaciones</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">16:00 - Evaluación del Jurado</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">18:00 - Ceremonia de Premiación</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Premios Generales -->
-            <div class="mobile-section" style="background: rgba(128, 0, 128, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #800080;">
-              <h3 style="color: #800080; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">🏆 PREMIOS GENERALES</h3>
-              <div style="color: #ffffff; line-height: 1.8;">
-                <div style="margin-bottom: 15px;">
-                  <strong style="color: #800080;">🥇 1er Lugar - $25,000 USD:</strong><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• $25,000 USD en efectivo</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Incubación de proyecto (6 meses)</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Viaje a evento tech internacional</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Acceso a red de inversionistas</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Mentoring con expertos de la industria</span>
-                </div>
-                <div style="margin-bottom: 15px;">
-                  <strong style="color: #800080;">🥈 2do Lugar - $15,000 USD:</strong><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• $15,000 USD en efectivo</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Acceso a coworking premium (3 meses)</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Networking con líderes tech</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Certificaciones tech premium</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Hardware de desarrollo avanzado</span>
-                </div>
-                <div>
-                  <strong style="color: #800080;">🥉 3er Lugar - $10,000 USD:</strong><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• $10,000 USD en efectivo</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Cursos online premium (1 año)</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Hardware de desarrollo</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Membresía a comunidad tech</span><br>
-                  <span class="mobile-text" style="margin-left: 20px; color: #ffffff;">• Acceso a eventos exclusivos</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Tracks Especializados -->
-            <div class="mobile-section" style="background: rgba(0, 100, 255, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #0066ff;">
-              <h3 style="color: #0066ff; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">🚀 TRACKS ESPECIALIZADOS</h3>
-              
-              <!-- Track 1: Medio Ambiente -->
-              <div style="margin-bottom: 20px; padding: 15px; background: rgba(0, 255, 0, 0.1); border-radius: 8px; border-left: 4px solid #00ff00;">
-                <h4 style="color: #00ff00; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">🌱 TRACK: SOLUCIONES VERDES</h4>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $5,000 USD + Incubación verde</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> Apps para monitoreo ambiental, reducción de carbono, energía renovable, reciclaje inteligente</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> IoT, Machine Learning, Blockchain para trazabilidad</p>
-              </div>
-
-              <!-- Track 2: DeFi -->
-              <div style="margin-bottom: 20px; padding: 15px; background: rgba(255, 165, 0, 0.1); border-radius: 8px; border-left: 4px solid #ffa500;">
-                <h4 style="color: #ffa500; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">💰 TRACK: DEFI & FINANZAS DESCENTRALIZADAS</h4>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $8,000 USD + Acceso a VCs crypto</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> DEXs, yield farming, lending protocols, stablecoins, cross-chain bridges</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> Solidity, Rust, Web3, Smart Contracts</p>
-              </div>
-
-              <!-- Track 3: Apps Móviles -->
-              <div style="margin-bottom: 20px; padding: 15px; background: rgba(255, 0, 255, 0.1); border-radius: 8px; border-left: 4px solid #ff00ff;">
-                <h4 style="color: #ff00ff; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">📱 TRACK: APPS MÓVILES INNOVADORAS</h4>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $6,000 USD + Publicación en app stores</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> Apps sociales, productividad, gaming, AR/VR, IoT mobile</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> React Native, Flutter, Swift, Kotlin, Unity</p>
-              </div>
-
-              <!-- Track 4: Solidity & Smart Contracts -->
-              <div style="margin-bottom: 20px; padding: 15px; background: rgba(0, 255, 255, 0.1); border-radius: 8px; border-left: 4px solid #00ffff;">
-                <h4 style="color: #00ffff; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">⛓️ TRACK: SMART CONTRACTS & SOLIDITY</h4>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $7,000 USD + Audits de seguridad</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> NFTs, DAOs, governance tokens, insurance protocols, supply chain</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> Solidity, Hardhat, Foundry, OpenZeppelin</p>
-              </div>
-
-              <!-- Track 5: Rust & Soroban -->
-              <div style="margin-bottom: 20px; padding: 15px; background: rgba(255, 69, 0, 0.1); border-radius: 8px; border-left: 4px solid #ff4500;">
-                <h4 style="color: #ff4500; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">🦀 TRACK: RUST & SOROBAN</h4>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $9,000 USD + Mentoring con Stellar Foundation</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> Smart contracts en Soroban, DeFi en Stellar, cross-chain solutions</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> Rust, Soroban SDK, Stellar Network, WebAssembly</p>
-              </div>
-
-              <!-- Track 6: Innovación -->
-              <div style="margin-bottom: 20px; padding: 15px; background: rgba(128, 0, 128, 0.1); border-radius: 8px; border-left: 4px solid #800080;">
-                <h4 style="color: #800080; margin: 0 0 10px 0; font-size: 16px; font-weight: 700;">💡 TRACK: INNOVACIÓN DISRUPTIVA</h4>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Premio:</strong> $10,000 USD + Patente y comercialización</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Enfoque:</strong> AI/ML, Quantum computing, Biotech, Space tech, Metaverse</p>
-                <p style="color: #ffffff; margin: 5px 0; font-size: 14px;"><strong>Tecnologías:</strong> Python, TensorFlow, WebGL, Three.js, APIs avanzadas</p>
-              </div>
-            </div>
-
-            <!-- Premios Especiales -->
-            <div class="mobile-section" style="background: rgba(255, 215, 0, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #ffd700;">
-              <h3 style="color: #ffd700; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">⭐ PREMIOS ESPECIALES</h3>
-              <div style="color: #ffffff; line-height: 1.8;">
-                <div style="margin-bottom: 15px;">
-                  <strong style="color: #ffd700;">👥 Mejor Trabajo en Equipo:</strong> $3,000 USD + Workshop de liderazgo<br>
-                  <strong style="color: #ffd700;">🎨 Mejor Diseño UX/UI:</strong> $2,500 USD + Herramientas de diseño<br>
-                  <strong style="color: #ffd700;">🚀 Mejor Pitch:</strong> $2,000 USD + Coaching de presentación<br>
-                  <strong style="color: #ffd700;">💻 Mejor Código:</strong> $2,500 USD + Licencias de desarrollo<br>
-                  <strong style="color: #ffd700;">🌍 Impacto Social:</strong> $4,000 USD + Mentoring social<br>
-                  <strong style="color: #ffd700;">🔧 Mejor Uso de APIs:</strong> $1,500 USD + Acceso a APIs premium<br>
-                  <strong style="color: #ffd700;">📊 Mejor Análisis de Datos:</strong> $2,000 USD + Herramientas de analytics<br>
-                  <strong style="color: #ffd700;">🎮 Mejor Gaming:</strong> $3,500 USD + Hardware gaming<br>
-                  <strong style="color: #ffd700;">🔒 Mejor Seguridad:</strong> $2,500 USD + Certificaciones de seguridad<br>
-                  <strong style="color: #ffd700;">🌐 Mejor Web3:</strong> $3,000 USD + Acceso a redes blockchain
-                </div>
-              </div>
-            </div>
-            
-            <!-- Preparación -->
-            <div class="mobile-section" style="background: rgba(0, 255, 0, 0.2); padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #00ff00;">
-              <h3 style="color: #00ff00; margin: 0 0 20px 0; font-size: 18px; font-weight: 700;">⚡ Prepárate para el Hackathon</h3>
-              <ul style="color: #ffffff; line-height: 1.8; margin: 0; padding-left: 20px;">
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">💡 Ideas:</strong> Comienza a pensar en ideas innovadoras</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">🛠️ Herramientas:</strong> Familiarízate con las tecnologías que planeas usar</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">👥 Networking:</strong> Conecta con otros participantes en nuestras redes</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">📚 Recursos:</strong> Revisa la documentación técnica que te enviaremos</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">🎯 Objetivos:</strong> Define qué quieres lograr en el hackathon</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">🔧 APIs:</strong> Acceso a APIs y herramientas premium</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">👨‍🏫 Mentoring:</strong> Mentoring con expertos de la industria</li>
-                <li class="mobile-text" style="color: #ffffff;"><strong style="color: #ffffff;">📜 Certificado:</strong> Certificado de participación incluido</li>
-              </ul>
-            </div>
-            
-            <!-- Botones de Acción -->
-            <div style="text-align: center; margin: 35px 0;">
-              <a href="https://cod3-0.vercel.app/" style="background: linear-gradient(45deg, #00ff00, #00cc00); color: #000; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 10px; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);">
-                🌐 Visitar Sitio Web
-              </a>
-              <a href="mailto:contacto@cod3hackathon.com" style="background: linear-gradient(45deg, #0066ff, #0044cc); color: #fff; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 10px; box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);">
-                📧 Contactar Soporte
-              </a>
-            </div>
-            
-            <!-- Mensaje Final -->
-            <div style="background: rgba(0, 255, 0, 0.1); padding: 20px; border-radius: 8px; text-align: center; margin: 25px 0;">
-              <p style="color: #ffffff; line-height: 1.6; margin: 0; font-size: 16px;">
-                <strong style="color: #00ff00;">¡Estamos emocionados de verte en el COD3.0 HACKATHON!</strong><br>
-                Prepárate para una experiencia increíble llena de innovación, aprendizaje y diversión.
-              </p>
-            </div>
-            
-            <p style="color: #cccccc; line-height: 1.6; margin: 20px 0 0 0; font-size: 14px; text-align: center;">
-              Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.<br>
-              <strong style="color: #00ff00;">¡Nos vemos pronto en el hackathon!</strong>
+        <div class="mobile-container" style="padding: 40px 30px; background: #ffffff;">
+          
+          <!-- Saludo -->
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="color: #000000; margin: 0 0 20px 0; font-size: 24px; font-weight: 700;">¡Hola ${registro.nombre}!</h2>
+            <p class="mobile-text" style="color: #333333; line-height: 1.7; margin-bottom: 25px; font-size: 18px;">
+              🎉 <strong>¡Felicidades!</strong> Tu registro para el <strong style="color: #00ff00;">COD3.0 HACKATHON</strong> ha sido confirmado exitosamente.
             </p>
           </div>
+          
+          <!-- Información Básica -->
+          <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 25px 0; border-left: 4px solid #00ff00;">
+            <h3 style="color: #000000; margin: 0 0 20px 0; font-size: 20px; font-weight: 700;">📋 Información de tu Registro</h3>
+            <div style="color: #333333; line-height: 1.8;">
+              <p class="mobile-text" style="margin: 8px 0; color: #333333;"><strong style="color: #00ff00;">📧 Email:</strong> ${registro.email}</p>
+              <p class="mobile-text" style="margin: 8px 0; color: #333333;"><strong style="color: #00ff00;">🎯 Nivel:</strong> ${registro.experiencia.charAt(0).toUpperCase() + registro.experiencia.slice(1)}</p>
+              <p class="mobile-text" style="margin: 8px 0; color: #333333;"><strong style="color: #00ff00;">👥 Participación:</strong> ${registro.equipo === 'equipo' ? 'Con Equipo' : 'Individual'}</p>
+              ${registro.equipo === 'equipo' && registro.nombreEquipo ? `<p class="mobile-text" style="margin: 8px 0; color: #333333;"><strong style="color: #00ff00;">🏆 Equipo:</strong> ${registro.nombreEquipo}</p>` : ''}
+            </div>
+          </div>
+          
+          <!-- Información del Evento -->
+          <div style="background: #e8f5e8; padding: 25px; border-radius: 12px; margin: 25px 0; border: 2px solid #00ff00;">
+            <h3 style="color: #000000; margin: 0 0 20px 0; font-size: 20px; font-weight: 700;">🚀 Información del Evento</h3>
+            <ul style="color: #333333; line-height: 1.8; margin: 0; padding-left: 20px;">
+              <li class="mobile-text" style="color: #333333;"><strong style="color: #000000;">📅 Fecha:</strong> 27 de Marzo, 2026</li>
+              <li class="mobile-text" style="color: #333333;"><strong style="color: #000000;">📍 Ubicación:</strong> Por confirmar</li>
+              <li class="mobile-text" style="color: #333333;"><strong style="color: #000000;">⏰ Duración:</strong> 48 horas</li>
+              <li class="mobile-text" style="color: #333333;"><strong style="color: #000000;">🏆 Premios:</strong> Más de $50,000 en premios</li>
+            </ul>
+          </div>
+          
+          <!-- Próximos Pasos -->
+          <div style="background: #f0f8ff; padding: 25px; border-radius: 12px; margin: 25px 0; border: 2px solid #0066ff;">
+            <h3 style="color: #000000; margin: 0 0 20px 0; font-size: 20px; font-weight: 700;">📬 ¿Qué sigue ahora?</h3>
+            <p class="mobile-text" style="color: #333333; line-height: 1.7; margin-bottom: 15px;">
+              Te mantendremos informado sobre todos los detalles del evento a medida que los confirmemos. 
+              Recibirás actualizaciones sobre:
+            </p>
+            <ul style="color: #333333; line-height: 1.8; margin: 0; padding-left: 20px;">
+              <li class="mobile-text" style="color: #333333;">📍 Ubicación exacta del evento</li>
+              <li class="mobile-text" style="color: #333333;">📅 Horarios detallados</li>
+              <li class="mobile-text" style="color: #333333;">🍕 Información sobre comidas</li>
+              <li class="mobile-text" style="color: #333333;">💻 Requisitos técnicos</li>
+              <li class="mobile-text" style="color: #333333;">👥 Formación de equipos</li>
+            </ul>
+          </div>
+          
+          <!-- Imagen del Evento -->
+          <div style="text-align: center; margin: 30px 0;">
+            <img src="https://cod3-0.vercel.app/Stage.jpeg" alt="Stage del Evento" style="width: 100%; max-width: 500px; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <p style="color: #666666; font-size: 14px; margin-top: 10px; font-style: italic;">Espacio donde se desarrollará el COD3.0 HACKATHON</p>
+          </div>
+          
+          <!-- Botón de Acción -->
+          <div style="text-align: center; margin: 35px 0;">
+            <a href="https://cod3-0.vercel.app/" class="mobile-button" style="background: #00ff00; color: #000000; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 10px; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);">
+              🌐 Visitar Sitio Web
+            </a>
+          </div>
+          
+          <!-- Mensaje Final -->
+          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center; margin: 25px 0; border: 1px solid #e9ecef;">
+            <p style="color: #333333; line-height: 1.6; margin: 0; font-size: 16px;">
+              <strong style="color: #00ff00;">¡Estamos emocionados de verte en el COD3.0 HACKATHON!</strong><br>
+              Prepárate para una experiencia increíble llena de innovación y aprendizaje.
+            </p>
+          </div>
+          
+          <p style="color: #666666; line-height: 1.6; margin: 20px 0 0 0; font-size: 14px; text-align: center;">
+            Si tienes alguna pregunta, no dudes en contactarnos.<br>
+            <strong style="color: #00ff00;">¡Nos vemos pronto en el hackathon!</strong>
+          </p>
         </div>
         
         <!-- Footer -->
-        <div style="background: #000; padding: 25px; text-align: center; border-top: 2px solid #00ff00;">
-          <div style="color: #00ff00; font-size: 18px; font-weight: bold; margin-bottom: 10px; font-family: 'Courier New', monospace;">COD3.0 HACKATHON</div>
-          <p style="color: #888; margin: 0; font-size: 12px;">
-            © 2026 COD3.0 HACKATHON. Todos los derechos reservados.<br>
-            Construyendo el futuro, un código a la vez.
+        <div style="background: #000000; padding: 25px; text-align: center; border-top: 2px solid #00ff00;">
+          <img src="https://cod3-0.vercel.app/CODEB.png" alt="CODEB Logo" style="width: 80px; height: 80px; margin: 0 auto 15px; display: block;">
+          <div style="color: #00ff00; font-size: 18px; font-weight: bold; margin-bottom: 10px;">COD3.0 HACKATHON</div>
+          <p style="color: #888888; margin: 0; font-size: 12px;">
+            © 2026 COD3.0 HACKATHON. Todos los derechos reservados.
           </p>
         </div>
       </div>
