@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useSignMessage } from 'wagmi';
@@ -20,9 +20,9 @@ export default function RainbowKitAuth({ onAuthSuccess }: RainbowKitAuthProps) {
     if (isConnected && address) {
       handleAuthentication();
     }
-  }, [isConnected, address]);
+  }, [isConnected, address, handleAuthentication]);
 
-  const handleAuthentication = async () => {
+  const handleAuthentication = useCallback(async () => {
     if (!address) return;
 
     setError('');
@@ -64,7 +64,7 @@ export default function RainbowKitAuth({ onAuthSuccess }: RainbowKitAuthProps) {
     } finally {
       setIsAuthenticating(false);
     }
-  };
+  }, [address, signMessageAsync, onAuthSuccess]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-black text-white p-4">

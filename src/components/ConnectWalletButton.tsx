@@ -6,19 +6,12 @@ import { motion } from 'framer-motion';
 interface ConnectWalletButtonProps {
   className?: string;
   showBalance?: boolean;
-  size?: 'sm' | 'md' | 'lg';
 }
 
 export default function ConnectWalletButton({ 
   className = '', 
-  showBalance = false,
-  size = 'md'
+  showBalance = false
 }: ConnectWalletButtonProps) {
-  const sizeClasses = {
-    sm: 'text-sm px-4 py-2',
-    md: 'text-base px-6 py-3',
-    lg: 'text-lg px-8 py-4'
-  };
 
   return (
     <motion.div
