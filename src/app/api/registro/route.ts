@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { RegistroHackathon } from '@/lib/supabase';
-import { Resend } from 'resend';
+// import { Resend } from 'resend'; // No longer needed with email queue
 import { queueEmail } from '@/lib/email-queue';
 
 export async function POST(request: NextRequest) {
@@ -251,7 +251,7 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
               <li class="mobile-text" style="color: #333333;"><strong style="color: #000000;">🏆 Premios:</strong> Más de $50,000 en premios</li>
             </ul>
             </div>
-
+            
           <!-- Próximos Pasos -->
           <div style="background: #f0f8ff; padding: 25px; border-radius: 12px; margin: 25px 0; border: 2px solid #0066ff;">
             <h3 style="color: #000000; margin: 0 0 20px 0; font-size: 20px; font-weight: 700;">📬 ¿Qué sigue ahora?</h3>

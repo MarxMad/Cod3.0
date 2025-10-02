@@ -1,7 +1,7 @@
 // Configuración de wallets autorizadas para el panel de administración
 // IMPORTANTE: Agrega aquí las direcciones de tus wallets reales
 
-export const ADMIN_WALLETS = [
+export const ADMIN_WALLETS: string[] = [
   // Ejemplo de cómo agregar tu wallet:
   // '0x1234567890123456789012345678901234567890',
   // '0x0987654321098765432109876543210987654321',
