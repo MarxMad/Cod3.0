@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import WalletAuth from '@/components/WalletAuth';
+import RainbowKitAuth from '@/components/RainbowKitAuth';
 
 interface Registro {
   id: string;
@@ -153,7 +153,7 @@ export default function AdminPage() {
 
   // Si no está autenticado, mostrar pantalla de login
   if (!isAuthenticated) {
-    return <WalletAuth onAuthSuccess={handleAuthSuccess} />;
+    return <RainbowKitAuth onAuthSuccess={handleAuthSuccess} />;
   }
 
   return (

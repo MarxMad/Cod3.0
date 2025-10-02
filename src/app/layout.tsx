@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import '@rainbow-me/rainbowkit/styles.css';
+import Web3Provider from '@/components/Web3Provider';
 
 export const metadata: Metadata = {
   title: "COD3.0 Hackathon - El evento de programación más innovador del año",
@@ -74,7 +76,9 @@ export default function RootLayout({
         <meta name="msapplication-TileImage" content="/favicon-192x192.png" />
       </head>
       <body className="antialiased">
-        {children}
+        <Web3Provider>
+          {children}
+        </Web3Provider>
       </body>
     </html>
   );
