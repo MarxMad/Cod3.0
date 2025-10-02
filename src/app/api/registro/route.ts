@@ -188,7 +188,7 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
   console.log('🔑 RESEND_API_KEY configurada:', !!process.env.RESEND_API_KEY);
   console.log('📧 Email destino:', registro.email);
   
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  // const resend = new Resend(process.env.RESEND_API_KEY); // No longer needed with email queue
   
   const emailContent = `
     <!DOCTYPE html>

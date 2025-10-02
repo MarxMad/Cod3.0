@@ -40,9 +40,9 @@ export default function WalletAuth({ onAuthSuccess }: WalletAuthProps) {
       // Solicitar acceso a la cuenta
       const accounts = await window.ethereum.request({
         method: 'eth_requestAccounts',
-      });
+      }) as string[];
 
-      if (accounts.length === 0) {
+      if (!Array.isArray(accounts) || accounts.length === 0) {
         setError('No se pudo conectar a la wallet');
         return;
       }
