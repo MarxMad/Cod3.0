@@ -58,7 +58,7 @@ export default function AdminPage() {
 
   useEffect(() => {
     loadRegistros();
-  }, [filters]);
+  }, [filters]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Seleccionar/deseleccionar todos
   const toggleSelectAll = () => {

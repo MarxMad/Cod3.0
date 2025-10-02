@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
       console.log('🔗 Intentando conectar con Supabase...');
       
       // Probar conexión primero
-      const { data: testData, error: testError } = await supabase
+      const { error: testError } = await supabase
         .from('registros_hackathon')
         .select('count')
         .limit(1);
@@ -227,8 +227,8 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
             <p class="mobile-text" style="color: #333333; line-height: 1.7; margin-bottom: 25px; font-size: 18px;">
               🎉 <strong>¡Felicidades!</strong> Tu registro para el <strong style="color: #00ff00;">COD3.0 HACKATHON</strong> ha sido confirmado exitosamente.
             </p>
-          </div>
-          
+            </div>
+            
           <!-- Información Básica -->
           <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 25px 0; border-left: 4px solid #00ff00;">
             <h3 style="color: #000000; margin: 0 0 20px 0; font-size: 20px; font-weight: 700;">📋 Información de tu Registro</h3>
@@ -237,9 +237,9 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
               <p class="mobile-text" style="margin: 8px 0; color: #333333;"><strong style="color: #00ff00;">🎯 Nivel:</strong> ${registro.experiencia.charAt(0).toUpperCase() + registro.experiencia.slice(1)}</p>
               <p class="mobile-text" style="margin: 8px 0; color: #333333;"><strong style="color: #00ff00;">👥 Participación:</strong> ${registro.equipo === 'equipo' ? 'Con Equipo' : 'Individual'}</p>
               ${registro.equipo === 'equipo' && registro.nombreEquipo ? `<p class="mobile-text" style="margin: 8px 0; color: #333333;"><strong style="color: #00ff00;">🏆 Equipo:</strong> ${registro.nombreEquipo}</p>` : ''}
+              </div>
             </div>
-          </div>
-          
+            
           <!-- Información del Evento -->
           <div style="background: #e8f5e8; padding: 25px; border-radius: 12px; margin: 25px 0; border: 2px solid #00ff00;">
             <h3 style="color: #000000; margin: 0 0 20px 0; font-size: 20px; font-weight: 700;">🚀 Información del Evento</h3>
@@ -249,8 +249,8 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
               <li class="mobile-text" style="color: #333333;"><strong style="color: #000000;">⏰ Duración:</strong> 48 horas</li>
               <li class="mobile-text" style="color: #333333;"><strong style="color: #000000;">🏆 Premios:</strong> Más de $50,000 en premios</li>
             </ul>
-          </div>
-          
+            </div>
+
           <!-- Próximos Pasos -->
           <div style="background: #f0f8ff; padding: 25px; border-radius: 12px; margin: 25px 0; border: 2px solid #0066ff;">
             <h3 style="color: #000000; margin: 0 0 20px 0; font-size: 20px; font-weight: 700;">📬 ¿Qué sigue ahora?</h3>
@@ -264,9 +264,9 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
               <li class="mobile-text" style="color: #333333;">🍕 Información sobre comidas</li>
               <li class="mobile-text" style="color: #333333;">💻 Requisitos técnicos</li>
               <li class="mobile-text" style="color: #333333;">👥 Formación de equipos</li>
-            </ul>
-          </div>
-          
+              </ul>
+            </div>
+            
           <!-- Imagen del Evento -->
           <div style="text-align: center; margin: 30px 0;">
             <img src="https://cod3-0.vercel.app/Stage.jpeg" alt="Stage del Evento" style="width: 100%; max-width: 500px; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
@@ -274,24 +274,24 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
           </div>
           
           <!-- Botón de Acción -->
-          <div style="text-align: center; margin: 35px 0;">
+            <div style="text-align: center; margin: 35px 0;">
             <a href="https://cod3-0.vercel.app/" class="mobile-button" style="background: #00ff00; color: #000000; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 10px; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);">
-              🌐 Visitar Sitio Web
-            </a>
-          </div>
-          
-          <!-- Mensaje Final -->
+                🌐 Visitar Sitio Web
+              </a>
+            </div>
+            
+            <!-- Mensaje Final -->
           <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center; margin: 25px 0; border: 1px solid #e9ecef;">
             <p style="color: #333333; line-height: 1.6; margin: 0; font-size: 16px;">
-              <strong style="color: #00ff00;">¡Estamos emocionados de verte en el COD3.0 HACKATHON!</strong><br>
+                <strong style="color: #00ff00;">¡Estamos emocionados de verte en el COD3.0 HACKATHON!</strong><br>
               Prepárate para una experiencia increíble llena de innovación y aprendizaje.
-            </p>
-          </div>
-          
+              </p>
+            </div>
+            
           <p style="color: #666666; line-height: 1.6; margin: 20px 0 0 0; font-size: 14px; text-align: center;">
             Si tienes alguna pregunta, no dudes en contactarnos.<br>
-            <strong style="color: #00ff00;">¡Nos vemos pronto en el hackathon!</strong>
-          </p>
+              <strong style="color: #00ff00;">¡Nos vemos pronto en el hackathon!</strong>
+            </p>
         </div>
         
         <!-- Footer -->

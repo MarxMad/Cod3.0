@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import { 
   Users, 
   Trophy, 
@@ -94,7 +93,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(nextImage, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextImage]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const hackathonDate = new Date('2026-03-27T09:00:00');
   const timeLeft = hackathonDate.getTime() - currentTime.getTime();
