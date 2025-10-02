@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { emailQueue } from '@/lib/email-queue';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -12,7 +13,9 @@ export async function POST(request: NextRequest) {
     console.log('👥 Destinatarios:', recipients.length);
     
     const results = [];
+    const queuedEmails = [];
     
+    // Agregar todos los emails a la cola
     for (const recipient of recipients) {
       try {
         let emailContent = '';
@@ -40,26 +43,25 @@ export async function POST(request: NextRequest) {
             throw new Error('Tipo de email no válido');
         }
         
-        const result = await resend.emails.send({
+        // Agregar a la cola en lugar de enviar directamente
+        const jobId = emailQueue.addEmail({
           from: 'COD3.0 <hola@code3mx.com>',
-          to: [recipient.email],
+          to: recipient.email,
           subject: subject,
           html: emailContent,
+          maxRetries: 3
         });
         
-        results.push({
+        queuedEmails.push({
           email: recipient.email,
-          success: true,
-          emailId: result.data?.id,
+          jobId: jobId,
+          status: 'queued'
         });
         
-        console.log(`✅ Email enviado a: ${recipient.email}`);
-        
-        // Pequeña pausa para evitar rate limiting
-        await new Promise(resolve => setTimeout(resolve, 100));
+        console.log(`📧 Email agregado a la cola: ${recipient.email} (Job: ${jobId})`);
         
       } catch (error) {
-        console.error(`❌ Error enviando a ${recipient.email}:`, error);
+        console.error(`❌ Error preparando email para ${recipient.email}:`, error);
         results.push({
           email: recipient.email,
           success: false,
@@ -68,19 +70,28 @@ export async function POST(request: NextRequest) {
       }
     }
     
+    // Obtener estado de la cola
+    const queueStatus = emailQueue.getQueueStatus();
+    
     const successCount = results.filter(r => r.success).length;
     const failureCount = results.filter(r => !r.success).length;
+    const queuedCount = queuedEmails.length;
     
-    console.log(`📊 Resumen: ${successCount} exitosos, ${failureCount} fallidos`);
+    console.log(`📊 Resumen: ${queuedCount} emails en cola, ${successCount} exitosos, ${failureCount} fallidos`);
     
     return NextResponse.json({
       success: true,
-      message: `Emails enviados: ${successCount} exitosos, ${failureCount} fallidos`,
-      results: results,
+      message: `Emails agregados a la cola: ${queuedCount} emails. Los emails se enviarán automáticamente respetando el rate limit de Resend.`,
+      results: {
+        queued: queuedEmails,
+        failed: results
+      },
       summary: {
         total: recipients.length,
+        queued: queuedCount,
         successful: successCount,
         failed: failureCount,
+        queueStatus: queueStatus
       }
     });
     

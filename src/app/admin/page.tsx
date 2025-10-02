@@ -28,6 +28,7 @@ export default function AdminPage() {
   const [customSubject, setCustomSubject] = useState('');
   const [customContent, setCustomContent] = useState('');
   const [sending, setSending] = useState(false);
+  const [queueStatus, setQueueStatus] = useState({ pending: 0, processing: false, totalProcessed: 'N/A' });
   const [filters, setFilters] = useState({
     experiencia: '',
     equipo: '',
@@ -73,9 +74,28 @@ export default function AdminPage() {
     }
   };
 
+  // Cargar estado de la cola
+  const loadQueueStatus = async () => {
+    try {
+      const response = await fetch('/api/email-queue-status');
+      const data = await response.json();
+      
+      if (data.success) {
+        setQueueStatus(data.queueStatus);
+      }
+    } catch (error) {
+      console.error('Error cargando estado de la cola:', error);
+    }
+  };
+
   useEffect(() => {
     if (isAuthenticated) {
       loadRegistros();
+      loadQueueStatus();
+      
+      // Actualizar estado de la cola cada 5 segundos
+      const interval = setInterval(loadQueueStatus, 5000);
+      return () => clearInterval(interval);
     }
   }, [filters, isAuthenticated]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -117,8 +137,9 @@ export default function AdminPage() {
       const data = await response.json();
       
       if (data.success) {
-        alert(`Emails enviados: ${data.summary.successful} exitosos, ${data.summary.failed} fallidos`);
+        alert(`Emails agregados a la cola: ${data.summary.queued} emails. Los emails se enviarán automáticamente respetando el rate limit de Resend.`);
         setSelectedRegistros([]);
+        loadQueueStatus(); // Actualizar estado de la cola
       } else {
         alert('Error enviando emails: ' + data.error);
       }
@@ -168,6 +189,19 @@ export default function AdminPage() {
               >
                 Cerrar sesión
               </button>
+              
+              {/* Estado de la cola de emails */}
+              <div className="mt-4 p-3 bg-gray-800 rounded-lg">
+                <div className="text-sm text-gray-400 mb-1">📧 Cola de Emails</div>
+                <div className="text-xs">
+                  <div className="flex items-center gap-2">
+                    <div className={`w-2 h-2 rounded-full ${queueStatus.processing ? 'bg-yellow-400 animate-pulse' : queueStatus.pending > 0 ? 'bg-blue-400' : 'bg-green-400'}`}></div>
+                    <span className="text-gray-300">
+                      {queueStatus.processing ? 'Procesando...' : queueStatus.pending > 0 ? `${queueStatus.pending} pendientes` : 'Cola vacía'}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>

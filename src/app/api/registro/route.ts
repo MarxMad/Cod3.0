@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { RegistroHackathon } from '@/lib/supabase';
 import { Resend } from 'resend';
+import { queueEmail } from '@/lib/email-queue';
 
 export async function POST(request: NextRequest) {
   try {
@@ -308,41 +309,26 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
   `;
 
   try {
-    console.log('📤 Enviando email con Resend...');
+    console.log('📤 Agregando email a la cola...');
     
-    // Usar el email oficial hola@code3mx.com
-    let fromEmail = 'COD3.0 <hola@code3mx.com>';
-    let result;
+    // Usar la cola de emails para evitar rate limiting
+    const jobId = await queueEmail(
+      'COD3.0 <hola@code3mx.com>',
+      registro.email,
+      '¡Registro Confirmado - COD3.0 HACKATHON!',
+      emailContent
+    );
     
-    try {
-      console.log('📤 Enviando email con hola@code3mx.com...');
-      result = await resend.emails.send({
-        from: fromEmail,
-        to: [registro.email],
-        subject: '¡Registro Confirmado - COD3.0 HACKATHON!',
-        html: emailContent,
-      });
-      console.log('✅ Email enviado con hola@code3mx.com');
-    } catch (emailError) {
-      console.log('⚠️ Error con hola@code3mx.com, usando respaldo...');
-      console.log('📋 Error:', emailError instanceof Error ? emailError.message : String(emailError));
-      
-      fromEmail = 'COD3.0 <onboarding@resend.dev>';
-      result = await resend.emails.send({
-        from: fromEmail,
-        to: [registro.email],
-        subject: '¡Registro Confirmado - COD3.0 HACKATHON!',
-        html: emailContent,
-      });
-      console.log('✅ Email enviado con onboarding@resend.dev');
-    }
+    console.log('✅ Email agregado a la cola exitosamente');
+    console.log('📧 Job ID:', jobId);
     
-    console.log('✅ Email de confirmación enviado exitosamente a:', registro.email);
-    console.log('📧 ID del email:', result.data?.id);
-    
-    return result;
+    return {
+      data: { id: jobId },
+      success: true,
+      message: 'Email agregado a la cola. Se enviará automáticamente.'
+    };
   } catch (error) {
-    console.error('❌ Error al enviar email:', error);
+    console.error('❌ Error agregando email a la cola:', error);
     console.error('📋 Tipo de error:', typeof error);
     console.error('📋 Error completo:', JSON.stringify(error, null, 2));
     throw error;
