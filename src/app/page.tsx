@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { 
@@ -81,9 +81,9 @@ export default function Home() {
     }
   ];
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
-  };
+  }, [galleryImages.length]);
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
@@ -93,7 +93,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(nextImage, 5000);
     return () => clearInterval(interval);
-  }, [nextImage]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [nextImage]);
 
   const hackathonDate = new Date('2026-03-27T09:00:00');
   const timeLeft = hackathonDate.getTime() - currentTime.getTime();

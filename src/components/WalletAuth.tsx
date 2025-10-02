@@ -9,7 +9,9 @@ interface WalletAuthProps {
 
 declare global {
   interface Window {
-    ethereum?: any;
+    ethereum?: {
+      request: (args: { method: string; params?: any[] }) => Promise<any>;
+    };
   }
 }
 
@@ -82,9 +84,10 @@ export default function WalletAuth({ onAuthSuccess }: WalletAuthProps) {
         console.error('❌ Error de autenticación:', data.error);
       }
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('❌ Error conectando wallet:', err);
-      setError(err.message || 'Error conectando la wallet');
+      const errorMessage = err instanceof Error ? err.message : 'Error conectando la wallet';
+      setError(errorMessage);
     } finally {
       setIsConnecting(false);
     }

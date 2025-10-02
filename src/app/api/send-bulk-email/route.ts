@@ -98,7 +98,7 @@ export async function POST(request: NextRequest) {
 }
 
 // Función para generar email de bienvenida
-function generateWelcomeEmail(recipient: { nombre: string; email: string }, customData: { updates?: string[] }) {
+function generateWelcomeEmail(recipient: { nombre: string; email: string }, _customData: { updates?: string[] }) {
   return `
     <!DOCTYPE html>
     <html lang="es">
@@ -144,7 +144,7 @@ function generateWelcomeEmail(recipient: { nombre: string; email: string }, cust
 }
 
 // Función para generar email de recordatorio
-function generateReminderEmail(recipient: { nombre: string; email: string }, customData: { updates?: string[] }) {
+function generateReminderEmail(recipient: { nombre: string; email: string }, _customData: { updates?: string[] }) {
   return `
     <!DOCTYPE html>
     <html lang="es">

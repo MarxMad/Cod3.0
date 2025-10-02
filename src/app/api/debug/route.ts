@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     console.log('🔍 Iniciando diagnóstico del sistema...');
     
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     
     try {
       console.log('🔗 Probando conexión con Supabase...');
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('registros_hackathon')
         .select('count')
         .limit(1);
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
     // Verificar estructura de la tabla
     let tableStructure = null;
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('registros_hackathon')
         .select('*')
         .limit(0);
