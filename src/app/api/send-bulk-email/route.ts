@@ -24,11 +24,11 @@ export async function POST(request: NextRequest) {
         // Generar contenido basado en el tipo de email
         switch (emailType) {
           case 'welcome':
-            emailContent = generateWelcomeEmail(recipient, customData);
+            emailContent = generateWelcomeEmail(recipient);
             subject = '¡Bienvenido al COD3.0 HACKATHON!';
             break;
           case 'reminder':
-            emailContent = generateReminderEmail(recipient, customData);
+            emailContent = generateReminderEmail(recipient);
             subject = 'Recordatorio: COD3.0 HACKATHON - 27 de Marzo';
             break;
           case 'update':
@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
 }
 
 // Función para generar email de bienvenida
-function generateWelcomeEmail(recipient: { nombre: string; email: string }, _customData: { updates?: string[] }) {
+function generateWelcomeEmail(recipient: { nombre: string; email: string }) {
   return `
     <!DOCTYPE html>
     <html lang="es">
@@ -155,7 +155,7 @@ function generateWelcomeEmail(recipient: { nombre: string; email: string }, _cus
 }
 
 // Función para generar email de recordatorio
-function generateReminderEmail(recipient: { nombre: string; email: string }, _customData: { updates?: string[] }) {
+function generateReminderEmail(recipient: { nombre: string; email: string }) {
   return `
     <!DOCTYPE html>
     <html lang="es">
