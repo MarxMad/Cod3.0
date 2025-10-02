@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import WalletAuth from '@/components/WalletAuth';
 
 interface Registro {
   id: string;
@@ -17,6 +18,9 @@ interface Registro {
 }
 
 export default function AdminPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userAddress, setUserAddress] = useState('');
+  const [sessionToken, setSessionToken] = useState('');
   const [registros, setRegistros] = useState<Registro[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedRegistros, setSelectedRegistros] = useState<string[]>([]);
@@ -32,13 +36,26 @@ export default function AdminPage() {
     fecha_hasta: ''
   });
 
+  // Manejar autenticación exitosa
+  const handleAuthSuccess = (address: string, token: string) => {
+    setUserAddress(address);
+    setSessionToken(token);
+    setIsAuthenticated(true);
+    setLoading(false);
+  };
+
   // Cargar registros
   const loadRegistros = async () => {
+    if (!isAuthenticated) return;
+    
     try {
       setLoading(true);
       const response = await fetch('/api/get-registros', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${sessionToken}`
+        },
         body: JSON.stringify({ filters })
       });
       
@@ -57,8 +74,10 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
-    loadRegistros();
-  }, [filters]); // eslint-disable-line react-hooks/exhaustive-deps
+    if (isAuthenticated) {
+      loadRegistros();
+    }
+  }, [filters, isAuthenticated]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Seleccionar/deseleccionar todos
   const toggleSelectAll = () => {
@@ -111,6 +130,11 @@ export default function AdminPage() {
     }
   };
 
+  // Si no está autenticado, mostrar pantalla de login
+  if (!isAuthenticated) {
+    return <WalletAuth onAuthSuccess={handleAuthSuccess} />;
+  }
+
   return (
     <div className="min-h-screen bg-black text-white p-6">
       <div className="max-w-7xl mx-auto">
@@ -120,12 +144,32 @@ export default function AdminPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8"
         >
-          <h1 className="text-4xl font-bold text-green-400 mb-4">
-            📧 Panel de Administración de Emails
-          </h1>
-          <p className="text-gray-300">
-            Gestiona y envía correos personalizados a los participantes
-          </p>
+          <div className="flex justify-between items-center mb-4">
+            <div>
+              <h1 className="text-4xl font-bold text-green-400 mb-2">
+                📧 Panel de Administración de Emails
+              </h1>
+              <p className="text-gray-300">
+                Gestiona y envía correos personalizados a los participantes
+              </p>
+            </div>
+            <div className="text-right">
+              <div className="text-sm text-gray-400 mb-1">Conectado como:</div>
+              <div className="text-green-400 font-mono text-sm">
+                {userAddress.slice(0, 6)}...{userAddress.slice(-4)}
+              </div>
+              <button
+                onClick={() => {
+                  setIsAuthenticated(false);
+                  setUserAddress('');
+                  setSessionToken('');
+                }}
+                className="text-red-400 hover:text-red-300 text-sm mt-1"
+              >
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
         </motion.div>
 
         {/* Filtros */}
