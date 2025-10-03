@@ -12,6 +12,11 @@ interface EthereumProvider {
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
 }
 
+// Type for window with ethereum
+interface WindowWithEthereum extends Window {
+  ethereum?: EthereumProvider;
+}
+
 export default function WalletAuth({ onAuthSuccess }: WalletAuthProps) {
   const [isConnecting, setIsConnecting] = useState(false);
   const [error, setError] = useState('');
@@ -19,13 +24,13 @@ export default function WalletAuth({ onAuthSuccess }: WalletAuthProps) {
 
   useEffect(() => {
     // Verificar si MetaMask está instalado
-    if (typeof window !== 'undefined' && (window as any).ethereum) {
+    if (typeof window !== 'undefined' && (window as WindowWithEthereum).ethereum) {
       setIsWalletInstalled(true);
     }
   }, []);
 
   const connectWallet = async () => {
-    const ethereum = (window as any).ethereum as EthereumProvider;
+    const ethereum = (window as WindowWithEthereum).ethereum;
     
     if (!ethereum) {
       setError('MetaMask no está instalado. Por favor, instálalo desde https://metamask.io');
