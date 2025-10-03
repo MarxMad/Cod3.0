@@ -7,13 +7,9 @@ interface WalletAuthProps {
   onAuthSuccess: (address: string, sessionToken: string) => void;
 }
 
-// Extend Window interface for ethereum property
-declare global {
-  interface Window {
-    ethereum?: {
-      request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
-    };
-  }
+// Type for ethereum provider
+interface EthereumProvider {
+  request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
 }
 
 export default function WalletAuth({ onAuthSuccess }: WalletAuthProps) {
@@ -23,13 +19,15 @@ export default function WalletAuth({ onAuthSuccess }: WalletAuthProps) {
 
   useEffect(() => {
     // Verificar si MetaMask está instalado
-    if (typeof window !== 'undefined' && window.ethereum) {
+    if (typeof window !== 'undefined' && (window as any).ethereum) {
       setIsWalletInstalled(true);
     }
   }, []);
 
   const connectWallet = async () => {
-    if (!window.ethereum) {
+    const ethereum = (window as any).ethereum as EthereumProvider;
+    
+    if (!ethereum) {
       setError('MetaMask no está instalado. Por favor, instálalo desde https://metamask.io');
       return;
     }
@@ -39,7 +37,7 @@ export default function WalletAuth({ onAuthSuccess }: WalletAuthProps) {
       setError('');
 
       // Solicitar acceso a la cuenta
-      const accounts = await window.ethereum.request({
+      const accounts = await ethereum.request({
         method: 'eth_requestAccounts',
       }) as string[];
 
@@ -55,7 +53,7 @@ export default function WalletAuth({ onAuthSuccess }: WalletAuthProps) {
       const message = `Autenticación COD3.0 Admin Panel\n\nWallet: ${address}\nTimestamp: ${Date.now()}\n\nFirma este mensaje para acceder al panel de administración.`;
       
       // Solicitar firma
-      const signature = await window.ethereum.request({
+      const signature = await ethereum.request({
         method: 'personal_sign',
         params: [message, address],
       });
