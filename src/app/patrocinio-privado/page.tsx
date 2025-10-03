@@ -116,7 +116,7 @@ const SponsorshipProposal = () => {
             </div>
             <div className="sponsor-item">
               <Image 
-                src="/Aliados/goblin - Logo-02.PNG" 
+                src="/Aliados/goblin-logo-02.PNG" 
                 alt="Goblin" 
                 width={150} 
                 height={80}
@@ -166,7 +166,7 @@ const SponsorshipProposal = () => {
             </div>
             <div className="sponsor-item">
               <Image 
-                src="/Aliados/restake watch.PNG" 
+                src="/Aliados/restake-watch.PNG" 
                 alt="Restake Watch" 
                 width={150} 
                 height={80}
