@@ -18,3 +18,4 @@ export const customChains = {
 export const customWallets = [
   // Puedes agregar wallets personalizadas aquí
 ];
+

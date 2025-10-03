@@ -134,3 +134,7 @@ Tu aplicación ahora tiene una experiencia de conexión de wallets profesional y
 4. Personaliza el tema si es necesario
 
 ¡Disfruta de tu nueva experiencia Web3! 🚀
+
+
+
+

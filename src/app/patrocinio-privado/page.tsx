@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import './SponsorshipProposal.css';
 
 const SponsorshipProposal = () => {
@@ -11,7 +12,7 @@ const SponsorshipProposal = () => {
       <div className="sponsor-container">
         <div className="sponsor-header">
           <div className="logo-container">
-            <img src="/CODEB.png" alt="CODEB Logo" className="main-logo" />
+            <Image src="/CODEB.png" alt="CODEB Logo" className="main-logo" width={200} height={100} />
           </div>
           <div className="sponsor-logo">&lt;COD3.0&gt;</div>
           <div className="sponsor-subtitle">CODE TRES PUNTO CERO</div>
@@ -31,24 +32,168 @@ const SponsorshipProposal = () => {
         <h2>&lt;GALERÍA_DEL_EVENTO/&gt;</h2>
         <div className="gallery">
           <div className="gallery-item">
-            <img src="/Espectacular.jpeg" alt="Espectacular WTC CDMX" className="gallery-image" />
+            <Image src="/Espectacular.jpeg" alt="Espectacular WTC CDMX" className="gallery-image" width={400} height={300} />
             <div className="gallery-caption">Espectacular WTC CDMX - 70m x 10m</div>
           </div>
           <div className="gallery-item">
-            <img src="/Led.jpeg" alt="Panel LED" className="gallery-image" />
+            <Image src="/Led.jpeg" alt="Panel LED" className="gallery-image" width={400} height={300} />
             <div className="gallery-caption">Panel LED - 100cm x 50cm</div>
           </div>
           <div className="gallery-item">
-            <img src="/Letra.jpeg" alt="Letra 400K30" className="gallery-image" />
+            <Image src="/Letra.jpeg" alt="Letra 400K30" className="gallery-image" width={400} height={300} />
             <div className="gallery-caption">Letra 400K30 - Iluminación LED</div>
           </div>
           <div className="gallery-item">
-            <img src="/Stage.jpeg" alt="Stage Principal" className="gallery-image" />
+            <Image src="/Stage.jpeg" alt="Stage Principal" className="gallery-image" width={400} height={300} />
             <div className="gallery-caption">Stage Principal - Evento Exterior</div>
           </div>
           <div className="gallery-item">
-            <img src="/Stage2.jpeg" alt="Stage Interior" className="gallery-image" />
+            <Image src="/Stage2.jpeg" alt="Stage Interior" className="gallery-image" width={400} height={300} />
             <div className="gallery-caption">Stage Interior - WEB3 HACKATHON</div>
+          </div>
+        </div>
+
+        <h2>&lt;PATROCINADORES_Y_ALIADOS/&gt;</h2>
+        
+        {/* Patrocinadores Platinum */}
+        <div className="sponsors-section">
+          <h3>&gt; PATROCINADORES PLATINUM</h3>
+          <div className="sponsors-grid platinum">
+            <div className="sponsor-item">
+              <Image 
+                src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                alt="Starlink" 
+                width={200} 
+                height={100}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">Starlink</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Patrocinadores Oro */}
+        <div className="sponsors-section">
+          <h3>&gt; PATROCINADORES ORO</h3>
+          <div className="sponsors-grid gold">
+            <p className="no-sponsors">Próximamente...</p>
+          </div>
+        </div>
+
+        {/* Aliados */}
+        <div className="sponsors-section">
+          <h3>&gt; ALIADOS ESTRATÉGICOS</h3>
+          <div className="sponsors-grid allies">
+            <div className="sponsor-item">
+              <Image 
+                src="/Aliados/ANGULO.png" 
+                alt="Ángulo" 
+                width={150} 
+                height={80}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">Ángulo</p>
+            </div>
+            <div className="sponsor-item">
+              <Image 
+                src="/Aliados/CHIPIPAY.svg" 
+                alt="ChipiPay" 
+                width={150} 
+                height={80}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">ChipiPay</p>
+            </div>
+            <div className="sponsor-item">
+              <Image 
+                src="/Aliados/FOUNDERS.png" 
+                alt="Founders" 
+                width={150} 
+                height={80}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">Founders</p>
+            </div>
+            <div className="sponsor-item">
+              <Image 
+                src="/Aliados/goblin - Logo-02.PNG" 
+                alt="Goblin" 
+                width={150} 
+                height={80}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">Goblin</p>
+            </div>
+            <div className="sponsor-item">
+              <Image 
+                src="/Aliados/HERDAO.png" 
+                alt="HERDAO" 
+                width={150} 
+                height={80}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">HERDAO</p>
+            </div>
+            <div className="sponsor-item">
+              <Image 
+                src="/Aliados/Logo_ww_blanco.png" 
+                alt="WomanWay" 
+                width={150} 
+                height={80}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">WomanWay</p>
+            </div>
+            <div className="sponsor-item">
+              <Image 
+                src="/Aliados/MEDIOLANO.svg" 
+                alt="Mediolano" 
+                width={150} 
+                height={80}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">Mediolano</p>
+            </div>
+            <div className="sponsor-item">
+              <Image 
+                src="/Aliados/OMIS.jpeg" 
+                alt="OMIS" 
+                width={150} 
+                height={80}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">OMIS</p>
+            </div>
+            <div className="sponsor-item">
+              <Image 
+                src="/Aliados/restake watch.PNG" 
+                alt="Restake Watch" 
+                width={150} 
+                height={80}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">Restake Watch</p>
+            </div>
+            <div className="sponsor-item">
+              <Image 
+                src="/Aliados/UnionCampesinaDemocratica.jpeg" 
+                alt="Unión Campesina Democrática" 
+                width={150} 
+                height={80}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">Unión Campesina Democrática</p>
+            </div>
+            <div className="sponsor-item">
+              <Image 
+                src="/Aliados/WomanWay.png" 
+                alt="WomanWay" 
+                width={150} 
+                height={80}
+                className="sponsor-logo"
+              />
+              <p className="sponsor-name">WomanWay</p>
+            </div>
           </div>
         </div>
 

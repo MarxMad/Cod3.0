@@ -7,7 +7,14 @@ interface WalletAuthProps {
   onAuthSuccess: (address: string, sessionToken: string) => void;
 }
 
-// Removed global declaration as it conflicts with RainbowKit's types
+// Extend Window interface for ethereum property
+declare global {
+  interface Window {
+    ethereum?: {
+      request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
+    };
+  }
+}
 
 export default function WalletAuth({ onAuthSuccess }: WalletAuthProps) {
   const [isConnecting, setIsConnecting] = useState(false);

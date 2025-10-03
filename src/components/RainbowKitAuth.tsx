@@ -15,13 +15,6 @@ export default function RainbowKitAuth({ onAuthSuccess }: RainbowKitAuthProps) {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [error, setError] = useState('');
 
-  // Verificar autenticación cuando se conecte la wallet
-  useEffect(() => {
-    if (isConnected && address) {
-      handleAuthentication();
-    }
-  }, [isConnected, address, handleAuthentication]);
-
   const handleAuthentication = useCallback(async () => {
     if (!address) return;
 
@@ -65,6 +58,13 @@ export default function RainbowKitAuth({ onAuthSuccess }: RainbowKitAuthProps) {
       setIsAuthenticating(false);
     }
   }, [address, signMessageAsync, onAuthSuccess]);
+
+  // Verificar autenticación cuando se conecte la wallet
+  useEffect(() => {
+    if (isConnected && address) {
+      handleAuthentication();
+    }
+  }, [isConnected, address, handleAuthentication]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-black text-white p-4">
