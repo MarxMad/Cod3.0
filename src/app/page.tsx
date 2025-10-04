@@ -448,85 +448,95 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-black/20 relative">
-        <div className="max-w-7xl mx-auto">
+      {/* Combined About & Schedule Section */}
+      <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-green-900/10 to-black relative overflow-hidden">
+        {/* Enhanced Background Effects */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Animated Grid Pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.03)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse" />
+          
+          {/* Floating Particles */}
+          {[...Array(25)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-green-400 rounded-full"
+              style={{
+                left: `${(i * 4) % 100}%`,
+                top: `${(i * 3) % 100}%`,
+              }}
+              animate={{
+                opacity: [0, 1, 0],
+                scale: [0, 1, 0],
+                y: [-20, 20, -20],
+              }}
+              transition={{
+                duration: 4 + (i * 0.3) % 3,
+                repeat: Infinity,
+                delay: (i * 0.2) % 2,
+              }}
+            />
+          ))}
+          
+          {/* Large Glow Effects */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-400/5 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-400/5 rounded-full blur-3xl animate-pulse" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Main Header */}
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-20 relative"
+            className="text-center mb-24 relative"
           >
-            {/* Animated Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              {[...Array(15)].map((_, i) => (
             <motion.div
-                  key={i}
-                  className="absolute w-2 h-2 bg-green-400 rounded-full"
-                  style={{
-                    left: `${(i * 7) % 100}%`,
-                    top: `${(i * 5) % 100}%`,
-                  }}
-                  animate={{
-                    opacity: [0, 1, 0],
-                    scale: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 3 + (i * 0.2) % 2,
-                    repeat: Infinity,
-                    delay: (i * 0.3) % 2,
-                  }}
-                />
-              ))}
-            </div>
-
-            <motion.div
-              className="relative z-10 inline-flex items-center space-x-3 bg-gradient-to-r from-green-500/10 via-green-400/20 to-green-500/10 text-green-400 px-8 py-4 rounded-full mb-8 border border-green-400/30 backdrop-blur-sm"
+              className="relative z-10 inline-flex items-center space-x-4 bg-gradient-to-r from-green-500/20 via-green-400/30 to-green-500/20 text-green-400 px-10 py-5 rounded-full mb-10 border-2 border-green-400/40 backdrop-blur-sm"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0,255,0,0.3)" }}
             >
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              <span className="font-bold text-lg tracking-wider">¿QUÉ ES COD3.0?</span>
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
+              <span className="font-black text-xl tracking-widest">¿QUÉ ES COD3.0?</span>
+              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
             </motion.div>
             
             <motion.h2 
-              className="text-6xl md:text-7xl font-black text-white mb-8 leading-tight"
+              className="text-7xl md:text-8xl font-black text-white mb-12 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <span className="block mb-4">UN HACKATHON DE</span>
-              <span className="block text-8xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-300 to-green-500 animate-pulse">
+              <span className="block mb-6 text-5xl md:text-6xl">UN HACKATHON DE</span>
+              <span className="block text-9xl md:text-[12rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-300 to-green-500 animate-pulse drop-shadow-2xl">
                 48 HORAS
               </span>
-              <span className="block mt-4 text-4xl md:text-5xl">
+              <span className="block mt-8 text-5xl md:text-6xl">
                 DONDE LA{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 relative">
                   INNOVACIÓN
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-cyan-400/20 rounded-lg"
+                    className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-cyan-400/30 rounded-xl"
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
-                    transition={{ duration: 1, delay: 0.8 }}
+                    transition={{ duration: 1.2, delay: 0.8 }}
                     viewport={{ once: true }}
                   />
                 </span>
               </span>
-              <span className="block text-4xl md:text-5xl">
+              <span className="block text-5xl md:text-6xl">
                 SE ENCUENTRA CON LA{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400 relative">
                   TECNOLOGÍA
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-green-400/20 rounded-lg"
+                    className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 to-green-400/30 rounded-xl"
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
-                    transition={{ duration: 1, delay: 1.2 }}
+                    transition={{ duration: 1.2, delay: 1.2 }}
                     viewport={{ once: true }}
                   />
                 </span>
@@ -534,7 +544,7 @@ export default function Home() {
             </motion.h2>
             
             <motion.p 
-              className="text-xl md:text-2xl text-gray-300 max-w-5xl mx-auto leading-relaxed font-medium"
+              className="text-2xl md:text-3xl text-gray-300 max-w-6xl mx-auto leading-relaxed font-medium mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -548,200 +558,221 @@ export default function Home() {
               </span>{' '}
               que cambien el mundo digital.
             </motion.p>
-          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Zap,
-                title: "INNOVACIÓN",
-                description: "Explora las últimas tecnologías y frameworks para crear soluciones que marquen la diferencia en el mundo digital.",
-                color: "green",
-                gradient: "from-green-400 to-cyan-400",
-                bgGradient: "from-green-500/10 to-cyan-500/10"
-              },
-              {
-                icon: Users,
-                title: "COLABORACIÓN",
-                description: "Trabaja en equipo con otros desarrolladores talentosos y aprende de diferentes perspectivas y habilidades.",
-                color: "cyan",
-                gradient: "from-cyan-400 to-green-400",
-                bgGradient: "from-cyan-500/10 to-green-500/10"
-              },
-              {
-                icon: Target,
-                title: "IMPACTO",
-                description: "Construye proyectos que resuelvan problemas reales y tengan un impacto positivo en la sociedad.",
-                color: "green",
-                gradient: "from-green-400 to-cyan-400",
-                bgGradient: "from-green-500/10 to-cyan-500/10"
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="group relative"
-              >
-                <motion.div
-                  className="relative bg-black/60 backdrop-blur-xl rounded-3xl p-8 border-2 border-transparent hover:border-green-400/50 transition-all duration-500 h-full overflow-hidden"
-                  whileHover={{ y: -15, scale: 1.03 }}
-                  initial={false}
-                >
-                  {/* Animated Border */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-cyan-400 to-green-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute inset-[2px] bg-black/60 backdrop-blur-xl rounded-3xl" />
-                  
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-cyan-400/20 rounded-3xl" />
-                    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,0,0.1),transparent_50%)]" />
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="relative z-10">
-                    <motion.div
-                      className={`w-20 h-20 bg-gradient-to-br ${item.bgGradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-green-400/30`}
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.8 }}
-                    >
-                      <item.icon className={`h-10 w-10 text-transparent bg-clip-text bg-gradient-to-r ${item.gradient}`} />
-                    </motion.div>
-                    
-                    <h3 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 mb-6 group-hover:scale-105 transition-transform duration-300 tracking-wider">
-                      {item.title}
-                    </h3>
-                    
-                    <p className="text-gray-300 leading-relaxed group-hover:text-gray-100 transition-colors duration-300 text-lg font-medium">
-                      {item.description}
-                    </p>
-                    
-                    {/* Decorative Elements */}
-                    <div className="absolute top-4 right-4 w-2 h-2 bg-green-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-4 left-4 w-1 h-1 bg-cyan-400 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
-                  </div>
-                  
-                  {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-400/0 via-green-400/5 to-cyan-400/0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Schedule Section */}
-      <section id="schedule" className="py-20 px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
+            {/* Program Badge */}
             <motion.div
-              className="inline-flex items-center space-x-2 bg-blue-500/20 text-blue-400 px-6 py-3 rounded-full mb-6"
+              className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500/20 via-cyan-400/30 to-blue-500/20 text-cyan-400 px-8 py-4 rounded-full border-2 border-cyan-400/40 backdrop-blur-sm"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
               viewport={{ once: true }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0,255,255,0.3)" }}
             >
-              <Calendar className="h-5 w-5" />
-              <span className="font-semibold">Programa del Evento</span>
+              <Calendar className="h-6 w-6" />
+              <span className="font-black text-lg tracking-wider">PROGRAMA DEL EVENTO</span>
+              <Clock className="h-6 w-6" />
             </motion.div>
-            
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
-              Tres días intensos de{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
-                programación
-              </span>{' '}
-              y aprendizaje
-            </h2>
-            
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Una experiencia inmersiva donde cada momento cuenta
-            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                day: "Día 1",
-                events: [
-                  "09:00 - Registro y Check-in",
-                  "10:00 - Ceremonia de Apertura",
-                  "11:00 - Presentación de Desafíos",
-                  "12:00 - Formación de Equipos",
-                  "13:00 - ¡Comienza la Programación!"
-                ],
-                highlight: false
-              },
-              {
-                day: "Día 2",
-                events: [
-                  "00:00 - Programación Continúa",
-                  "12:00 - Mentoring Sessions",
-                  "18:00 - Networking Event",
-                  "20:00 - Charlas Técnicas",
-                  "24:00 - Programación Nocturna"
-                ],
-                highlight: true
-              },
-              {
-                day: "Día 3",
-                events: [
-                  "09:00 - Últimas Horas",
-                  "12:00 - Deadline de Entrega",
-                  "14:00 - Presentaciones",
-                  "16:00 - Evaluación del Jurado",
-                  "18:00 - Ceremonia de Premiación"
-                ],
-                highlight: false
-              }
-            ].map((dayData, index) => (
-              <motion.div
-                key={dayData.day}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="group"
-              >
+          {/* Combined Content Grid */}
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Left Side - Core Values */}
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <h3 className="text-4xl md:text-5xl font-black text-white mb-8 text-center lg:text-left">
+                Nuestros{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400">
+                  Pilares
+                </span>
+              </h3>
+              
+              {[
+                {
+                  icon: Zap,
+                  title: "INNOVACIÓN",
+                  description: "Explora las últimas tecnologías y frameworks para crear soluciones que marquen la diferencia en el mundo digital.",
+                  gradient: "from-green-400 to-cyan-400",
+                  bgGradient: "from-green-500/20 to-cyan-500/20"
+                },
+                {
+                  icon: Users,
+                  title: "COLABORACIÓN",
+                  description: "Trabaja en equipo con otros desarrolladores talentosos y aprende de diferentes perspectivas y habilidades.",
+                  gradient: "from-cyan-400 to-green-400",
+                  bgGradient: "from-cyan-500/20 to-green-500/20"
+                },
+                {
+                  icon: Target,
+                  title: "IMPACTO",
+                  description: "Construye proyectos que resuelvan problemas reales y tengan un impacto positivo en la sociedad.",
+                  gradient: "from-green-400 to-cyan-400",
+                  bgGradient: "from-green-500/20 to-cyan-500/20"
+                }
+              ].map((item, index) => (
                 <motion.div
-                  className={`backdrop-blur-xl rounded-2xl p-8 border transition-all duration-500 h-full ${
-                    dayData.highlight
-                      ? 'bg-green-500/20 border-green-400/40 hover:border-green-400/60'
-                      : 'bg-black/40 border-green-500/20 hover:border-green-500/40'
-                  }`}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  initial={false}
+                  key={item.title}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="group relative"
                 >
-                  <div className="flex items-center mb-6">
-                    <Calendar className={`h-8 w-8 mr-3 ${dayData.highlight ? 'text-green-400' : 'text-blue-400'}`} />
-                    <h3 className="text-2xl font-bold text-white">{dayData.day}</h3>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    {dayData.events.map((event, eventIndex) => (
+                  <motion.div
+                    className="relative bg-black/70 backdrop-blur-2xl rounded-2xl p-6 border-2 border-transparent hover:border-green-400/60 transition-all duration-500 overflow-hidden"
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    initial={false}
+                  >
+                    {/* Animated Border */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-cyan-400 to-green-400 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-[2px] bg-black/70 backdrop-blur-2xl rounded-2xl" />
+                    
+                    {/* Background Pattern */}
+                    <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                      <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-cyan-400/10 rounded-2xl" />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="relative z-10 flex items-start space-x-4">
                       <motion.div
-                        key={eventIndex}
-                        className="flex items-center text-gray-300 group-hover:text-gray-200 transition-colors duration-300"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: eventIndex * 0.1 }}
-                        viewport={{ once: true }}
+                        className={`w-16 h-16 bg-gradient-to-br ${item.bgGradient} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-green-400/40 flex-shrink-0`}
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.8 }}
                       >
-                        <Clock className="h-4 w-4 mr-3 text-green-400" />
-                        <span>{event}</span>
+                        <item.icon className={`h-8 w-8 text-transparent bg-clip-text bg-gradient-to-r ${item.gradient}`} />
                       </motion.div>
-                    ))}
-                  </div>
+                      
+                      <div className="flex-1">
+                        <h4 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 mb-3 group-hover:scale-105 transition-transform duration-300 tracking-wider">
+                          {item.title}
+                        </h4>
+                        <p className="text-gray-300 leading-relaxed group-hover:text-gray-100 transition-colors duration-300 text-base font-medium">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Decorative Elements */}
+                    <div className="absolute top-3 right-3 w-2 h-2 bg-green-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-3 left-3 w-1 h-1 bg-cyan-400 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            ))}
+              ))}
+            </motion.div>
+
+            {/* Right Side - Schedule */}
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <h3 className="text-4xl md:text-5xl font-black text-white mb-8 text-center lg:text-left">
+                Tres días{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400">
+                  intensos
+                </span>
+              </h3>
+              
+              <p className="text-xl text-gray-300 mb-8 text-center lg:text-left leading-relaxed">
+                Una experiencia inmersiva donde cada momento cuenta
+              </p>
+
+              <div className="space-y-6">
+                {[
+                  {
+                    day: "DÍA 1",
+                    subtitle: "Inicio",
+                    events: [
+                      "09:00 - Registro y Check-in",
+                      "10:00 - Ceremonia de Apertura",
+                      "11:00 - Presentación de Desafíos",
+                      "12:00 - Formación de Equipos",
+                      "13:00 - ¡Comienza la Programación!"
+                    ],
+                    highlight: false,
+                    color: "blue"
+                  },
+                  {
+                    day: "DÍA 2",
+                    subtitle: "Desarrollo",
+                    events: [
+                      "00:00 - Programación Continúa",
+                      "12:00 - Mentoring Sessions",
+                      "18:00 - Networking Event",
+                      "20:00 - Charlas Técnicas",
+                      "24:00 - Programación Nocturna"
+                    ],
+                    highlight: true,
+                    color: "green"
+                  },
+                  {
+                    day: "DÍA 3",
+                    subtitle: "Finalización",
+                    events: [
+                      "09:00 - Últimas Horas",
+                      "12:00 - Deadline de Entrega",
+                      "14:00 - Presentaciones",
+                      "16:00 - Evaluación del Jurado",
+                      "18:00 - Ceremonia de Premiación"
+                    ],
+                    highlight: false,
+                    color: "purple"
+                  }
+                ].map((dayData, index) => (
+                  <motion.div
+                    key={dayData.day}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                    className="group"
+                  >
+                    <motion.div
+                      className={`backdrop-blur-2xl rounded-2xl p-6 border-2 transition-all duration-500 ${
+                        dayData.highlight
+                          ? 'bg-green-500/30 border-green-400/60 hover:border-green-400/80'
+                          : 'bg-black/60 border-gray-600/40 hover:border-gray-500/60'
+                      }`}
+                      whileHover={{ y: -5, scale: 1.01 }}
+                      initial={false}
+                    >
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center space-x-3">
+                          <Calendar className={`h-6 w-6 ${dayData.highlight ? 'text-green-400' : 'text-gray-400'}`} />
+                          <div>
+                            <h4 className="text-xl font-black text-white">{dayData.day}</h4>
+                            <p className="text-sm text-gray-400 font-medium">{dayData.subtitle}</p>
+                          </div>
+                        </div>
+                        <div className={`w-3 h-3 rounded-full ${dayData.highlight ? 'bg-green-400' : 'bg-gray-500'} group-hover:scale-125 transition-transform duration-300`} />
+                      </div>
+                      
+                      <div className="space-y-3">
+                        {dayData.events.map((event, eventIndex) => (
+                          <motion.div
+                            key={eventIndex}
+                            className="flex items-center text-gray-300 group-hover:text-gray-100 transition-colors duration-300"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4, delay: eventIndex * 0.1 }}
+                            viewport={{ once: true }}
+                          >
+                            <Clock className="h-4 w-4 mr-3 text-green-400 flex-shrink-0" />
+                            <span className="text-sm font-medium">{event}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
