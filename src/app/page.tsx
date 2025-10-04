@@ -892,9 +892,21 @@ export default function Home() {
             
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { name: "TechCorp", logo: "TC", description: "Líder en innovación tecnológica" },
-                { name: "InnovateLab", logo: "IL", description: "Laboratorio de ideas del futuro" },
-                { name: "FutureTech", logo: "FT", description: "Construyendo el mañana" }
+                { 
+                  name: "Starlink", 
+                  logo: "/SponsorsPlatinum/Starlink_Logo.svg", 
+                  description: "Internet satelital de alta velocidad para el mundo" 
+                },
+                { 
+                  name: "CODEB", 
+                  logo: "/CODEB.png", 
+                  description: "Comunidad de desarrolladores blockchain" 
+                },
+                { 
+                  name: "CODEN", 
+                  logo: "/CODEN.png", 
+                  description: "Ecosistema de desarrollo y networking" 
+                }
               ].map((sponsor, index) => (
                 <motion.div
                   key={sponsor.name}
@@ -918,8 +930,14 @@ export default function Home() {
                     />
                     
                     <div className="relative z-10">
-                      <div className="w-20 h-20 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-500/30 transition-all duration-300 border border-green-400/30">
-                        <span className="text-2xl font-bold text-green-400">{sponsor.logo}</span>
+                      <div className="w-20 h-20 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-500/30 transition-all duration-300 border border-green-400/30 p-4">
+                        <Image
+                          src={sponsor.logo}
+                          alt={`${sponsor.name} logo`}
+                          width={80}
+                          height={80}
+                          className="object-contain max-w-full max-h-full"
+                        />
                       </div>
                       
                       <h4 className="text-2xl font-bold text-white mb-4 group-hover:text-green-400 transition-colors duration-300">
@@ -953,10 +971,26 @@ export default function Home() {
             
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { name: "CodeFlow", logo: "CF", description: "Flujo de código inteligente" },
-                { name: "DataVault", logo: "DV", description: "Seguridad de datos avanzada" },
-                { name: "CloudSync", logo: "CS", description: "Sincronización en la nube" },
-                { name: "AI Nexus", logo: "AN", description: "Centro de inteligencia artificial" }
+                { 
+                  name: "ChipiPay", 
+                  logo: "/Aliados/CHIPIPAY.svg", 
+                  description: "Solución de pagos digitales" 
+                },
+                { 
+                  name: "Mediolano", 
+                  logo: "/Aliados/MEDIOLANO.svg", 
+                  description: "Servicios financieros innovadores" 
+                },
+                { 
+                  name: "WomanWay", 
+                  logo: "/Aliados/WomanWay.png", 
+                  description: "Empoderamiento femenino en tech" 
+                },
+                { 
+                  name: "HERDAO", 
+                  logo: "/Aliados/HERDAO.png", 
+                  description: "Comunidad blockchain femenina" 
+                }
               ].map((sponsor, index) => (
                 <motion.div
                   key={sponsor.name}
@@ -980,8 +1014,14 @@ export default function Home() {
                     />
                     
                     <div className="relative z-10">
-                      <div className="w-16 h-16 bg-yellow-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:bg-yellow-500/30 transition-all duration-300 border border-yellow-400/20">
-                        <span className="text-xl font-bold text-yellow-400">{sponsor.logo}</span>
+                      <div className="w-16 h-16 bg-yellow-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:bg-yellow-500/30 transition-all duration-300 border border-yellow-400/20 p-2">
+                        <Image
+                          src={sponsor.logo}
+                          alt={`${sponsor.name} logo`}
+                          width={60}
+                          height={60}
+                          className="object-contain max-w-full max-h-full"
+                        />
                       </div>
                       
                       <h4 className="text-lg font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors duration-300">
@@ -1014,10 +1054,15 @@ export default function Home() {
             
             <div className="grid md:grid-cols-6 gap-4">
               {[
-                "DevHub", "TechStart", "InnovateX", "CodeCraft", "FutureLab", "DataFlow"
+                { name: "FOUNDERS", logo: "/Aliados/FOUNDERS.png" },
+                { name: "Angulo", logo: "/Aliados/ANGULO.png" },
+                { name: "OMIS", logo: "/Aliados/OMIS.jpeg" },
+                { name: "Restake Watch", logo: "/Aliados/restake-watch.PNG" },
+                { name: "Union Campesina", logo: "/Aliados/UnionCampesinaDemocratica.jpeg" },
+                { name: "Goblin", logo: "/Aliados/goblin-logo-02.PNG" }
               ].map((partner, index) => (
                 <motion.div
-                  key={partner}
+                  key={partner.name}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -1038,12 +1083,18 @@ export default function Home() {
                     />
                     
                     <div className="relative z-10">
-                      <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-500/30 transition-all duration-300 border border-blue-400/20">
-                        <span className="text-sm font-bold text-blue-400">{partner.slice(0, 2)}</span>
+                      <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-500/30 transition-all duration-300 border border-blue-400/20 p-1">
+                        <Image
+                          src={partner.logo}
+                          alt={`${partner.name} logo`}
+                          width={40}
+                          height={40}
+                          className="object-contain max-w-full max-h-full"
+                        />
                       </div>
                       
                       <h4 className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors duration-300">
-                        {partner}
+                        {partner.name}
                       </h4>
                     </div>
                   </motion.div>
