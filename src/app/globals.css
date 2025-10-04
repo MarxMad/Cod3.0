@@ -345,12 +345,12 @@
 
 .ticker-track {
   display: flex;
-  animation: scroll 30s linear infinite;
+  animation: scroll 15s linear infinite;
   white-space: nowrap;
 }
 
 .ticker-track.allies {
-  animation: scroll 45s linear infinite;
+  animation: scroll 20s linear infinite;
 }
 
 .ticker-track:hover {
@@ -363,16 +363,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 30px;
-  margin: 0 10px;
+  padding: 15px 20px;
+  margin: 0 8px;
   background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
   border: 2px solid #333;
   border-radius: 12px;
-  min-width: 200px;
-  height: 120px;
+  min-width: 180px;
+  height: 140px;
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .ticker-item:hover {
@@ -394,9 +394,9 @@
 .ticker-logo {
   width: 100%;
   height: auto;
-  max-height: 60px;
+  max-height: 70px;
   object-fit: contain;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   filter: brightness(1.1);
   transition: transform 0.3s ease;
 }
@@ -407,15 +407,19 @@
 
 .ticker-name {
   color: #ffffff;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   margin: 0;
   font-family: 'Courier New', monospace;
   text-align: center;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 180px;
+  overflow: visible;
+  text-overflow: unset;
+  max-width: 160px;
+  line-height: 1.2;
+  padding: 2px 4px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
 }
 
 @keyframes scroll {
@@ -447,11 +451,11 @@
   }
   
   .ticker-track {
-    animation: scroll 25s linear infinite;
+    animation: scroll 12s linear infinite;
   }
   
   .ticker-track.allies {
-    animation: scroll 35s linear infinite;
+    animation: scroll 16s linear infinite;
   }
 }
 
@@ -474,10 +478,10 @@
   }
   
   .ticker-track {
-    animation: scroll 20s linear infinite;
+    animation: scroll 10s linear infinite;
   }
   
   .ticker-track.allies {
-    animation: scroll 30s linear infinite;
+    animation: scroll 14s linear infinite;
   }
 }
