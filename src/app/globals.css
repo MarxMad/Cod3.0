@@ -316,41 +316,64 @@
 .ticker-container {
   overflow: hidden;
   position: relative;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  border: 1px solid #333;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 20, 40, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%);
+  border-radius: 15px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
   margin: 20px 0;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.1),
+    inset 0 0 20px rgba(0, 255, 0, 0.05);
+  position: relative;
 }
 
-.ticker-container::before,
+.ticker-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #00ff00, #00cc00, #00ff00);
+  border-radius: 15px;
+  padding: 2px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  z-index: -1;
+}
+
 .ticker-container::after {
   content: '';
   position: absolute;
   top: 0;
-  width: 50px;
+  left: 0;
+  width: 60px;
   height: 100%;
   z-index: 2;
   pointer-events: none;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), transparent);
 }
 
 .ticker-container::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
-}
-
-.ticker-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
   right: 0;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+  width: 60px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), transparent);
 }
 
 .ticker-track {
   display: flex;
-  animation: scroll 15s linear infinite;
+  animation: scroll 8s linear infinite;
   white-space: nowrap;
 }
 
 .ticker-track.allies {
-  animation: scroll 20s linear infinite;
+  animation: scroll 10s linear infinite;
 }
 
 .ticker-track:hover {
@@ -363,22 +386,40 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 15px 20px;
-  margin: 0 8px;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-  border: 2px solid #333;
-  border-radius: 12px;
-  min-width: 180px;
-  height: 140px;
-  transition: all 0.3s ease;
+  padding: 20px 25px;
+  margin: 0 12px;
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 0, 0.05) 0%, 
+    rgba(0, 20, 40, 0.3) 25%, 
+    rgba(0, 0, 0, 0.8) 50%, 
+    rgba(0, 20, 40, 0.3) 75%, 
+    rgba(0, 255, 0, 0.05) 100%);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  min-width: 200px;
+  height: 150px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: visible;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 15px rgba(0, 255, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .ticker-item:hover {
   border-color: #00ff00;
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0, 255, 0, 0.2);
+  transform: scale(1.08) translateY(-5px);
+  box-shadow: 
+    0 15px 35px rgba(0, 255, 0, 0.3),
+    0 0 30px rgba(0, 255, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 0, 0.1) 0%, 
+    rgba(0, 40, 80, 0.4) 25%, 
+    rgba(0, 0, 0, 0.9) 50%, 
+    rgba(0, 40, 80, 0.4) 75%, 
+    rgba(0, 255, 0, 0.1) 100%);
 }
 
 .ticker-item::before {
@@ -388,38 +429,72 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #00ff00, #00cc00);
+  background: linear-gradient(90deg, #00ff00, #00cc00, #00ff00);
+  border-radius: 16px 16px 0 0;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.ticker-item:hover::before {
+  opacity: 1;
+  background: linear-gradient(90deg, #00ff00, #00cc00, #00ff00, #00cc00, #00ff00);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 .ticker-logo {
   width: 100%;
   height: auto;
-  max-height: 70px;
+  max-height: 75px;
   object-fit: contain;
-  margin-bottom: 12px;
-  filter: brightness(1.1);
-  transition: transform 0.3s ease;
+  margin-bottom: 15px;
+  filter: brightness(1.2) contrast(1.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .ticker-item:hover .ticker-logo {
-  transform: scale(1.1);
+  transform: scale(1.15) rotate(2deg);
+  filter: brightness(1.4) contrast(1.2) drop-shadow(0 0 10px rgba(0, 255, 0, 0.3));
 }
 
 .ticker-name {
   color: #ffffff;
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   margin: 0;
-  font-family: 'Courier New', monospace;
+  font-family: 'Orbitron', 'Courier New', monospace;
   text-align: center;
   white-space: nowrap;
   overflow: visible;
   text-overflow: unset;
-  max-width: 160px;
-  line-height: 1.2;
-  padding: 2px 4px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  max-width: 180px;
+  line-height: 1.3;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0.8) 50%, 
+    rgba(0, 255, 0, 0.1) 100%);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.ticker-item:hover .ticker-name {
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 0, 0.2) 0%, 
+    rgba(0, 0, 0, 0.9) 50%, 
+    rgba(0, 255, 0, 0.2) 100%);
+  border-color: rgba(0, 255, 0, 0.4);
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+  transform: translateY(-2px);
 }
 
 @keyframes scroll {
@@ -451,11 +526,11 @@
   }
   
   .ticker-track {
-    animation: scroll 12s linear infinite;
+    animation: scroll 6s linear infinite;
   }
   
   .ticker-track.allies {
-    animation: scroll 16s linear infinite;
+    animation: scroll 8s linear infinite;
   }
 }
 
@@ -478,10 +553,10 @@
   }
   
   .ticker-track {
-    animation: scroll 10s linear infinite;
+    animation: scroll 5s linear infinite;
   }
   
   .ticker-track.allies {
-    animation: scroll 14s linear infinite;
+    animation: scroll 7s linear infinite;
   }
 }
