@@ -843,11 +843,11 @@ h2::after, h3::after {
   }
   
   .ticker-track {
-    animation: scroll 12s linear infinite;
+    animation: scroll 8s linear infinite;
   }
   
   .ticker-track.allies {
-    animation: scroll 16s linear infinite;
+    animation: scroll 10s linear infinite;
   }
 }
 
