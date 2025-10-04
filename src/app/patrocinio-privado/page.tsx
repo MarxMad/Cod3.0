@@ -53,6 +53,277 @@ const SponsorshipProposal = () => {
           </div>
         </div>
 
+        <h2>&lt;PATROCINADORES_Y_ALIADOS/&gt;</h2>
+        
+        {/* Patrocinadores Platinum - Ticker */}
+        <div className="sponsors-section">
+          <h3>&gt; PATROCINADORES PLATINUM</h3>
+          <div className="ticker-container">
+            <div className="ticker-track">
+              <div className="ticker-item">
+                <Image 
+                  src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                  alt="Starlink" 
+                  width={200} 
+                  height={100}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Starlink</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                  alt="Starlink" 
+                  width={200} 
+                  height={100}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Starlink</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                  alt="Starlink" 
+                  width={200} 
+                  height={100}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Starlink</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Aliados - Ticker */}
+        <div className="sponsors-section">
+          <h3>&gt; ALIADOS ESTRATÉGICOS</h3>
+          <div className="ticker-container">
+            <div className="ticker-track allies">
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/ANGULO.png" 
+                  alt="Ángulo" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Ángulo</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/CHIPIPAY.svg" 
+                  alt="ChipiPay" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">ChipiPay</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/FOUNDERS.png" 
+                  alt="Founders" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Founders</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/goblin - Logo-02.PNG" 
+                  alt="Goblin" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Goblin</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/HERDAO.png" 
+                  alt="HERDAO" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">HERDAO</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/Logo_ww_blanco.png" 
+                  alt="WomanWay" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">WomanWay</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/MEDIOLANO.svg" 
+                  alt="Mediolano" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Mediolano</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/OMIS.jpeg" 
+                  alt="OMIS" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">OMIS</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/restake watch.PNG" 
+                  alt="Restake Watch" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Restake Watch</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/UnionCampesinaDemocratica.jpeg" 
+                  alt="Unión Campesina Democrática" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Unión Campesina Democrática</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/WomanWay.png" 
+                  alt="WomanWay" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">WomanWay</p>
+              </div>
+              {/* Duplicar para efecto continuo */}
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/ANGULO.png" 
+                  alt="Ángulo" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Ángulo</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/CHIPIPAY.svg" 
+                  alt="ChipiPay" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">ChipiPay</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/FOUNDERS.png" 
+                  alt="Founders" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Founders</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/goblin - Logo-02.PNG" 
+                  alt="Goblin" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Goblin</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/HERDAO.png" 
+                  alt="HERDAO" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">HERDAO</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/Logo_ww_blanco.png" 
+                  alt="WomanWay" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">WomanWay</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/MEDIOLANO.svg" 
+                  alt="Mediolano" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Mediolano</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/OMIS.jpeg" 
+                  alt="OMIS" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">OMIS</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/restake watch.PNG" 
+                  alt="Restake Watch" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Restake Watch</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/UnionCampesinaDemocratica.jpeg" 
+                  alt="Unión Campesina Democrática" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">Unión Campesina Democrática</p>
+              </div>
+              <div className="ticker-item">
+                <Image 
+                  src="/Aliados/WomanWay.png" 
+                  alt="WomanWay" 
+                  width={150} 
+                  height={80}
+                  className="ticker-logo"
+                />
+                <p className="ticker-name">WomanWay</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <h2>&lt;PAQUETES_DE_PATROCINIO/&gt;</h2>
 
         <div className="packages">
