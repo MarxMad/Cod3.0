@@ -875,7 +875,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Platinum Sponsors */}
+          {/* Platinum Sponsors - Ticker */}
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -890,155 +890,44 @@ export default function Home() {
               Patrocinadores Platino
             </h3>
             
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { 
-                  name: "Starlink", 
-                  logo: "/SponsorsPlatinum/Starlink_Logo.svg", 
-                  description: "Internet satelital de alta velocidad para el mundo" 
-                },
-                { 
-                  name: "CODEB", 
-                  logo: "/CODEB.png", 
-                  description: "Comunidad de desarrolladores blockchain" 
-                },
-                { 
-                  name: "CODEN", 
-                  logo: "/CODEN.png", 
-                  description: "Ecosistema de desarrollo y networking" 
-                }
-              ].map((sponsor, index) => (
-                <motion.div
-                  key={sponsor.name}
-                  initial={{ opacity: 0, y: 60 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  className="group relative"
-                >
-                  <motion.div
-                    className="bg-black/60 backdrop-blur-xl rounded-2xl p-8 border border-green-400/30 h-full relative overflow-hidden"
-                    whileHover={{ y: -10, scale: 1.02 }}
-                    initial={false}
-                  >
-                    {/* Shine Effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent -skew-x-12"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.8 }}
-                    />
-                    
-                    <div className="relative z-10">
-                      <div className="w-20 h-20 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-500/30 transition-all duration-300 border border-green-400/30 p-4">
+            <div className="ticker-container">
+              <div className="ticker-track">
+                <div className="ticker-item">
                         <Image
-                          src={sponsor.logo}
-                          alt={`${sponsor.name} logo`}
-                          width={80}
-                          height={80}
-                          className="object-contain max-w-full max-h-full"
-                        />
+                    src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                    alt="Starlink" 
+                    width={200} 
+                    height={100}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Starlink</p>
                       </div>
-                      
-                      <h4 className="text-2xl font-bold text-white mb-4 group-hover:text-green-400 transition-colors duration-300">
-                        {sponsor.name}
-                      </h4>
-                      
-                      <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
-                        {sponsor.description}
-                      </p>
+                <div className="ticker-item">
+                  <Image 
+                    src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                    alt="Starlink" 
+                    width={200} 
+                    height={100}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Starlink</p>
+                </div>
+                <div className="ticker-item">
+                        <Image
+                    src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                    alt="Starlink" 
+                    width={200} 
+                    height={100}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Starlink</p>
+                      </div>
                     </div>
-                  </motion.div>
-                </motion.div>
-              ))}
             </div>
           </motion.div>
 
-          {/* Gold Sponsors */}
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h3 className="text-2xl font-bold text-yellow-400 text-center mb-8 flex items-center justify-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full mr-3 flex items-center justify-center">
-                <Star className="h-4 w-4 text-black" />
-              </div>
-              Patrocinadores Oro
-            </h3>
-            
-            <div className="grid md:grid-cols-4 gap-6">
-              {[
-                { 
-                  name: "ChipiPay", 
-                  logo: "/Aliados/CHIPIPAY.svg", 
-                  description: "Solución de pagos digitales" 
-                },
-                { 
-                  name: "Mediolano", 
-                  logo: "/Aliados/MEDIOLANO.svg", 
-                  description: "Servicios financieros innovadores" 
-                },
-                { 
-                  name: "WomanWay", 
-                  logo: "/Aliados/WomanWay.png", 
-                  description: "Empoderamiento femenino en tech" 
-                },
-                { 
-                  name: "HERDAO", 
-                  logo: "/Aliados/HERDAO.png", 
-                  description: "Comunidad blockchain femenina" 
-                }
-              ].map((sponsor, index) => (
-                <motion.div
-                  key={sponsor.name}
-                  initial={{ opacity: 0, y: 60 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="group relative"
-                >
-                  <motion.div
-                    className="bg-black/40 backdrop-blur-xl rounded-xl p-6 border border-yellow-400/20 h-full relative overflow-hidden"
-                    whileHover={{ y: -5, scale: 1.01 }}
-                    initial={false}
-                  >
-                    {/* Shine Effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent -skew-x-12"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.6 }}
-                    />
-                    
-                    <div className="relative z-10">
-                      <div className="w-16 h-16 bg-yellow-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:bg-yellow-500/30 transition-all duration-300 border border-yellow-400/20 p-2">
-                        <Image
-                          src={sponsor.logo}
-                          alt={`${sponsor.name} logo`}
-                          width={60}
-                          height={60}
-                          className="object-contain max-w-full max-h-full"
-                        />
-                      </div>
-                      
-                      <h4 className="text-lg font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors duration-300">
-                        {sponsor.name}
-                      </h4>
-                      
-                      <p className="text-sm text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
-                        {sponsor.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
 
-          {/* Strategic Partners */}
+          {/* Strategic Partners - Ticker */}
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1052,54 +941,230 @@ export default function Home() {
               Aliados Estratégicos
             </h3>
             
-            <div className="grid md:grid-cols-6 gap-4">
-              {[
-                { name: "FOUNDERS", logo: "/Aliados/FOUNDERS.png" },
-                { name: "Angulo", logo: "/Aliados/ANGULO.png" },
-                { name: "OMIS", logo: "/Aliados/OMIS.jpeg" },
-                { name: "Restake Watch", logo: "/Aliados/restake-watch.PNG" },
-                { name: "Union Campesina", logo: "/Aliados/UnionCampesinaDemocratica.jpeg" },
-                { name: "Goblin", logo: "/Aliados/goblin-logo-02.PNG" }
-              ].map((partner, index) => (
-                <motion.div
-                  key={partner.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="group relative"
-                >
-                  <motion.div
-                    className="bg-black/30 backdrop-blur-xl rounded-lg p-4 border border-blue-400/20 text-center relative overflow-hidden"
-                    whileHover={{ y: -3, scale: 1.05 }}
-                    initial={false}
-                  >
-                    {/* Shine Effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent -skew-x-12"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.5 }}
-                    />
-                    
-                    <div className="relative z-10">
-                      <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-500/30 transition-all duration-300 border border-blue-400/20 p-1">
+            <div className="ticker-container">
+              <div className="ticker-track allies">
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/ANGULO.png" 
+                    alt="Ángulo" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Ángulo</p>
+                </div>
+                <div className="ticker-item">
                         <Image
-                          src={partner.logo}
-                          alt={`${partner.name} logo`}
-                          width={40}
-                          height={40}
-                          className="object-contain max-w-full max-h-full"
-                        />
+                    src="/Aliados/CHIPIPAY.svg" 
+                    alt="ChipiPay" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">ChipiPay</p>
                       </div>
-                      
-                      <h4 className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors duration-300">
-                        {partner.name}
-                      </h4>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/FOUNDERS.png" 
+                    alt="Founders" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Founders</p>
                     </div>
-                  </motion.div>
-                </motion.div>
-              ))}
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/goblin - Logo-02.PNG" 
+                    alt="Goblin" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Goblin</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/HERDAO.png" 
+                    alt="HERDAO" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">HERDAO</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/Logo_ww_blanco.png" 
+                    alt="WomanWay" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">WomanWay</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/MEDIOLANO.svg" 
+                    alt="Mediolano" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Mediolano</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/OMIS.jpeg" 
+                    alt="OMIS" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">OMIS</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/restake watch.PNG" 
+                    alt="Restake Watch" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Restake Watch</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/UnionCampesinaDemocratica.jpeg" 
+                    alt="Unión Campesina Democrática" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Unión Campesina Democrática</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/WomanWay.png" 
+                    alt="WomanWay" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">WomanWay</p>
+                </div>
+                {/* Duplicar para efecto continuo */}
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/ANGULO.png" 
+                    alt="Ángulo" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Ángulo</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/CHIPIPAY.svg" 
+                    alt="ChipiPay" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">ChipiPay</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/FOUNDERS.png" 
+                    alt="Founders" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Founders</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/goblin - Logo-02.PNG" 
+                    alt="Goblin" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Goblin</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/HERDAO.png" 
+                    alt="HERDAO" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">HERDAO</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/Logo_ww_blanco.png" 
+                    alt="WomanWay" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">WomanWay</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/MEDIOLANO.svg" 
+                    alt="Mediolano" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Mediolano</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/OMIS.jpeg" 
+                    alt="OMIS" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">OMIS</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/restake watch.PNG" 
+                    alt="Restake Watch" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Restake Watch</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/UnionCampesinaDemocratica.jpeg" 
+                    alt="Unión Campesina Democrática" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">Unión Campesina Democrática</p>
+                </div>
+                <div className="ticker-item">
+                  <Image 
+                    src="/Aliados/WomanWay.png" 
+                    alt="WomanWay" 
+                    width={150} 
+                    height={80}
+                    className="ticker-logo"
+                  />
+                  <p className="ticker-name">WomanWay</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
