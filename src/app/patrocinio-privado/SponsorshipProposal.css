@@ -759,21 +759,30 @@ h2::after, h3::after {
 
 /* Ticker Items */
 .ticker-item {
-  flex: 0 0 auto;
+  flex: 0 0 calc(20% - 20px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 15px 20px;
-  margin: 0 8px;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-  border: 2px solid #333;
-  border-radius: 12px;
-  min-width: 180px;
-  height: 140px;
-  transition: all 0.3s ease;
+  padding: 20px 15px;
+  margin: 0 10px;
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 0, 0.05) 0%, 
+    rgba(0, 20, 40, 0.3) 25%, 
+    rgba(0, 0, 0, 0.8) 50%, 
+    rgba(0, 20, 40, 0.3) 75%, 
+    rgba(0, 255, 0, 0.05) 100%);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  width: calc(20% - 20px);
+  height: 160px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: visible;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 15px rgba(0, 255, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .ticker-item:hover {
@@ -793,13 +802,14 @@ h2::after, h3::after {
 }
 
 .ticker-logo {
-  width: 100%;
-  height: auto;
-  max-height: 70px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
-  margin-bottom: 12px;
-  filter: brightness(1.1);
-  transition: transform 0.3s ease;
+  margin-bottom: 15px;
+  filter: brightness(1.2) contrast(1.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  flex-shrink: 0;
 }
 
 .ticker-item:hover .ticker-logo {
@@ -846,20 +856,23 @@ h2::after, h3::after {
   }
   
   .ticker-item {
-    min-width: 150px;
-    height: 100px;
-    padding: 15px 20px;
-    margin: 0 5px;
+    flex: 0 0 calc(20% - 15px);
+    width: calc(20% - 15px);
+    height: 120px;
+    padding: 15px 10px;
+    margin: 0 7px;
   }
   
   .ticker-logo {
-    max-height: 50px;
-    margin-bottom: 8px;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
   }
   
   .ticker-name {
-    font-size: 11px;
-    max-width: 130px;
+    font-size: 10px;
+    max-width: 100px;
+    padding: 4px 8px;
   }
   
   .ticker-track {
@@ -883,20 +896,23 @@ h2::after, h3::after {
   }
   
   .ticker-item {
-    min-width: 120px;
-    height: 80px;
-    padding: 10px 15px;
-    margin: 0 3px;
+    flex: 0 0 calc(20% - 10px);
+    width: calc(20% - 10px);
+    height: 100px;
+    padding: 10px 8px;
+    margin: 0 5px;
   }
   
   .ticker-logo {
-    max-height: 40px;
-    margin-bottom: 5px;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 8px;
   }
   
   .ticker-name {
-    font-size: 10px;
-    max-width: 100px;
+    font-size: 9px;
+    max-width: 80px;
+    padding: 3px 6px;
   }
   
   .ticker-track {
