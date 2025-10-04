@@ -456,55 +456,125 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-20 relative"
           >
+            {/* Animated Background Elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              {[...Array(15)].map((_, i) => (
             <motion.div
-              className="inline-flex items-center space-x-2 bg-green-500/20 text-green-400 px-6 py-3 rounded-full mb-6"
+                  key={i}
+                  className="absolute w-2 h-2 bg-green-400 rounded-full"
+                  style={{
+                    left: `${(i * 7) % 100}%`,
+                    top: `${(i * 5) % 100}%`,
+                  }}
+                  animate={{
+                    opacity: [0, 1, 0],
+                    scale: [0, 1, 0],
+                  }}
+                  transition={{
+                    duration: 3 + (i * 0.2) % 2,
+                    repeat: Infinity,
+                    delay: (i * 0.3) % 2,
+                  }}
+                />
+              ))}
+            </div>
+
+            <motion.div
+              className="relative z-10 inline-flex items-center space-x-3 bg-gradient-to-r from-green-500/10 via-green-400/20 to-green-500/10 text-green-400 px-8 py-4 rounded-full mb-8 border border-green-400/30 backdrop-blur-sm"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
             >
-              <Sparkles className="h-5 w-5" />
-              <span className="font-semibold">¿Qué es COD3.0?</span>
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <span className="font-bold text-lg tracking-wider">¿QUÉ ES COD3.0?</span>
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
             </motion.div>
             
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
-              Un hackathon de 48 horas donde la{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
-                innovación
-              </span>{' '}
-              se encuentra con la{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
-                tecnología
+            <motion.h2 
+              className="text-6xl md:text-7xl font-black text-white mb-8 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <span className="block mb-4">UN HACKATHON DE</span>
+              <span className="block text-8xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-300 to-green-500 animate-pulse">
+                48 HORAS
               </span>
-            </h2>
+              <span className="block mt-4 text-4xl md:text-5xl">
+                DONDE LA{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 relative">
+                  INNOVACIÓN
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-cyan-400/20 rounded-lg"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ duration: 1, delay: 0.8 }}
+                    viewport={{ once: true }}
+                  />
+                </span>
+              </span>
+              <span className="block text-4xl md:text-5xl">
+                SE ENCUENTRA CON LA{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400 relative">
+                  TECNOLOGÍA
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-green-400/20 rounded-lg"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ duration: 1, delay: 1.2 }}
+                    viewport={{ once: true }}
+                  />
+                </span>
+              </span>
+            </motion.h2>
             
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Desarrolladores, diseñadores y emprendedores se unen para crear soluciones 
-              innovadoras que cambien el mundo digital.
-            </p>
+            <motion.p 
+              className="text-xl md:text-2xl text-gray-300 max-w-5xl mx-auto leading-relaxed font-medium"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-green-400 font-bold">Desarrolladores</span>,{' '}
+              <span className="text-cyan-400 font-bold">diseñadores</span> y{' '}
+              <span className="text-green-400 font-bold">emprendedores</span> se unen para crear{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 font-bold">
+                soluciones innovadoras
+              </span>{' '}
+              que cambien el mundo digital.
+            </motion.p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 icon: Zap,
-                title: "Innovación",
+                title: "INNOVACIÓN",
                 description: "Explora las últimas tecnologías y frameworks para crear soluciones que marquen la diferencia en el mundo digital.",
-                color: "green"
+                color: "green",
+                gradient: "from-green-400 to-cyan-400",
+                bgGradient: "from-green-500/10 to-cyan-500/10"
               },
               {
                 icon: Users,
-                title: "Colaboración",
+                title: "COLABORACIÓN",
                 description: "Trabaja en equipo con otros desarrolladores talentosos y aprende de diferentes perspectivas y habilidades.",
-                color: "blue"
+                color: "cyan",
+                gradient: "from-cyan-400 to-green-400",
+                bgGradient: "from-cyan-500/10 to-green-500/10"
               },
               {
                 icon: Target,
-                title: "Impacto",
+                title: "IMPACTO",
                 description: "Construye proyectos que resuelvan problemas reales y tengan un impacto positivo en la sociedad.",
-                color: "green"
+                color: "green",
+                gradient: "from-green-400 to-cyan-400",
+                bgGradient: "from-green-500/10 to-cyan-500/10"
               }
             ].map((item, index) => (
               <motion.div
@@ -516,28 +586,45 @@ export default function Home() {
                 className="group relative"
               >
                 <motion.div
-                  className="bg-black/40 backdrop-blur-xl rounded-2xl p-8 border border-green-500/20 hover:border-green-500/40 transition-all duration-500 h-full"
-                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="relative bg-black/60 backdrop-blur-xl rounded-3xl p-8 border-2 border-transparent hover:border-green-400/50 transition-all duration-500 h-full overflow-hidden"
+                  whileHover={{ y: -15, scale: 1.03 }}
                   initial={false}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-blue-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Animated Border */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-cyan-400 to-green-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-[2px] bg-black/60 backdrop-blur-xl rounded-3xl" />
+                  
+                  {/* Background Pattern */}
+                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-cyan-400/20 rounded-3xl" />
+                    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,0,0.1),transparent_50%)]" />
+                  </div>
+                  
+                  {/* Content */}
                   <div className="relative z-10">
                     <motion.div
-                      className={`w-16 h-16 bg-gradient-to-br from-${item.color}-500/20 to-${item.color === 'green' ? 'blue' : 'green'}-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                      className={`w-20 h-20 bg-gradient-to-br ${item.bgGradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-green-400/30`}
                       whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
+                      transition={{ duration: 0.8 }}
                     >
-                      <item.icon className={`h-8 w-8 text-${item.color}-400`} />
+                      <item.icon className={`h-10 w-10 text-transparent bg-clip-text bg-gradient-to-r ${item.gradient}`} />
                     </motion.div>
                     
-                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-green-400 transition-colors duration-300">
+                    <h3 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 mb-6 group-hover:scale-105 transition-transform duration-300 tracking-wider">
                       {item.title}
                     </h3>
                     
-                    <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                    <p className="text-gray-300 leading-relaxed group-hover:text-gray-100 transition-colors duration-300 text-lg font-medium">
                       {item.description}
                     </p>
+                    
+                    {/* Decorative Elements */}
+                    <div className="absolute top-4 right-4 w-2 h-2 bg-green-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-4 left-4 w-1 h-1 bg-cyan-400 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
                   </div>
+                  
+                  {/* Hover Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400/0 via-green-400/5 to-cyan-400/0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </motion.div>
               </motion.div>
             ))}
