@@ -591,42 +591,42 @@ export default function Home() {
                 </span>
               </h3>
               
-              {[
-                {
-                  icon: Zap,
+            {[
+              {
+                icon: Zap,
                   title: "INNOVACIÓN",
-                  description: "Explora las últimas tecnologías y frameworks para crear soluciones que marquen la diferencia en el mundo digital.",
+                description: "Explora las últimas tecnologías y frameworks para crear soluciones que marquen la diferencia en el mundo digital.",
                   gradient: "from-green-400 to-cyan-400",
                   bgGradient: "from-green-500/20 to-cyan-500/20"
-                },
-                {
-                  icon: Users,
+              },
+              {
+                icon: Users,
                   title: "COLABORACIÓN",
-                  description: "Trabaja en equipo con otros desarrolladores talentosos y aprende de diferentes perspectivas y habilidades.",
+                description: "Trabaja en equipo con otros desarrolladores talentosos y aprende de diferentes perspectivas y habilidades.",
                   gradient: "from-cyan-400 to-green-400",
                   bgGradient: "from-cyan-500/20 to-green-500/20"
-                },
-                {
-                  icon: Target,
+              },
+              {
+                icon: Target,
                   title: "IMPACTO",
-                  description: "Construye proyectos que resuelvan problemas reales y tengan un impacto positivo en la sociedad.",
+                description: "Construye proyectos que resuelvan problemas reales y tengan un impacto positivo en la sociedad.",
                   gradient: "from-green-400 to-cyan-400",
                   bgGradient: "from-green-500/20 to-cyan-500/20"
-                }
-              ].map((item, index) => (
-                <motion.div
-                  key={item.title}
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
                   initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  className="group relative"
-                >
-                  <motion.div
+                viewport={{ once: true }}
+                className="group relative"
+              >
+                <motion.div
                     className="relative bg-black/70 backdrop-blur-2xl rounded-2xl p-6 border-2 border-transparent hover:border-green-400/60 transition-all duration-500 overflow-hidden"
                     whileHover={{ y: -8, scale: 1.02 }}
-                    initial={false}
-                  >
+                  initial={false}
+                >
                     {/* Animated Border */}
                     <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-cyan-400 to-green-400 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute inset-[2px] bg-black/70 backdrop-blur-2xl rounded-2xl" />
@@ -638,38 +638,38 @@ export default function Home() {
                     
                     {/* Content */}
                     <div className="relative z-10 flex items-start space-x-4">
-                      <motion.div
+                    <motion.div
                         className={`w-16 h-16 bg-gradient-to-br ${item.bgGradient} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-green-400/40 flex-shrink-0`}
-                        whileHover={{ rotate: 360 }}
+                      whileHover={{ rotate: 360 }}
                         transition={{ duration: 0.8 }}
-                      >
+                    >
                         <item.icon className={`h-8 w-8 text-transparent bg-clip-text bg-gradient-to-r ${item.gradient}`} />
-                      </motion.div>
-                      
+                    </motion.div>
+                    
                       <div className="flex-1">
                         <h4 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 mb-3 group-hover:scale-105 transition-transform duration-300 tracking-wider">
-                          {item.title}
+                      {item.title}
                         </h4>
                         <p className="text-gray-300 leading-relaxed group-hover:text-gray-100 transition-colors duration-300 text-base font-medium">
-                          {item.description}
-                        </p>
-                      </div>
+                      {item.description}
+                    </p>
+                  </div>
                     </div>
                     
                     {/* Decorative Elements */}
                     <div className="absolute top-3 right-3 w-2 h-2 bg-green-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-3 left-3 w-1 h-1 bg-cyan-400 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
-                  </motion.div>
                 </motion.div>
-              ))}
+              </motion.div>
+            ))}
             </motion.div>
 
             {/* Right Side - Schedule */}
-            <motion.div
+          <motion.div
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
+            viewport={{ once: true }}
               className="space-y-8"
             >
               <h3 className="text-4xl md:text-5xl font-black text-white mb-8 text-center lg:text-left">
@@ -680,68 +680,68 @@ export default function Home() {
               </h3>
               
               <p className="text-xl text-gray-300 mb-8 text-center lg:text-left leading-relaxed">
-                Una experiencia inmersiva donde cada momento cuenta
-              </p>
+              Una experiencia inmersiva donde cada momento cuenta
+            </p>
 
               <div className="space-y-6">
-                {[
-                  {
+            {[
+              {
                     day: "DÍA 1",
                     subtitle: "Inicio",
-                    events: [
-                      "09:00 - Registro y Check-in",
-                      "10:00 - Ceremonia de Apertura",
-                      "11:00 - Presentación de Desafíos",
-                      "12:00 - Formación de Equipos",
-                      "13:00 - ¡Comienza la Programación!"
-                    ],
+                events: [
+                  "09:00 - Registro y Check-in",
+                  "10:00 - Ceremonia de Apertura",
+                  "11:00 - Presentación de Desafíos",
+                  "12:00 - Formación de Equipos",
+                  "13:00 - ¡Comienza la Programación!"
+                ],
                     highlight: false,
                     color: "blue"
-                  },
-                  {
+              },
+              {
                     day: "DÍA 2",
                     subtitle: "Desarrollo",
-                    events: [
-                      "00:00 - Programación Continúa",
-                      "12:00 - Mentoring Sessions",
-                      "18:00 - Networking Event",
-                      "20:00 - Charlas Técnicas",
-                      "24:00 - Programación Nocturna"
-                    ],
+                events: [
+                  "00:00 - Programación Continúa",
+                  "12:00 - Mentoring Sessions",
+                  "18:00 - Networking Event",
+                  "20:00 - Charlas Técnicas",
+                  "24:00 - Programación Nocturna"
+                ],
                     highlight: true,
                     color: "green"
-                  },
-                  {
+              },
+              {
                     day: "DÍA 3",
                     subtitle: "Finalización",
-                    events: [
-                      "09:00 - Últimas Horas",
-                      "12:00 - Deadline de Entrega",
-                      "14:00 - Presentaciones",
-                      "16:00 - Evaluación del Jurado",
-                      "18:00 - Ceremonia de Premiación"
-                    ],
+                events: [
+                  "09:00 - Últimas Horas",
+                  "12:00 - Deadline de Entrega",
+                  "14:00 - Presentaciones",
+                  "16:00 - Evaluación del Jurado",
+                  "18:00 - Ceremonia de Premiación"
+                ],
                     highlight: false,
                     color: "purple"
-                  }
-                ].map((dayData, index) => (
-                  <motion.div
-                    key={dayData.day}
+              }
+            ].map((dayData, index) => (
+              <motion.div
+                key={dayData.day}
                     initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
-                    viewport={{ once: true }}
-                    className="group"
-                  >
-                    <motion.div
+                viewport={{ once: true }}
+                className="group"
+              >
+                <motion.div
                       className={`backdrop-blur-2xl rounded-2xl p-6 border-2 transition-all duration-500 ${
-                        dayData.highlight
+                    dayData.highlight
                           ? 'bg-green-500/30 border-green-400/60 hover:border-green-400/80'
                           : 'bg-black/60 border-gray-600/40 hover:border-gray-500/60'
-                      }`}
+                  }`}
                       whileHover={{ y: -5, scale: 1.01 }}
-                      initial={false}
-                    >
+                  initial={false}
+                >
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center space-x-3">
                           <Calendar className={`h-6 w-6 ${dayData.highlight ? 'text-green-400' : 'text-gray-400'}`} />
@@ -751,26 +751,26 @@ export default function Home() {
                           </div>
                         </div>
                         <div className={`w-3 h-3 rounded-full ${dayData.highlight ? 'bg-green-400' : 'bg-gray-500'} group-hover:scale-125 transition-transform duration-300`} />
-                      </div>
-                      
+                  </div>
+                  
                       <div className="space-y-3">
-                        {dayData.events.map((event, eventIndex) => (
-                          <motion.div
-                            key={eventIndex}
+                    {dayData.events.map((event, eventIndex) => (
+                      <motion.div
+                        key={eventIndex}
                             className="flex items-center text-gray-300 group-hover:text-gray-100 transition-colors duration-300"
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.4, delay: eventIndex * 0.1 }}
-                            viewport={{ once: true }}
-                          >
+                        viewport={{ once: true }}
+                      >
                             <Clock className="h-4 w-4 mr-3 text-green-400 flex-shrink-0" />
                             <span className="text-sm font-medium">{event}</span>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                ))}
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
               </div>
             </motion.div>
           </div>
@@ -993,54 +993,237 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Platinum Sponsors - Ticker */}
+          {/* Main Sponsors - Static Display */}
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-20"
           >
-            <h3 className="text-2xl font-bold text-green-400 text-center mb-8 flex items-center justify-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full mr-3 flex items-center justify-center">
-                <Star className="h-4 w-4 text-black" />
+            <h3 className="text-3xl font-black text-green-400 text-center mb-12 flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full mr-4 flex items-center justify-center">
+                <Star className="h-5 w-5 text-black" />
               </div>
-              Patrocinadores Platino
+              Patrocinadores Principales
             </h3>
             
-            <div className="ticker-container">
-              <div className="ticker-track">
-                <div className="ticker-item">
+            {/* 3 Main Static Sponsors */}
+            <div className="grid md:grid-cols-3 gap-8 mb-16">
+              {/* Starlink - Platinum */}
+                <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true }}
+                  className="group relative"
+                >
+                  <motion.div
+                  className="relative bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 backdrop-blur-xl rounded-3xl p-8 border-2 border-yellow-400/40 hover:border-yellow-400/60 transition-all duration-500 h-full overflow-hidden"
+                    whileHover={{ y: -10, scale: 1.02 }}
+                    initial={false}
+                  >
+                  {/* Animated Border */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-[2px] bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 backdrop-blur-xl rounded-3xl" />
+                  
+                  {/* Background Pattern */}
+                  <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-yellow-600/10 rounded-3xl" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10 text-center">
+                    <div className="mb-6">
                         <Image
-                    src="/SponsorsPlatinum/Starlink_Logo.svg" 
-                    alt="Starlink" 
-                    width={200} 
-                    height={100}
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">Starlink</p>
+                        src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                        alt="Starlink" 
+                        width={200} 
+                        height={100}
+                        className="mx-auto group-hover:scale-110 transition-transform duration-300"
+                        />
                       </div>
-                <div className="ticker-item">
-                  <Image 
-                    src="/SponsorsPlatinum/Starlink_Logo.svg" 
-                    alt="Starlink" 
-                    width={200} 
-                    height={100}
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">Starlink</p>
-                </div>
-                <div className="ticker-item">
-                        <Image
-                    src="/SponsorsPlatinum/Starlink_Logo.svg" 
-                    alt="Starlink" 
-                    width={200} 
-                    height={100}
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">Starlink</p>
+                    <h4 className="text-2xl font-black text-yellow-400 mb-2 group-hover:scale-105 transition-transform duration-300">
+                      STARLINK
+                      </h4>
+                    <p className="text-yellow-300 font-semibold text-sm tracking-wider">
+                      PATROCINADOR PLATINO
+                      </p>
+                    
+                    {/* Decorative Elements */}
+                    <div className="absolute top-4 right-4 w-3 h-3 bg-yellow-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-4 left-4 w-2 h-2 bg-yellow-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
+                    </div>
+                  
+                  {/* Hover Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/10 to-yellow-400/0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </motion.div>
+          </motion.div>
+
+              {/* Placeholder Sponsor 2 */}
+          <motion.div
+                initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+                className="group relative"
+              >
+                <motion.div
+                  className="relative bg-gradient-to-br from-green-500/20 to-green-600/20 backdrop-blur-xl rounded-3xl p-8 border-2 border-green-400/40 hover:border-green-400/60 transition-all duration-500 h-full overflow-hidden"
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  initial={false}
+                >
+                  {/* Animated Border */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-green-500 to-green-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-[2px] bg-gradient-to-br from-green-500/20 to-green-600/20 backdrop-blur-xl rounded-3xl" />
+                  
+                  {/* Background Pattern */}
+                  <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-green-600/10 rounded-3xl" />
+              </div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10 text-center">
+                    <div className="mb-6 h-24 flex items-center justify-center">
+                      <div className="w-32 h-16 bg-green-400/20 rounded-lg flex items-center justify-center border-2 border-dashed border-green-400/40">
+                        <span className="text-green-400 font-bold text-sm">PRÓXIMAMENTE</span>
                       </div>
                     </div>
+                    <h4 className="text-2xl font-black text-green-400 mb-2 group-hover:scale-105 transition-transform duration-300">
+                      SPONSOR 2
+                    </h4>
+                    <p className="text-green-300 font-semibold text-sm tracking-wider">
+                      PATROCINADOR ORO
+                    </p>
+                    
+                    {/* Decorative Elements */}
+                    <div className="absolute top-4 right-4 w-3 h-3 bg-green-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-4 left-4 w-2 h-2 bg-green-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
+                  </div>
+                  
+                  {/* Hover Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400/0 via-green-400/10 to-green-400/0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </motion.div>
+              </motion.div>
+
+              {/* Placeholder Sponsor 3 */}
+                <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                  className="group relative"
+                >
+                  <motion.div
+                  className="relative bg-gradient-to-br from-blue-500/20 to-blue-600/20 backdrop-blur-xl rounded-3xl p-8 border-2 border-blue-400/40 hover:border-blue-400/60 transition-all duration-500 h-full overflow-hidden"
+                  whileHover={{ y: -10, scale: 1.02 }}
+                    initial={false}
+                  >
+                  {/* Animated Border */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-[2px] bg-gradient-to-br from-blue-500/20 to-blue-600/20 backdrop-blur-xl rounded-3xl" />
+                  
+                  {/* Background Pattern */}
+                  <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-blue-600/10 rounded-3xl" />
+                      </div>
+                      
+                  {/* Content */}
+                  <div className="relative z-10 text-center">
+                    <div className="mb-6 h-24 flex items-center justify-center">
+                      <div className="w-32 h-16 bg-blue-400/20 rounded-lg flex items-center justify-center border-2 border-dashed border-blue-400/40">
+                        <span className="text-blue-400 font-bold text-sm">PRÓXIMAMENTE</span>
+                      </div>
+                    </div>
+                    <h4 className="text-2xl font-black text-blue-400 mb-2 group-hover:scale-105 transition-transform duration-300">
+                      SPONSOR 3
+                      </h4>
+                    <p className="text-blue-300 font-semibold text-sm tracking-wider">
+                      PATROCINADOR ORO
+                      </p>
+                    
+                    {/* Decorative Elements */}
+                    <div className="absolute top-4 right-4 w-3 h-3 bg-blue-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-4 left-4 w-2 h-2 bg-blue-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
+                    </div>
+                  
+                  {/* Hover Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-400/10 to-blue-400/0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </motion.div>
+                </motion.div>
+            </div>
+
+            {/* Additional Sponsors Ticker */}
+            <div className="mb-8">
+              <h4 className="text-xl font-bold text-gray-400 text-center mb-6">
+                Más Patrocinadores
+              </h4>
+              
+              <div className="ticker-container">
+                <div className="ticker-track">
+                  {/* Duplicate sponsors for continuous scroll */}
+                  <div className="ticker-item">
+                    <Image
+                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                      alt="Starlink" 
+                      width={120} 
+                      height={60}
+                      className="ticker-logo"
+                    />
+                    <p className="ticker-name">Starlink</p>
+                  </div>
+                  <div className="ticker-item">
+                    <Image
+                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                      alt="Starlink" 
+                      width={120} 
+                      height={60}
+                      className="ticker-logo"
+                    />
+                    <p className="ticker-name">Starlink</p>
+                  </div>
+                  <div className="ticker-item">
+                    <Image
+                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                      alt="Starlink" 
+                      width={120} 
+                      height={60}
+                      className="ticker-logo"
+                    />
+                    <p className="ticker-name">Starlink</p>
+                  </div>
+                  <div className="ticker-item">
+                    <Image
+                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                      alt="Starlink" 
+                      width={120} 
+                      height={60}
+                      className="ticker-logo"
+                    />
+                    <p className="ticker-name">Starlink</p>
+                  </div>
+                  <div className="ticker-item">
+                    <Image
+                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                      alt="Starlink" 
+                      width={120} 
+                      height={60}
+                      className="ticker-logo"
+                    />
+                    <p className="ticker-name">Starlink</p>
+                  </div>
+                  <div className="ticker-item">
+                    <Image
+                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
+                      alt="Starlink" 
+                      width={120} 
+                      height={60}
+                      className="ticker-logo"
+                    />
+                    <p className="ticker-name">Starlink</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
 
