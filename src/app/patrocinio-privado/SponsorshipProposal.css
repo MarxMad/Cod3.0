@@ -1068,12 +1068,13 @@ h2::after, h3::after {
 /* Ticker Track */
 .ticker-track {
   display: flex;
-  animation: scroll 8s linear infinite;
+  animation: scroll 20s linear infinite;
   white-space: nowrap;
+  width: 200%; /* Duplicar el ancho para efecto infinito */
 }
 
 .ticker-track.allies {
-  animation: scroll 10s linear infinite;
+  animation: scroll 25s linear infinite;
 }
 
 .ticker-track:hover {
@@ -1156,7 +1157,7 @@ h2::after, h3::after {
   border-radius: 4px;
 }
 
-/* Animación del ticker */
+/* Animación del ticker - Infinita y suave */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -1199,11 +1200,11 @@ h2::after, h3::after {
   }
   
   .ticker-track {
-    animation: scroll 12s linear infinite;
+    animation: scroll 25s linear infinite;
   }
   
   .ticker-track.allies {
-    animation: scroll 16s linear infinite;
+    animation: scroll 30s linear infinite;
   }
 }
 
@@ -1239,11 +1240,11 @@ h2::after, h3::after {
   }
   
   .ticker-track {
-    animation: scroll 10s linear infinite;
+    animation: scroll 20s linear infinite;
   }
   
   .ticker-track.allies {
-    animation: scroll 14s linear infinite;
+    animation: scroll 25s linear infinite;
   }
 }
 
