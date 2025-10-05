@@ -2,6 +2,27 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { 
+  Star, 
+  Users, 
+  TrendingUp, 
+  Target, 
+  Award, 
+  Globe, 
+  Zap, 
+  Shield,
+  CheckCircle,
+  DollarSign,
+  BarChart3,
+  Calendar,
+  MapPin,
+  Clock,
+  Eye,
+  Share2,
+  Heart,
+  Sparkles
+} from 'lucide-react';
 import './SponsorshipProposal.css';
 
 const SponsorshipProposal = () => {
@@ -10,7 +31,13 @@ const SponsorshipProposal = () => {
       <div className="grid-bg" />
       
       <div className="sponsor-container">
-        <div className="sponsor-header">
+        {/* Executive Header */}
+        <motion.div 
+          className="sponsor-header"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="logo-container">
             <Image src="/CODEB.png" alt="CODEB Logo" className="main-logo" width={200} height={100} />
           </div>
@@ -19,7 +46,79 @@ const SponsorshipProposal = () => {
           <h1>&lt;HACKATHON/&gt;</h1>
           <p className="header-description">El evento de programación más innovador del año</p>
           <p className="header-description">Construye el futuro con código, creatividad y colaboración</p>
+          
+          {/* Executive Summary Badge */}
+          <motion.div 
+            className="executive-badge"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <div className="badge-content">
+              <TrendingUp className="badge-icon" />
+              <span>OPORTUNIDAD DE INVERSIÓN ESTRATÉGICA</span>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Executive Summary & ROI Metrics */}
+        <motion.div 
+          className="executive-summary"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <h2>&lt;RESUMEN_EJECUTIVO/&gt;</h2>
+          <div className="summary-grid">
+            <div className="summary-card">
+              <div className="card-icon">
+                <Users className="icon" />
+              </div>
+              <div className="card-content">
+                <h3>Alcance Demográfico</h3>
+                <div className="metric-value">500+</div>
+                <div className="metric-label">Participantes Presenciales</div>
+                <div className="metric-detail">Desarrolladores Senior, CTOs, Fundadores</div>
+              </div>
+            </div>
+            
+            <div className="summary-card">
+              <div className="card-icon">
+                <Globe className="icon" />
+              </div>
+              <div className="card-content">
+                <h3>Alcance Digital</h3>
+                <div className="metric-value">50K+</div>
+                <div className="metric-label">Impresiones Totales</div>
+                <div className="metric-detail">Redes Sociales + Streaming</div>
+              </div>
+            </div>
+            
+            <div className="summary-card">
+              <div className="card-icon">
+                <TrendingUp className="icon" />
+              </div>
+              <div className="card-content">
+                <h3>ROI Estimado</h3>
+                <div className="metric-value">300%</div>
+                <div className="metric-label">Retorno de Inversión</div>
+                <div className="metric-detail">Basado en alcance y engagement</div>
+              </div>
         </div>
+            
+            <div className="summary-card">
+              <div className="card-icon">
+                <Target className="icon" />
+              </div>
+              <div className="card-content">
+                <h3>Público Objetivo</h3>
+                <div className="metric-value">100%</div>
+                <div className="metric-label">Decision Makers</div>
+                <div className="metric-detail">CTOs, Fundadores, Inversionistas</div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         <div className="info-box">
           <h2>&lt;ACERCA_DEL_EVENTO/&gt;</h2>
@@ -92,7 +191,7 @@ const SponsorshipProposal = () => {
               </div>
             </div>
           </div>
-        </div>
+          </div>
 
         {/* Aliados - Ticker */}
         <div className="sponsors-section">
@@ -309,7 +408,7 @@ const SponsorshipProposal = () => {
                   className="ticker-logo"
                 />
                 <p className="ticker-name">Unión Campesina Democrática</p>
-              </div>
+            </div>
               <div className="ticker-item">
                 <Image 
                   src="/Aliados/WomanWay.png" 
@@ -319,74 +418,143 @@ const SponsorshipProposal = () => {
                   className="ticker-logo"
                 />
                 <p className="ticker-name">WomanWay</p>
+          </div>
+            </div>
+          </div>
+        </div>
+
+        <motion.div 
+          className="packages-section"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <h2>&lt;PAQUETES_DE_PATROCINIO/&gt;</h2>
+          <p className="packages-subtitle">Inversión estratégica con ROI comprobado</p>
+
+          <div className="packages">
+            {/* Platinum Package - Featured */}
+            <motion.div 
+              className="package platinum-featured"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              whileHover={{ y: -10, scale: 1.02 }}
+            >
+              <div className="package-badge">MÁS POPULAR</div>
+              <div className="package-header">
+                <div className="package-icon">
+                  <Award className="icon" />
+                </div>
+                <div className="package-title">PLATINUM</div>
+                <div className="package-price">
+                  <span className="currency">$</span>
+                  <span className="amount">35,000</span>
+                  <span className="period">USD</span>
+                </div>
+                <div className="package-roi">ROI: 300%</div>
               </div>
-            </div>
-          </div>
-        </div>
+              <div className="benefits-section">
+                <h4>Beneficios Incluidos:</h4>
+                <ul className="benefits-list">
+                  <li><CheckCircle className="check-icon" />Logo tamaño ESTELAR en escenario principal (3m x 2m)</li>
+                  <li><CheckCircle className="check-icon" />Stand PREMIUM (3m x 3m) en zona principal</li>
+                  <li><CheckCircle className="check-icon" />Plática magistral (45 min) en horario estelar</li>
+                  <li><CheckCircle className="check-icon" />Logo en playeras de todos los participantes (pecho)</li>
+                  <li><CheckCircle className="check-icon" />Logo en termos oficiales del evento</li>
+                  <li><CheckCircle className="check-icon" />Logo GRANDE en flyers y material impreso</li>
+                  <li><CheckCircle className="check-icon" />Menciones en inauguración y clausura</li>
+                  <li><CheckCircle className="check-icon" />Logo en sitio web (header principal)</li>
+                  <li><CheckCircle className="check-icon" />Redes sociales (15 posts destacados)</li>
+                  <li><CheckCircle className="check-icon" />Logo en certificados de participación</li>
+                  <li><CheckCircle className="check-icon" />10 pases VIP de acceso completo</li>
+                  <li><CheckCircle className="check-icon" />Internet dedicado en stand (100 Mbps)</li>
+                  <li><CheckCircle className="check-icon" />Naming rights de categoría o premio</li>
+                </ul>
+              </div>
+              <div className="package-footer">
+                <div className="value-proposition">
+                  <BarChart3 className="icon" />
+                  <span>Máxima exposición y ROI</span>
+                </div>
+              </div>
+            </motion.div>
 
-        <h2>&lt;PAQUETES_DE_PATROCINIO/&gt;</h2>
+            {/* Silver Package */}
+            <motion.div 
+              className="package silver"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              whileHover={{ y: -5, scale: 1.01 }}
+            >
+              <div className="package-header">
+                <div className="package-icon">
+                  <Star className="icon" />
+                </div>
+                <div className="package-title">SILVER</div>
+                <div className="package-price">
+                  <span className="currency">$</span>
+                  <span className="amount">12,000</span>
+                  <span className="period">USD</span>
+                </div>
+                <div className="package-roi">ROI: 200%</div>
+              </div>
+              <div className="benefits-section">
+                <h4>Beneficios Incluidos:</h4>
+                <ul className="benefits-list">
+                  <li><CheckCircle className="check-icon" />Logo GRANDE en escenario (2m x 1.5m)</li>
+                  <li><CheckCircle className="check-icon" />Stand estándar (2m x 2m) en zona principal</li>
+                  <li><CheckCircle className="check-icon" />Workshop técnico (30 min)</li>
+                  <li><CheckCircle className="check-icon" />Logo en playeras (manga derecha)</li>
+                  <li><CheckCircle className="check-icon" />Logo MEDIANO en flyers</li>
+                  <li><CheckCircle className="check-icon" />Logo destacado en sitio web</li>
+                  <li><CheckCircle className="check-icon" />Redes sociales (10 posts)</li>
+                  <li><CheckCircle className="check-icon" />Logo en pantallas durante el evento</li>
+                  <li><CheckCircle className="check-icon" />6 pases de acceso completo</li>
+                  <li><CheckCircle className="check-icon" />Internet compartido en stand (50 Mbps)</li>
+                  <li><CheckCircle className="check-icon" />Menciones en ceremonia de premiación</li>
+                </ul>
+              </div>
+            </motion.div>
 
-        <div className="packages">
-          <div className="package">
-            <div className="package-header">
-              <div className="package-title">🏆 PLATINUM</div>
-              <div className="package-price">$35,000 USD</div>
-            </div>
-            <ul className="benefits-list">
-              <li>Logo tamaño ESTELAR en escenario principal (3m x 2m)</li>
-              <li>Stand PREMIUM (3m x 3m) en zona principal</li>
-              <li>Plática magistral (45 min) en horario estelar</li>
-              <li>Logo en playeras de todos los participantes (pecho)</li>
-              <li>Logo en termos oficiales del evento</li>
-              <li>Logo GRANDE en flyers y material impreso</li>
-              <li>Mención en inauguración y clausura</li>
-              <li>Logo en sitio web (header principal)</li>
-              <li>Redes sociales (15 posts destacados)</li>
-              <li>Logo en certificados de participación</li>
-              <li>10 pases VIP de acceso completo</li>
-              <li>Internet dedicado en stand (100 Mbps)</li>
-              <li>Naming rights de categoría o premio</li>
-            </ul>
+            {/* Bronze Package */}
+            <motion.div 
+              className="package bronze"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              whileHover={{ y: -5, scale: 1.01 }}
+            >
+              <div className="package-header">
+                <div className="package-icon">
+                  <Shield className="icon" />
+                </div>
+                <div className="package-title">BRONZE</div>
+                <div className="package-price">
+                  <span className="currency">$</span>
+                  <span className="amount">6,000</span>
+                  <span className="period">USD</span>
+                </div>
+                <div className="package-roi">ROI: 150%</div>
+              </div>
+              <div className="benefits-section">
+                <h4>Beneficios Incluidos:</h4>
+                <ul className="benefits-list">
+                  <li><CheckCircle className="check-icon" />Logo MEDIANO en escenario (1.5m x 1m)</li>
+                  <li><CheckCircle className="check-icon" />Stand básico (2m x 1.5m)</li>
+                  <li><CheckCircle className="check-icon" />Logo en playeras (manga izquierda)</li>
+                  <li><CheckCircle className="check-icon" />Logo en flyers</li>
+                  <li><CheckCircle className="check-icon" />Logo en sitio web (sección patrocinadores)</li>
+                  <li><CheckCircle className="check-icon" />Redes sociales (5 posts)</li>
+                  <li><CheckCircle className="check-icon" />Logo en pantallas rotativas</li>
+                  <li><CheckCircle className="check-icon" />4 pases de acceso completo</li>
+                  <li><CheckCircle className="check-icon" />Internet compartido básico</li>
+                </ul>
+              </div>
+            </motion.div>
           </div>
-
-          <div className="package">
-            <div className="package-header">
-              <div className="package-title">🥈 SILVER</div>
-              <div className="package-price">$12,000 USD</div>
-            </div>
-            <ul className="benefits-list">
-              <li>Logo GRANDE en escenario (2m x 1.5m)</li>
-              <li>Stand estándar (2m x 2m) en zona principal</li>
-              <li>Workshop técnico (30 min)</li>
-              <li>Logo en playeras (manga derecha)</li>
-              <li>Logo MEDIANO en flyers</li>
-              <li>Logo destacado en sitio web</li>
-              <li>Redes sociales (10 posts)</li>
-              <li>Logo en pantallas durante el evento</li>
-              <li>6 pases de acceso completo</li>
-              <li>Internet compartido en stand (50 Mbps)</li>
-              <li>Mención en ceremonia de premiación</li>
-            </ul>
-          </div>
-
-          <div className="package">
-            <div className="package-header">
-              <div className="package-title">🥉 BRONZE</div>
-              <div className="package-price">$6,000 USD</div>
-            </div>
-            <ul className="benefits-list">
-              <li>Logo MEDIANO en escenario (1.5m x 1m)</li>
-              <li>Stand básico (2m x 1.5m)</li>
-              <li>Logo en playeras (manga izquierda)</li>
-              <li>Logo en flyers</li>
-              <li>Logo en sitio web (sección patrocinadores)</li>
-              <li>Redes sociales (5 posts)</li>
-              <li>Logo en pantallas rotativas</li>
-              <li>4 pases de acceso completo</li>
-              <li>Internet compartido básico</li>
-            </ul>
-          </div>
-        </div>
+        </motion.div>
 
         <h2>&lt;DESGLOSE_DETALLADO_DE_BENEFICIOS/&gt;</h2>
 
