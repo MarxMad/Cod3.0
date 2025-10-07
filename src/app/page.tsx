@@ -291,7 +291,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section - Full Width Layout */}
-        <section id="home" className="pt-24 sm:pt-32 pb-8 sm:pb-16 px-6 sm:px-8 lg:px-12 relative min-h-screen">
+        <section id="home" className="pt-24 sm:pt-32 pb-8 sm:pb-16 px-8 sm:px-12 lg:px-16 relative min-h-screen">
         <div className="max-w-7xl mx-auto">
           {/* Full Width HACKATHON Title */}
           <motion.div
@@ -301,7 +301,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <motion.h1 
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 tech-title leading-tight"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl xl:text-6xl font-black text-white mb-4 tech-title leading-tight"
               variants={fadeInUp}
             >
               <span className="block text-green-400 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black">
@@ -448,7 +448,7 @@ export default function Home() {
       </section>
 
       {/* Combined About & Schedule Section */}
-      <section id="about" className="py-12 sm:py-16 lg:py-24 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-black via-green-900/10 to-black relative overflow-hidden">
+      <section id="about" className="py-12 sm:py-16 lg:py-24 px-8 sm:px-12 lg:px-16 bg-gradient-to-br from-black via-green-900/10 to-black relative overflow-hidden">
         {/* Enhanced Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Animated Grid Pattern */}
@@ -510,7 +510,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <span className="block mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">UN HACKATHON DE</span>
+              <span className="block mb-4 sm:mb-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl xl:text-6xl">UN HACKATHON DE</span>
               <span className="block text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[12rem] font-black text-green-400">
                 48 HORAS
               </span>
@@ -581,9 +581,9 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="space-y-8 px-6 sm:px-8 lg:px-12"
+              className="space-y-8 px-8 sm:px-12 lg:px-16"
             >
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-8 text-center lg:text-left">
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-6 sm:mb-8 text-center lg:text-left">
                 Nuestros{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400">
                   Pilares
@@ -669,9 +669,9 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-              className="space-y-8 px-6 sm:px-8 lg:px-12"
+              className="space-y-8 px-8 sm:px-12 lg:px-16"
             >
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-8 text-center lg:text-left">
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-6 sm:mb-8 text-center lg:text-left">
                 Tres días{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400">
                   intensos
@@ -953,7 +953,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto relative z-10 px-8 sm:px-12 lg:px-16">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1008,7 +1008,7 @@ export default function Home() {
             </h3>
             
             {/* 3 Main Static Sponsors */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-16 px-6 sm:px-8 lg:px-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-16 px-8 sm:px-12 lg:px-16">
               {/* Starlink - Platinum */}
                 <motion.div
                 initial={{ opacity: 0, y: 40 }}
@@ -1601,7 +1601,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center px-6 sm:px-8 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center px-8 sm:px-12 lg:px-16">
             {/* Venue Info */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
@@ -1658,7 +1658,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 px-2 sm:px-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 px-4 sm:px-0">
                 {[
                   { icon: Wifi, title: "Internet 1Gbps", description: "Conexión ultra rápida" },
                   { icon: Coffee, title: "Cafetería 24/7", description: "Comida y bebidas" },
