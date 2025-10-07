@@ -10,18 +10,9 @@ import {
   Target, 
   Award, 
   Globe, 
-  Zap, 
   Shield,
   CheckCircle,
-  DollarSign,
-  BarChart3,
-  Calendar,
-  MapPin,
-  Clock,
-  Eye,
-  Share2,
-  Heart,
-  Sparkles
+  BarChart3
 } from 'lucide-react';
 import './SponsorshipProposal.css';
 
