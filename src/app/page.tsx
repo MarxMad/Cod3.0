@@ -291,7 +291,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section - Full Width Layout */}
-      <section id="home" className="pt-20 sm:pt-32 pb-8 sm:pb-16 px-4 sm:px-6 lg:px-8 relative min-h-screen">
+        <section id="home" className="pt-24 sm:pt-32 pb-8 sm:pb-16 px-4 sm:px-6 lg:px-8 relative min-h-screen">
         <div className="max-w-7xl mx-auto">
           {/* Full Width HACKATHON Title */}
           <motion.div
@@ -581,7 +581,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="space-y-8"
+              className="space-y-8 px-4 sm:px-0"
             >
               <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-8 text-center lg:text-left">
                 Nuestros{' '}
@@ -669,7 +669,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-              className="space-y-8"
+              className="space-y-8 px-4 sm:px-0"
             >
               <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-8 text-center lg:text-left">
                 Tres días{' '}
@@ -1152,78 +1152,6 @@ export default function Home() {
                 </motion.div>
             </div>
 
-            {/* Additional Sponsors Ticker */}
-            <div className="mb-8">
-              <h4 className="text-xl font-bold text-gray-400 text-center mb-6">
-                Más Patrocinadores
-              </h4>
-              
-              <div className="ticker-container">
-                <div className="ticker-track">
-                  {/* Duplicate sponsors for continuous scroll */}
-                  <div className="ticker-item">
-                    <Image
-                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
-                      alt="Starlink" 
-                      width={120} 
-                      height={60}
-                      className="ticker-logo"
-                    />
-                    <p className="ticker-name">Starlink</p>
-                  </div>
-                  <div className="ticker-item">
-                    <Image
-                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
-                      alt="Starlink" 
-                      width={120} 
-                      height={60}
-                      className="ticker-logo"
-                    />
-                    <p className="ticker-name">Starlink</p>
-                  </div>
-                  <div className="ticker-item">
-                    <Image
-                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
-                      alt="Starlink" 
-                      width={120} 
-                      height={60}
-                      className="ticker-logo"
-                    />
-                    <p className="ticker-name">Starlink</p>
-                  </div>
-                  <div className="ticker-item">
-                    <Image
-                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
-                      alt="Starlink" 
-                      width={120} 
-                      height={60}
-                      className="ticker-logo"
-                    />
-                    <p className="ticker-name">Starlink</p>
-                  </div>
-                  <div className="ticker-item">
-                    <Image
-                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
-                      alt="Starlink" 
-                      width={120} 
-                      height={60}
-                      className="ticker-logo"
-                    />
-                    <p className="ticker-name">Starlink</p>
-                  </div>
-                  <div className="ticker-item">
-                    <Image
-                      src="/SponsorsPlatinum/Starlink_Logo.svg" 
-                      alt="Starlink" 
-                      width={120} 
-                      height={60}
-                      className="ticker-logo"
-                    />
-                    <p className="ticker-name">Starlink</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
 
@@ -1242,224 +1170,224 @@ export default function Home() {
             </h3>
             
             <div className="ticker-container">
-              <div className="ticker-track allies">
-                <div className="ticker-item">
+              <div className="ticker-track allies-fast">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/ANGULO.png" 
                     alt="Ángulo" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Ángulo</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                         <Image
                     src="/Aliados/CHIPIPAY.svg" 
                     alt="ChipiPay" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">ChipiPay</p>
                       </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/FOUNDERS.png" 
                     alt="Founders" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Founders</p>
                     </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/goblin - Logo-02.PNG" 
                     alt="Goblin" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Goblin</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/HERDAO.png" 
                     alt="HERDAO" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">HERDAO</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/Logo_ww_blanco.png" 
                     alt="WomanWay" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">WomanWay</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/MEDIOLANO.svg" 
                     alt="Mediolano" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Mediolano</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/OMIS.jpeg" 
                     alt="OMIS" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">OMIS</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/restake watch.PNG" 
                     alt="Restake Watch" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Restake Watch</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/UnionCampesinaDemocratica.jpeg" 
                     alt="Unión Campesina Democrática" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Unión Campesina Democrática</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/WomanWay.png" 
                     alt="WomanWay" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">WomanWay</p>
                 </div>
                 {/* Duplicar para efecto continuo */}
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/ANGULO.png" 
                     alt="Ángulo" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Ángulo</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/CHIPIPAY.svg" 
                     alt="ChipiPay" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">ChipiPay</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/FOUNDERS.png" 
                     alt="Founders" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Founders</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/goblin - Logo-02.PNG" 
                     alt="Goblin" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Goblin</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/HERDAO.png" 
                     alt="HERDAO" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">HERDAO</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/Logo_ww_blanco.png" 
                     alt="WomanWay" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">WomanWay</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/MEDIOLANO.svg" 
                     alt="Mediolano" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Mediolano</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/OMIS.jpeg" 
                     alt="OMIS" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">OMIS</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/restake watch.PNG" 
                     alt="Restake Watch" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Restake Watch</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/UnionCampesinaDemocratica.jpeg" 
                     alt="Unión Campesina Democrática" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Unión Campesina Democrática</p>
                 </div>
-                <div className="ticker-item">
+                <div className="ticker-item large">
                   <Image 
                     src="/Aliados/WomanWay.png" 
                     alt="WomanWay" 
-                    width={150} 
-                    height={80}
+                    width={200} 
+                    height={100}
                     className="ticker-logo"
                   />
                   <p className="ticker-name">WomanWay</p>
@@ -1649,7 +1577,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center px-4 sm:px-0">
             {/* Venue Info */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
@@ -1706,7 +1634,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {[
                   { icon: Wifi, title: "Internet 1Gbps", description: "Conexión ultra rápida" },
                   { icon: Coffee, title: "Cafetería 24/7", description: "Comida y bebidas" },

@@ -376,6 +376,10 @@
   animation: scroll 10s linear infinite;
 }
 
+.ticker-track.allies-fast {
+  animation: scroll 5s linear infinite;
+}
+
 .ticker-track:hover {
   animation-play-state: paused;
 }
@@ -387,6 +391,11 @@
   align-items: center;
   justify-content: center;
   padding: 20px 15px;
+}
+
+.ticker-item.large {
+  flex: 0 0 calc(50% - 20px);
+}
   margin: 0 10px;
   background: linear-gradient(135deg, 
     rgba(0, 255, 0, 0.05) 0%, 
