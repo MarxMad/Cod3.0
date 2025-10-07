@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { 
   Users, 
@@ -28,7 +28,7 @@ import {
   Building,
   Navigation
 } from 'lucide-react';
-import SplineScene from '../components/SplineScene';
+import LazySplineScene from '../components/LazySplineScene';
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -395,7 +395,7 @@ export default function Home() {
             >
               {/* Spline Animation */}
               <div className="relative h-60 sm:h-80 md:h-96 lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm">
-                <SplineScene 
+                <LazySplineScene 
                   sceneUrl="https://prod.spline.design/uG2xGUiKaj-e7URU/scene.splinecode"
                   className="w-full h-full"
                 />
@@ -816,11 +816,11 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: -60 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-100px" }}
               className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden border border-purple-400/30"
             >
-              <SplineScene 
+              <LazySplineScene 
                 sceneUrl="https://prod.spline.design/2q0dmovGgiPvvFq5/scene.splinecode"
                 className="w-full h-full"
               />
@@ -1039,6 +1039,8 @@ export default function Home() {
                         alt="Starlink" 
                         width={200} 
                         height={100}
+                        priority={true}
+                        loading="eager"
                         className="mx-auto group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
@@ -1177,6 +1179,7 @@ export default function Home() {
                     alt="Ángulo" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Ángulo</p>
@@ -1187,6 +1190,7 @@ export default function Home() {
                     alt="ChipiPay" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">ChipiPay</p>
@@ -1197,6 +1201,7 @@ export default function Home() {
                     alt="Founders" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Founders</p>
@@ -1207,6 +1212,7 @@ export default function Home() {
                     alt="Goblin" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Goblin</p>
@@ -1217,6 +1223,7 @@ export default function Home() {
                     alt="HERDAO" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">HERDAO</p>
@@ -1227,6 +1234,7 @@ export default function Home() {
                     alt="WomanWay" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">WomanWay</p>
@@ -1237,6 +1245,7 @@ export default function Home() {
                     alt="Mediolano" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Mediolano</p>
@@ -1247,6 +1256,7 @@ export default function Home() {
                     alt="OMIS" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">OMIS</p>
@@ -1257,6 +1267,7 @@ export default function Home() {
                     alt="Restake Watch" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Restake Watch</p>
@@ -1267,6 +1278,7 @@ export default function Home() {
                     alt="Unión Campesina Democrática" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Unión Campesina Democrática</p>
@@ -1277,6 +1289,7 @@ export default function Home() {
                     alt="WomanWay" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">WomanWay</p>
@@ -1288,6 +1301,7 @@ export default function Home() {
                     alt="Ángulo" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Ángulo</p>
@@ -1298,6 +1312,7 @@ export default function Home() {
                     alt="ChipiPay" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">ChipiPay</p>
@@ -1308,6 +1323,7 @@ export default function Home() {
                     alt="Founders" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Founders</p>
@@ -1318,6 +1334,7 @@ export default function Home() {
                     alt="Goblin" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Goblin</p>
@@ -1328,6 +1345,7 @@ export default function Home() {
                     alt="HERDAO" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">HERDAO</p>
@@ -1338,6 +1356,7 @@ export default function Home() {
                     alt="WomanWay" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">WomanWay</p>
@@ -1348,6 +1367,7 @@ export default function Home() {
                     alt="Mediolano" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Mediolano</p>
@@ -1358,6 +1378,7 @@ export default function Home() {
                     alt="OMIS" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">OMIS</p>
@@ -1368,6 +1389,7 @@ export default function Home() {
                     alt="Restake Watch" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Restake Watch</p>
@@ -1378,6 +1400,7 @@ export default function Home() {
                     alt="Unión Campesina Democrática" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">Unión Campesina Democrática</p>
@@ -1388,6 +1411,7 @@ export default function Home() {
                     alt="WomanWay" 
                     width={200} 
                     height={100}
+                    loading="lazy"
                     className="ticker-logo"
                   />
                   <p className="ticker-name">WomanWay</p>
