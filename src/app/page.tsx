@@ -291,11 +291,11 @@ export default function Home() {
       </nav>
 
       {/* Hero Section - Full Width Layout */}
-      <section id="home" className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative min-h-screen">
+      <section id="home" className="pt-20 sm:pt-32 pb-8 sm:pb-16 px-4 sm:px-6 lg:px-8 relative min-h-screen">
         <div className="max-w-7xl mx-auto">
           {/* Full Width HACKATHON Title */}
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -304,32 +304,31 @@ export default function Home() {
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 tech-title leading-tight"
               variants={fadeInUp}
             >
-              
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+              <span className="block text-green-400 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black">
                 HACKATHON
               </span>
             </motion.h1>
           </motion.div>
 
           {/* Two Column Layout */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start min-h-[60vh]">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start min-h-[50vh] sm:min-h-[60vh]">
             {/* Left Column - Content */}
             <motion.div
-              className="text-center lg:text-left flex flex-col justify-between min-h-[600px]"
+              className="text-center lg:text-left flex flex-col justify-between min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]"
               variants={staggerContainer}
               initial="initial"
               animate="animate"
             >
               {/* Top Section - Logo and Description */}
               <div>
-                {/* Floating Logo - Massive Size */}
+                {/* Floating Logo - Responsive Size */}
                 <motion.div 
-                  className="flex justify-center lg:justify-start mb-8"
+                  className="flex justify-center lg:justify-start mb-6 sm:mb-8"
                   variants={floatingAnimation}
                   initial="initial"
                   animate="animate"
                 >
-                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 2xl:w-[28rem] 2xl:h-[28rem]">
+                  <div className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-80 lg:h-80 xl:w-96 xl:h-96 2xl:w-[28rem] 2xl:h-[28rem]">
                 <Image
                       src="/CODEB.png"
                       alt="CODEB Logo"
@@ -340,7 +339,7 @@ export default function Home() {
                 </motion.div>
                 
                 <motion.p 
-                  className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
                   variants={fadeInUp}
                 >
                   El evento de programación más innovador del año. 
@@ -350,7 +349,7 @@ export default function Home() {
 
               {/* Bottom Section - Countdown Timer */}
               <motion.div 
-                className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-6 max-w-4xl mx-auto lg:mx-0 px-4 lg:px-0"
+                className="grid grid-cols-4 gap-1 sm:gap-2 md:gap-4 lg:gap-6 max-w-4xl mx-auto lg:mx-0 px-2 sm:px-4 lg:px-0"
                 variants={fadeInUp}
               >
                 {[
@@ -361,7 +360,7 @@ export default function Home() {
                 ].map((item, index) => (
                   <motion.div
                     key={item.label}
-                    className="tech-card p-2 sm:p-4 md:p-6 relative overflow-hidden group min-w-0"
+                    className="tech-card p-2 sm:p-3 md:p-4 lg:p-6 relative overflow-hidden group min-w-0"
                     variants={glowAnimation}
                     initial="initial"
                     animate="animate"
@@ -377,7 +376,7 @@ export default function Home() {
                     />
                     
                     <div className="relative z-10 text-center">
-                      <div className="text-lg sm:text-2xl md:text-4xl font-black text-green-400 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-300 font-mono leading-tight">
+                      <div className="text-sm sm:text-lg md:text-2xl lg:text-4xl font-black text-green-400 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-300 font-mono leading-tight">
                         {isClient ? item.value : '--'}
                       </div>
                       <div className="text-xs sm:text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300 font-mono leading-tight">{item.label}</div>
@@ -389,13 +388,13 @@ export default function Home() {
 
             {/* Right Column - Spline Animation + Buttons */}
             <motion.div
-              className="space-y-6 flex flex-col justify-between min-h-[600px]"
+              className="space-y-4 sm:space-y-6 flex flex-col justify-between min-h-[300px] sm:min-h-[400px] lg:min-h-[600px]"
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               {/* Spline Animation */}
-              <div className="relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm">
+              <div className="relative h-60 sm:h-80 md:h-96 lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm">
                 <SplineScene 
                   sceneUrl="https://prod.spline.design/uG2xGUiKaj-e7URU/scene.splinecode"
                   className="w-full h-full"
@@ -406,12 +405,12 @@ export default function Home() {
 
               {/* Enhanced Action Buttons */}
               <motion.div 
-                className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start items-center"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center lg:justify-start items-center"
                 variants={fadeInUp}
               >
                 <motion.a
                   href="/registro"
-                  className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center space-x-3 relative overflow-hidden w-full sm:w-auto justify-center transition-all duration-300 shadow-lg hover:shadow-green-500/25"
+                  className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg flex items-center space-x-2 sm:space-x-3 relative overflow-hidden w-full sm:w-auto justify-center transition-all duration-300 shadow-lg hover:shadow-green-500/25"
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -429,7 +428,7 @@ export default function Home() {
                 </motion.a>
                 
                 <motion.button
-                  className="group relative bg-transparent border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 backdrop-blur-sm relative overflow-hidden w-full sm:w-auto justify-center"
+                  className="group relative bg-transparent border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 backdrop-blur-sm relative overflow-hidden w-full sm:w-auto justify-center"
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -449,7 +448,7 @@ export default function Home() {
       </section>
 
       {/* Combined About & Schedule Section */}
-      <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-green-900/10 to-black relative overflow-hidden">
+      <section id="about" className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-green-900/10 to-black relative overflow-hidden">
         {/* Enhanced Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Animated Grid Pattern */}
@@ -489,35 +488,35 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-24 relative"
+            className="text-center mb-12 sm:mb-16 lg:mb-24 relative"
           >
             <motion.div
-              className="relative z-10 inline-flex items-center space-x-4 bg-gradient-to-r from-green-500/20 via-green-400/30 to-green-500/20 text-green-400 px-10 py-5 rounded-full mb-10 border-2 border-green-400/40 backdrop-blur-sm"
+              className="relative z-10 inline-flex items-center space-x-2 sm:space-x-4 bg-gradient-to-r from-green-500/20 via-green-400/30 to-green-500/20 text-green-400 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full mb-6 sm:mb-8 lg:mb-10 border-2 border-green-400/40 backdrop-blur-sm"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0,255,0,0.3)" }}
             >
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-              <span className="font-black text-xl tracking-widest">¿QUÉ ES COD3.0?</span>
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
+              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse" />
+              <span className="font-black text-sm sm:text-lg lg:text-xl tracking-widest">¿QUÉ ES COD3.0?</span>
+              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse" />
             </motion.div>
             
             <motion.h2 
-              className="text-7xl md:text-8xl font-black text-white mb-12 leading-tight"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-8 sm:mb-12 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <span className="block mb-6 text-5xl md:text-6xl">UN HACKATHON DE</span>
-              <span className="block text-9xl md:text-[12rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-300 to-green-500 animate-pulse drop-shadow-2xl">
+              <span className="block mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">UN HACKATHON DE</span>
+              <span className="block text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[12rem] font-black text-green-400">
                 48 HORAS
               </span>
-              <span className="block mt-8 text-5xl md:text-6xl">
+              <span className="block mt-4 sm:mt-6 lg:mt-8 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
                 DONDE LA{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 relative">
+                <span className="text-green-400 relative">
                   INNOVACIÓN
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-cyan-400/30 rounded-xl"
@@ -528,9 +527,9 @@ export default function Home() {
                   />
                 </span>
               </span>
-              <span className="block text-5xl md:text-6xl">
+              <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
                 SE ENCUENTRA CON LA{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400 relative">
+                <span className="text-cyan-400 relative">
                   TECNOLOGÍA
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 to-green-400/30 rounded-xl"
@@ -544,7 +543,7 @@ export default function Home() {
             </motion.h2>
             
             <motion.p 
-              className="text-2xl md:text-3xl text-gray-300 max-w-6xl mx-auto leading-relaxed font-medium mb-16"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300 max-w-6xl mx-auto leading-relaxed font-medium mb-8 sm:mb-12 lg:mb-16 px-4 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -561,21 +560,21 @@ export default function Home() {
 
             {/* Program Badge */}
             <motion.div
-              className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500/20 via-cyan-400/30 to-blue-500/20 text-cyan-400 px-8 py-4 rounded-full border-2 border-cyan-400/40 backdrop-blur-sm"
+              className="inline-flex items-center space-x-2 sm:space-x-3 bg-gradient-to-r from-blue-500/20 via-cyan-400/30 to-blue-500/20 text-cyan-400 px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 rounded-full border-2 border-cyan-400/40 backdrop-blur-sm"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.7 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0,255,255,0.3)" }}
             >
-              <Calendar className="h-6 w-6" />
-              <span className="font-black text-lg tracking-wider">PROGRAMA DEL EVENTO</span>
-              <Clock className="h-6 w-6" />
+              <Calendar className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
+              <span className="font-black text-xs sm:text-sm lg:text-lg tracking-wider">PROGRAMA DEL EVENTO</span>
+              <Clock className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
             </motion.div>
           </motion.div>
 
           {/* Combined Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
             {/* Left Side - Core Values */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
@@ -584,7 +583,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <h3 className="text-4xl md:text-5xl font-black text-white mb-8 text-center lg:text-left">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-8 text-center lg:text-left">
                 Nuestros{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400">
                   Pilares
@@ -672,14 +671,14 @@ export default function Home() {
             viewport={{ once: true }}
               className="space-y-8"
             >
-              <h3 className="text-4xl md:text-5xl font-black text-white mb-8 text-center lg:text-left">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-8 text-center lg:text-left">
                 Tres días{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400">
                   intensos
                 </span>
               </h3>
               
-              <p className="text-xl text-gray-300 mb-8 text-center lg:text-left leading-relaxed">
+              <p className="text-base sm:text-lg lg:text-xl text-gray-300 mb-6 sm:mb-8 text-center lg:text-left leading-relaxed">
               Una experiencia inmersiva donde cada momento cuenta
             </p>
 
