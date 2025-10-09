@@ -18,13 +18,16 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://cod3-0.vercel.app'),
   icons: {
     icon: [
-      { url: '/CODEB.png', type: 'image/png' },
-      { url: '/CODEB.png', sizes: '32x32', type: 'image/png' },
-      { url: '/CODEB.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/favicon-512x512.png', sizes: '512x512', type: 'image/png' },
     ],
-    shortcut: '/CODEB.png',
+    shortcut: '/favicon.ico',
     apple: [
-      { url: '/CODEB.png', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   openGraph: {
@@ -73,18 +76,18 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        <link rel="icon" href="/CODEB.png" type="image/png" />
-        <link rel="shortcut icon" href="/CODEB.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/CODEB.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/CODEB.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/CODEB.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/CODEB.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/CODEB.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/CODEB.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#00ff00" />
         <meta name="msapplication-TileColor" content="#00ff00" />
-        <meta name="msapplication-TileImage" content="/CODEB.png" />
+        <meta name="msapplication-TileImage" content="/favicon-192x192.png" />
       </head>
       <body className="antialiased">
         <Web3Provider>
