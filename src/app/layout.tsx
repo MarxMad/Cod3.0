@@ -16,6 +16,17 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL('https://cod3-0.vercel.app'),
+  icons: {
+    icon: [
+      { url: '/CODEB.png', type: 'image/png' },
+      { url: '/CODEB.png', sizes: '32x32', type: 'image/png' },
+      { url: '/CODEB.png', sizes: '16x16', type: 'image/png' },
+    ],
+    shortcut: '/CODEB.png',
+    apple: [
+      { url: '/CODEB.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   openGraph: {
     title: "COD3.0 Hackathon - El evento de programación más innovador del año",
     description: "Únete al hackathon COD3.0, donde desarrolladores, diseñadores y emprendedores se unen para crear soluciones innovadoras que cambien el mundo.",
@@ -62,18 +73,18 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="/favicon-180x180.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
+        <link rel="icon" href="/CODEB.png" type="image/png" />
+        <link rel="shortcut icon" href="/CODEB.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/CODEB.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/CODEB.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/CODEB.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/CODEB.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/CODEB.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/CODEB.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#00ff00" />
         <meta name="msapplication-TileColor" content="#00ff00" />
-        <meta name="msapplication-TileImage" content="/favicon-192x192.png" />
+        <meta name="msapplication-TileImage" content="/CODEB.png" />
       </head>
       <body className="antialiased">
         <Web3Provider>
