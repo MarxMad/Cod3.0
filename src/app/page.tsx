@@ -51,33 +51,33 @@ export default function Home() {
   const galleryImages = [
     {
       src: '/Espectacular.jpeg',
-      alt: 'Espectacular WTC CDMX',
-      title: 'Espectacular WTC CDMX',
-      description: '70m x 10m - Máxima visibilidad'
+      alt: 'Parque Bicentenario - Vista Aérea',
+      title: 'Parque Bicentenario',
+      description: 'Ubicación icónica en el corazón de CDMX'
     },
     {
       src: '/Led.jpeg',
-      alt: 'Panel LED',
-      title: 'Panel LED',
-      description: '100cm x 50cm - Tecnología de vanguardia'
+      alt: 'Área de Trabajo Tech',
+      title: 'Área de Trabajo',
+      description: 'Espacios modernos para desarrollo'
     },
     {
       src: '/Letra.jpeg',
-      alt: 'Letra 400K30',
-      title: 'Letra 400K30',
-      description: 'Iluminación LED - Impacto visual'
+      alt: 'Ambiente Innovador',
+      title: 'Ambiente Innovador',
+      description: 'Perfecto para hackathons tecnológicos'
     },
     {
       src: '/Stage.jpeg',
-      alt: 'Stage Principal',
-      title: 'Stage Principal',
-      description: 'Evento Exterior - Espectacular'
+      alt: 'Auditorio Principal',
+      title: 'Auditorio Principal',
+      description: 'Ceremonias y presentaciones'
     },
     {
       src: '/Stage2.jpeg',
-      alt: 'Stage Interior',
-      title: 'Stage Interior',
-      description: 'WEB3 HACKATHON - Ambiente tech'
+      alt: 'Área de Networking',
+      title: 'Área de Networking',
+      description: 'Espacios para colaboración y conexión'
     }
   ];
 
@@ -306,6 +306,9 @@ export default function Home() {
             >
               <span className="block text-green-400 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black">
                 HACKATHON
+              </span>
+              <span className="block text-cyan-400 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold mt-2">
+                27-29 MARZO 2026
               </span>
             </motion.h1>
           </motion.div>
@@ -685,8 +688,8 @@ export default function Home() {
               <div className="space-y-6">
             {[
               {
-                    day: "DÍA 1",
-                    subtitle: "Inicio",
+                    day: "27 MARZO",
+                    subtitle: "Día 1 - Inicio",
                 events: [
                   "09:00 - Registro y Check-in",
                   "10:00 - Ceremonia de Apertura",
@@ -698,8 +701,8 @@ export default function Home() {
                     color: "blue"
               },
               {
-                    day: "DÍA 2",
-                    subtitle: "Desarrollo",
+                    day: "28 MARZO",
+                    subtitle: "Día 2 - Desarrollo",
                 events: [
                   "00:00 - Programación Continúa",
                   "12:00 - Mentoring Sessions",
@@ -711,8 +714,8 @@ export default function Home() {
                     color: "green"
               },
               {
-                    day: "DÍA 3",
-                    subtitle: "Finalización",
+                    day: "29 MARZO",
+                    subtitle: "Día 3 - Finalización",
                 events: [
                   "09:00 - Últimas Horas",
                   "12:00 - Deadline de Entrega",
@@ -1590,14 +1593,14 @@ export default function Home() {
             </motion.div>
             
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-              Centro de{' '}
+              Parque{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-pink-400">
-                Innovación Tech
+                Bicentenario
               </span>
             </h2>
             
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Un espacio diseñado para la innovación y la creatividad tecnológica
+              Un espacio icónico en el corazón de la Ciudad de México, perfecto para la innovación tecnológica
             </p>
           </motion.div>
 
@@ -1620,7 +1623,7 @@ export default function Home() {
                     <Navigation className="h-6 w-6 mr-4 text-blue-400 mt-1" />
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-1">Dirección</h4>
-                      <p className="text-gray-300">Centro de Innovación Tech<br />Av. Tecnología 123, CDMX</p>
+                      <p className="text-gray-300">Parque Bicentenario<br />Av. Río San Joaquín 200, CDMX</p>
                     </div>
                   </div>
                   
