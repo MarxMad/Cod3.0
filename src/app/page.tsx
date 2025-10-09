@@ -28,7 +28,7 @@ import {
   Building,
   Navigation
 } from 'lucide-react';
-import LazySplineScene from '../components/LazySplineScene';
+// import LazySplineScene from '../components/LazySplineScene';
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -396,13 +396,21 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              {/* Spline Animation */}
-              <div className="relative h-60 sm:h-80 md:h-96 lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm">
+              {/* Spline Animation - Temporarily disabled for performance */}
+              {/* <div className="relative h-60 sm:h-80 md:h-96 lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm">
                 <LazySplineScene 
                   sceneUrl="https://prod.spline.design/uG2xGUiKaj-e7URU/scene.splinecode"
                   className="w-full h-full"
                 />
-                {/* Overlay to ensure proper alignment */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+              </div> */}
+              {/* Placeholder while Spline is disabled */}
+              <div className="relative h-60 sm:h-80 md:h-96 lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm flex items-center justify-center">
+                <div className="text-center space-y-4 p-8">
+                  <div className="text-6xl">🚀</div>
+                  <h3 className="text-2xl font-bold text-green-400">COD3.0</h3>
+                  <p className="text-gray-400">Innovación y Tecnología</p>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
               </div>
 
@@ -815,8 +823,8 @@ export default function Home() {
 
           {/* Two Column Layout: Spline + Prizes */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Spline 3D Scene */}
-            <motion.div
+            {/* Spline 3D Scene - Temporarily disabled for performance */}
+            {/* <motion.div
               initial={{ opacity: 0, x: -60 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
@@ -827,6 +835,20 @@ export default function Home() {
                 sceneUrl="https://prod.spline.design/2q0dmovGgiPvvFq5/scene.splinecode"
                 className="w-full h-full"
               />
+            </motion.div> */}
+            {/* Placeholder while Spline is disabled */}
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden border border-purple-400/30 bg-gradient-to-br from-purple-900/20 via-black to-pink-900/20 flex items-center justify-center"
+            >
+              <div className="text-center space-y-4 p-8">
+                <div className="text-6xl">🏆</div>
+                <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Premios Increíbles</h3>
+                <p className="text-gray-400">Compite por premios épicos</p>
+              </div>
             </motion.div>
 
             {/* Prizes Cards */}
