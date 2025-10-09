@@ -1754,9 +1754,9 @@ export default function Home() {
                   </h3>
                   <div className="space-y-4 text-gray-300">
                     {[
-                      { icon: Calendar, text: "15-17 de Diciembre, 2024" },
+                      { icon: Calendar, text: "27-29 de Marzo, 2026" },
                       { icon: Clock, text: "48 horas continuas" },
-                      { icon: MapPin, text: "Centro de Innovación Tech" },
+                      { icon: MapPin, text: "Parque Bicentenario, CDMX" },
                       { icon: Users, text: "Máximo 4 personas por equipo" }
                     ].map((item, index) => (
                       <motion.div
