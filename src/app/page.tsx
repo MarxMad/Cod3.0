@@ -331,7 +331,7 @@ export default function Home() {
                   initial="initial"
                   animate="animate"
                 >
-                  <div className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-80 lg:h-80 xl:w-96 xl:h-96 2xl:w-[28rem] 2xl:h-[28rem]">
+                  <div className="relative w-96 h-96 sm:w-[36rem] sm:h-[36rem] md:w-[42rem] md:h-[42rem] lg:w-[60rem] lg:h-[60rem] xl:w-[72rem] xl:h-[72rem] 2xl:w-[84rem] 2xl:h-[84rem]">
                 <Image
                       src="/CODEB.png"
                       alt="CODEB Logo"
