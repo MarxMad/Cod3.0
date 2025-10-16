@@ -342,29 +342,7 @@
   z-index: -1;
 }
 
-.ticker-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), transparent);
-}
-
-.ticker-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60px;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), transparent);
-}
+/* Gradientes negros removidos para mejor visibilidad de logos */
 
 .ticker-track {
   display: flex;
@@ -377,7 +355,7 @@
 }
 
 .ticker-track.allies-fast {
-  animation: scroll 30s linear infinite;
+  animation: scroll 6s linear infinite;
 }
 
 .ticker-item {
