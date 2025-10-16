@@ -377,15 +377,7 @@
 }
 
 .ticker-track.allies-fast {
-  animation: scroll 3s linear infinite;
-}
-
-.ticker-track.allies-fast.stopped {
-  animation-play-state: paused;
-}
-
-.ticker-track:hover {
-  animation-play-state: paused;
+  animation: scroll 30s linear infinite;
 }
 
 .ticker-item {
@@ -398,7 +390,8 @@
 }
 
 .ticker-item.large {
-  flex: 0 0 calc(50% - 20px);
+  flex: 0 0 calc(15% - 20px);
+  min-width: 180px;
 }
 
 .ticker-item:hover {

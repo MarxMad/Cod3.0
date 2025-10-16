@@ -35,7 +35,6 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
   const [isClient, setIsClient] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [tickerStopped, setTickerStopped] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -95,15 +94,6 @@ export default function Home() {
     const interval = setInterval(nextImage, 5000);
     return () => clearInterval(interval);
   }, [nextImage]);
-
-  // Detener ticker después de 3 minutos
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setTickerStopped(true);
-    }, 180000); // 3 minutos = 180000 milisegundos
-    
-    return () => clearTimeout(timer);
-  }, []);
 
   const hackathonDate = new Date('2026-03-27T09:00:00');
   const timeLeft = hackathonDate.getTime() - currentTime.getTime();
@@ -300,87 +290,82 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section - Full Width Layout */}
-        <section id="home" className="pt-24 sm:pt-32 pb-8 sm:pb-16 px-8 sm:px-12 lg:px-16 relative min-h-screen">
+      {/* Hero Section - Reorganized Layout */}
+      <section id="home" className="pt-24 sm:pt-32 pb-8 sm:pb-16 px-8 sm:px-12 lg:px-16 relative min-h-screen">
         <div className="max-w-7xl mx-auto">
-          {/* Full Width HACKATHON Title */}
-          <motion.div
-            className="text-center mb-8 sm:mb-12"
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+          {/* Logo centrado arriba */}
+          <motion.div 
+            className="flex justify-center mb-8 sm:mb-12"
+            variants={floatingAnimation}
+            initial="initial"
+            animate="animate"
           >
-            <motion.h1 
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl xl:text-6xl font-black text-white mb-4 tech-title leading-tight"
-              variants={fadeInUp}
-            >
-              <span className="block text-green-400 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black">
-                HACKATHON
-              </span>
-              <span className="block text-cyan-400 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold mt-2">
-                27-29 MARZO 2026
-              </span>
-            </motion.h1>
+            <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56">
+              <Image
+                src="/CODEB.png"
+                alt="CODEB Logo"
+                fill
+                className="object-contain drop-shadow-2xl"
+              />
+            </div>
           </motion.div>
 
           {/* Two Column Layout */}
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start min-h-[50vh] sm:min-h-[60vh]">
-            {/* Left Column - Content */}
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+            {/* Left Column - HACKATHON Title + Countdown */}
             <motion.div
-              className="text-center lg:text-left flex flex-col justify-between min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]"
+              className="space-y-6 sm:space-y-8"
               variants={staggerContainer}
               initial="initial"
               animate="animate"
             >
-              {/* Top Section - Logo and Description */}
-              <div>
-                {/* Floating Logo - Responsive Size */}
-                <motion.div 
-                  className="flex justify-center lg:justify-start mb-6 sm:mb-8"
-                  variants={floatingAnimation}
-                  initial="initial"
-                  animate="animate"
+              {/* HACKATHON Title */}
+              <motion.div
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <motion.h1 
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-green-400 mb-4 tech-title leading-tight"
+                  variants={fadeInUp}
                 >
-                  <div className="relative w-96 h-96 sm:w-[36rem] sm:h-[36rem] md:w-[42rem] md:h-[42rem] lg:w-[60rem] lg:h-[60rem] xl:w-[72rem] xl:h-[72rem] 2xl:w-[84rem] 2xl:h-[84rem]">
-                <Image
-                      src="/CODEB.png"
-                      alt="CODEB Logo"
-                      fill
-                      className="object-contain drop-shadow-2xl"
-                    />
-                  </div>
-                </motion.div>
-                
+                  HACKATHON
+                </motion.h1>
                 <motion.p 
-                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-mono px-4 lg:px-0"
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-400 font-semibold mb-6"
+                  variants={fadeInUp}
+                >
+                  27-29 MARZO 2026
+                </motion.p>
+                <motion.p 
+                  className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed font-mono max-w-xl"
                   variants={fadeInUp}
                 >
                   El evento de programación más innovador del año. 
                   Construye el futuro con código, creatividad y colaboración.
                 </motion.p>
-              </div>
+              </motion.div>
 
-              {/* Bottom Section - Countdown Timer */}
+              {/* Countdown Timer */}
               <motion.div 
-                className="grid grid-cols-4 gap-1 sm:gap-2 md:gap-4 lg:gap-6 max-w-4xl mx-auto lg:mx-0 px-2 sm:px-4 lg:px-0"
+                className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4 max-w-xl"
                 variants={fadeInUp}
               >
                 {[
-                  { value: days, label: 'DÍAS', color: 'green' },
-                  { value: hours, label: 'HORAS', color: 'cyan' },
-                  { value: minutes, label: 'MIN', color: 'purple' },
-                  { value: seconds, label: 'SEG', color: 'pink' }
+                  { value: days, label: 'DÍAS' },
+                  { value: hours, label: 'HORAS' },
+                  { value: minutes, label: 'MIN' },
+                  { value: seconds, label: 'SEG' }
                 ].map((item, index) => (
                   <motion.div
                     key={item.label}
-                    className="tech-card p-2 sm:p-3 md:p-4 lg:p-6 relative overflow-hidden group min-w-0"
+                    className="tech-card p-3 sm:p-4 md:p-5 relative overflow-hidden group"
                     variants={glowAnimation}
                     initial="initial"
                     animate="animate"
                     whileHover={{ scale: 1.05, y: -5 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    {/* Shine Effect */}
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent -skew-x-12"
                       initial={{ x: "-100%" }}
@@ -389,53 +374,26 @@ export default function Home() {
                     />
                     
                     <div className="relative z-10 text-center">
-                      <div className="text-sm sm:text-lg md:text-2xl lg:text-4xl font-black text-green-400 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-300 font-mono leading-tight">
+                      <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-green-400 mb-1 group-hover:text-white transition-colors duration-300 font-mono">
                         {isClient ? item.value : '--'}
                       </div>
-                      <div className="text-xs sm:text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300 font-mono leading-tight">{item.label}</div>
+                      <div className="text-xs sm:text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300 font-mono">{item.label}</div>
                     </div>
                   </motion.div>
                 ))}
               </motion.div>
-            </motion.div>
 
-            {/* Right Column - Spline Animation + Buttons */}
-            <motion.div
-              className="space-y-4 sm:space-y-6 flex flex-col justify-between min-h-[300px] sm:min-h-[400px] lg:min-h-[600px]"
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              {/* Spline Animation - Temporarily disabled for performance */}
-              {/* <div className="relative h-60 sm:h-80 md:h-96 lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm">
-                <LazySplineScene 
-                  sceneUrl="https://prod.spline.design/uG2xGUiKaj-e7URU/scene.splinecode"
-                  className="w-full h-full"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-              </div> */}
-              {/* Placeholder while Spline is disabled */}
-              <div className="relative h-60 sm:h-80 md:h-96 lg:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm flex items-center justify-center">
-                <div className="text-center space-y-4 p-8">
-                  <div className="text-6xl">🚀</div>
-                  <h3 className="text-2xl font-bold text-green-400">COD3.0</h3>
-                  <p className="text-gray-400">Innovación y Tecnología</p>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-              </div>
-
-              {/* Enhanced Action Buttons */}
+              {/* Action Buttons */}
               <motion.div 
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center lg:justify-start items-center"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4"
                 variants={fadeInUp}
               >
                 <motion.a
                   href="/registro"
-                  className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg flex items-center space-x-2 sm:space-x-3 relative overflow-hidden w-full sm:w-auto justify-center transition-all duration-300 shadow-lg hover:shadow-green-500/25"
+                  className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center space-x-3 overflow-hidden transition-all duration-300 shadow-lg hover:shadow-green-500/25"
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {/* Animated Background */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
                     initial={{ x: "-100%" }}
@@ -449,11 +407,10 @@ export default function Home() {
                 </motion.a>
                 
                 <motion.button
-                  className="group relative bg-transparent border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 backdrop-blur-sm relative overflow-hidden w-full sm:w-auto justify-center"
+                  className="group relative bg-transparent border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 backdrop-blur-sm overflow-hidden"
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {/* Animated Border */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent -skew-x-12"
                     initial={{ x: "-100%" }}
@@ -463,6 +420,22 @@ export default function Home() {
                   <span className="relative z-10">&lt;PROGRAMA/&gt;</span>
                 </motion.button>
               </motion.div>
+            </motion.div>
+
+            {/* Right Column - Spline Animation */}
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <div className="relative h-96 sm:h-[500px] md:h-[600px] lg:h-[650px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm flex items-center justify-center">
+                <div className="text-center space-y-4 p-8">
+                  <div className="text-6xl">🚀</div>
+                  <h3 className="text-2xl font-bold text-green-400">COD3.0</h3>
+                  <p className="text-gray-400">Innovación y Tecnología</p>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+              </div>
             </motion.div>
           </div>
         </div>
@@ -1207,7 +1180,7 @@ export default function Home() {
             </h3>
             
             <div className="ticker-container">
-              <div className={`ticker-track allies-fast ${tickerStopped ? 'stopped' : ''}`}>
+              <div className="ticker-track allies-fast">
                 <div className="ticker-item large">
                   <Image 
                     src="/Aliados/ANGULO.png" 
