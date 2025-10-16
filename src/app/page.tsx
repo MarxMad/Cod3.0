@@ -293,14 +293,14 @@ export default function Home() {
       {/* Hero Section - Reorganized Layout */}
       <section id="home" className="pt-24 sm:pt-32 pb-8 sm:pb-16 px-8 sm:px-12 lg:px-16 relative min-h-screen">
         <div className="max-w-7xl mx-auto">
-          {/* Logo centrado arriba */}
+          {/* Logo centrado arriba - MUY GRANDE */}
           <motion.div 
             className="flex justify-center mb-8 sm:mb-12"
             variants={floatingAnimation}
             initial="initial"
             animate="animate"
           >
-            <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]">
               <Image
                 src="/CODEB.png"
                 alt="CODEB Logo"
@@ -319,26 +319,26 @@ export default function Home() {
               initial="initial"
               animate="animate"
             >
-              {/* HACKATHON Title */}
+              {/* HACKATHON Title - Más pequeño */}
               <motion.div
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
                 <motion.h1 
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-green-400 mb-4 tech-title leading-tight"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-green-400 mb-3 tech-title leading-tight"
                   variants={fadeInUp}
                 >
                   HACKATHON
                 </motion.h1>
                 <motion.p 
-                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-400 font-semibold mb-6"
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-cyan-400 font-semibold mb-4"
                   variants={fadeInUp}
                 >
                   27-29 MARZO 2026
                 </motion.p>
                 <motion.p 
-                  className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed font-mono max-w-xl"
+                  className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed font-mono max-w-xl"
                   variants={fadeInUp}
                 >
                   El evento de programación más innovador del año. 
