@@ -377,7 +377,11 @@
 }
 
 .ticker-track.allies-fast {
-  animation: scroll 5s linear infinite;
+  animation: scroll 3s linear infinite;
+}
+
+.ticker-track.allies-fast.stopped {
+  animation-play-state: paused;
 }
 
 .ticker-track:hover {

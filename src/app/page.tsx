@@ -35,6 +35,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
   const [isClient, setIsClient] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [tickerStopped, setTickerStopped] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -94,6 +95,15 @@ export default function Home() {
     const interval = setInterval(nextImage, 5000);
     return () => clearInterval(interval);
   }, [nextImage]);
+
+  // Detener ticker después de 3 minutos
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTickerStopped(true);
+    }, 180000); // 3 minutos = 180000 milisegundos
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const hackathonDate = new Date('2026-03-27T09:00:00');
   const timeLeft = hackathonDate.getTime() - currentTime.getTime();
@@ -1197,7 +1207,7 @@ export default function Home() {
             </h3>
             
             <div className="ticker-container">
-              <div className="ticker-track allies-fast">
+              <div className={`ticker-track allies-fast ${tickerStopped ? 'stopped' : ''}`}>
                 <div className="ticker-item large">
                   <Image 
                     src="/Aliados/ANGULO.png" 
