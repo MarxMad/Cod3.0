@@ -95,6 +95,18 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [nextImage]);
 
+  // Duplicar contenido del ticker automáticamente para efecto infinito seamless
+  useEffect(() => {
+    const tickerTrack = document.querySelector('.ticker-track.allies-fast');
+    if (tickerTrack && tickerTrack.children.length > 0) {
+      const items = Array.from(tickerTrack.children);
+      items.forEach(item => {
+        const clone = item.cloneNode(true);
+        tickerTrack.appendChild(clone);
+      });
+    }
+  }, [isClient]);
+
   const hackathonDate = new Date('2026-03-27T09:00:00');
   const timeLeft = hackathonDate.getTime() - currentTime.getTime();
   
@@ -1216,7 +1228,7 @@ export default function Home() {
                     </div>
                 <div className="ticker-item large">
                   <Image 
-                    src="/Aliados/goblin - Logo-02.PNG" 
+                    src="/Aliados/goblin-logo-02.PNG" 
                     alt="Goblin" 
                     width={200} 
                     height={100}
@@ -1271,7 +1283,7 @@ export default function Home() {
                 </div>
                 <div className="ticker-item large">
                   <Image 
-                    src="/Aliados/restake watch.PNG" 
+                    src="/Aliados/restake-watch.PNG" 
                     alt="Restake Watch" 
                     width={200} 
                     height={100}
@@ -1293,136 +1305,14 @@ export default function Home() {
                 </div>
                 <div className="ticker-item large">
                   <Image 
-                    src="/Aliados/WomanWay.png" 
-                    alt="WomanWay" 
+                    src="/Aliados/CriptoUNAM.png" 
+                    alt="CriptoUNAM" 
                     width={200} 
                     height={100}
                     loading="lazy"
                     className="ticker-logo"
                   />
-                  <p className="ticker-name">WomanWay</p>
-                </div>
-                {/* Duplicar para efecto continuo */}
-                <div className="ticker-item large">
-                  <Image 
-                    src="/Aliados/ANGULO.png" 
-                    alt="Ángulo" 
-                    width={200} 
-                    height={100}
-                    loading="lazy"
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">Ángulo</p>
-                </div>
-                <div className="ticker-item large">
-                  <Image 
-                    src="/Aliados/CHIPIPAY.svg" 
-                    alt="ChipiPay" 
-                    width={200} 
-                    height={100}
-                    loading="lazy"
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">ChipiPay</p>
-                </div>
-                <div className="ticker-item large">
-                  <Image 
-                    src="/Aliados/FOUNDERS.png" 
-                    alt="Founders" 
-                    width={200} 
-                    height={100}
-                    loading="lazy"
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">Founders</p>
-                </div>
-                <div className="ticker-item large">
-                  <Image 
-                    src="/Aliados/goblin - Logo-02.PNG" 
-                    alt="Goblin" 
-                    width={200} 
-                    height={100}
-                    loading="lazy"
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">Goblin</p>
-                </div>
-                <div className="ticker-item large">
-                  <Image 
-                    src="/Aliados/HERDAO.png" 
-                    alt="HERDAO" 
-                    width={200} 
-                    height={100}
-                    loading="lazy"
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">HERDAO</p>
-                </div>
-                <div className="ticker-item large">
-                  <Image 
-                    src="/Aliados/Logo_ww_blanco.png" 
-                    alt="WomanWay" 
-                    width={200} 
-                    height={100}
-                    loading="lazy"
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">WomanWay</p>
-                </div>
-                <div className="ticker-item large">
-                  <Image 
-                    src="/Aliados/MEDIOLANO.svg" 
-                    alt="Mediolano" 
-                    width={200} 
-                    height={100}
-                    loading="lazy"
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">Mediolano</p>
-                </div>
-                <div className="ticker-item large">
-                  <Image 
-                    src="/Aliados/OMIS.jpeg" 
-                    alt="OMIS" 
-                    width={200} 
-                    height={100}
-                    loading="lazy"
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">OMIS</p>
-                </div>
-                <div className="ticker-item large">
-                  <Image 
-                    src="/Aliados/restake watch.PNG" 
-                    alt="Restake Watch" 
-                    width={200} 
-                    height={100}
-                    loading="lazy"
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">Restake Watch</p>
-                </div>
-                <div className="ticker-item large">
-                  <Image 
-                    src="/Aliados/UnionCampesinaDemocratica.jpeg" 
-                    alt="Unión Campesina Democrática" 
-                    width={200} 
-                    height={100}
-                    loading="lazy"
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">Unión Campesina Democrática</p>
-                </div>
-                <div className="ticker-item large">
-                  <Image 
-                    src="/Aliados/WomanWay.png" 
-                    alt="WomanWay" 
-                    width={200} 
-                    height={100}
-                    loading="lazy"
-                    className="ticker-logo"
-                  />
-                  <p className="ticker-name">WomanWay</p>
+                  <p className="ticker-name">CriptoUNAM</p>
                 </div>
               </div>
             </div>

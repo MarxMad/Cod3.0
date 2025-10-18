@@ -348,6 +348,8 @@
   display: flex;
   animation: scroll 8s linear infinite;
   white-space: nowrap;
+  width: max-content;
+  will-change: transform;
 }
 
 .ticker-track.allies {
@@ -355,7 +357,7 @@
 }
 
 .ticker-track.allies-fast {
-  animation: scroll 30s linear infinite;
+  animation: scroll 40s linear infinite;
 }
 
 .ticker-item {
@@ -368,8 +370,9 @@
 }
 
 .ticker-item.large {
-  flex: 0 0 calc(15% - 20px);
-  min-width: 180px;
+  flex: 0 0 200px;
+  min-width: 200px;
+  max-width: 200px;
 }
 
 .ticker-item:hover {
