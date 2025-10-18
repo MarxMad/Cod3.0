@@ -673,12 +673,12 @@ export default function Home() {
             ].map((dayData, index) => (
               <motion.div
                 key={dayData.day}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.15 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
                 viewport={{ once: true }}
                 className={`relative p-6 rounded-xl border-2 transition-all duration-300 ${
-                    dayData.highlight
+                  dayData.highlight 
                     ? 'bg-green-500/10 border-green-500/50 shadow-lg shadow-green-500/20' 
                     : 'bg-gray-900/80 border-gray-700/50'
                 } hover:scale-102 hover:shadow-lg`}
@@ -1803,12 +1803,12 @@ export default function Home() {
                 }
               }
             ].map((organizer, index) => (
-            <motion.div
+              <motion.div
                 key={organizer.name}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.15 }}
-              viewport={{ once: true }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+                viewport={{ once: true }}
                 className="group relative bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-purple-400/20 hover:border-purple-400/40 transition-all duration-300 hover:scale-102 shadow-lg hover:shadow-purple-500/20"
               >
                 {/* Background Pattern */}
