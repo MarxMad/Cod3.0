@@ -1583,123 +1583,115 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Responsive Grid Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Left Side - Venue Info */}
+          {/* New Synthesized Layout with Map */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Side - Map */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeInOut" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="relative"
             >
-              <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 border-2 border-blue-400/30 shadow-2xl shadow-blue-500/10">
-                <h3 className="text-2xl sm:text-3xl font-black text-white mb-6 flex items-center">
-                  <MapPin className="h-8 w-8 mr-4 text-blue-400" />
-                  INFORMACIÓN DEL VENUE
-                </h3>
+              <div className="relative w-full h-[400px] lg:h-[500px] rounded-2xl overflow-hidden">
+                <Image
+                  src="/mapa.svg"
+                  alt="Mapa del Parque Bicentenario"
+                  fill
+                  className="object-cover"
+                  priority
+                />
                 
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <Navigation className="h-6 w-6 text-blue-400 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-lg font-bold text-white mb-2">📍 Dirección</h4>
-                      <p className="text-gray-300 leading-relaxed">
-                        Parque Bicentenario<br />
-                        Av. Río San Joaquín 200, CDMX<br />
-                        <span className="text-blue-400 font-semibold">Zona Polanco</span>
-                      </p>
-                    </div>
+                {/* Overlay with Venue Info */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                
+                {/* Floating Info Card */}
+                <motion.div
+                  className="absolute bottom-4 left-4 right-4 bg-blue-500/20 backdrop-blur-xl rounded-xl p-4 border border-blue-400/30"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center space-x-3 mb-2">
+                    <MapPin className="h-5 w-5 text-blue-400" />
+                    <h4 className="text-white font-bold">Parque Bicentenario</h4>
                   </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <Car className="h-6 w-6 text-blue-400 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-lg font-bold text-white mb-2">🚗 Estacionamiento</h4>
-                      <p className="text-gray-300 leading-relaxed">
-                        Estacionamiento gratuito disponible<br />
-                        <span className="text-green-400 font-semibold">200+ espacios</span> para participantes
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <Wifi className="h-6 w-6 text-blue-400 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-lg font-bold text-white mb-2">🌐 Conectividad</h4>
-                      <p className="text-gray-300 leading-relaxed">
-                        Internet de alta velocidad <span className="text-cyan-400 font-bold">1Gbps</span><br />
-                        Red WiFi dedicada para participantes
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <Utensils className="h-6 w-6 text-blue-400 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-lg font-bold text-white mb-2">🍽️ Servicios</h4>
-                      <p className="text-gray-300 leading-relaxed">
-                        Cafetería 24/7, áreas de descanso<br />
-                        Servicios médicos de emergencia
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                  <p className="text-gray-300 text-sm">
+                    Av. Río San Joaquín 200, CDMX<br />
+                    <span className="text-blue-400 font-semibold">Zona Polanco</span>
+                  </p>
+                </motion.div>
               </div>
             </motion.div>
 
-            {/* Right Side - Features Grid */}
+            {/* Right Side - Synthesized Info */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeInOut" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <h3 className="text-2xl sm:text-3xl font-black text-white mb-6 text-center lg:text-left">
-                CARACTERÍSTICAS <span className="text-cyan-400">DESTACADAS</span>
-              </h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                {[
-                  { 
-                    icon: Wifi, 
-                    title: "Internet 1Gbps", 
-                    description: "Conexión ultra rápida",
-                    color: "blue"
-                  },
-                  { 
-                    icon: Coffee, 
-                    title: "Cafetería 24/7", 
-                    description: "Comida y bebidas",
-                    color: "orange"
-                  },
-                  { 
-                    icon: ParkingMeter, 
-                    title: "Estacionamiento", 
-                    description: "200+ espacios",
-                    color: "green"
-                  },
-                  { 
-                    icon: Shield, 
-                    title: "Seguridad 24/7", 
-                    description: "Vigilancia completa",
-                    color: "purple"
-                  }
-                ].map((feature, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1, ease: "easeInOut" }}
-                    viewport={{ once: true }}
-                    className={`bg-gradient-to-br from-${feature.color}-500/10 to-${feature.color}-600/10 backdrop-blur-xl rounded-xl p-4 sm:p-6 border-2 border-${feature.color}-400/20 text-center hover:border-${feature.color}-400/40 transition-all duration-500 hover:scale-102 shadow-lg`}
-                  >
-                    <feature.icon className={`h-8 w-8 text-${feature.color}-400 mx-auto mb-3`} />
-                    <h4 className="text-lg font-bold text-white mb-2">{feature.title}</h4>
-                    <p className="text-gray-300 text-sm">{feature.description}</p>
-                  </motion.div>
-                ))}
+              {/* Key Info Card */}
+              <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-blue-400/20">
+                <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+                  <Building className="h-6 w-6 mr-3 text-blue-400" />
+                  INFORMACIÓN CLAVE
+                </h3>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { icon: Navigation, text: "Dirección", subtext: "Polanco, CDMX" },
+                    { icon: Car, text: "Estacionamiento", subtext: "Gratuito" },
+                    { icon: Wifi, text: "Internet", subtext: "1Gbps" },
+                    { icon: Coffee, text: "Servicios", subtext: "24/7" }
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className="bg-black/20 rounded-xl p-4 text-center hover:bg-black/30 transition-colors duration-300"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <item.icon className="h-6 w-6 text-blue-400 mx-auto mb-2" />
+                      <div className="text-white font-bold text-sm">{item.text}</div>
+                      <div className="text-gray-400 text-xs">{item.subtext}</div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Features Card */}
+              <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-green-400/20">
+                <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+                  <Star className="h-6 w-6 mr-3 text-green-400" />
+                  CARACTERÍSTICAS
+                </h3>
+                
+                <div className="space-y-3">
+                  {[
+                    "🌐 Internet 1Gbps ultra rápido",
+                    "🍕 Cafetería 24/7 disponible",
+                    "🚗 Estacionamiento gratuito",
+                    "🛡️ Seguridad 24/7",
+                    "🏥 Servicios médicos",
+                    "💻 Áreas de trabajo tech"
+                  ].map((feature, index) => (
+                    <motion.div
+                      key={index}
+                      className="flex items-center text-gray-300 hover:text-white transition-colors duration-300"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="w-2 h-2 bg-green-400 rounded-full mr-3 flex-shrink-0" />
+                      <span className="text-sm">{feature}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
