@@ -295,7 +295,7 @@ export default function Home() {
               className="tech-button px-4 py-2 text-sm font-bold transition-all duration-300 inline-block"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
@@ -339,7 +339,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 px-2 sm:px-0">
           {/* Banner SVG Background - Solo Desktop */}
           <div className="absolute inset-0 pointer-events-none hidden sm:block">
             <Image
@@ -565,13 +565,13 @@ export default function Home() {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
         
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 px-2 sm:px-0">
           {/* Header */}
             <motion.div
-            initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true }}
+            viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-4">
@@ -616,7 +616,7 @@ export default function Home() {
                     </div>
                     
           {/* 3 Cards Horizontal Layout */}
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-12 px-4 sm:px-0">
             {[
               {
                     day: "27 MARZO",
@@ -673,16 +673,16 @@ export default function Home() {
             ].map((dayData, index) => (
               <motion.div
                 key={dayData.day}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{ 
                   duration: 0.8, 
-                  delay: index * 0.1,
+                  delay: index * 0.15,
                   ease: "easeInOut"
                 }}
                 viewport={{ once: true }}
                 className={`relative p-6 rounded-xl border-2 transition-all duration-500 ${
-                    dayData.highlight
+                  dayData.highlight 
                     ? 'bg-green-500/10 border-green-500/50 shadow-lg shadow-green-500/20' 
                     : 'bg-gray-900/80 border-gray-700/50'
                 } hover:scale-102 hover:shadow-lg`}
@@ -896,9 +896,9 @@ export default function Home() {
             ].map((prize, index) => (
               <motion.div
                 key={prize.place}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.15 }}
                 viewport={{ once: true }}
                 className="group"
               >
@@ -1007,7 +1007,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 px-2 sm:px-0">
           {/* Epic Header */}
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -1076,7 +1076,7 @@ export default function Home() {
             </motion.div>
             
             {/* 3 Main Static Sponsors - RESPONSIVE GRID */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-16 px-4 sm:px-0">
               {/* Starlink - Platinum - ULTRA COOL */}
                 <motion.div
                 initial={{ opacity: 0, y: 40 }}
@@ -1549,10 +1549,10 @@ export default function Home() {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 px-2 sm:px-0">
           {/* Epic Header */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeInOut" }}
             viewport={{ once: true }}
@@ -1608,7 +1608,7 @@ export default function Home() {
                 {/* Floating Info Card */}
                 <motion.div
                   className="absolute bottom-4 left-4 right-4 bg-blue-500/20 backdrop-blur-xl rounded-xl p-4 border border-blue-400/30"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
                   viewport={{ once: true }}
@@ -1616,13 +1616,13 @@ export default function Home() {
                   <div className="flex items-center space-x-3 mb-2">
                     <MapPin className="h-5 w-5 text-blue-400" />
                     <h4 className="text-white font-bold">Parque Bicentenario</h4>
-                  </div>
+                    </div>
                   <p className="text-gray-300 text-sm">
                     Av. Río San Joaquín 200, CDMX<br />
                     <span className="text-blue-400 font-semibold">Zona Polanco</span>
                   </p>
                 </motion.div>
-              </div>
+                  </div>
             </motion.div>
 
             {/* Right Side - Synthesized Info */}
@@ -1640,7 +1640,7 @@ export default function Home() {
                   INFORMACIÓN CLAVE
                 </h3>
                 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   {[
                     { icon: Navigation, text: "Dirección", subtext: "Polanco, CDMX" },
                     { icon: Car, text: "Estacionamiento", subtext: "Gratuito" },
@@ -1650,9 +1650,9 @@ export default function Home() {
                     <motion.div
                       key={index}
                       className="bg-black/20 rounded-xl p-4 text-center hover:bg-black/30 transition-colors duration-300"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
                     >
                       <item.icon className="h-6 w-6 text-blue-400 mx-auto mb-2" />
@@ -1660,9 +1660,9 @@ export default function Home() {
                       <div className="text-gray-400 text-xs">{item.subtext}</div>
                     </motion.div>
                   ))}
-                </div>
-              </div>
-
+                    </div>
+                  </div>
+                  
               {/* Features Card */}
               <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-green-400/20">
                 <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
@@ -1691,11 +1691,11 @@ export default function Home() {
                       <span className="text-sm">{feature}</span>
                     </motion.div>
                   ))}
+                    </div>
+                  </div>
+            </motion.div>
                 </div>
               </div>
-            </motion.div>
-          </div>
-        </div>
       </section>
 
       {/* Organizers Section - TEAM BEHIND THE MAGIC */}
@@ -1729,10 +1729,10 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 px-2 sm:px-0">
           {/* Epic Header */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeInOut" }}
             viewport={{ once: true }}
@@ -1748,7 +1748,7 @@ export default function Home() {
               <Heart className="h-6 w-6" />
               <span className="font-bold text-lg">EQUIPO ORGANIZADOR</span>
             </motion.div>
-            
+
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
               LOS <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400">
                 VISIONARIOS
@@ -1760,7 +1760,7 @@ export default function Home() {
           </motion.div>
 
           {/* Organizers Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-0">
             {[
               {
                 name: "Leonardo Cuevas",
@@ -1807,17 +1807,17 @@ export default function Home() {
                 }
               }
             ].map((organizer, index) => (
-              <motion.div
+            <motion.div
                 key={organizer.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
                 transition={{ 
                   duration: 0.8, 
-                  delay: index * 0.1,
+                  delay: index * 0.15,
                   ease: "easeInOut"
                 }}
-                viewport={{ once: true }}
-                className="group relative bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-purple-400/20 hover:border-purple-400/40 transition-all duration-500 hover:scale-105 shadow-lg hover:shadow-purple-500/20"
+              viewport={{ once: true }}
+                className="group relative bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-purple-400/20 hover:border-purple-400/40 transition-all duration-500 hover:scale-102 shadow-lg hover:shadow-purple-500/20"
               >
                 {/* Background Pattern */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -1910,10 +1910,10 @@ export default function Home() {
 
           {/* Call to Action */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
+                    viewport={{ once: true }}
             className="text-center mt-16"
           >
             <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl p-8 border-2 border-purple-400/20">
@@ -1930,8 +1930,8 @@ export default function Home() {
               >
                 Únete al Equipo
               </motion.button>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
         </div>
       </section>
 
@@ -1970,7 +1970,7 @@ export default function Home() {
             {/* New Two-Column Layout with Banner */}
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Column - Banner */}
-              <motion.div
+            <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -2021,7 +2021,7 @@ export default function Home() {
                     <Calendar className="h-6 w-6 mr-3 text-green-400" />
                     Información del Evento
                   </h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-4">
                     {[
                       { icon: Calendar, text: "27-29 Marzo", subtext: "2026" },
                       { icon: Clock, text: "48 horas", subtext: "continuas" },
@@ -2031,7 +2031,7 @@ export default function Home() {
                       <motion.div
                         key={index}
                         className="bg-black/20 rounded-xl p-4 text-center hover:bg-black/30 transition-colors duration-300"
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
@@ -2073,7 +2073,7 @@ export default function Home() {
                   </div>
                 </div>
               </motion.div>
-            </div>
+              </div>
 
             {/* Registration Button */}
             <motion.div
@@ -2106,7 +2106,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-black/60 border-t border-green-500/20 py-16 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10 px-4 sm:px-0">
             <div>
               <div className="flex items-center space-x-4 mb-6">
                 <div className="relative w-14 h-14">
@@ -2187,7 +2187,7 @@ export default function Home() {
                     className="text-gray-300 hover:text-green-400 transition-colors duration-300 p-2 rounded-full hover:bg-green-500/10"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
@@ -2201,7 +2201,7 @@ export default function Home() {
 
           <motion.div
             className="border-t border-green-500/20 mt-12 pt-8 text-center text-gray-300"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
