@@ -1807,17 +1807,17 @@ export default function Home() {
                 }
               }
             ].map((organizer, index) => (
-            <motion.div
+              <motion.div
                 key={organizer.name}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.15,
-                  ease: "easeInOut"
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  ease: "easeOut"
                 }}
-              viewport={{ once: true }}
-                className="group relative bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-purple-400/20 hover:border-purple-400/40 transition-all duration-500 hover:scale-102 shadow-lg hover:shadow-purple-500/20"
+                viewport={{ once: true }}
+                className="group relative bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-purple-400/20 hover:border-purple-400/40 transition-all duration-300 hover:scale-102 shadow-lg hover:shadow-purple-500/20"
               >
                 {/* Background Pattern */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -1830,26 +1830,8 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  {/* Decorative Ring */}
-                  <motion.div
-                    className="absolute inset-0 rounded-full border-2 border-purple-400/30"
-                    animate={{
-                      rotate: 360,
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      rotate: {
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "linear",
-                      },
-                      scale: {
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      },
-                    }}
-                  />
+                  {/* Decorative Ring - Simplified */}
+                  <div className="absolute inset-0 rounded-full border-2 border-purple-400/30" />
                 </div>
 
                 {/* Info */}
@@ -1869,41 +1851,31 @@ export default function Home() {
                     {organizer.description}
                   </p>
                   
-                  {/* Social Links */}
+                  {/* Social Links - Simplified */}
                   <div className="flex items-center justify-center space-x-3 pt-2">
-                    <motion.a
+                    <a
                       href={organizer.social.twitter}
-                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
+                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300 hover:scale-105"
                     >
                       <Twitter className="h-4 w-4 text-purple-400" />
-                    </motion.a>
-                    <motion.a
+                    </a>
+                    <a
                       href={organizer.social.linkedin}
-                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
+                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300 hover:scale-105"
                     >
                       <Linkedin className="h-4 w-4 text-purple-400" />
-                    </motion.a>
-                    <motion.a
+                    </a>
+                    <a
                       href={organizer.social.github}
-                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
+                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300 hover:scale-105"
                     >
                       <Github className="h-4 w-4 text-purple-400" />
-                    </motion.a>
+                    </a>
                   </div>
                 </div>
 
-                {/* Hover Effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                />
+                {/* Hover Effect - Simplified */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
             ))}
           </div>
@@ -1923,13 +1895,9 @@ export default function Home() {
               <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
                 Estamos siempre buscando talento excepcional para unirse a nuestra misión de transformar la educación tecnológica en México.
               </p>
-              <motion.button
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25 hover:scale-105">
                 Únete al Equipo
-              </motion.button>
+              </button>
               </div>
             </motion.div>
         </div>
