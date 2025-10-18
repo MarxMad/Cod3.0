@@ -302,28 +302,65 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section - Reorganized Layout */}
-      <section id="home" className="pt-24 sm:pt-32 pb-8 sm:pb-16 px-8 sm:px-12 lg:px-16 relative min-h-screen">
-        <div className="max-w-7xl mx-auto">
-          {/* Logo centrado arriba - MUY GRANDE */}
-          <motion.div 
-            className="flex justify-center mb-8 sm:mb-12"
-            variants={floatingAnimation}
-            initial="initial"
-            animate="animate"
-          >
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]">
-              <Image
-                src="/CODEB.png"
-                alt="CODEB Logo"
-                fill
-                className="object-contain drop-shadow-2xl"
-              />
-            </div>
-          </motion.div>
+      {/* Hero Section - Cool Design con Logo Grande */}
+      <section id="home" className="pt-24 sm:pt-32 pb-8 sm:pb-16 px-8 sm:px-12 lg:px-16 relative min-h-screen overflow-hidden">
+        {/* Fondo con efectos sutiles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Ondas animadas - reducidas */}
+          {[...Array(2)].map((_, i) => (
+          <motion.div
+              key={i}
+              className="absolute w-full h-full"
+              style={{
+                background: `radial-gradient(circle at ${30 + i * 40}% ${40 + i * 20}%, rgba(0, 255, 0, 0.05) 0%, transparent 60%)`,
+              }}
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.2, 0.05, 0.2],
+              }}
+              transition={{
+                duration: 10 + i * 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 2,
+              }}
+            />
+          ))}
+          
+          {/* Partículas flotantes - reducidas */}
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1.5 h-1.5 bg-green-400/40 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -80, 0],
+                opacity: [0, 0.6, 0],
+                scale: [0, 1, 0],
+              }}
+              transition={{
+                duration: 6 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 4,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+          
+          {/* Scanlines sutiles */}
+          <div className="absolute inset-0 pointer-events-none opacity-5">
+            <div className="h-full w-full" style={{
+              backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.3) 2px, rgba(0, 255, 0, 0.3) 4px)',
+            }} />
+          </div>
+        </div>
 
+        <div className="max-w-7xl mx-auto relative z-10">
           {/* Two Column Layout */}
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center min-h-[80vh]">
             {/* Left Column - HACKATHON Title + Countdown */}
             <motion.div
               className="space-y-6 sm:space-y-8"
@@ -331,26 +368,26 @@ export default function Home() {
               initial="initial"
               animate="animate"
             >
-              {/* HACKATHON Title - Más pequeño */}
+              {/* HACKATHON Title - una línea */}
               <motion.div
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <motion.h1 
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-green-400 mb-3 tech-title leading-tight"
-                  variants={fadeInUp}
-                >
-                  HACKATHON
-                </motion.h1>
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.h1 
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-green-400 mb-4 leading-tight"
+              variants={fadeInUp}
+            >
+                HACKATHON
+            </motion.h1>
                 <motion.p 
-                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-cyan-400 font-semibold mb-4"
+                  className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-cyan-400 font-semibold mb-6"
                   variants={fadeInUp}
                 >
                   27-29 MARZO 2026
                 </motion.p>
                 <motion.p 
-                  className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed font-mono max-w-xl"
+                  className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed font-mono max-w-xl"
                   variants={fadeInUp}
                 >
                   El evento de programación más innovador del año. 
@@ -393,10 +430,10 @@ export default function Home() {
                     </div>
                   </motion.div>
                 ))}
-              </motion.div>
+            </motion.div>
 
               {/* Action Buttons */}
-              <motion.div 
+            <motion.div
                 className="flex flex-col sm:flex-row gap-3 sm:gap-4"
                 variants={fadeInUp}
               >
@@ -434,261 +471,129 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Right Column - Spline Animation */}
+            {/* Right Column - Logo Grande COD3.0 */}
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
             >
-              <div className="relative h-96 sm:h-[500px] md:h-[600px] lg:h-[650px] rounded-2xl overflow-hidden border-2 border-green-400/50 bg-gradient-to-br from-black/80 via-gray-900/60 to-black/80 backdrop-blur-sm flex items-center justify-center">
-                <div className="text-center space-y-4 p-8">
-                  <div className="text-6xl">🚀</div>
-                  <h3 className="text-2xl font-bold text-green-400">COD3.0</h3>
-                  <p className="text-gray-400">Innovación y Tecnología</p>
+              {/* Efectos de resplandor detrás del logo */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-green-400/20 via-cyan-400/20 to-green-400/20 rounded-full blur-3xl"
+              animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                  duration: 3,
+                repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              
+              {/* Logo flotante */}
+          <motion.div
+                variants={floatingAnimation}
+                initial="initial"
+                animate="animate"
+                className="relative"
+              >
+                <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px]">
+                  <Image
+                    src="/CODEB.png"
+                    alt="COD3.0 Logo"
+                    fill
+                    className="object-contain drop-shadow-2xl"
+                    priority
+                  />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-              </div>
-            </motion.div>
-          </div>
-        </div>
+          </motion.div>
+
+              {/* Anillo orbital sutil */}
+            <motion.div
+                className="absolute inset-0 border border-green-400/10 rounded-full"
+                style={{ transform: 'scale(1.15)' }}
+                animate={{
+                  rotate: 360,
+                  opacity: [0.1, 0.3, 0.1],
+                }}
+                transition={{
+                  rotate: {
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear",
+                  },
+                  opacity: {
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                }}
+              />
+                    </motion.div>
+                  </div>
+                    </div>
       </section>
 
       {/* Combined About & Schedule Section */}
-      <section id="about" className="py-12 sm:py-16 lg:py-24 px-8 sm:px-12 lg:px-16 bg-gradient-to-br from-black via-green-900/10 to-black relative overflow-hidden">
-        {/* Enhanced Background Effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Animated Grid Pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.03)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse" />
-          
-          {/* Floating Particles */}
-          {[...Array(25)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-green-400 rounded-full"
-              style={{
-                left: `${(i * 4) % 100}%`,
-                top: `${(i * 3) % 100}%`,
-              }}
-              animate={{
-                opacity: [0, 1, 0],
-                scale: [0, 1, 0],
-                y: [-20, 20, -20],
-              }}
-              transition={{
-                duration: 4 + (i * 0.3) % 3,
-                repeat: Infinity,
-                delay: (i * 0.2) % 2,
-              }}
-            />
-          ))}
-          
-          {/* Large Glow Effects */}
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-400/5 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-400/5 rounded-full blur-3xl animate-pulse" />
-        </div>
+      <section id="about" className="py-16 sm:py-20 lg:py-32 px-6 sm:px-8 lg:px-12 bg-black relative">
+        {/* Simple grid background */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        
 
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Main Header */}
+          {/* Header */}
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-12 sm:mb-16 lg:mb-24 relative"
+            className="text-center mb-16"
           >
-            <motion.div
-              className="relative z-10 inline-flex items-center space-x-2 sm:space-x-4 bg-gradient-to-r from-green-500/20 via-green-400/30 to-green-500/20 text-green-400 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full mb-6 sm:mb-8 lg:mb-10 border-2 border-green-400/40 backdrop-blur-sm"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0,255,0,0.3)" }}
-            >
-              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse" />
-              <span className="font-black text-sm sm:text-lg lg:text-xl tracking-widest">¿QUÉ ES COD3.0?</span>
-              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse" />
-            </motion.div>
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-4">
+              TRES DÍAS <span className="text-green-400">INTENSOS</span>
+            </h2>
+            <p className="text-xl text-gray-400 mb-8">Una experiencia inmersiva donde cada momento cuenta</p>
             
-            <motion.h2 
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-8 sm:mb-12 leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <span className="block mb-4 sm:mb-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl xl:text-6xl">UN HACKATHON DE</span>
-              <span className="block text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[12rem] font-black text-green-400">
-                48 HORAS
-              </span>
-              <span className="block mt-4 sm:mt-6 lg:mt-8 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-                DONDE LA{' '}
-                <span className="text-green-400 relative">
-                  INNOVACIÓN
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-cyan-400/30 rounded-xl"
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    transition={{ duration: 1.2, delay: 0.8 }}
-                    viewport={{ once: true }}
-                  />
-                </span>
-              </span>
-              <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-                SE ENCUENTRA CON LA{' '}
-                <span className="text-cyan-400 relative">
-                  TECNOLOGÍA
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 to-green-400/30 rounded-xl"
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    transition={{ duration: 1.2, delay: 1.2 }}
-                    viewport={{ once: true }}
-                  />
-                </span>
-              </span>
-            </motion.h2>
-            
-            <motion.p 
-              className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300 max-w-6xl mx-auto leading-relaxed font-medium mb-8 sm:mb-12 lg:mb-16 px-4 sm:px-0"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-green-400 font-bold">Desarrolladores</span>,{' '}
-              <span className="text-cyan-400 font-bold">diseñadores</span> y{' '}
-              <span className="text-green-400 font-bold">emprendedores</span> se unen para crear{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 font-bold">
-                soluciones innovadoras
-              </span>{' '}
-              que cambien el mundo digital.
-            </motion.p>
-
-            {/* Program Badge */}
-            <motion.div
-              className="inline-flex items-center space-x-2 sm:space-x-3 bg-gradient-to-r from-blue-500/20 via-cyan-400/30 to-blue-500/20 text-cyan-400 px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 rounded-full border-2 border-cyan-400/40 backdrop-blur-sm"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0,255,255,0.3)" }}
-            >
-              <Calendar className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
-              <span className="font-black text-xs sm:text-sm lg:text-lg tracking-wider">PROGRAMA DEL EVENTO</span>
-              <Clock className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
-            </motion.div>
+            {/* Quick Stats */}
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
+              <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 rounded-full border border-green-500/20">
+                <Zap className="h-4 w-4 text-green-400" />
+                <span className="text-gray-300">48 Horas de Código</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 bg-cyan-500/10 rounded-full border border-cyan-500/20">
+                <Users className="h-4 w-4 text-cyan-400" />
+                <span className="text-gray-300">15+ Charlas & Workshops</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 rounded-full border border-purple-500/20">
+                <Sparkles className="h-4 w-4 text-purple-400" />
+                <span className="text-gray-300">30 Actividades</span>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Combined Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
-            {/* Left Side - Core Values */}
-            <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="space-y-8 px-8 sm:px-12 lg:px-16"
-            >
-              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-6 sm:mb-8 text-center lg:text-left">
-                Nuestros{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400">
-                  Pilares
-                </span>
-              </h3>
-              
-            {[
-              {
-                icon: Zap,
-                  title: "INNOVACIÓN",
-                description: "Explora las últimas tecnologías y frameworks para crear soluciones que marquen la diferencia en el mundo digital.",
-                  gradient: "from-green-400 to-cyan-400",
-                  bgGradient: "from-green-500/20 to-cyan-500/20"
-              },
-              {
-                icon: Users,
-                  title: "COLABORACIÓN",
-                description: "Trabaja en equipo con otros desarrolladores talentosos y aprende de diferentes perspectivas y habilidades.",
-                  gradient: "from-cyan-400 to-green-400",
-                  bgGradient: "from-cyan-500/20 to-green-500/20"
-              },
-              {
-                icon: Target,
-                  title: "IMPACTO",
-                description: "Construye proyectos que resuelvan problemas reales y tengan un impacto positivo en la sociedad.",
-                  gradient: "from-green-400 to-cyan-400",
-                  bgGradient: "from-green-500/20 to-cyan-500/20"
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={item.title}
-                  initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="group relative"
-              >
-                <motion.div
-                    className="relative bg-black/70 backdrop-blur-2xl rounded-2xl p-6 border-2 border-transparent hover:border-green-400/60 transition-all duration-500 overflow-hidden"
-                    whileHover={{ y: -8, scale: 1.02 }}
-                  initial={false}
-                >
-                    {/* Animated Border */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-cyan-400 to-green-400 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute inset-[2px] bg-black/70 backdrop-blur-2xl rounded-2xl" />
-                    
-                    {/* Background Pattern */}
-                    <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
-                      <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-cyan-400/10 rounded-2xl" />
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="relative z-10 flex items-start space-x-4">
-                    <motion.div
-                        className={`w-16 h-16 bg-gradient-to-br ${item.bgGradient} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-green-400/40 flex-shrink-0`}
-                      whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <item.icon className={`h-8 w-8 text-transparent bg-clip-text bg-gradient-to-r ${item.gradient}`} />
-                    </motion.div>
-                    
-                      <div className="flex-1">
-                        <h4 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 mb-3 group-hover:scale-105 transition-transform duration-300 tracking-wider">
-                      {item.title}
-                        </h4>
-                        <p className="text-gray-300 leading-relaxed group-hover:text-gray-100 transition-colors duration-300 text-base font-medium">
-                      {item.description}
-                    </p>
-                  </div>
-                    </div>
-                    
-                    {/* Decorative Elements */}
-                    <div className="absolute top-3 right-3 w-2 h-2 bg-green-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-3 left-3 w-1 h-1 bg-cyan-400 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
-                </motion.div>
-              </motion.div>
-            ))}
-            </motion.div>
+          {/* Timeline Connector */}
+          <div className="hidden md:flex items-center justify-center mb-8 relative">
+            <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-green-500/30 to-transparent"></div>
+            <div className="flex justify-between w-full max-w-4xl relative z-10">
+              <div className="flex flex-col items-center">
+                <div className="w-4 h-4 bg-blue-500 rounded-full border-4 border-black"></div>
+                <span className="text-xs text-blue-400 mt-2 font-bold">INICIO</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="w-4 h-4 bg-green-500 rounded-full border-4 border-black animate-pulse"></div>
+                <span className="text-xs text-green-400 mt-2 font-bold">DESARROLLO</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-black"></div>
+                <span className="text-xs text-purple-400 mt-2 font-bold">CIERRE</span>
+              </div>
+            </div>
+          </div>
 
-            {/* Right Side - Schedule */}
-          <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-              className="space-y-8 px-8 sm:px-12 lg:px-16"
-            >
-              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-6 sm:mb-8 text-center lg:text-left">
-                Tres días{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400">
-                  intensos
-                </span>
-              </h3>
-              
-              <p className="text-base sm:text-lg lg:text-xl text-gray-300 mb-6 sm:mb-8 text-center lg:text-left leading-relaxed">
-              Una experiencia inmersiva donde cada momento cuenta
-            </p>
-
-              <div className="space-y-6">
+          {/* 3 Cards Horizontal Layout */}
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
             {[
               {
                     day: "27 MARZO",
@@ -698,9 +603,13 @@ export default function Home() {
                   "10:00 - Ceremonia de Apertura",
                   "11:00 - Presentación de Desafíos",
                   "12:00 - Formación de Equipos",
-                  "13:00 - ¡Comienza la Programación!"
+                  "13:00 - ¡Comienza la Programación!",
+                  "14:00 - Charla: Web3 y Blockchain",
+                  "16:00 - Workshop: Git & GitHub",
+                  "18:00 - Networking & Pizza",
+                  "20:00 - Charla: IA en el Desarrollo",
+                  "22:00 - Programación Nocturna"
                 ],
-                    highlight: false,
                     color: "blue"
               },
               {
@@ -708,10 +617,15 @@ export default function Home() {
                     subtitle: "Día 2 - Desarrollo",
                 events: [
                   "00:00 - Programación Continúa",
+                  "08:00 - Desayuno & Networking",
+                  "10:00 - Charla: Cloud & DevOps",
                   "12:00 - Mentoring Sessions",
+                  "14:00 - Comida & Relax",
+                  "15:00 - Charla: UX/UI Best Practices",
+                  "17:00 - Workshop: APIs & Microservicios",
                   "18:00 - Networking Event",
-                  "20:00 - Charlas Técnicas",
-                  "24:00 - Programación Nocturna"
+                  "20:00 - Charlas Lightning (5 charlas)",
+                  "22:00 - Programación Final Sprint"
                 ],
                     highlight: true,
                     color: "green"
@@ -720,13 +634,17 @@ export default function Home() {
                     day: "29 MARZO",
                     subtitle: "Día 3 - Finalización",
                 events: [
-                  "09:00 - Últimas Horas",
+                  "09:00 - Últimas Horas de Código",
+                  "11:00 - Preparación de Demos",
                   "12:00 - Deadline de Entrega",
-                  "14:00 - Presentaciones",
+                  "13:00 - Comida de Cierre",
+                  "14:00 - Presentaciones Pitch (30 equipos)",
                   "16:00 - Evaluación del Jurado",
-                  "18:00 - Ceremonia de Premiación"
+                  "17:00 - Networking Final",
+                  "18:00 - Ceremonia de Premiación",
+                  "19:30 - Fotos & Celebración",
+                  "20:00 - 🎸 Concierto de Cierre"
                 ],
-                    highlight: false,
                     color: "purple"
               }
             ].map((dayData, index) => (
@@ -734,51 +652,111 @@ export default function Home() {
                 key={dayData.day}
                     initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                className="group"
-              >
-                <motion.div
-                      className={`backdrop-blur-2xl rounded-2xl p-6 border-2 transition-all duration-500 ${
+                className={`relative p-6 rounded-xl border-2 hover:scale-105 transition-all duration-300 ${
                     dayData.highlight
-                          ? 'bg-green-500/30 border-green-400/60 hover:border-green-400/80'
-                          : 'bg-black/60 border-gray-600/40 hover:border-gray-500/60'
+                    ? 'bg-green-500/10 border-green-500/50 shadow-lg shadow-green-500/20' 
+                    : 'bg-gray-900/80 border-gray-700/50'
                   }`}
-                      whileHover={{ y: -5, scale: 1.01 }}
-                  initial={false}
                 >
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center space-x-3">
-                          <Calendar className={`h-6 w-6 ${dayData.highlight ? 'text-green-400' : 'text-gray-400'}`} />
-                          <div>
-                            <h4 className="text-xl font-black text-white">{dayData.day}</h4>
-                            <p className="text-sm text-gray-400 font-medium">{dayData.subtitle}</p>
-                          </div>
-                        </div>
-                        <div className={`w-3 h-3 rounded-full ${dayData.highlight ? 'bg-green-400' : 'bg-gray-500'} group-hover:scale-125 transition-transform duration-300`} />
+                {/* Header */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <Calendar className={`h-6 w-6 ${dayData.highlight ? 'text-green-400' : 'text-gray-400'}`} />
+                    {dayData.highlight && (
+                      <span className="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded-full border border-green-500/30 font-bold">
+                        24H CODING
+                      </span>
+                    )}
+                  </div>
+                  <h3 className={`text-2xl font-black mb-1 ${dayData.highlight ? 'text-green-400' : 'text-white'}`}>
+                    {dayData.day}
+                  </h3>
+                  <p className="text-sm text-gray-500 mb-3">{dayData.subtitle}</p>
+                  
+                  {/* Activity count badges */}
+                  <div className="flex gap-2 text-xs">
+                    <span className="px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded border border-cyan-500/20">
+                      {dayData.events.filter(e => e.includes('Charla')).length} Charlas
+                    </span>
+                    <span className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">
+                      {dayData.events.filter(e => e.includes('Workshop')).length} Workshops
+                    </span>
+                  </div>
                   </div>
                   
-                      <div className="space-y-3">
-                    {dayData.events.map((event, eventIndex) => (
-                      <motion.div
-                        key={eventIndex}
-                            className="flex items-center text-gray-300 group-hover:text-gray-100 transition-colors duration-300"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.4, delay: eventIndex * 0.1 }}
-                        viewport={{ once: true }}
-                      >
-                            <Clock className="h-4 w-4 mr-3 text-green-400 flex-shrink-0" />
-                            <span className="text-sm font-medium">{event}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
+                {/* Events */}
+                <div className="space-y-3">
+                  {dayData.events.map((event, i) => {
+                    // Determinar icono según el tipo de evento
+                    let EventIcon = Clock;
+                    let iconColor = dayData.highlight ? 'text-green-400' : 'text-gray-500';
+                    
+                    if (event.includes('Charla')) {
+                      EventIcon = Zap;
+                      iconColor = 'text-cyan-400';
+                    } else if (event.includes('Workshop')) {
+                      EventIcon = Target;
+                      iconColor = 'text-blue-400';
+                    } else if (event.includes('Networking') || event.includes('Desayuno') || event.includes('Comida')) {
+                      EventIcon = Users;
+                      iconColor = 'text-orange-400';
+                    } else if (event.includes('Mentoring')) {
+                      EventIcon = Star;
+                      iconColor = 'text-yellow-400';
+                    } else if (event.includes('Concierto')) {
+                      EventIcon = Sparkles;
+                      iconColor = 'text-purple-400';
+                    }
+                    
+                    return (
+                      <div key={i} className="flex items-start text-sm group/item hover:translate-x-1 transition-transform">
+                        <EventIcon className={`h-4 w-4 mr-3 flex-shrink-0 mt-0.5 ${iconColor}`} />
+                        <span className="text-gray-300 group-hover/item:text-white transition-colors">{event}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </motion.div>
             ))}
               </div>
-            </motion.div>
+
+          {/* Closing Concert Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mt-12 p-8 rounded-2xl bg-gradient-to-r from-purple-900/30 via-pink-900/30 to-purple-900/30 border-2 border-purple-500/50"
+          >
+            <div className="text-center">
+              <div className="flex items-center justify-center mb-4">
+                <Sparkles className="h-8 w-8 text-purple-400 mr-3" />
+                <h3 className="text-3xl md:text-4xl font-black text-white">
+                  CONCIERTO DE <span className="text-purple-400">CIERRE</span>
+                </h3>
+                <Sparkles className="h-8 w-8 text-purple-400 ml-3" />
           </div>
+              <p className="text-xl text-gray-300 mb-6">
+                ¡Celebra el final del hackathon con música en vivo!
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
+                <div className="flex items-center">
+                  <Calendar className="h-4 w-4 mr-2 text-purple-400" />
+                  29 de Marzo - 20:00 hrs
+                </div>
+                <div className="flex items-center">
+                  <MapPin className="h-4 w-4 mr-2 text-purple-400" />
+                  Parque Bicentenario - Escenario Principal
+                </div>
+                <div className="flex items-center">
+                  <Users className="h-4 w-4 mr-2 text-purple-400" />
+                  Evento abierto a todos los participantes
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
