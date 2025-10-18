@@ -525,7 +525,7 @@ export default function RegistroPage() {
               </motion.div>
               
               <motion.h1 
-                className="text-6xl md:text-8xl font-black text-white mb-8 tech-title"
+                className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-6 sm:mb-8 tech-title"
                 animate={{
                   textShadow: [
                     "0 0 20px rgba(34, 197, 94, 0.3)",
@@ -543,7 +543,7 @@ export default function RegistroPage() {
               </motion.h1>
               
               <motion.p 
-                className="text-2xl text-gray-300 font-mono max-w-4xl mx-auto leading-relaxed"
+                className="text-lg sm:text-xl md:text-2xl text-gray-300 font-mono max-w-4xl mx-auto leading-relaxed px-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
@@ -558,7 +558,7 @@ export default function RegistroPage() {
             {/* Enhanced Form */}
             <motion.form
               onSubmit={handleSubmit}
-              className="bg-gradient-to-br from-black/60 via-green-900/10 to-black/60 backdrop-blur-xl border-2 border-green-400/50 p-10 rounded-2xl relative overflow-hidden"
+              className="bg-gradient-to-br from-black/60 via-green-900/10 to-black/60 backdrop-blur-xl border-2 border-green-400/50 p-4 sm:p-6 md:p-8 lg:p-10 rounded-2xl relative overflow-hidden mx-4 sm:mx-0"
               variants={fadeInUp}
               noValidate
             >
@@ -569,7 +569,7 @@ export default function RegistroPage() {
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               />
               
-              <div className="relative z-10 space-y-12">
+              <div className="relative z-10 space-y-8 sm:space-y-10 md:space-y-12">
                 {/* Información Personal */}
                 <motion.div
                   className="group"
@@ -580,12 +580,12 @@ export default function RegistroPage() {
                     <div className="w-12 h-12 bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-xl flex items-center justify-center border border-green-400/30 group-hover:scale-110 transition-transform duration-300">
                       <User className="w-6 h-6 text-green-400" />
                     </div>
-                    <h2 className="text-4xl font-bold text-white font-mono group-hover:text-green-400 transition-colors duration-300">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-mono group-hover:text-green-400 transition-colors duration-300">
                       &lt;INFORMACIÓN PERSONAL/&gt;
                     </h2>
                     </div>
                     
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
                     {[
                       { name: 'nombre', label: 'Nombre', icon: User, required: true, placeholder: 'Tu nombre' },
                       { name: 'apellido', label: 'Apellido', icon: User, required: true, placeholder: 'Tu apellido' },
@@ -601,8 +601,8 @@ export default function RegistroPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
-                        <label className="block text-green-400 font-mono mb-3 text-lg font-semibold flex items-center space-x-2">
-                          <field.icon className="w-5 h-5" />
+                        <label className="block text-green-400 font-mono mb-2 sm:mb-3 text-sm sm:text-base md:text-lg font-semibold flex items-center space-x-2">
+                          <field.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                           <span>{field.label} {field.required && <span className="text-red-400">*</span>}</span>
                         </label>
                         <div className="relative">
@@ -612,7 +612,7 @@ export default function RegistroPage() {
                             value={formData[field.name as keyof typeof formData]}
                         onChange={handleInputChange}
                             required={field.required}
-                            className="w-full bg-black/50 border-2 border-green-400/50 text-white px-6 py-4 rounded-xl font-mono focus:border-green-400 focus:outline-none transition-all duration-300 hover:border-green-400/70 focus:bg-black/70 group-hover/field:scale-[1.02]"
+                            className="w-full bg-black/50 border-2 border-green-400/50 text-white px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-xl font-mono focus:border-green-400 focus:outline-none transition-all duration-300 hover:border-green-400/70 focus:bg-black/70 group-hover/field:scale-[1.02] text-sm sm:text-base"
                             placeholder={field.placeholder}
                           />
                           <motion.div
@@ -637,12 +637,12 @@ export default function RegistroPage() {
                     <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl flex items-center justify-center border border-blue-400/30 group-hover:scale-110 transition-transform duration-300">
                       <Zap className="w-6 h-6 text-blue-400" />
                     </div>
-                    <h2 className="text-4xl font-bold text-white font-mono group-hover:text-blue-400 transition-colors duration-300">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-mono group-hover:text-blue-400 transition-colors duration-300">
                     &lt;PERFIL TÉCNICO/&gt;
                   </h2>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
                     {[
                       { 
                         name: 'experiencia', 
@@ -668,8 +668,8 @@ export default function RegistroPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
-                        <label className="block text-blue-400 font-mono mb-3 text-lg font-semibold flex items-center space-x-2">
-                          <field.icon className="w-5 h-5" />
+                        <label className="block text-blue-400 font-mono mb-2 sm:mb-3 text-sm sm:text-base md:text-lg font-semibold flex items-center space-x-2">
+                          <field.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                           <span>{field.label} {field.required && <span className="text-red-400">*</span>}</span>
                         </label>
                         <div className="relative">
@@ -679,7 +679,7 @@ export default function RegistroPage() {
                               value={formData[field.name as keyof typeof formData]}
                               onChange={handleInputChange}
                               required={field.required}
-                              className="w-full bg-black/50 border-2 border-blue-400/50 text-white px-6 py-4 rounded-xl font-mono focus:border-blue-400 focus:outline-none transition-all duration-300 hover:border-blue-400/70 focus:bg-black/70 group-hover/field:scale-[1.02]"
+                              className="w-full bg-black/50 border-2 border-blue-400/50 text-white px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-xl font-mono focus:border-blue-400 focus:outline-none transition-all duration-300 hover:border-blue-400/70 focus:bg-black/70 group-hover/field:scale-[1.02] text-sm sm:text-base"
                             >
                               {field.options?.map(option => (
                                 <option key={option.value} value={option.value}>{option.label}</option>
@@ -692,7 +692,7 @@ export default function RegistroPage() {
                               value={formData[field.name as keyof typeof formData]}
                         onChange={handleInputChange}
                               required={field.required}
-                              className="w-full bg-black/50 border-2 border-blue-400/50 text-white px-6 py-4 rounded-xl font-mono focus:border-blue-400 focus:outline-none transition-all duration-300 hover:border-blue-400/70 focus:bg-black/70 group-hover/field:scale-[1.02]"
+                              className="w-full bg-black/50 border-2 border-blue-400/50 text-white px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-xl font-mono focus:border-blue-400 focus:outline-none transition-all duration-300 hover:border-blue-400/70 focus:bg-black/70 group-hover/field:scale-[1.02] text-sm sm:text-base"
                               placeholder={field.placeholder}
                             />
                           )}
@@ -718,20 +718,20 @@ export default function RegistroPage() {
                     <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center border border-purple-400/30 group-hover:scale-110 transition-transform duration-300">
                       <Lightbulb className="w-6 h-6 text-purple-400" />
                     </div>
-                    <h2 className="text-4xl font-bold text-white font-mono group-hover:text-purple-400 transition-colors duration-300">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-mono group-hover:text-purple-400 transition-colors duration-300">
                     &lt;PROYECTO & MOTIVACIÓN/&gt;
                   </h2>
                   </div>
                   
-                  <div className="space-y-8">
+                  <div className="space-y-6 sm:space-y-8">
                     <motion.div
                       className="group/field"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 }}
                     >
-                      <label className="block text-purple-400 font-mono mb-3 text-lg font-semibold flex items-center space-x-2">
-                        <Users className="w-5 h-5" />
+                      <label className="block text-purple-400 font-mono mb-2 sm:mb-3 text-sm sm:text-base md:text-lg font-semibold flex items-center space-x-2">
+                        <Users className="w-4 h-4 sm:w-5 sm:h-5" />
                         <span>Tipo de Participación <span className="text-red-400">*</span></span>
                       </label>
                       <div className="relative">
@@ -740,7 +740,7 @@ export default function RegistroPage() {
                         value={formData.equipo}
                         onChange={handleInputChange}
                         required
-                          className="w-full bg-black/50 border-2 border-purple-400/50 text-white px-6 py-4 rounded-xl font-mono focus:border-purple-400 focus:outline-none transition-all duration-300 hover:border-purple-400/70 focus:bg-black/70 group-hover/field:scale-[1.02]"
+                          className="w-full bg-black/50 border-2 border-purple-400/50 text-white px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-xl font-mono focus:border-purple-400 focus:outline-none transition-all duration-300 hover:border-purple-400/70 focus:bg-black/70 group-hover/field:scale-[1.02] text-sm sm:text-base"
                       >
                         <option value="individual">Individual</option>
                         <option value="equipo">Con Equipo</option>
@@ -761,8 +761,8 @@ export default function RegistroPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                       >
-                        <label className="block text-purple-400 font-mono mb-3 text-lg font-semibold flex items-center space-x-2">
-                          <Users className="w-5 h-5" />
+                        <label className="block text-purple-400 font-mono mb-2 sm:mb-3 text-sm sm:text-base md:text-lg font-semibold flex items-center space-x-2">
+                          <Users className="w-4 h-4 sm:w-5 sm:h-5" />
                           <span>Nombre del Equipo</span>
                         </label>
                         <div className="relative">
@@ -771,7 +771,7 @@ export default function RegistroPage() {
                           name="nombreEquipo"
                           value={formData.nombreEquipo}
                           onChange={handleInputChange}
-                            className="w-full bg-black/50 border-2 border-purple-400/50 text-white px-6 py-4 rounded-xl font-mono focus:border-purple-400 focus:outline-none transition-all duration-300 hover:border-purple-400/70 focus:bg-black/70 group-hover/field:scale-[1.02]"
+                            className="w-full bg-black/50 border-2 border-purple-400/50 text-white px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-xl font-mono focus:border-purple-400 focus:outline-none transition-all duration-300 hover:border-purple-400/70 focus:bg-black/70 group-hover/field:scale-[1.02] text-sm sm:text-base"
                           placeholder="Nombre de tu equipo"
                         />
                           <motion.div
@@ -790,8 +790,8 @@ export default function RegistroPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
                     >
-                      <label className="block text-purple-400 font-mono mb-3 text-lg font-semibold flex items-center space-x-2">
-                        <Lightbulb className="w-5 h-5" />
+                      <label className="block text-purple-400 font-mono mb-2 sm:mb-3 text-sm sm:text-base md:text-lg font-semibold flex items-center space-x-2">
+                        <Lightbulb className="w-4 h-4 sm:w-5 sm:h-5" />
                         <span>Idea de Proyecto</span>
                       </label>
                       <div className="relative">
@@ -800,7 +800,7 @@ export default function RegistroPage() {
                         value={formData.proyecto}
                         onChange={handleInputChange}
                         rows={4}
-                          className="w-full bg-black/50 border-2 border-purple-400/50 text-white px-6 py-4 rounded-xl font-mono focus:border-purple-400 focus:outline-none transition-all duration-300 hover:border-purple-400/70 focus:bg-black/70 resize-none group-hover/field:scale-[1.02]"
+                          className="w-full bg-black/50 border-2 border-purple-400/50 text-white px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-xl font-mono focus:border-purple-400 focus:outline-none transition-all duration-300 hover:border-purple-400/70 focus:bg-black/70 resize-none group-hover/field:scale-[1.02] text-sm sm:text-base"
                         placeholder="Describe brevemente tu idea de proyecto para el hackathon..."
                       />
                         <motion.div
@@ -818,8 +818,8 @@ export default function RegistroPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 }}
                     >
-                      <label className="block text-purple-400 font-mono mb-3 text-lg font-semibold flex items-center space-x-2">
-                        <Star className="w-5 h-5" />
+                      <label className="block text-purple-400 font-mono mb-2 sm:mb-3 text-sm sm:text-base md:text-lg font-semibold flex items-center space-x-2">
+                        <Star className="w-4 h-4 sm:w-5 sm:h-5" />
                         <span>Motivación para Participar <span className="text-red-400">*</span></span>
                       </label>
                       <div className="relative">
@@ -829,7 +829,7 @@ export default function RegistroPage() {
                         onChange={handleInputChange}
                         required
                         rows={4}
-                          className="w-full bg-black/50 border-2 border-purple-400/50 text-white px-6 py-4 rounded-xl font-mono focus:border-purple-400 focus:outline-none transition-all duration-300 hover:border-purple-400/70 focus:bg-black/70 resize-none group-hover/field:scale-[1.02]"
+                          className="w-full bg-black/50 border-2 border-purple-400/50 text-white px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-xl font-mono focus:border-purple-400 focus:outline-none transition-all duration-300 hover:border-purple-400/70 focus:bg-black/70 resize-none group-hover/field:scale-[1.02] text-sm sm:text-base"
                         placeholder="¿Por qué quieres participar en COD3.0? ¿Qué esperas aprender o lograr?"
                       />
                         <motion.div
@@ -846,7 +846,7 @@ export default function RegistroPage() {
 
               {/* Enhanced Submit Button */}
               <motion.div 
-                className="flex justify-center mt-12"
+                className="flex justify-center mt-8 sm:mt-10 md:mt-12"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
@@ -854,7 +854,7 @@ export default function RegistroPage() {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-16 py-6 rounded-2xl font-bold text-2xl transition-all duration-300 shadow-2xl hover:shadow-green-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 rounded-2xl font-bold text-lg sm:text-xl md:text-2xl transition-all duration-300 shadow-2xl hover:shadow-green-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
                   whileHover={{ scale: isSubmitting ? 1 : 1.05, y: -3 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
                 >
