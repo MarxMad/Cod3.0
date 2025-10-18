@@ -1756,7 +1756,7 @@ export default function Home() {
           </motion.div>
 
           {/* Organizers Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-12 px-4 sm:px-0 max-w-6xl mx-auto">
             {[
               {
                 name: "Kinari Sabina",
