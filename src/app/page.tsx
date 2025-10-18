@@ -359,13 +359,13 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Banner SVG Background - Responsive */}
-          <div className="absolute inset-0 pointer-events-none">
+          {/* Banner SVG Background - Solo Desktop */}
+          <div className="absolute inset-0 pointer-events-none hidden sm:block">
             <Image
               src="/banner.svg"
               alt="Banner"
               fill
-              className="object-cover opacity-60 sm:opacity-40"
+              className="object-cover opacity-40"
               priority
             />
           </div>
