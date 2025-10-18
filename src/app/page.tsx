@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
+import type { Variants } from 'framer-motion';
 import { 
   Users, 
   Trophy, 
@@ -32,6 +33,131 @@ import {
   Heart
 } from 'lucide-react';
 // import LazySplineScene from '../components/LazySplineScene';
+
+// Prize data adapted for the animation
+const prizes: [string, number, number, string, string][] = [
+  ["🏆", 340, 10, "1er Lugar", "$25,000"],
+  ["🥈", 20, 40, "2do Lugar", "$15,000"],
+  ["🥉", 60, 90, "3er Lugar", "$10,000"],
+];
+
+interface PrizeCardProps {
+  emoji: string;
+  hueA: number;
+  hueB: number;
+  title: string;
+  prize: string;
+  i: number;
+}
+
+function PrizeCard({ emoji, hueA, hueB, title, prize, i }: PrizeCardProps) {
+  const background = `linear-gradient(306deg, hsl(${hueA}, 100%, 50%), hsl(${hueB}, 100%, 50%))`;
+
+  return (
+    <motion.div
+      className={`prize-card-${i}`}
+      style={{
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "relative",
+        paddingTop: 20,
+        marginBottom: -120,
+      }}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ amount: 0.8 }}
+    >
+      <div 
+        style={{ 
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          clipPath: `path("M 0 303.5 C 0 292.454 8.995 285.101 20 283.5 L 460 219.5 C 470.085 218.033 480 228.454 480 239.5 L 500 430 C 500 441.046 491.046 450 480 450 L 20 450 C 8.954 450 0 441.046 0 430 Z")`,
+          background 
+        }} 
+      />
+      <motion.div 
+        style={{
+          fontSize: 164,
+          width: 300,
+          height: 430,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 20,
+          background: "#1a1a1a",
+          boxShadow: "0 0 1px hsl(0deg 0% 0% / 0.075), 0 0 2px hsl(0deg 0% 0% / 0.075), 0 0 4px hsl(0deg 0% 0% / 0.075), 0 0 8px hsl(0deg 0% 0% / 0.075), 0 0 16px hsl(0deg 0% 0% / 0.075)",
+          transformOrigin: "10% 60%",
+          border: "2px solid rgba(34, 197, 94, 0.3)",
+        }} 
+        variants={cardVariants} 
+        className="prize-card"
+      >
+        <div style={{ fontSize: 80, marginBottom: 20 }}>{emoji}</div>
+        <div style={{ 
+          fontSize: 24, 
+          fontWeight: "bold", 
+          color: "white", 
+          textAlign: "center",
+          marginBottom: 10 
+        }}>
+          {title}
+        </div>
+        <div style={{ 
+          fontSize: 32, 
+          fontWeight: "black", 
+          color: "#22c55e", 
+          textAlign: "center" 
+        }}>
+          {prize}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+const cardVariants: Variants = {
+  offscreen: {
+    y: 300,
+  },
+  onscreen: {
+    y: 50,
+    rotate: -10,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
+
+function PrizesAnimation() {
+  return (
+    <div style={{
+      margin: "50px auto",
+      maxWidth: 500,
+      paddingBottom: 100,
+      width: "100%",
+    }}>
+      {prizes.map(([emoji, hueA, hueB, title, prize], i) => (
+        <PrizeCard 
+          key={title}
+          emoji={emoji} 
+          hueA={hueA} 
+          hueB={hueB} 
+          title={title}
+          prize={prize}
+          i={i} 
+        />
+      ))}
+    </div>
+  );
+}
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -783,8 +909,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Prizes Section */}
-      <section id="prizes" className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-purple-900/20 to-black relative">
+      {/* Prizes Section - Animated Cards */}
+      <section id="prizes" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-purple-900/20 to-black relative">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -817,132 +943,8 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Two Column Layout: Spline + Prizes */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Spline 3D Scene - Temporarily disabled for performance */}
-            {/* <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden border border-purple-400/30"
-            >
-              <LazySplineScene 
-                sceneUrl="https://prod.spline.design/2q0dmovGgiPvvFq5/scene.splinecode"
-                className="w-full h-full"
-              />
-            </motion.div> */}
-            {/* Placeholder while Spline is disabled */}
-            <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden border border-purple-400/30 bg-gradient-to-br from-purple-900/20 via-black to-pink-900/20 flex items-center justify-center"
-            >
-              <div className="text-center space-y-4 p-8">
-                <div className="text-6xl">🏆</div>
-                <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Premios Increíbles</h3>
-                <p className="text-gray-400">Compite por premios épicos</p>
-              </div>
-            </motion.div>
-
-            {/* Prizes Cards */}
-            <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-            {[
-              {
-                place: "1er Lugar",
-                prize: "$25,000",
-                color: "green",
-                benefits: [
-                  "Premio en efectivo",
-                  "Mentoring con expertos",
-                  "Incubación de startup",
-                  "Viaje a conferencia tech"
-                ]
-              },
-              {
-                place: "2do Lugar",
-                prize: "$15,000",
-                color: "cyan",
-                benefits: [
-                  "Premio en efectivo",
-                  "Acceso a coworking",
-                  "Networking premium",
-                  "Certificaciones tech"
-                ]
-              },
-              {
-                place: "3er Lugar",
-                prize: "$10,000",
-                color: "purple",
-                benefits: [
-                  "Premio en efectivo",
-                  "Cursos online premium",
-                  "Hardware de desarrollo",
-                  "Membresía a comunidad"
-                ]
-              }
-            ].map((prize, index) => (
-              <motion.div
-                key={prize.place}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                className="group"
-              >
-                <motion.div
-                  className={`bg-gradient-to-br from-${prize.color}-500/20 to-${prize.color === 'green' ? 'blue' : 'green'}-500/20 backdrop-blur-xl rounded-xl p-6 border border-${prize.color}-400/30 hover:border-${prize.color}-400/60 transition-all duration-300`}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  initial={false}
-                >
-                  <div className="flex items-center space-x-4">
-                    <motion.div
-                      className={`w-16 h-16 bg-gradient-to-br from-${prize.color}-500/30 to-${prize.color === 'green' ? 'blue' : 'green'}-500/30 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.8 }}
-                    >
-                      <Trophy className={`h-8 w-8 text-${prize.color}-400`} />
-                    </motion.div>
-                    
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-black text-white mb-1 group-hover:text-green-400 transition-colors duration-300">
-                        {prize.place}
-                      </h3>
-                      
-                      <p className={`text-3xl font-black text-${prize.color}-400 mb-3 group-hover:scale-105 transition-transform duration-300`}>
-                        {prize.prize}
-                      </p>
-                      
-                      <ul className="space-y-2">
-                        {prize.benefits.map((benefit, benefitIndex) => (
-                          <motion.li
-                            key={benefitIndex}
-                            className="text-gray-300 flex items-center group-hover:text-gray-200 transition-colors duration-300 text-sm"
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.4, delay: benefitIndex * 0.1 }}
-                            viewport={{ once: true }}
-                          >
-                            <Star className="h-3 w-3 mr-2 text-green-400 flex-shrink-0" />
-                            <span>{benefit}</span>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-            </motion.div>
-          </div>
+          {/* Animated Prize Cards */}
+          <PrizesAnimation />
         </div>
       </section>
 
