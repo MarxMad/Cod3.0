@@ -327,28 +327,6 @@ export default function Home() {
             />
           ))}
           
-          {/* Partículas flotantes - más visibles en móvil */}
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-green-400/60 rounded-full sm:w-1.5 sm:h-1.5 sm:bg-green-400/40"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -80, 0],
-                opacity: [0, 0.8, 0],
-                scale: [0, 1, 0],
-              }}
-              transition={{
-                duration: 6 + Math.random() * 4,
-                repeat: Infinity,
-                delay: Math.random() * 4,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
           
           {/* Scanlines sutiles - más visibles en móvil */}
           <div className="absolute inset-0 pointer-events-none opacity-10 sm:opacity-5">
@@ -587,9 +565,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header */}
             <motion.div
-                  initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
                 viewport={{ once: true }}
             className="text-center mb-16"
           >
@@ -615,7 +593,7 @@ export default function Home() {
             </div>
                     </motion.div>
                     
-          {/* Timeline Connector */}
+          {/* Timeline Connector - Suave */}
           <div className="hidden md:flex items-center justify-center mb-8 relative">
             <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-green-500/30 to-transparent"></div>
             <div className="flex justify-between w-full max-w-4xl relative z-10">
@@ -624,7 +602,7 @@ export default function Home() {
                 <span className="text-xs text-blue-400 mt-2 font-bold">INICIO</span>
               </div>
               <div className="flex flex-col items-center">
-                <div className="w-4 h-4 bg-green-500 rounded-full border-4 border-black animate-pulse"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full border-4 border-black"></div>
                 <span className="text-xs text-green-400 mt-2 font-bold">DESARROLLO</span>
               </div>
               <div className="flex flex-col items-center">
@@ -692,16 +670,20 @@ export default function Home() {
             ].map((dayData, index) => (
               <motion.div
                 key={dayData.day}
-                    initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
                 viewport={{ once: true }}
-                className={`relative p-6 rounded-xl border-2 hover:scale-105 transition-all duration-300 ${
+                className={`relative p-6 rounded-xl border-2 transition-all duration-300 ${
                     dayData.highlight
                     ? 'bg-green-500/10 border-green-500/50 shadow-lg shadow-green-500/20' 
                     : 'bg-gray-900/80 border-gray-700/50'
-                  }`}
-                >
+                } sm:hover:scale-105`}
+              >
                 {/* Header */}
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-2">
@@ -753,9 +735,9 @@ export default function Home() {
                     }
                     
                     return (
-                      <div key={i} className="flex items-start text-sm group/item hover:translate-x-1 transition-transform">
+                      <div key={i} className="flex items-start text-sm group/item sm:hover:translate-x-1 transition-transform duration-200">
                         <EventIcon className={`h-4 w-4 mr-3 flex-shrink-0 mt-0.5 ${iconColor}`} />
-                        <span className="text-gray-300 group-hover/item:text-white transition-colors">{event}</span>
+                        <span className="text-gray-300 group-hover/item:text-white transition-colors duration-200">{event}</span>
                       </div>
                     );
                   })}
