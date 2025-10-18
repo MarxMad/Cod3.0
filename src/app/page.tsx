@@ -359,8 +359,19 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
+          {/* Banner SVG Background */}
+          <div className="absolute inset-0 opacity-40 pointer-events-none">
+            <Image
+              src="/banner.svg"
+              alt="Banner"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          
           {/* Two Column Layout */}
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center min-h-[80vh]">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center min-h-[80vh] relative z-10">
             {/* Left Column - HACKATHON Title + Countdown */}
             <motion.div
               className="space-y-6 sm:space-y-8"
@@ -508,10 +519,10 @@ export default function Home() {
                     priority
                   />
                 </div>
-          </motion.div>
-
+            </motion.div>
+            
               {/* Anillo orbital sutil */}
-            <motion.div
+                  <motion.div
                 className="absolute inset-0 border border-green-400/10 rounded-full"
                 style={{ transform: 'scale(1.15)' }}
                 animate={{
@@ -544,11 +555,11 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+                viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-4">
@@ -561,7 +572,7 @@ export default function Home() {
               <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 rounded-full border border-green-500/20">
                 <Zap className="h-4 w-4 text-green-400" />
                 <span className="text-gray-300">48 Horas de Código</span>
-              </div>
+                    </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-cyan-500/10 rounded-full border border-cyan-500/20">
                 <Users className="h-4 w-4 text-cyan-400" />
                 <span className="text-gray-300">15+ Charlas & Workshops</span>
@@ -571,8 +582,8 @@ export default function Home() {
                 <span className="text-gray-300">30 Actividades</span>
               </div>
             </div>
-          </motion.div>
-
+                    </motion.div>
+                    
           {/* Timeline Connector */}
           <div className="hidden md:flex items-center justify-center mb-8 relative">
             <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-green-500/30 to-transparent"></div>
@@ -589,9 +600,9 @@ export default function Home() {
                 <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-black"></div>
                 <span className="text-xs text-purple-400 mt-2 font-bold">CIERRE</span>
               </div>
-            </div>
-          </div>
-
+                  </div>
+                    </div>
+                    
           {/* 3 Cards Horizontal Layout */}
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
             {[
@@ -663,13 +674,13 @@ export default function Home() {
                 {/* Header */}
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-2">
-                    <Calendar className={`h-6 w-6 ${dayData.highlight ? 'text-green-400' : 'text-gray-400'}`} />
+                          <Calendar className={`h-6 w-6 ${dayData.highlight ? 'text-green-400' : 'text-gray-400'}`} />
                     {dayData.highlight && (
                       <span className="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded-full border border-green-500/30 font-bold">
                         24H CODING
                       </span>
                     )}
-                  </div>
+                          </div>
                   <h3 className={`text-2xl font-black mb-1 ${dayData.highlight ? 'text-green-400' : 'text-white'}`}>
                     {dayData.day}
                   </h3>
@@ -683,11 +694,11 @@ export default function Home() {
                     <span className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">
                       {dayData.events.filter(e => e.includes('Workshop')).length} Workshops
                     </span>
-                  </div>
+                        </div>
                   </div>
                   
                 {/* Events */}
-                <div className="space-y-3">
+                      <div className="space-y-3">
                   {dayData.events.map((event, i) => {
                     // Determinar icono según el tipo de evento
                     let EventIcon = Clock;
@@ -723,11 +734,11 @@ export default function Home() {
               </div>
 
           {/* Closing Concert Section */}
-          <motion.div
+                      <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+                        viewport={{ once: true }}
             className="mt-12 p-8 rounded-2xl bg-gradient-to-r from-purple-900/30 via-pink-900/30 to-purple-900/30 border-2 border-purple-500/50"
           >
             <div className="text-center">
@@ -737,7 +748,7 @@ export default function Home() {
                   CONCIERTO DE <span className="text-purple-400">CIERRE</span>
                 </h3>
                 <Sparkles className="h-8 w-8 text-purple-400 ml-3" />
-          </div>
+                  </div>
               <p className="text-xl text-gray-300 mb-6">
                 ¡Celebra el final del hackathon con música en vivo!
               </p>
@@ -745,11 +756,11 @@ export default function Home() {
                 <div className="flex items-center">
                   <Calendar className="h-4 w-4 mr-2 text-purple-400" />
                   29 de Marzo - 20:00 hrs
-                </div>
+              </div>
                 <div className="flex items-center">
                   <MapPin className="h-4 w-4 mr-2 text-purple-400" />
                   Parque Bicentenario - Escenario Principal
-                </div>
+          </div>
                 <div className="flex items-center">
                   <Users className="h-4 w-4 mr-2 text-purple-400" />
                   Evento abierto a todos los participantes
