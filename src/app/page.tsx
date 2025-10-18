@@ -470,7 +470,7 @@ export default function Home() {
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, delay: 0.15 }}
                   />
                   <span className="relative z-10 flex items-center">
                     <span>&lt;REGÍSTRATE/&gt;</span>
@@ -487,7 +487,7 @@ export default function Home() {
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent -skew-x-12"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, delay: 0.15 }}
                   />
                   <span className="relative z-10">&lt;PROGRAMA/&gt;</span>
                 </motion.button>
@@ -569,9 +569,9 @@ export default function Home() {
           {/* Header */}
             <motion.div
             initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
+              viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-4">
@@ -675,14 +675,10 @@ export default function Home() {
                 key={dayData.day}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.15,
-                  ease: "easeInOut"
-                }}
+                transition={{ duration: 0.8, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                className={`relative p-6 rounded-xl border-2 transition-all duration-500 ${
-                  dayData.highlight 
+                className={`relative p-6 rounded-xl border-2 transition-all duration-300 ${
+                    dayData.highlight
                     ? 'bg-green-500/10 border-green-500/50 shadow-lg shadow-green-500/20' 
                     : 'bg-gray-900/80 border-gray-700/50'
                 } hover:scale-102 hover:shadow-lg`}
@@ -751,9 +747,9 @@ export default function Home() {
 
           {/* Closing Concert Section */}
                       <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
                         viewport={{ once: true }}
             className="mt-12 p-8 rounded-2xl bg-gradient-to-r from-purple-900/30 via-pink-900/30 to-purple-900/30 border-2 border-purple-500/50"
           >
@@ -801,7 +797,7 @@ export default function Home() {
               className="inline-flex items-center space-x-2 bg-green-500/20 text-green-400 px-6 py-3 rounded-full mb-6"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
               viewport={{ once: true }}
             >
               <Trophy className="h-5 w-5" />
@@ -1020,7 +1016,7 @@ export default function Home() {
               className="inline-flex items-center space-x-3 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-purple-400 px-8 py-4 rounded-full mb-8 border-2 border-purple-400/30 backdrop-blur-sm"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(147,51,234,0.3)" }}
             >
@@ -1063,7 +1059,7 @@ export default function Home() {
               className="text-center mb-16"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
               viewport={{ once: true }}
             >
               <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-purple-400 mb-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
@@ -1079,9 +1075,9 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-16 px-4 sm:px-0">
               {/* Starlink - Platinum - ULTRA COOL */}
                 <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+                initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.15 }}
                   viewport={{ once: true }}
                   className="group relative"
                 >
@@ -1131,9 +1127,9 @@ export default function Home() {
 
               {/* Placeholder Sponsor 2 - ULTRA COOL */}
           <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.15 }}
             viewport={{ once: true }}
                 className="group relative"
               >
@@ -1177,9 +1173,9 @@ export default function Home() {
 
               {/* Placeholder Sponsor 3 - ULTRA COOL */}
                 <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.15 }}
                   viewport={{ once: true }}
                   className="group relative"
                 >
@@ -1422,7 +1418,7 @@ export default function Home() {
               className="inline-flex items-center space-x-2 bg-green-500/20 text-green-400 px-6 py-3 rounded-full mb-6 border border-green-400/30"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
               viewport={{ once: true }}
             >
               <Sparkles className="h-5 w-5" />
@@ -1562,7 +1558,7 @@ export default function Home() {
               className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-400 px-8 py-4 rounded-full mb-8 border-2 border-blue-400/30 backdrop-blur-sm"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(59,130,246,0.3)" }}
             >
@@ -1735,7 +1731,7 @@ export default function Home() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeInOut" }}
-            viewport={{ once: true }}
+              viewport={{ once: true }}
             className="text-center mb-16"
           >
             <motion.div
@@ -1809,13 +1805,9 @@ export default function Home() {
             ].map((organizer, index) => (
               <motion.div
                 key={organizer.name}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1,
-                  ease: "easeOut"
-                }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.15 }}
                 viewport={{ once: true }}
                 className="group relative bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-purple-400/20 hover:border-purple-400/40 transition-all duration-300 hover:scale-102 shadow-lg hover:shadow-purple-500/20"
               >
@@ -1876,8 +1868,8 @@ export default function Home() {
 
                 {/* Hover Effect - Simplified */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
-            ))}
+                  </motion.div>
+                ))}
           </div>
 
           {/* Call to Action */}
@@ -1916,7 +1908,7 @@ export default function Home() {
               className="inline-flex items-center space-x-2 bg-blue-500/20 text-blue-400 px-6 py-3 rounded-full mb-6"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
               viewport={{ once: true }}
             >
               <Users className="h-5 w-5" />
