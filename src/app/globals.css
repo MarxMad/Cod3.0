@@ -355,7 +355,7 @@
 }
 
 .ticker-track.allies-fast {
-  animation: scroll 6s linear infinite;
+  animation: scroll 30s linear infinite;
 }
 
 .ticker-item {
