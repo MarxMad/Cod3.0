@@ -1384,15 +1384,15 @@ export default function Home() {
               />
               
               <div className="relative z-10">
-                <h3 className="text-3xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-white mb-3">
                   ¿Quieres ser parte de COD3.0?
                 </h3>
-                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                <p className="text-sm text-gray-300 mb-6 max-w-xl mx-auto">
                   Únete a nuestro ecosistema de patrocinadores y ayuda a construir el futuro de la tecnología
                 </p>
                 
                 <motion.button
-                  className="bg-green-500 hover:bg-green-600 text-white px-12 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-green-500/25"
+                  className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold text-sm transition-all duration-300 shadow-lg hover:shadow-green-500/25"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -1567,7 +1567,7 @@ export default function Home() {
               <MapPin className="h-6 w-6" />
             </motion.div>
             
-            <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
               PARQUE{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400">
                 BICENTENARIO
@@ -1803,12 +1803,12 @@ export default function Home() {
                 }
               }
             ].map((organizer, index) => (
-              <motion.div
+            <motion.div
                 key={organizer.name}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.15 }}
-                viewport={{ once: true }}
+              viewport={{ once: true }}
                 className="group relative bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-purple-400/20 hover:border-purple-400/40 transition-all duration-300 hover:scale-102 shadow-lg hover:shadow-purple-500/20"
               >
                 {/* Background Pattern */}
@@ -1873,7 +1873,7 @@ export default function Home() {
           </div>
 
           {/* Call to Action */}
-          <motion.div
+                  <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
