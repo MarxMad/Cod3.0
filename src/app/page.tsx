@@ -1759,17 +1759,6 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-0">
             {[
               {
-                name: "Leonardo Cuevas",
-                role: "Director General",
-                description: "Visionario tecnológico liderando la transformación digital en México",
-                image: "/Organizadores/leonardo-cuevas.jpg",
-                social: {
-                  twitter: "#",
-                  linkedin: "#",
-                  github: "#"
-                }
-              },
-              {
                 name: "Kinari Sabina",
                 role: "Co-Founder & Strategy",
                 description: "Estratega innovadora especializada en desarrollo de ecosistemas tech",
