@@ -26,7 +26,10 @@ import {
   Utensils,
   Shield,
   Building,
-  Navigation
+  Navigation,
+  User,
+  Award,
+  Heart
 } from 'lucide-react';
 // import LazySplineScene from '../components/LazySplineScene';
 
@@ -1700,6 +1703,243 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Organizers Section - TEAM BEHIND THE MAGIC */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-black via-purple-900/20 to-black overflow-hidden">
+        {/* Epic Background Effects */}
+        <div className="absolute inset-0">
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(147,51,234,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(147,51,234,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
+          
+          {/* Floating Orbs */}
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-32 h-32 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-xl"
+              style={{
+                left: `${20 + i * 30}%`,
+                top: `${30 + i * 20}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                x: [0, 10, 0],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 8 + i * 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 2,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Epic Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.div
+              className="inline-flex items-center space-x-3 bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-400 px-8 py-4 rounded-full mb-8 border-2 border-purple-400/30 backdrop-blur-sm"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Heart className="h-6 w-6" />
+              <span className="font-bold text-lg">EQUIPO ORGANIZADOR</span>
+            </motion.div>
+            
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
+              LOS <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400">
+                VISIONARIOS
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Conoce al equipo que está construyendo el futuro de la programación en México
+            </p>
+          </motion.div>
+
+          {/* Organizers Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {[
+              {
+                name: "Leonardo Cuevas",
+                role: "Director General",
+                description: "Visionario tecnológico liderando la transformación digital en México",
+                image: "/Organizadores/leonardo-cuevas.jpg",
+                social: {
+                  twitter: "#",
+                  linkedin: "#",
+                  github: "#"
+                }
+              },
+              {
+                name: "Kinari Sabina",
+                role: "Co-Founder & Strategy",
+                description: "Estratega innovadora especializada en desarrollo de ecosistemas tech",
+                image: "/Organizadores/kinari-sabina.jpg",
+                social: {
+                  twitter: "#",
+                  linkedin: "#",
+                  github: "#"
+                }
+              },
+              {
+                name: "Fernanda Tello",
+                role: "Head of Operations",
+                description: "Experta en operaciones y gestión de eventos tecnológicos de gran escala",
+                image: "/Organizadores/fernanda-tello.jpg",
+                social: {
+                  twitter: "#",
+                  linkedin: "#",
+                  github: "#"
+                }
+              },
+              {
+                name: "Gerardo Vela",
+                role: "Lead Developer & CTO",
+                description: "Desarrollador full-stack y arquitecto de soluciones tecnológicas avanzadas",
+                image: "/Organizadores/gerardo-vela.jpg",
+                social: {
+                  twitter: "#",
+                  linkedin: "#",
+                  github: "#"
+                }
+              }
+            ].map((organizer, index) => (
+              <motion.div
+                key={organizer.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.1,
+                  ease: "easeInOut"
+                }}
+                viewport={{ once: true }}
+                className="group relative bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-purple-400/20 hover:border-purple-400/40 transition-all duration-500 hover:scale-105 shadow-lg hover:shadow-purple-500/20"
+              >
+                {/* Background Pattern */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Photo */}
+                <div className="relative mb-6">
+                  <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-purple-400 to-pink-400 p-1 group-hover:scale-110 transition-transform duration-500">
+                    <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
+                      <User className="h-12 w-12 text-purple-400" />
+                    </div>
+                  </div>
+                  
+                  {/* Decorative Ring */}
+                  <motion.div
+                    className="absolute inset-0 rounded-full border-2 border-purple-400/30"
+                    animate={{
+                      rotate: 360,
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                      rotate: {
+                        duration: 20,
+                        repeat: Infinity,
+                        ease: "linear",
+                      },
+                      scale: {
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      },
+                    }}
+                  />
+                </div>
+
+                {/* Info */}
+                <div className="text-center space-y-3">
+                  <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors duration-300">
+                    {organizer.name}
+                  </h3>
+                  
+                  <div className="flex items-center justify-center space-x-2">
+                    <Award className="h-4 w-4 text-purple-400" />
+                    <span className="text-purple-400 font-semibold text-sm">
+                      {organizer.role}
+                    </span>
+                  </div>
+                  
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    {organizer.description}
+                  </p>
+                  
+                  {/* Social Links */}
+                  <div className="flex items-center justify-center space-x-3 pt-2">
+                    <motion.a
+                      href={organizer.social.twitter}
+                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Twitter className="h-4 w-4 text-purple-400" />
+                    </motion.a>
+                    <motion.a
+                      href={organizer.social.linkedin}
+                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Linkedin className="h-4 w-4 text-purple-400" />
+                    </motion.a>
+                    <motion.a
+                      href={organizer.social.github}
+                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Github className="h-4 w-4 text-purple-400" />
+                    </motion.a>
+                  </div>
+                </div>
+
+                {/* Hover Effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Call to Action */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center mt-16"
+          >
+            <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl p-8 border-2 border-purple-400/20">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                ¿Quieres ser parte del equipo?
+              </h3>
+              <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+                Estamos siempre buscando talento excepcional para unirse a nuestra misión de transformar la educación tecnológica en México.
+              </p>
+              <motion.button
+                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Únete al Equipo
+              </motion.button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
