@@ -34,11 +34,83 @@ import {
 } from 'lucide-react';
 // import LazySplineScene from '../components/LazySplineScene';
 
-// Prize data adapted for the animation
-const prizes: [string, number, number, string, string][] = [
-  ["🏆", 340, 10, "1er Lugar", "$25,000"],
-  ["🥈", 20, 40, "2do Lugar", "$15,000"],
-  ["🥉", 60, 90, "3er Lugar", "$10,000"],
+// Enhanced prize data with detailed information
+const prizes = [
+  {
+    emoji: "🏆",
+    hueA: 340,
+    hueB: 10,
+    title: "1er Lugar",
+    prize: "$25,000",
+    description: "Campeón del Hackathon",
+    benefits: [
+      "Premio en efectivo",
+      "Mentoring con expertos",
+      "Incubación de startup",
+      "Viaje a conferencia tech"
+    ],
+    special: "Inversión de $100K"
+  },
+  {
+    emoji: "🥈", 
+    hueA: 20,
+    hueB: 40,
+    title: "2do Lugar",
+    prize: "$15,000",
+    description: "Segundo Puesto",
+    benefits: [
+      "Premio en efectivo",
+      "Acceso a coworking",
+      "Networking premium",
+      "Certificaciones tech"
+    ],
+    special: "Programa de aceleración"
+  },
+  {
+    emoji: "🥉",
+    hueA: 60,
+    hueB: 90,
+    title: "3er Lugar", 
+    prize: "$10,000",
+    description: "Tercer Puesto",
+    benefits: [
+      "Premio en efectivo",
+      "Cursos online premium",
+      "Hardware de desarrollo",
+      "Membresía a comunidad"
+    ],
+    special: "Kit de desarrollo"
+  }
+];
+
+const specialPrizes = [
+  {
+    emoji: "💡",
+    hueA: 280,
+    hueB: 320,
+    title: "Mejor Innovación",
+    prize: "$5,000",
+    description: "Idea más creativa",
+    benefits: ["Premio especial", "Reconocimiento público", "Mentoring"]
+  },
+  {
+    emoji: "🌱",
+    hueA: 120,
+    hueB: 160,
+    title: "Impacto Social",
+    prize: "$3,000",
+    description: "Mejor proyecto social",
+    benefits: ["Premio especial", "Patrocinio", "Difusión mediática"]
+  },
+  {
+    emoji: "⚡",
+    hueA: 45,
+    hueB: 75,
+    title: "Mejor Técnico",
+    prize: "$2,000",
+    description: "Implementación técnica",
+    benefits: ["Premio especial", "Hardware premium", "Certificación"]
+  }
 ];
 
 interface PrizeCardProps {
@@ -47,10 +119,13 @@ interface PrizeCardProps {
   hueB: number;
   title: string;
   prize: string;
+  description: string;
+  benefits: string[];
+  special: string;
   i: number;
 }
 
-function PrizeCard({ emoji, hueA, hueB, title, prize, i }: PrizeCardProps) {
+function PrizeCard({ emoji, hueA, hueB, title, prize, description, benefits, special, i }: PrizeCardProps) {
   const background = `linear-gradient(306deg, hsl(${hueA}, 100%, 50%), hsl(${hueB}, 100%, 50%))`;
 
   return (
@@ -82,40 +157,101 @@ function PrizeCard({ emoji, hueA, hueB, title, prize, i }: PrizeCardProps) {
       />
       <motion.div 
         style={{
-          fontSize: 164,
-          width: 300,
-          height: 430,
+          width: 350,
+          height: 500,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignItems: "center",
           borderRadius: 20,
           background: "#1a1a1a",
           boxShadow: "0 0 1px hsl(0deg 0% 0% / 0.075), 0 0 2px hsl(0deg 0% 0% / 0.075), 0 0 4px hsl(0deg 0% 0% / 0.075), 0 0 8px hsl(0deg 0% 0% / 0.075), 0 0 16px hsl(0deg 0% 0% / 0.075)",
           transformOrigin: "10% 60%",
           border: "2px solid rgba(34, 197, 94, 0.3)",
+          padding: "20px",
         }} 
         variants={cardVariants} 
         className="prize-card"
+        whileHover={{ scale: 1.05, rotate: -5 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
-        <div style={{ fontSize: 80, marginBottom: 20 }}>{emoji}</div>
+        {/* Header */}
+        <div style={{ fontSize: 80, marginBottom: 15 }}>{emoji}</div>
         <div style={{ 
-          fontSize: 24, 
+          fontSize: 28, 
           fontWeight: "bold", 
           color: "white", 
           textAlign: "center",
-          marginBottom: 10 
+          marginBottom: 5 
         }}>
           {title}
         </div>
         <div style={{ 
-          fontSize: 32, 
+          fontSize: 16, 
+          color: "#888", 
+          textAlign: "center",
+          marginBottom: 10 
+        }}>
+          {description}
+        </div>
+        <div style={{ 
+          fontSize: 36, 
           fontWeight: "black", 
           color: "#22c55e", 
-          textAlign: "center" 
+          textAlign: "center",
+          marginBottom: 20 
         }}>
           {prize}
         </div>
+
+        {/* Benefits */}
+        <div style={{ width: "100%", marginBottom: 15 }}>
+          <div style={{ 
+            fontSize: 14, 
+            fontWeight: "bold", 
+            color: "#22c55e", 
+            marginBottom: 8,
+            textAlign: "center"
+          }}>
+            Beneficios Incluidos:
+          </div>
+          {benefits.map((benefit, index) => (
+            <motion.div
+              key={index}
+              style={{
+                fontSize: 12,
+                color: "#ccc",
+                marginBottom: 4,
+                display: "flex",
+                alignItems: "center"
+              }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <span style={{ marginRight: 8, color: "#22c55e" }}>✓</span>
+              {benefit}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Special Bonus */}
+        <motion.div
+          style={{
+            background: "linear-gradient(45deg, #22c55e, #16a34a)",
+            padding: "8px 16px",
+            borderRadius: 20,
+            fontSize: 12,
+            fontWeight: "bold",
+            color: "white",
+            textAlign: "center",
+            marginTop: "auto"
+          }}
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 400 }}
+        >
+          🎁 {special}
+        </motion.div>
       </motion.div>
     </motion.div>
   );
@@ -136,25 +272,147 @@ const cardVariants: Variants = {
   },
 };
 
+function SpecialPrizeCard({ emoji, hueA, hueB, title, prize, description, benefits, i }: any) {
+  const background = `linear-gradient(306deg, hsl(${hueA}, 100%, 50%), hsl(${hueB}, 100%, 50%))`;
+
+  return (
+    <motion.div
+      style={{
+        background: "#1a1a1a",
+        borderRadius: 15,
+        padding: "20px",
+        border: "2px solid rgba(34, 197, 94, 0.3)",
+        position: "relative",
+        overflow: "hidden",
+        marginBottom: 20
+      }}
+      whileHover={{ scale: 1.02, y: -5 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
+      <div 
+        style={{ 
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 4,
+          background 
+        }} 
+      />
+      <div style={{ display: "flex", alignItems: "center", marginBottom: 10 }}>
+        <div style={{ fontSize: 40, marginRight: 15 }}>{emoji}</div>
+        <div>
+          <div style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>{title}</div>
+          <div style={{ fontSize: 14, color: "#888" }}>{description}</div>
+        </div>
+        <div style={{ marginLeft: "auto", fontSize: 20, fontWeight: "bold", color: "#22c55e" }}>
+          {prize}
+        </div>
+      </div>
+      <div style={{ fontSize: 12, color: "#ccc" }}>
+        {benefits.join(" • ")}
+      </div>
+    </motion.div>
+  );
+}
+
 function PrizesAnimation() {
   return (
-    <div style={{
-      margin: "50px auto",
-      maxWidth: 500,
-      paddingBottom: 100,
-      width: "100%",
-    }}>
-      {prizes.map(([emoji, hueA, hueB, title, prize], i) => (
-        <PrizeCard 
-          key={title}
-          emoji={emoji} 
-          hueA={hueA} 
-          hueB={hueB} 
-          title={title}
-          prize={prize}
-          i={i} 
-        />
-      ))}
+    <div style={{ width: "100%" }}>
+      {/* Main Prizes */}
+      <div style={{
+        margin: "50px auto",
+        maxWidth: 500,
+        paddingBottom: 50,
+        width: "100%",
+      }}>
+        {prizes.map((prize, i) => (
+          <PrizeCard 
+            key={prize.title}
+            emoji={prize.emoji} 
+            hueA={prize.hueA} 
+            hueB={prize.hueB} 
+            title={prize.title}
+            prize={prize.prize}
+            description={prize.description}
+            benefits={prize.benefits}
+            special={prize.special}
+            i={i} 
+          />
+        ))}
+      </div>
+
+      {/* Special Prizes Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        style={{ marginTop: 80 }}
+      >
+        <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <h3 style={{ 
+            fontSize: 32, 
+            fontWeight: "bold", 
+            color: "white", 
+            marginBottom: 10 
+          }}>
+            Premios Especiales
+          </h3>
+          <p style={{ color: "#888", fontSize: 16 }}>
+            Categorías adicionales con premios únicos
+          </p>
+        </div>
+        
+        <div style={{ 
+          display: "grid", 
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", 
+          gap: 20,
+          maxWidth: 1000,
+          margin: "0 auto"
+        }}>
+          {specialPrizes.map((prize, i) => (
+            <SpecialPrizeCard 
+              key={prize.title}
+              emoji={prize.emoji}
+              hueA={prize.hueA}
+              hueB={prize.hueB}
+              title={prize.title}
+              prize={prize.prize}
+              description={prize.description}
+              benefits={prize.benefits}
+              i={i}
+            />
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Total Prize Pool */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        viewport={{ once: true }}
+        style={{
+          textAlign: "center",
+          marginTop: 60,
+          padding: "30px",
+          background: "linear-gradient(135deg, #22c55e, #16a34a)",
+          borderRadius: 20,
+          maxWidth: 400,
+          margin: "60px auto 0"
+        }}
+      >
+        <div style={{ fontSize: 24, fontWeight: "bold", color: "white", marginBottom: 10 }}>
+          💰 Total en Premios
+        </div>
+        <div style={{ fontSize: 48, fontWeight: "black", color: "white" }}>
+          $55,000+
+        </div>
+        <div style={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}>
+          Más de 50 premios disponibles
+        </div>
+      </motion.div>
     </div>
   );
 }
@@ -933,7 +1191,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
               Más de{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400">
-                $50,000
+                $55,000
               </span>{' '}
               en premios
             </h2>
