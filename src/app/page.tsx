@@ -304,19 +304,19 @@ export default function Home() {
 
       {/* Hero Section - Cool Design con Logo Grande */}
       <section id="home" className="pt-24 sm:pt-32 pb-8 sm:pb-16 px-8 sm:px-12 lg:px-16 relative min-h-screen overflow-hidden">
-        {/* Fondo con efectos sutiles */}
+        {/* Fondo con efectos sutiles - Responsive */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* Ondas animadas - reducidas */}
+          {/* Ondas animadas - más visibles en móvil */}
           {[...Array(2)].map((_, i) => (
           <motion.div
               key={i}
               className="absolute w-full h-full"
               style={{
-                background: `radial-gradient(circle at ${30 + i * 40}% ${40 + i * 20}%, rgba(0, 255, 0, 0.05) 0%, transparent 60%)`,
+                background: `radial-gradient(circle at ${30 + i * 40}% ${40 + i * 20}%, rgba(0, 255, 0, 0.08) 0%, transparent 60%)`,
               }}
               animate={{
                 scale: [1, 1.3, 1],
-                opacity: [0.2, 0.05, 0.2],
+                opacity: [0.3, 0.1, 0.3],
               }}
               transition={{
                 duration: 10 + i * 3,
@@ -327,18 +327,18 @@ export default function Home() {
             />
           ))}
           
-          {/* Partículas flotantes - reducidas */}
-          {[...Array(12)].map((_, i) => (
+          {/* Partículas flotantes - más visibles en móvil */}
+          {[...Array(8)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1.5 h-1.5 bg-green-400/40 rounded-full"
+              className="absolute w-2 h-2 bg-green-400/60 rounded-full sm:w-1.5 sm:h-1.5 sm:bg-green-400/40"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
               animate={{
                 y: [0, -80, 0],
-                opacity: [0, 0.6, 0],
+                opacity: [0, 0.8, 0],
                 scale: [0, 1, 0],
               }}
               transition={{
@@ -350,8 +350,8 @@ export default function Home() {
             />
           ))}
           
-          {/* Scanlines sutiles */}
-          <div className="absolute inset-0 pointer-events-none opacity-5">
+          {/* Scanlines sutiles - más visibles en móvil */}
+          <div className="absolute inset-0 pointer-events-none opacity-10 sm:opacity-5">
             <div className="h-full w-full" style={{
               backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.3) 2px, rgba(0, 255, 0, 0.3) 4px)',
             }} />
@@ -359,22 +359,53 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Banner SVG Background */}
-          <div className="absolute inset-0 opacity-40 pointer-events-none">
+          {/* Banner SVG Background - Responsive */}
+          <div className="absolute inset-0 pointer-events-none">
             <Image
               src="/banner.svg"
               alt="Banner"
               fill
-              className="object-cover"
+              className="object-cover opacity-60 sm:opacity-40"
               priority
             />
           </div>
           
-          {/* Two Column Layout */}
+          {/* Two Column Layout - Responsive */}
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center min-h-[80vh] relative z-10">
+            {/* Mobile: Logo First, Desktop: Left Column */}
+            <motion.div
+              className="lg:hidden space-y-6 sm:space-y-8 order-1"
+              variants={staggerContainer}
+              initial="initial"
+              animate="animate"
+            >
+              {/* Mobile Logo */}
+                <motion.div 
+                className="relative text-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+              >
+                <motion.div
+                  className="relative w-full h-[200px] sm:h-[250px]"
+                  variants={floatingAnimation}
+                  initial="initial"
+                  animate="animate"
+                >
+                <Image
+                      src="/CODEB.png"
+                    alt="COD3.0 Logo"
+                      fill
+                      className="object-contain drop-shadow-2xl"
+                    priority
+                    />
+                </motion.div>
+              </motion.div>
+                </motion.div>
+                
             {/* Left Column - HACKATHON Title + Countdown */}
             <motion.div
-              className="space-y-6 sm:space-y-8"
+              className="space-y-6 sm:space-y-8 order-2 lg:order-1"
               variants={staggerContainer}
               initial="initial"
               animate="animate"
@@ -482,9 +513,9 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Right Column - Logo Grande COD3.0 */}
+            {/* Right Column - Logo Grande COD3.0 - Desktop Only */}
             <motion.div
-              className="relative"
+              className="relative hidden lg:block"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
@@ -934,74 +965,108 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sponsors & Allies Section */}
-      <section id="sponsors" className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-cyan-900/10 to-black">
-        {/* Animated Tech Background */}
+      {/* Sponsors & Allies Section - ULTRA COOL */}
+      <section id="sponsors" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-purple-900/20 to-black">
+        {/* Epic Background Effects */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-black/80" />
-          <div className="absolute inset-0">
-            {[...Array(20)].map((_, i) => (
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(147,51,234,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(147,51,234,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
+          
+          {/* Floating Particles */}
+          {[...Array(30)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1 h-1 bg-green-400 rounded-full"
+              className="absolute w-1 h-1 bg-purple-400 rounded-full"
                 style={{
-                  left: `${(i * 5) % 100}%`,
-                  top: `${(i * 5) % 100}%`,
+                left: `${(i * 3.33) % 100}%`,
+                top: `${(i * 3.33) % 100}%`,
                 }}
                 animate={{
                   opacity: [0, 1, 0],
-                  scale: [0, 1, 0],
+                scale: [0, 1.5, 0],
+                y: [0, -20, 0],
                 }}
                 transition={{
-                  duration: 3 + (i * 0.1) % 2,
+                duration: 4 + (i * 0.1) % 3,
                   repeat: Infinity,
                   delay: (i * 0.1) % 2,
                 }}
               />
             ))}
-          </div>
+          
+          {/* Glowing Orbs */}
+          <motion.div
+            className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.4, 0.2, 0.4],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 px-8 sm:px-12 lg:px-16">
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Epic Header */}
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
             <motion.div
-              className="inline-flex items-center space-x-2 bg-green-500/20 text-green-400 px-6 py-3 rounded-full mb-6 border border-green-400/30"
+              className="inline-flex items-center space-x-3 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-purple-400 px-8 py-4 rounded-full mb-8 border-2 border-purple-400/30 backdrop-blur-sm"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(147,51,234,0.3)" }}
             >
-              <Star className="h-5 w-5" />
-              <span className="font-semibold">Patrocinadores & Aliados</span>
+              <Sparkles className="h-6 w-6" />
+              <span className="font-black text-lg tracking-wider">INVERSIONISTAS ESTRATÉGICOS</span>
+              <Sparkles className="h-6 w-6" />
             </motion.div>
             
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-              Empresas que{' '}
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6 leading-tight">
+              EMPRESAS QUE{' '}
               <span className="relative">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">apoyan</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400">
+                  APOYAN
+                </span>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 rounded-lg"
+                  className="absolute inset-0 bg-gradient-to-r from-purple-400/20 via-cyan-400/20 to-purple-400/20 rounded-xl"
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 1, delay: 0.5 }}
+                  transition={{ duration: 1.2, delay: 0.5 }}
                   viewport={{ once: true }}
                 />
               </span>{' '}
-              la innovación
+              LA INNOVACIÓN
             </h2>
             
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Colaboramos con las empresas más innovadoras del mundo tech
+            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Colaboramos con las empresas más innovadoras del mundo tech para crear el futuro
             </p>
           </motion.div>
 
-          {/* Main Sponsors - Static Display */}
+          {/* Main Sponsors - ULTRA COOL DISPLAY */}
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1009,16 +1074,25 @@ export default function Home() {
             viewport={{ once: true }}
             className="mb-20"
           >
-            <h3 className="text-3xl font-black text-green-400 text-center mb-12 flex items-center justify-center">
-              <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full mr-4 flex items-center justify-center">
-                <Star className="h-5 w-5 text-black" />
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-4xl sm:text-5xl font-black text-purple-400 mb-4 flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full mr-6 flex items-center justify-center shadow-lg shadow-yellow-500/30">
+                  <Star className="h-6 w-6 text-black" />
               </div>
-              Patrocinadores Principales
+                PATROCINADORES PRINCIPALES
             </h3>
+              <div className="w-32 h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent mx-auto"></div>
+            </motion.div>
             
-            {/* 3 Main Static Sponsors */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-16 px-8 sm:px-12 lg:px-16">
-              {/* Starlink - Platinum */}
+            {/* 3 Main Static Sponsors - RESPONSIVE GRID */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 mb-16">
+              {/* Starlink - Platinum - ULTRA COOL */}
                 <motion.div
                 initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -1027,50 +1101,50 @@ export default function Home() {
                   className="group relative"
                 >
                   <motion.div
-                  className="relative bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 backdrop-blur-xl rounded-3xl p-8 border-2 border-yellow-400/40 hover:border-yellow-400/60 transition-all duration-500 h-full overflow-hidden"
-                    whileHover={{ y: -10, scale: 1.02 }}
+                  className="relative bg-gradient-to-br from-yellow-500/10 to-yellow-600/10 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 border-2 border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-500 h-full overflow-hidden shadow-2xl shadow-yellow-500/10"
+                  whileHover={{ y: -8, scale: 1.03, boxShadow: "0 20px 40px rgba(234,179,8,0.3)" }}
                     initial={false}
                   >
-                  {/* Animated Border */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute inset-[2px] bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 backdrop-blur-xl rounded-3xl" />
+                  {/* Animated Border Glow */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-[2px] bg-gradient-to-br from-yellow-500/10 to-yellow-600/10 backdrop-blur-2xl rounded-2xl" />
                   
                   {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-yellow-600/10 rounded-3xl" />
+                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-yellow-600/5 rounded-2xl" />
                   </div>
                   
                   {/* Content */}
                   <div className="relative z-10 text-center">
-                    <div className="mb-6">
+                    <div className="mb-6 h-20 sm:h-24 flex items-center justify-center">
                         <Image
                         src="/SponsorsPlatinum/Starlink_Logo.svg" 
                         alt="Starlink" 
-                        width={200} 
-                        height={100}
+                        width={180} 
+                        height={90}
                         priority={true}
                         loading="eager"
                         className="mx-auto group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
-                    <h4 className="text-2xl font-black text-yellow-400 mb-2 group-hover:scale-105 transition-transform duration-300">
+                    <h4 className="text-xl sm:text-2xl font-black text-yellow-400 mb-2 group-hover:scale-105 transition-transform duration-300">
                       STARLINK
                       </h4>
-                    <p className="text-yellow-300 font-semibold text-sm tracking-wider">
+                    <p className="text-yellow-300 font-bold text-xs sm:text-sm tracking-wider">
                       PATROCINADOR PLATINO
                       </p>
                     
                     {/* Decorative Elements */}
-                    <div className="absolute top-4 right-4 w-3 h-3 bg-yellow-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-4 left-4 w-2 h-2 bg-yellow-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
+                    <div className="absolute top-3 right-3 w-2 h-2 bg-yellow-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-yellow-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
                     </div>
                   
                   {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/10 to-yellow-400/0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/5 to-yellow-400/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </motion.div>
           </motion.div>
 
-              {/* Placeholder Sponsor 2 */}
+              {/* Placeholder Sponsor 2 - ULTRA COOL */}
           <motion.div
                 initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1079,44 +1153,44 @@ export default function Home() {
                 className="group relative"
               >
                 <motion.div
-                  className="relative bg-gradient-to-br from-green-500/20 to-green-600/20 backdrop-blur-xl rounded-3xl p-8 border-2 border-green-400/40 hover:border-green-400/60 transition-all duration-500 h-full overflow-hidden"
-                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="relative bg-gradient-to-br from-green-500/10 to-green-600/10 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 border-2 border-green-400/30 hover:border-green-400/60 transition-all duration-500 h-full overflow-hidden shadow-2xl shadow-green-500/10"
+                  whileHover={{ y: -8, scale: 1.03, boxShadow: "0 20px 40px rgba(34,197,94,0.3)" }}
                   initial={false}
                 >
-                  {/* Animated Border */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-green-500 to-green-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute inset-[2px] bg-gradient-to-br from-green-500/20 to-green-600/20 backdrop-blur-xl rounded-3xl" />
+                  {/* Animated Border Glow */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-green-500 to-green-400 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-[2px] bg-gradient-to-br from-green-500/10 to-green-600/10 backdrop-blur-2xl rounded-2xl" />
                   
                   {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-green-600/10 rounded-3xl" />
+                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-green-600/5 rounded-2xl" />
               </div>
                   
                   {/* Content */}
                   <div className="relative z-10 text-center">
-                    <div className="mb-6 h-24 flex items-center justify-center">
-                      <div className="w-32 h-16 bg-green-400/20 rounded-lg flex items-center justify-center border-2 border-dashed border-green-400/40">
-                        <span className="text-green-400 font-bold text-sm">PRÓXIMAMENTE</span>
+                    <div className="mb-6 h-20 sm:h-24 flex items-center justify-center">
+                      <div className="w-32 h-16 bg-green-400/20 rounded-lg flex items-center justify-center border-2 border-dashed border-green-400/40 group-hover:border-green-400/60 transition-colors duration-300">
+                        <span className="text-green-400 font-bold text-xs sm:text-sm">PRÓXIMAMENTE</span>
                       </div>
                     </div>
-                    <h4 className="text-2xl font-black text-green-400 mb-2 group-hover:scale-105 transition-transform duration-300">
+                    <h4 className="text-xl sm:text-2xl font-black text-green-400 mb-2 group-hover:scale-105 transition-transform duration-300">
                       SPONSOR 2
                     </h4>
-                    <p className="text-green-300 font-semibold text-sm tracking-wider">
+                    <p className="text-green-300 font-bold text-xs sm:text-sm tracking-wider">
                       PATROCINADOR ORO
                     </p>
                     
                     {/* Decorative Elements */}
-                    <div className="absolute top-4 right-4 w-3 h-3 bg-green-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-4 left-4 w-2 h-2 bg-green-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
+                    <div className="absolute top-3 right-3 w-2 h-2 bg-green-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-green-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
                   </div>
                   
                   {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-400/0 via-green-400/10 to-green-400/0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400/0 via-green-400/5 to-green-400/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </motion.div>
               </motion.div>
 
-              {/* Placeholder Sponsor 3 */}
+              {/* Placeholder Sponsor 3 - ULTRA COOL */}
                 <motion.div
                 initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -1125,40 +1199,40 @@ export default function Home() {
                   className="group relative"
                 >
                   <motion.div
-                  className="relative bg-gradient-to-br from-blue-500/20 to-blue-600/20 backdrop-blur-xl rounded-3xl p-8 border-2 border-blue-400/40 hover:border-blue-400/60 transition-all duration-500 h-full overflow-hidden"
-                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="relative bg-gradient-to-br from-blue-500/10 to-blue-600/10 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 border-2 border-blue-400/30 hover:border-blue-400/60 transition-all duration-500 h-full overflow-hidden shadow-2xl shadow-blue-500/10"
+                  whileHover={{ y: -8, scale: 1.03, boxShadow: "0 20px 40px rgba(59,130,246,0.3)" }}
                     initial={false}
                   >
-                  {/* Animated Border */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute inset-[2px] bg-gradient-to-br from-blue-500/20 to-blue-600/20 backdrop-blur-xl rounded-3xl" />
+                  {/* Animated Border Glow */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-[2px] bg-gradient-to-br from-blue-500/10 to-blue-600/10 backdrop-blur-2xl rounded-2xl" />
                   
                   {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-blue-600/10 rounded-3xl" />
+                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-blue-600/5 rounded-2xl" />
                       </div>
                       
                   {/* Content */}
                   <div className="relative z-10 text-center">
-                    <div className="mb-6 h-24 flex items-center justify-center">
-                      <div className="w-32 h-16 bg-blue-400/20 rounded-lg flex items-center justify-center border-2 border-dashed border-blue-400/40">
-                        <span className="text-blue-400 font-bold text-sm">PRÓXIMAMENTE</span>
+                    <div className="mb-6 h-20 sm:h-24 flex items-center justify-center">
+                      <div className="w-32 h-16 bg-blue-400/20 rounded-lg flex items-center justify-center border-2 border-dashed border-blue-400/40 group-hover:border-blue-400/60 transition-colors duration-300">
+                        <span className="text-blue-400 font-bold text-xs sm:text-sm">PRÓXIMAMENTE</span>
                       </div>
                     </div>
-                    <h4 className="text-2xl font-black text-blue-400 mb-2 group-hover:scale-105 transition-transform duration-300">
+                    <h4 className="text-xl sm:text-2xl font-black text-blue-400 mb-2 group-hover:scale-105 transition-transform duration-300">
                       SPONSOR 3
                       </h4>
-                    <p className="text-blue-300 font-semibold text-sm tracking-wider">
+                    <p className="text-blue-300 font-bold text-xs sm:text-sm tracking-wider">
                       PATROCINADOR ORO
                       </p>
                     
                     {/* Decorative Elements */}
-                    <div className="absolute top-4 right-4 w-3 h-3 bg-blue-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-4 left-4 w-2 h-2 bg-blue-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
+                    <div className="absolute top-3 right-3 w-2 h-2 bg-blue-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-blue-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300" />
                     </div>
                   
                   {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-400/10 to-blue-400/0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-400/5 to-blue-400/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </motion.div>
                 </motion.div>
             </div>
