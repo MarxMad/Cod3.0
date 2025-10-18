@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import type { Variants } from 'framer-motion';
 import { 
@@ -23,9 +23,6 @@ import {
   Wifi,
   Coffee,
   Car,
-  ParkingMeter,
-  Utensils,
-  Shield,
   Building,
   Navigation,
   User,
@@ -272,7 +269,18 @@ const cardVariants: Variants = {
   },
 };
 
-function SpecialPrizeCard({ emoji, hueA, hueB, title, prize, description, benefits, i }: any) {
+interface SpecialPrizeCardProps {
+  emoji: string;
+  hueA: number;
+  hueB: number;
+  title: string;
+  prize: string;
+  description: string;
+  benefits: string[];
+  i: number;
+}
+
+function SpecialPrizeCard({ emoji, hueA, hueB, title, prize, description, benefits }: SpecialPrizeCardProps) {
   const background = `linear-gradient(306deg, hsl(${hueA}, 100%, 50%), hsl(${hueB}, 100%, 50%))`;
 
   return (
