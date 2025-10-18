@@ -354,7 +354,7 @@ export default function RegistroPage() {
               >
                 <Link
                   href="/"
-                  className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-12 py-5 rounded-xl font-bold text-xl inline-flex items-center space-x-3 transition-all duration-300 shadow-lg hover:shadow-green-500/25"
+                  className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-12 py-5 rounded-xl font-bold text-xl inline-flex items-center space-x-3 transition-all duration-300 shadow-lg hover:shadow-green-500/25 overflow-hidden"
                 >
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
@@ -462,11 +462,11 @@ export default function RegistroPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <motion.div
-              className="flex items-center space-x-4 group"
+              className="flex items-center group"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="relative w-12 h-12">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20">
                 <Image
                   src="/CODEB.png"
                   alt="CODEB Logo"
@@ -474,13 +474,10 @@ export default function RegistroPage() {
                   className="object-contain drop-shadow-lg group-hover:drop-shadow-2xl transition-all duration-300"
                 />
               </div>
-              <span className="text-2xl font-bold text-white font-mono group-hover:text-green-400 transition-colors duration-300">
-                COD3.0
-              </span>
             </motion.div>
 
             <motion.button
-              className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-green-500/25"
+              className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-green-500/25 overflow-hidden"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => window.history.back()}
