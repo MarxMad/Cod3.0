@@ -1511,113 +1511,189 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Venue Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-black via-pink-900/10 to-black">
-        <div className="max-w-7xl mx-auto">
+      {/* Venue Section - ULTRA COOL & RESPONSIVE */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-black via-blue-900/20 to-black overflow-hidden">
+        {/* Epic Background Effects */}
+        <div className="absolute inset-0">
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
+          
+          {/* Floating Orbs */}
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.4, 0.2, 0.4],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 3,
+            }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Epic Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
             <motion.div
-              className="inline-flex items-center space-x-2 bg-blue-500/20 text-blue-400 px-6 py-3 rounded-full mb-6 border border-blue-400/30"
+              className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-400 px-8 py-4 rounded-full mb-8 border-2 border-blue-400/30 backdrop-blur-sm"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(59,130,246,0.3)" }}
             >
-              <Building className="h-5 w-5" />
-              <span className="font-semibold">Venue & Ubicación</span>
+              <Building className="h-6 w-6" />
+              <span className="font-black text-lg tracking-wider">VENUE & UBICACIÓN</span>
+              <MapPin className="h-6 w-6" />
             </motion.div>
             
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-              Parque{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-pink-400">
-                Bicentenario
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6 leading-tight">
+              PARQUE{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400">
+                BICENTENARIO
               </span>
             </h2>
             
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Un espacio icónico en el corazón de la Ciudad de México, perfecto para la innovación tecnológica
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Un espacio icónico en el corazón de la Ciudad de México, diseñado para la innovación tecnológica
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center px-8 sm:px-12 lg:px-16">
-            {/* Venue Info */}
+          {/* Responsive Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* Left Side - Venue Info */}
             <motion.div
-              initial={{ opacity: 0, x: -60 }}
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
+              className="space-y-6"
             >
-              <div className="bg-black/40 backdrop-blur-xl rounded-2xl p-8 border border-blue-400/30">
-                <h3 className="text-3xl font-bold text-white mb-6 flex items-center">
-                  <MapPin className="h-8 w-8 mr-3 text-blue-400" />
-                  Información del Venue
+              <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 border-2 border-blue-400/30 shadow-2xl shadow-blue-500/10">
+                <h3 className="text-2xl sm:text-3xl font-black text-white mb-6 flex items-center">
+                  <MapPin className="h-8 w-8 mr-4 text-blue-400" />
+                  INFORMACIÓN DEL VENUE
                 </h3>
                 
                 <div className="space-y-6">
-                  <div className="flex items-start">
-                    <Navigation className="h-6 w-6 mr-4 text-blue-400 mt-1" />
+                  <div className="flex items-start space-x-4">
+                    <Navigation className="h-6 w-6 text-blue-400 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-semibold text-white mb-1">Dirección</h4>
-                      <p className="text-gray-300">Parque Bicentenario<br />Av. Río San Joaquín 200, CDMX</p>
+                      <h4 className="text-lg font-bold text-white mb-2">📍 Dirección</h4>
+                      <p className="text-gray-300 leading-relaxed">
+                        Parque Bicentenario<br />
+                        Av. Río San Joaquín 200, CDMX<br />
+                        <span className="text-blue-400 font-semibold">Zona Polanco</span>
+                      </p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start">
-                    <Car className="h-6 w-6 mr-4 text-blue-400 mt-1" />
+                  <div className="flex items-start space-x-4">
+                    <Car className="h-6 w-6 text-blue-400 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-semibold text-white mb-1">Estacionamiento</h4>
-                      <p className="text-gray-300">Estacionamiento gratuito disponible<br />Capacidad para 200+ vehículos</p>
+                      <h4 className="text-lg font-bold text-white mb-2">🚗 Estacionamiento</h4>
+                      <p className="text-gray-300 leading-relaxed">
+                        Estacionamiento gratuito disponible<br />
+                        <span className="text-green-400 font-semibold">200+ espacios</span> para participantes
+                      </p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start">
-                    <Wifi className="h-6 w-6 mr-4 text-blue-400 mt-1" />
+                  <div className="flex items-start space-x-4">
+                    <Wifi className="h-6 w-6 text-blue-400 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-semibold text-white mb-1">Conectividad</h4>
-                      <p className="text-gray-300">Internet de alta velocidad (1Gbps)<br />Red WiFi dedicada para participantes</p>
+                      <h4 className="text-lg font-bold text-white mb-2">🌐 Conectividad</h4>
+                      <p className="text-gray-300 leading-relaxed">
+                        Internet de alta velocidad <span className="text-cyan-400 font-bold">1Gbps</span><br />
+                        Red WiFi dedicada para participantes
+                      </p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start">
-                    <Utensils className="h-6 w-6 mr-4 text-blue-400 mt-1" />
+                  <div className="flex items-start space-x-4">
+                    <Utensils className="h-6 w-6 text-blue-400 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-semibold text-white mb-1">Servicios</h4>
-                      <p className="text-gray-300">Cafetería 24/7, áreas de descanso<br />Servicios médicos de emergencia</p>
+                      <h4 className="text-lg font-bold text-white mb-2">🍽️ Servicios</h4>
+                      <p className="text-gray-300 leading-relaxed">
+                        Cafetería 24/7, áreas de descanso<br />
+                        Servicios médicos de emergencia
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Venue Features */}
+            {/* Right Side - Features Grid */}
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
+              className="space-y-6"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 px-4 sm:px-0">
+              <h3 className="text-2xl sm:text-3xl font-black text-white mb-6 text-center lg:text-left">
+                CARACTERÍSTICAS <span className="text-cyan-400">DESTACADAS</span>
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {[
-                  { icon: Wifi, title: "Internet 1Gbps", description: "Conexión ultra rápida" },
-                  { icon: Coffee, title: "Cafetería 24/7", description: "Comida y bebidas" },
-                  { icon: ParkingMeter, title: "Estacionamiento", description: "200+ espacios" },
-                  { icon: Shield, title: "Seguridad 24/7", description: "Vigilancia completa" }
+                  { 
+                    icon: Wifi, 
+                    title: "Internet 1Gbps", 
+                    description: "Conexión ultra rápida",
+                    color: "blue"
+                  },
+                  { 
+                    icon: Coffee, 
+                    title: "Cafetería 24/7", 
+                    description: "Comida y bebidas",
+                    color: "orange"
+                  },
+                  { 
+                    icon: ParkingMeter, 
+                    title: "Estacionamiento", 
+                    description: "200+ espacios",
+                    color: "green"
+                  },
+                  { 
+                    icon: Shield, 
+                    title: "Seguridad 24/7", 
+                    description: "Vigilancia completa",
+                    color: "purple"
+                  }
                 ].map((feature, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
                     viewport={{ once: true }}
-                    className="bg-black/40 backdrop-blur-xl rounded-xl p-6 border border-blue-400/20 text-center hover:border-blue-400/40 transition-all duration-300 hover:scale-105"
+                    className={`bg-gradient-to-br from-${feature.color}-500/10 to-${feature.color}-600/10 backdrop-blur-xl rounded-xl p-4 sm:p-6 border-2 border-${feature.color}-400/20 text-center hover:border-${feature.color}-400/40 transition-all duration-300 sm:hover:scale-105 shadow-lg`}
                   >
-                    <feature.icon className="h-8 w-8 text-blue-400 mx-auto mb-4" />
-                    <h4 className="text-lg font-semibold text-white mb-2">{feature.title}</h4>
+                    <feature.icon className={`h-8 w-8 text-${feature.color}-400 mx-auto mb-3`} />
+                    <h4 className="text-lg font-bold text-white mb-2">{feature.title}</h4>
                     <p className="text-gray-300 text-sm">{feature.description}</p>
                   </motion.div>
                 ))}
