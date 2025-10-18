@@ -1975,68 +1975,122 @@ export default function Home() {
               Construye el futuro con nosotros
             </p>
 
-            <motion.div
-              className="bg-black/40 backdrop-blur-xl rounded-2xl p-10 border border-green-500/20"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="grid md:grid-cols-2 gap-10 mb-10">
-                <div className="text-left">
+            {/* New Two-Column Layout with Banner */}
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Left Column - Banner */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="relative w-full h-[400px] lg:h-[500px] rounded-2xl overflow-hidden">
+                  <Image
+                    src="/bannersito.svg"
+                    alt="COD3.0 Hackathon Banner"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  
+                  {/* Overlay Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                  
+                  {/* Floating Elements */}
+                  <motion.div
+                    className="absolute top-4 right-4 bg-green-400/20 backdrop-blur-sm rounded-full px-4 py-2 border border-green-400/30"
+                    animate={{
+                      scale: [1, 1.05, 1],
+                      opacity: [0.8, 1, 0.8],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <span className="text-green-400 font-bold text-sm">¡GRATIS!</span>
+                  </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Right Column - Synthesized Info */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                viewport={{ once: true }}
+                className="space-y-8"
+              >
+                {/* Event Info Card */}
+                <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-green-400/20">
                   <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
                     <Calendar className="h-6 w-6 mr-3 text-green-400" />
                     Información del Evento
                   </h3>
-                  <div className="space-y-4 text-gray-300">
+                  <div className="grid grid-cols-2 gap-4">
                     {[
-                      { icon: Calendar, text: "27-29 de Marzo, 2026" },
-                      { icon: Clock, text: "48 horas continuas" },
-                      { icon: MapPin, text: "Parque Bicentenario, CDMX" },
-                      { icon: Users, text: "Máximo 4 personas por equipo" }
+                      { icon: Calendar, text: "27-29 Marzo", subtext: "2026" },
+                      { icon: Clock, text: "48 horas", subtext: "continuas" },
+                      { icon: MapPin, text: "Parque", subtext: "Bicentenario" },
+                      { icon: Users, text: "Máx 4", subtext: "por equipo" }
                     ].map((item, index) => (
                       <motion.div
                         key={index}
-                        className="flex items-center"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        className="bg-black/20 rounded-xl p-4 text-center hover:bg-black/30 transition-colors duration-300"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
                       >
-                        <item.icon className="h-5 w-5 mr-3 text-green-400" />
-                        <span>{item.text}</span>
+                        <item.icon className="h-6 w-6 text-green-400 mx-auto mb-2" />
+                        <div className="text-white font-bold text-sm">{item.text}</div>
+                        <div className="text-gray-400 text-xs">{item.subtext}</div>
                       </motion.div>
                     ))}
                   </div>
                 </div>
 
-                <div className="text-left">
+                {/* Benefits Card */}
+                <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-blue-400/20">
                   <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                    <Star className="h-6 w-6 mr-3 text-green-400" />
+                    <Star className="h-6 w-6 mr-3 text-blue-400" />
                     ¿Qué Incluye?
                   </h3>
-                  <div className="space-y-4 text-gray-300">
+                  <div className="space-y-3">
                     {[
-                      "Acceso a APIs y herramientas premium",
-                      "Mentoring con expertos de la industria",
-                      "Comida y bebidas durante el evento",
-                      "Networking con empresas tech",
-                      "Certificado de participación"
+                      "🔧 APIs y herramientas premium",
+                      "👨‍💼 Mentoring con expertos",
+                      "🍕 Comida y bebidas",
+                      "🤝 Networking empresarial",
+                      "🏆 Certificado de participación"
                     ].map((benefit, index) => (
                       <motion.div
                         key={index}
-                        className="flex items-center"
+                        className="flex items-center text-gray-300 hover:text-white transition-colors duration-300"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
                       >
-                        <span className="text-green-400 mr-3 text-xl">✓</span>
-                        <span>{benefit}</span>
+                        <div className="w-2 h-2 bg-blue-400 rounded-full mr-3 flex-shrink-0" />
+                        <span className="text-sm">{benefit}</span>
                       </motion.div>
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
+            </div>
 
+            {/* Registration Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-center mt-12"
+            >
               <motion.a
                 href="/registro"
                 className="bg-green-500 hover:bg-green-600 text-white px-16 py-5 rounded-full font-bold text-2xl transition-all duration-300 shadow-2xl hover:shadow-green-500/30 relative overflow-hidden group inline-block"
