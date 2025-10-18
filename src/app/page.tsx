@@ -564,11 +564,11 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header */}
-            <motion.div
-            initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-                viewport={{ once: true }}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-4">
@@ -670,19 +670,19 @@ export default function Home() {
             ].map((dayData, index) => (
               <motion.div
                 key={dayData.day}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ 
-                  duration: 0.4, 
-                  delay: index * 0.1,
+                  duration: 0.6, 
+                  delay: index * 0.2,
                   ease: "easeOut"
                 }}
                 viewport={{ once: true }}
                 className={`relative p-6 rounded-xl border-2 transition-all duration-300 ${
-                    dayData.highlight
+                  dayData.highlight 
                     ? 'bg-green-500/10 border-green-500/50 shadow-lg shadow-green-500/20' 
                     : 'bg-gray-900/80 border-gray-700/50'
-                } sm:hover:scale-105`}
+                } hover:scale-105`}
               >
                 {/* Header */}
                 <div className="mb-6">
@@ -735,9 +735,9 @@ export default function Home() {
                     }
                     
                     return (
-                      <div key={i} className="flex items-start text-sm group/item sm:hover:translate-x-1 transition-transform duration-200">
+                      <div key={i} className="flex items-start text-sm group/item hover:translate-x-1 transition-all duration-300">
                         <EventIcon className={`h-4 w-4 mr-3 flex-shrink-0 mt-0.5 ${iconColor}`} />
-                        <span className="text-gray-300 group-hover/item:text-white transition-colors duration-200">{event}</span>
+                        <span className="text-gray-300 group-hover/item:text-white transition-colors duration-300">{event}</span>
                       </div>
                     );
                   })}
@@ -1026,7 +1026,7 @@ export default function Home() {
               <Sparkles className="h-6 w-6" />
             </motion.div>
             
-            <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 leading-tight">
               EMPRESAS QUE{' '}
               <span className="relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400">
@@ -1063,12 +1063,12 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-4xl sm:text-5xl font-black text-purple-400 mb-4 flex items-center justify-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full mr-6 flex items-center justify-center shadow-lg shadow-yellow-500/30">
-                  <Star className="h-6 w-6 text-black" />
-              </div>
-                PATROCINADORES PRINCIPALES
-            </h3>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-purple-400 mb-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/30">
+                  <Star className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
+                </div>
+                <span className="text-center">PATROCINADORES PRINCIPALES</span>
+              </h3>
               <div className="w-32 h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent mx-auto"></div>
             </motion.div>
             
@@ -1549,9 +1549,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Epic Header */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
@@ -1584,9 +1584,9 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Left Side - Venue Info */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
               className="space-y-6"
             >
@@ -1647,9 +1647,9 @@ export default function Home() {
 
             {/* Right Side - Features Grid */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
               className="space-y-6"
             >
@@ -1686,11 +1686,11 @@ export default function Home() {
                 ].map((feature, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
+                    transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
                     viewport={{ once: true }}
-                    className={`bg-gradient-to-br from-${feature.color}-500/10 to-${feature.color}-600/10 backdrop-blur-xl rounded-xl p-4 sm:p-6 border-2 border-${feature.color}-400/20 text-center hover:border-${feature.color}-400/40 transition-all duration-300 sm:hover:scale-105 shadow-lg`}
+                    className={`bg-gradient-to-br from-${feature.color}-500/10 to-${feature.color}-600/10 backdrop-blur-xl rounded-xl p-4 sm:p-6 border-2 border-${feature.color}-400/20 text-center hover:border-${feature.color}-400/40 transition-all duration-300 hover:scale-105 shadow-lg`}
                   >
                     <feature.icon className={`h-8 w-8 text-${feature.color}-400 mx-auto mb-3`} />
                     <h4 className="text-lg font-bold text-white mb-2">{feature.title}</h4>
