@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import type { Variants } from 'framer-motion';
 import { 
@@ -154,18 +154,18 @@ function PrizeCard({ emoji, hueA, hueB, title, prize, description, benefits, spe
       />
       <motion.div 
         style={{
-          width: 350,
-          height: 500,
+          width: 450,
+          height: 600,
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
           alignItems: "center",
-          borderRadius: 20,
+          borderRadius: 25,
           background: "#1a1a1a",
           boxShadow: "0 0 1px hsl(0deg 0% 0% / 0.075), 0 0 2px hsl(0deg 0% 0% / 0.075), 0 0 4px hsl(0deg 0% 0% / 0.075), 0 0 8px hsl(0deg 0% 0% / 0.075), 0 0 16px hsl(0deg 0% 0% / 0.075)",
           transformOrigin: "10% 60%",
-          border: "2px solid rgba(34, 197, 94, 0.3)",
-          padding: "20px",
+          border: "3px solid rgba(34, 197, 94, 0.3)",
+          padding: "30px",
         }} 
         variants={cardVariants} 
         className="prize-card"
@@ -173,41 +173,41 @@ function PrizeCard({ emoji, hueA, hueB, title, prize, description, benefits, spe
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
         {/* Header */}
-        <div style={{ fontSize: 80, marginBottom: 15 }}>{emoji}</div>
+        <div style={{ fontSize: 100, marginBottom: 20 }}>{emoji}</div>
         <div style={{ 
-          fontSize: 28, 
+          fontSize: 36, 
           fontWeight: "bold", 
           color: "white", 
           textAlign: "center",
-          marginBottom: 5 
+          marginBottom: 8 
         }}>
           {title}
         </div>
         <div style={{ 
-          fontSize: 16, 
+          fontSize: 20, 
           color: "#888", 
           textAlign: "center",
-          marginBottom: 10 
+          marginBottom: 15 
         }}>
           {description}
         </div>
         <div style={{ 
-          fontSize: 36, 
+          fontSize: 48, 
           fontWeight: "black", 
           color: "#22c55e", 
           textAlign: "center",
-          marginBottom: 20 
+          marginBottom: 30 
         }}>
           {prize}
         </div>
 
         {/* Benefits */}
-        <div style={{ width: "100%", marginBottom: 15 }}>
+        <div style={{ width: "100%", marginBottom: 20 }}>
           <div style={{ 
-            fontSize: 14, 
+            fontSize: 18, 
             fontWeight: "bold", 
             color: "#22c55e", 
-            marginBottom: 8,
+            marginBottom: 12,
             textAlign: "center"
           }}>
             Beneficios Incluidos:
@@ -216,9 +216,9 @@ function PrizeCard({ emoji, hueA, hueB, title, prize, description, benefits, spe
             <motion.div
               key={index}
               style={{
-                fontSize: 12,
+                fontSize: 16,
                 color: "#ccc",
-                marginBottom: 4,
+                marginBottom: 8,
                 display: "flex",
                 alignItems: "center"
               }}
@@ -226,7 +226,7 @@ function PrizeCard({ emoji, hueA, hueB, title, prize, description, benefits, spe
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <span style={{ marginRight: 8, color: "#22c55e" }}>✓</span>
+              <span style={{ marginRight: 12, color: "#22c55e", fontSize: 18 }}>✓</span>
               {benefit}
             </motion.div>
           ))}
@@ -236,9 +236,9 @@ function PrizeCard({ emoji, hueA, hueB, title, prize, description, benefits, spe
         <motion.div
           style={{
             background: "linear-gradient(45deg, #22c55e, #16a34a)",
-            padding: "8px 16px",
-            borderRadius: 20,
-            fontSize: 12,
+            padding: "12px 24px",
+            borderRadius: 25,
+            fontSize: 16,
             fontWeight: "bold",
             color: "white",
             textAlign: "center",
@@ -324,176 +324,18 @@ function SpecialPrizeCard({ emoji, hueA, hueB, title, prize, description, benefi
   );
 }
 
-// Interactive Prize Explorer Component
-function InteractivePrizeExplorer() {
-  const x = useMotionValue(0);
-  const xInput = [-100, 0, 100];
-  
-  // Prize categories with different colors
-  const background = useTransform(x, xInput, [
-    "linear-gradient(180deg, #ff6b6b 0%, #ee5a24 100%)", // 1st Place - Red/Orange
-    "linear-gradient(180deg, #22c55e 0%, #16a34a 100%)", // 2nd Place - Green
-    "linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%)", // 3rd Place - Blue
-  ]);
-  
-  const color = useTransform(x, xInput, [
-    "#ff6b6b", // Red
-    "#22c55e", // Green  
-    "#3b82f6", // Blue
-  ]);
-  
-  const prizeInfo = useTransform(x, xInput, [
-    { title: "1er Lugar", prize: "$25,000", emoji: "🏆" },
-    { title: "2do Lugar", prize: "$15,000", emoji: "🥈" },
-    { title: "3er Lugar", prize: "$10,000", emoji: "🥉" },
-  ]);
-  
-  const tickPath = useTransform(x, [10, 100], [0, 1]);
-  const crossPathA = useTransform(x, [-10, -55], [0, 1]);
-  const crossPathB = useTransform(x, [-50, -100], [0, 1]);
-
-  return (
-    <motion.div 
-      style={{ 
-        display: "flex", 
-        justifyContent: "center", 
-        alignItems: "center", 
-        flex: 1, 
-        width: "100%", 
-        maxWidth: 600,
-        height: 400,
-        borderRadius: 20,
-        margin: "40px auto",
-        background 
-      }}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-    >
-      <motion.div
-        style={{ 
-          width: 160,
-          height: 160,
-          backgroundColor: "rgba(255, 255, 255, 0.1)",
-          backdropFilter: "blur(10px)",
-          borderRadius: 20,
-          padding: 20,
-          border: "2px solid rgba(255, 255, 255, 0.2)",
-          x 
-        }}
-        drag="x"
-        dragConstraints={{ left: -100, right: 100 }}
-        dragElastic={0.2}
-        whileDrag={{ scale: 1.05 }}
-        className="cursor-grab active:cursor-grabbing"
-      >
-        <svg viewBox="0 0 50 50" style={{ width: "100%", height: "100%" }}>
-          <motion.path
-            fill="none"
-            strokeWidth="3"
-            stroke={color}
-            d="M 0, 20 a 20, 20 0 1,0 40,0 a 20, 20 0 1,0 -40,0"
-            style={{ x: 5, y: 5 }}
-          />
-          <motion.path
-            fill="none"
-            strokeWidth="3"
-            stroke={color}
-            d="M14,26 L 22,33 L 35,16"
-            strokeDasharray="0 1"
-            style={{ pathLength: tickPath }}
-          />
-          <motion.path
-            fill="none"
-            strokeWidth="3"
-            stroke={color}
-            d="M17,17 L33,33"
-            strokeDasharray="0 1"
-            style={{ pathLength: crossPathA }}
-          />
-          <motion.path
-            fill="none"
-            strokeWidth="3"
-            stroke={color}
-            d="M33,17 L17,33"
-            strokeDasharray="0 1"
-            style={{ pathLength: crossPathB }}
-          />
-        </svg>
-      </motion.div>
-      
-      {/* Prize Info Display */}
-      <motion.div
-        style={{
-          position: "absolute",
-          bottom: 20,
-          left: "50%",
-          transform: "translateX(-50%)",
-          background: "rgba(0, 0, 0, 0.8)",
-          backdropFilter: "blur(10px)",
-          padding: "15px 25px",
-          borderRadius: 15,
-          border: "1px solid rgba(255, 255, 255, 0.2)"
-        }}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-      >
-        <div style={{ 
-          fontSize: 18, 
-          fontWeight: "bold", 
-          color: "white", 
-          textAlign: "center",
-          marginBottom: 5 
-        }}>
-          Arrastra para explorar premios
-        </div>
-        <div style={{ 
-          fontSize: 14, 
-          color: "#ccc", 
-          textAlign: "center" 
-        }}>
-          Descubre todos los premios disponibles
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 function PrizesAnimation() {
   return (
     <div style={{ width: "100%" }}>
-      {/* Interactive Prize Explorer */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        style={{ marginBottom: 60 }}
-      >
-        <div style={{ textAlign: "center", marginBottom: 30 }}>
-          <h3 style={{ 
-            fontSize: 28, 
-            fontWeight: "bold", 
-            color: "white", 
-            marginBottom: 10 
-          }}>
-            🎮 Explora los Premios
-          </h3>
-          <p style={{ color: "#888", fontSize: 16 }}>
-            Arrastra el ícono para descubrir diferentes categorías de premios
-          </p>
-        </div>
-        <InteractivePrizeExplorer />
-      </motion.div>
-
-      {/* Main Prizes */}
+      {/* Main Prizes - Bigger and More Separated */}
       <div style={{
         margin: "50px auto",
-        maxWidth: 500,
+        maxWidth: 1200,
         paddingBottom: 50,
         width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        gap: 80,
       }}>
         {prizes.map((prize, i) => (
           <PrizeCard 
