@@ -117,7 +117,7 @@ export default function ProfilePage() {
     const fileExt = file.name.split('.').pop();
     const fileName = `${address}-${Date.now()}.${fileExt}`;
     
-    const { data, error } = await supabase.storage
+    const { error } = await supabase.storage
       .from('profile-images')
       .upload(fileName, file);
 

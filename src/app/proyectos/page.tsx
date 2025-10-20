@@ -233,7 +233,7 @@ export default function ProyectosPage() {
             <div className="flex items-center gap-4">
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as 'recientes' | 'populares' | 'alfabetico')}
+                onChange={(e) => setSortBy(e.target.value as 'recent' | 'popular' | 'name')}
                 className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-green-500"
               >
                 <option value="recent">Más Recientes</option>

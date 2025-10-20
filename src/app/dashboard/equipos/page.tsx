@@ -180,7 +180,7 @@ export default function EquiposPage() {
     const fileExt = file.name.split('.').pop();
     const fileName = `${equipoId}-${Date.now()}.${fileExt}`;
     
-    const { data: uploadData, error } = await supabase.storage
+    const { error } = await supabase.storage
       .from('team-images')
       .upload(fileName, file);
 

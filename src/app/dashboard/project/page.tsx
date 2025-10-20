@@ -169,7 +169,7 @@ export default function ProjectPage() {
       const fileExt = file.name.split('.').pop();
       const fileName = `${address}-${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
       
-      const { data: uploadData, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from('project-images')
         .upload(fileName, file);
 
@@ -190,7 +190,7 @@ export default function ProjectPage() {
       const fileExt = videoFile.name.split('.').pop();
       const fileName = `${address}-${Date.now()}-video.${fileExt}`;
       
-      const { data: videoUploadData, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from('project-videos')
         .upload(fileName, videoFile);
 
