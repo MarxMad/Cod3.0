@@ -1232,6 +1232,201 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Teams Section - Formación de Equipos */}
+      <section id="teams" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-green-900/20 to-black">
+        {/* Epic Background Effects */}
+        <div className="absolute inset-0">
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
+          
+          {/* Floating Particles */}
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-green-400 rounded-full"
+              style={{
+                left: `${(i * 5) % 100}%`,
+                top: `${(i * 5) % 100}%`,
+              }}
+              animate={{
+                opacity: [0, 1, 0],
+                scale: [0, 1.5, 0],
+                y: [0, -20, 0],
+              }}
+              transition={{
+                duration: 4 + (i * 0.1) % 3,
+                repeat: Infinity,
+                delay: (i * 0.1) % 2,
+              }}
+            />
+          ))}
+          
+          {/* Glowing Orbs */}
+          <motion.div
+            className="absolute top-1/4 left-1/4 w-64 h-64 bg-green-500/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.4, 0.2, 0.4],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto">
+          {/* Section Header */}
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.h2 
+              className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <span className="bg-gradient-to-r from-green-400 via-cyan-400 to-green-400 bg-clip-text text-transparent">
+                FORMA TU EQUIPO
+              </span>
+            </motion.h2>
+            <motion.p 
+              className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              Conecta con otros desarrolladores, forma equipos increíbles y construye el futuro juntos
+            </motion.p>
+          </motion.div>
+
+          {/* Team Features Grid */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {/* Feature 1 - Create Team */}
+            <motion.div
+              className="tech-card p-8 text-center group hover:scale-105 transition-all duration-300"
+              whileHover={{ y: -10 }}
+            >
+              <div className="text-6xl mb-4">👥</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Crea tu Equipo</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Forma tu equipo ideal con hasta 5 miembros. Define roles, objetivos y visión compartida.
+              </p>
+            </motion.div>
+
+            {/* Feature 2 - Invite Members */}
+            <motion.div
+              className="tech-card p-8 text-center group hover:scale-105 transition-all duration-300"
+              whileHover={{ y: -10 }}
+            >
+              <div className="text-6xl mb-4">📧</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Invita Miembros</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Invita a otros participantes registrados por email. Sistema de invitaciones automático.
+              </p>
+            </motion.div>
+
+            {/* Feature 3 - Collaborate */}
+            <motion.div
+              className="tech-card p-8 text-center group hover:scale-105 transition-all duration-300"
+              whileHover={{ y: -10 }}
+            >
+              <div className="text-6xl mb-4">🚀</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Colabora</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Trabaja en equipo, comparte ideas y construye proyectos increíbles juntos.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.a
+              href="/login"
+              className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-green-500/25 overflow-hidden"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="relative z-10">REGÍSTRATE AHORA</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </motion.a>
+
+            <motion.a
+              href="/proyectos"
+              className="group relative border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 overflow-hidden"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="relative z-10">VER PROYECTOS</span>
+              <div className="absolute inset-0 bg-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </motion.a>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            viewport={{ once: true }}
+          >
+            {[
+              { number: "50+", label: "Equipos Formados" },
+              { number: "200+", label: "Participantes" },
+              { number: "15+", label: "Proyectos Activos" },
+              { number: "24/7", label: "Disponible" }
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="text-3xl sm:text-4xl font-black text-green-400 mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-gray-300 font-medium">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Sponsors & Allies Section - ULTRA COOL */}
       <section id="sponsors" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-black via-purple-900/20 to-black">
         {/* Epic Background Effects */}
@@ -2366,6 +2561,7 @@ export default function Home() {
                    { href: "#about", text: "Acerca de" },
                    { href: "#schedule", text: "Programa" },
                    { href: "#prizes", text: "Premios" },
+                   { href: "#teams", text: "Equipos" },
                    { href: "#sponsors", text: "Patrocinadores" },
                    { href: "#register", text: "Registro" }
                  ].map((link, index) => (
