@@ -656,14 +656,14 @@ export default function Home() {
             </motion.div>
             
             <div className="hidden md:flex items-center space-x-8">
-              {['home', 'about', 'schedule', 'prizes', 'sponsors', 'register'].map((section) => (
+              {['home', 'about', 'schedule', 'prizes', 'sponsors', 'proyectos', 'register'].map((section) => (
                 <motion.a
                   key={section}
-                  href={`#${section}`}
+                  href={section === 'proyectos' ? '/proyectos' : `#${section}`}
                   className={`text-gray-300 hover:text-green-400 transition-colors relative font-mono ${
                     activeSection === section ? 'text-green-400' : ''
                   }`}
-                  onClick={() => setActiveSection(section)}
+                  onClick={() => section !== 'proyectos' && setActiveSection(section)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -672,6 +672,7 @@ export default function Home() {
                   {section === 'schedule' && '<PROGRAMA/>'}
                   {section === 'prizes' && '<PREMIOS/>'}
                   {section === 'sponsors' && '<SPONSORS/>'}
+                  {section === 'proyectos' && '<PROYECTOS/>'}
                   {section === 'register' && '<REGISTRO/>'}
                   {activeSection === section && (
                     <motion.div
@@ -685,17 +686,31 @@ export default function Home() {
               ))}
             </div>
 
-            <motion.a
-              href="/registro"
-              className="tech-button px-4 py-2 text-sm font-bold transition-all duration-300 inline-block"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              &lt;REGÍSTRATE/&gt;
-            </motion.a>
+            <div className="flex items-center space-x-4">
+              <motion.a
+                href="/login"
+                className="text-gray-300 hover:text-green-400 transition-colors font-mono text-sm"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+              >
+                &lt;LOGIN/&gt;
+              </motion.a>
+              
+              <motion.a
+                href="/registro"
+                className="tech-button px-4 py-2 text-sm font-bold transition-all duration-300 inline-block"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                &lt;REGÍSTRATE/&gt;
+              </motion.a>
+            </div>
           </div>
         </div>
       </nav>

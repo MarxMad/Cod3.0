@@ -1,8 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import RainbowKitAuth from '@/components/RainbowKitAuth';
+import { useAccount } from 'wagmi';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { supabase } from '@/lib/supabase';
+import { Download, FileText, Users, FolderOpen, Database } from 'lucide-react';
 
 interface Registro {
   id: string;
@@ -17,11 +20,28 @@ interface Registro {
   created_at: string;
 }
 
+interface Proyecto {
+  id: string;
+  titulo: string;
+  descripcion: string;
+  problema: string;
+  solucion: string;
+  tech_stack: string[];
+  github_url: string;
+  demo_url: string;
+  video_url: string;
+  imagenes: string[];
+  estado: string;
+  email_participante: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export default function AdminPage() {
+  const { address, isConnected } = useAccount();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userAddress, setUserAddress] = useState('');
-  const [sessionToken, setSessionToken] = useState('');
   const [registros, setRegistros] = useState<Registro[]>([]);
+  const [proyectos, setProyectos] = useState<Proyecto[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedRegistros, setSelectedRegistros] = useState<string[]>([]);
   const [emailType, setEmailType] = useState('welcome');
@@ -29,50 +49,82 @@ export default function AdminPage() {
   const [customContent, setCustomContent] = useState('');
   const [sending, setSending] = useState(false);
   const [queueStatus, setQueueStatus] = useState({ pending: 0, processing: false, totalProcessed: 'N/A' });
-  const [filters, setFilters] = useState({
-    experiencia: '',
-    equipo: '',
-    universidad: '',
-    fecha_desde: '',
-    fecha_hasta: ''
-  });
+  // Filtros para futuras funcionalidades
+  // const [filters, setFilters] = useState({
+  //   experiencia: '',
+  //   equipo: '',
+  //   universidad: '',
+  //   fecha_desde: '',
+  //   fecha_hasta: ''
+  // });
+  const [activeTab, setActiveTab] = useState('participantes');
 
-  // Manejar autenticación exitosa
-  const handleAuthSuccess = (address: string, token: string) => {
-    setUserAddress(address);
-    setSessionToken(token);
-    setIsAuthenticated(true);
-    setLoading(false);
-  };
-
-  // Cargar registros
-  const loadRegistros = async () => {
-    if (!isAuthenticated) return;
+  // Verificar si el usuario es admin
+  const checkAdminStatus = useCallback(async () => {
+    if (!isConnected || !address) return;
     
     try {
-      setLoading(true);
-      const response = await fetch('/api/get-registros', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${sessionToken}`
-        },
-        body: JSON.stringify({ filters })
-      });
-      
-      const data = await response.json();
-      
-      if (data.success) {
-        setRegistros(data.data);
-      } else {
-        console.error('Error cargando registros:', data.error);
+      // Usar la instancia de supabase importada
+      const { data, error } = await supabase
+        .from('registros_hackathon')
+        .select('*')
+        .eq('email', address)
+        .single();
+
+      if (error && error.code !== 'PGRST116') {
+        console.error('Error checking admin status:', error);
+        return;
+      }
+
+      if (data) {
+        setIsAuthenticated(true);
+        // Cargar datos después de autenticación
+        loadAllData();
       }
     } catch (error) {
       console.error('Error:', error);
     } finally {
       setLoading(false);
     }
-  };
+  }, [isConnected, address]);
+
+  // Cargar todos los datos
+  const loadAllData = useCallback(async () => {
+    if (!isAuthenticated) return;
+    
+    try {
+      setLoading(true);
+      // Usar la instancia de supabase importada
+      
+      // Cargar registros
+      const { data: registrosData, error: registrosError } = await supabase
+        .from('registros_hackathon')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (registrosError) {
+        console.error('Error cargando registros:', registrosError);
+      } else {
+        setRegistros(registrosData || []);
+      }
+
+      // Cargar proyectos
+      const { data: proyectosData, error: proyectosError } = await supabase
+        .from('proyectos')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (proyectosError) {
+        console.error('Error cargando proyectos:', proyectosError);
+      } else {
+        setProyectos(proyectosData || []);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [isAuthenticated]);
 
   // Cargar estado de la cola
   const loadQueueStatus = async () => {
@@ -89,15 +141,20 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
+    if (isConnected && address) {
+      checkAdminStatus();
+    }
+  }, [isConnected, address, checkAdminStatus]);
+
+  useEffect(() => {
     if (isAuthenticated) {
-      loadRegistros();
       loadQueueStatus();
       
       // Actualizar estado de la cola cada 5 segundos
       const interval = setInterval(loadQueueStatus, 5000);
       return () => clearInterval(interval);
     }
-  }, [filters, isAuthenticated]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isAuthenticated]);
 
   // Seleccionar/deseleccionar todos
   const toggleSelectAll = () => {
@@ -151,9 +208,116 @@ export default function AdminPage() {
     }
   };
 
-  // Si no está autenticado, mostrar pantalla de login
+  // Descargar datos como CSV
+  const downloadCSV = (data: unknown[], filename: string) => {
+    if (data.length === 0) {
+      alert('No hay datos para descargar');
+      return;
+    }
+
+    const headers = Object.keys(data[0] as Record<string, unknown>);
+    const csvContent = [
+      headers.join(','),
+      ...data.map(row => 
+        headers.map(header => {
+          const value = (row as Record<string, unknown>)[header];
+          if (Array.isArray(value)) {
+            return `"${value.join('; ')}"`;
+          }
+          return `"${value || ''}"`;
+        }).join(',')
+      )
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `${filename}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Descargar todos los registros
+  const downloadRegistros = () => {
+    downloadCSV(registros, `registros_hackathon_${new Date().toISOString().split('T')[0]}`);
+  };
+
+  // Descargar todos los proyectos
+  const downloadProyectos = () => {
+    downloadCSV(proyectos, `proyectos_hackathon_${new Date().toISOString().split('T')[0]}`);
+  };
+
+  // Descargar datos completos
+  const downloadAllData = () => {
+    const combinedData = registros.map(registro => {
+      const proyecto = proyectos.find(p => p.email_participante === registro.email);
+      return {
+        ...registro,
+        proyecto_titulo: proyecto?.titulo || '',
+        proyecto_descripcion: proyecto?.descripcion || '',
+        proyecto_estado: proyecto?.estado || '',
+        proyecto_github: proyecto?.github_url || '',
+        proyecto_demo: proyecto?.demo_url || '',
+        proyecto_tech_stack: proyecto?.tech_stack?.join('; ') || '',
+        proyecto_created_at: proyecto?.created_at || ''
+      };
+    });
+    
+    downloadCSV(combinedData, `datos_completos_hackathon_${new Date().toISOString().split('T')[0]}`);
+  };
+
+  // Si no está conectado, mostrar pantalla de login
+  if (!isConnected) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center px-4">
+        <div className="max-w-md w-full space-y-8">
+          <div className="text-center">
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                <Database className="h-8 w-8 text-white" />
+              </div>
+            </div>
+            <h2 className="text-3xl font-bold text-white mb-2">
+              Panel de Administración
+            </h2>
+            <p className="text-gray-400">
+              Conecta tu wallet para acceder al panel
+            </p>
+          </div>
+          <div className="bg-gray-900 border border-gray-700 rounded-lg p-8">
+            <ConnectButton />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-400"></div>
+      </div>
+    );
+  }
+
   if (!isAuthenticated) {
-    return <RainbowKitAuth onAuthSuccess={handleAuthSuccess} />;
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center px-4">
+        <div className="max-w-md w-full space-y-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-white mb-2">
+              Acceso Denegado
+            </h2>
+            <p className="text-gray-400">
+              No tienes permisos de administrador
+            </p>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -163,101 +327,239 @@ export default function AdminPage() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-8"
+          className="mb-8"
         >
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-between items-center mb-6">
             <div>
               <h1 className="text-4xl font-bold text-green-400 mb-2">
-                📧 Panel de Administración de Emails
+                🛠️ Panel de Administración
               </h1>
               <p className="text-gray-300">
-                Gestiona y envía correos personalizados a los participantes
+                Gestiona participantes, proyectos y envía comunicaciones
               </p>
             </div>
             <div className="text-right">
               <div className="text-sm text-gray-400 mb-1">Conectado como:</div>
               <div className="text-green-400 font-mono text-sm">
-                {userAddress.slice(0, 6)}...{userAddress.slice(-4)}
+                {address?.slice(0, 6)}...{address?.slice(-4)}
               </div>
-              <button
-                onClick={() => {
-                  setIsAuthenticated(false);
-                  setUserAddress('');
-                  setSessionToken('');
-                }}
-                className="text-red-400 hover:text-red-300 text-sm mt-1"
-              >
-                Cerrar sesión
-              </button>
-              
-              {/* Estado de la cola de emails */}
-              <div className="mt-4 p-3 bg-gray-800 rounded-lg">
-                <div className="text-sm text-gray-400 mb-1">📧 Cola de Emails</div>
-                <div className="text-xs">
-                  <div className="flex items-center gap-2">
-                    <div className={`w-2 h-2 rounded-full ${queueStatus.processing ? 'bg-yellow-400 animate-pulse' : queueStatus.pending > 0 ? 'bg-blue-400' : 'bg-green-400'}`}></div>
-                    <span className="text-gray-300">
-                      {queueStatus.processing ? 'Procesando...' : queueStatus.pending > 0 ? `${queueStatus.pending} pendientes` : 'Cola vacía'}
-                    </span>
-                  </div>
+            </div>
+          </div>
+
+          {/* Tabs */}
+          <div className="flex space-x-1 bg-gray-800 p-1 rounded-lg">
+            <button
+              onClick={() => setActiveTab('participantes')}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'participantes'
+                  ? 'bg-green-500 text-black'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <Users className="inline h-4 w-4 mr-2" />
+              Participantes ({registros.length})
+            </button>
+            <button
+              onClick={() => setActiveTab('proyectos')}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'proyectos'
+                  ? 'bg-green-500 text-black'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <FolderOpen className="inline h-4 w-4 mr-2" />
+              Proyectos ({proyectos.length})
+            </button>
+            <button
+              onClick={() => setActiveTab('emails')}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'emails'
+                  ? 'bg-green-500 text-black'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <FileText className="inline h-4 w-4 mr-2" />
+              Emails
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Tab Content */}
+        {activeTab === 'participantes' && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+            className="space-y-6"
+          >
+            {/* Download Actions */}
+            <div className="bg-gray-900 p-6 rounded-xl">
+              <h2 className="text-xl font-bold text-green-400 mb-4">📊 Descargar Datos</h2>
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={downloadRegistros}
+                  className="flex items-center px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Descargar Registros CSV
+                </button>
+                <button
+                  onClick={downloadProyectos}
+                  className="flex items-center px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-colors"
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Descargar Proyectos CSV
+                </button>
+                <button
+                  onClick={downloadAllData}
+                  className="flex items-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Descargar Datos Completos
+                </button>
+              </div>
+            </div>
+
+            {/* Participants Table */}
+            <div className="bg-gray-900 p-6 rounded-xl">
+              <h2 className="text-xl font-bold text-green-400 mb-4">
+                👥 Participantes ({registros.length})
+              </h2>
+              {loading ? (
+                <div className="text-center py-8">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-400 mx-auto"></div>
+                  <p className="mt-4 text-gray-300">Cargando registros...</p>
                 </div>
-              </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-gray-700">
+                        <th className="text-left p-3">Nombre</th>
+                        <th className="text-left p-3">Email</th>
+                        <th className="text-left p-3">Experiencia</th>
+                        <th className="text-left p-3">Participación</th>
+                        <th className="text-left p-3">Universidad</th>
+                        <th className="text-left p-3">Fecha</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {registros.map((registro) => (
+                        <tr key={registro.id} className="border-b border-gray-800 hover:bg-gray-800">
+                          <td className="p-3">{registro.nombre} {registro.apellido}</td>
+                          <td className="p-3">{registro.email}</td>
+                          <td className="p-3 capitalize">{registro.experiencia}</td>
+                          <td className="p-3">{registro.equipo === 'equipo' ? 'Equipo' : 'Individual'}</td>
+                          <td className="p-3">{registro.universidad || '-'}</td>
+                          <td className="p-3">{new Date(registro.created_at).toLocaleDateString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
+          </motion.div>
+        )}
+
+        {activeTab === 'proyectos' && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-6"
+          >
+            {/* Projects Table */}
+            <div className="bg-gray-900 p-6 rounded-xl">
+              <h2 className="text-xl font-bold text-green-400 mb-4">
+                📁 Proyectos ({proyectos.length})
+              </h2>
+              {loading ? (
+                <div className="text-center py-8">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-400 mx-auto"></div>
+                  <p className="mt-4 text-gray-300">Cargando proyectos...</p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-gray-700">
+                        <th className="text-left p-3">Título</th>
+                        <th className="text-left p-3">Estado</th>
+                        <th className="text-left p-3">Tech Stack</th>
+                        <th className="text-left p-3">GitHub</th>
+                        <th className="text-left p-3">Demo</th>
+                        <th className="text-left p-3">Fecha</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {proyectos.map((proyecto) => (
+                        <tr key={proyecto.id} className="border-b border-gray-800 hover:bg-gray-800">
+                          <td className="p-3 font-medium">{proyecto.titulo}</td>
+                          <td className="p-3">
+                            <span className={`px-2 py-1 rounded text-xs ${
+                              proyecto.estado === 'enviado' 
+                                ? 'bg-green-500/20 text-green-400' 
+                                : 'bg-yellow-500/20 text-yellow-400'
+                            }`}>
+                              {proyecto.estado}
+                            </span>
+                          </td>
+                          <td className="p-3">
+                            <div className="flex flex-wrap gap-1">
+                              {proyecto.tech_stack.slice(0, 3).map((tech, index) => (
+                                <span key={index} className="px-2 py-1 bg-gray-700 text-xs rounded">
+                                  {tech}
+                                </span>
+                              ))}
+                              {proyecto.tech_stack.length > 3 && (
+                                <span className="px-2 py-1 bg-gray-600 text-xs rounded">
+                                  +{proyecto.tech_stack.length - 3}
+                                </span>
+                              )}
+                            </div>
+                          </td>
+                          <td className="p-3">
+                            {proyecto.github_url ? (
+                              <a
+                                href={proyecto.github_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-400 hover:text-blue-300"
+                              >
+                                Ver
+                              </a>
+                            ) : '-'}
+                          </td>
+                          <td className="p-3">
+                            {proyecto.demo_url ? (
+                              <a
+                                href={proyecto.demo_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-green-400 hover:text-green-300"
+                              >
+                                Ver
+                              </a>
+                            ) : '-'}
+                          </td>
+                          <td className="p-3">{new Date(proyecto.created_at).toLocaleDateString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+            </div>
+              )}
           </div>
         </motion.div>
+        )}
 
-        {/* Filtros */}
+        {activeTab === 'emails' && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gray-900 p-6 rounded-xl mb-6"
+            className="space-y-6"
         >
-          <h2 className="text-xl font-bold text-green-400 mb-4">🔍 Filtros</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">Experiencia</label>
-              <select
-                value={filters.experiencia}
-                onChange={(e) => setFilters({...filters, experiencia: e.target.value})}
-                className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg text-white"
-              >
-                <option value="">Todas</option>
-                <option value="principiante">Principiante</option>
-                <option value="intermedio">Intermedio</option>
-                <option value="avanzado">Avanzado</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2">Participación</label>
-              <select
-                value={filters.equipo}
-                onChange={(e) => setFilters({...filters, equipo: e.target.value})}
-                className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg text-white"
-              >
-                <option value="">Todas</option>
-                <option value="individual">Individual</option>
-                <option value="equipo">Equipo</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2">Universidad</label>
-              <input
-                type="text"
-                value={filters.universidad}
-                onChange={(e) => setFilters({...filters, universidad: e.target.value})}
-                placeholder="Buscar universidad..."
-                className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg text-white"
-              />
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Configuración de Email */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-gray-900 p-6 rounded-xl mb-6"
-        >
+            {/* Email Configuration */}
+            <div className="bg-gray-900 p-6 rounded-xl">
           <h2 className="text-xl font-bold text-green-400 mb-4">📝 Configuración de Email</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -308,17 +610,24 @@ export default function AdminPage() {
               </div>
             </div>
           )}
-        </motion.div>
 
-        {/* Lista de Registros */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-gray-900 p-6 rounded-xl"
-        >
+              {/* Estado de la cola de emails */}
+              <div className="mt-6 p-4 bg-gray-800 rounded-lg">
+                <div className="text-sm text-gray-400 mb-2">📧 Estado de la Cola de Emails</div>
+                <div className="flex items-center gap-2">
+                  <div className={`w-2 h-2 rounded-full ${queueStatus.processing ? 'bg-yellow-400 animate-pulse' : queueStatus.pending > 0 ? 'bg-blue-400' : 'bg-green-400'}`}></div>
+                  <span className="text-gray-300">
+                    {queueStatus.processing ? 'Procesando...' : queueStatus.pending > 0 ? `${queueStatus.pending} pendientes` : 'Cola vacía'}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Participants Selection for Emails */}
+            <div className="bg-gray-900 p-6 rounded-xl">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold text-green-400">
-              👥 Participantes ({registros.length})
+                  👥 Seleccionar Participantes
             </h2>
             <button
               onClick={toggleSelectAll}
@@ -328,12 +637,6 @@ export default function AdminPage() {
             </button>
           </div>
 
-          {loading ? (
-            <div className="text-center py-8">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-400 mx-auto"></div>
-              <p className="mt-4 text-gray-300">Cargando registros...</p>
-            </div>
-          ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -350,8 +653,6 @@ export default function AdminPage() {
                     <th className="text-left p-3">Email</th>
                     <th className="text-left p-3">Experiencia</th>
                     <th className="text-left p-3">Participación</th>
-                    <th className="text-left p-3">Universidad</th>
-                    <th className="text-left p-3">Fecha</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -375,15 +676,15 @@ export default function AdminPage() {
                       <td className="p-3">{registro.email}</td>
                       <td className="p-3 capitalize">{registro.experiencia}</td>
                       <td className="p-3">{registro.equipo === 'equipo' ? 'Equipo' : 'Individual'}</td>
-                      <td className="p-3">{registro.universidad || '-'}</td>
-                      <td className="p-3">{new Date(registro.created_at).toLocaleDateString()}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
+            </div>
+          </motion.div>
           )}
-        </motion.div>
+
       </div>
     </div>
   );
