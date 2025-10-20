@@ -61,7 +61,7 @@ export default function ProfilePage() {
           return;
         }
 
-        const { data, error } = await supabase
+        const { data: userData, error } = await supabase
           .from('registros_hackathon')
           .select('*')
           .eq('email', address)
@@ -73,10 +73,10 @@ export default function ProfilePage() {
           return;
         }
 
-        if (data) {
-          setUserData(data);
-          if (data.foto_perfil) {
-            setPreviewImage(data.foto_perfil);
+        if (userData) {
+          setUserData(userData);
+          if (userData.foto_perfil) {
+            setPreviewImage(userData.foto_perfil);
           }
         }
       }

@@ -59,7 +59,6 @@ export default function Dashboard() {
     try {
       // Verificar método de autenticación
       const storedAuthMethod = localStorage.getItem('authMethod');
-      setAuthMethod(storedAuthMethod);
 
       if (storedAuthMethod === 'email') {
         // Usuario autenticado por email
