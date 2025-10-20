@@ -53,7 +53,7 @@ export default function Dashboard() {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [projectData, setProjectData] = useState<ProjectData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [authMethod, setAuthMethod] = useState<string | null>(null);
+  // const [authMethod, setAuthMethod] = useState<string | null>(null);
 
   const fetchUserData = useCallback(async () => {
     try {

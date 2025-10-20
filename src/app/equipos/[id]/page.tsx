@@ -6,7 +6,6 @@ import { supabase } from '@/lib/supabase';
 import { 
   Users, 
   Crown, 
-  Mail, 
   Github, 
   Linkedin, 
   ExternalLink,

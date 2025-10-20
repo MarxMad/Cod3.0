@@ -235,15 +235,17 @@ export default function EquiposPage() {
       }
 
       // Agregar al líder como miembro
-      await supabase
-        .from('equipo_miembros')
-        .insert({
-          equipo_id: data.id,
-          email_miembro: userEmail,
-          rol: 'lider',
-          estado_invitacion: 'aceptada',
-          invitado_por: userEmail
-        });
+      if (newEquipo) {
+        await supabase
+          .from('equipo_miembros')
+          .insert({
+            equipo_id: newEquipo.id,
+            email_miembro: userEmail,
+            rol: 'lider',
+            estado_invitacion: 'aceptada',
+            invitado_por: userEmail
+          });
+      }
 
       setShowCreateForm(false);
       setBannerFile(null);
