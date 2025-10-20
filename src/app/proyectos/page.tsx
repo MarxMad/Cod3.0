@@ -4,18 +4,13 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { 
   Search, 
-  Filter, 
   Grid, 
   List, 
   ExternalLink, 
   Github, 
   Users, 
   Calendar,
-  Award,
-  Eye,
-  Heart,
-  Share2,
-  Tag
+  Award
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -238,7 +233,7 @@ export default function ProyectosPage() {
             <div className="flex items-center gap-4">
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
+                onChange={(e) => setSortBy(e.target.value as 'recientes' | 'populares' | 'alfabetico')}
                 className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-green-500"
               >
                 <option value="recent">Más Recientes</option>

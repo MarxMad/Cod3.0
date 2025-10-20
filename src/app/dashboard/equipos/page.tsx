@@ -6,15 +6,11 @@ import {
   Users, 
   Plus, 
   UserPlus, 
-  Mail, 
   Check, 
   X, 
   Crown,
-  Settings,
-  Trash2,
   Edit,
   Eye,
-  Camera,
   Save
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -213,7 +209,7 @@ export default function EquiposPage() {
 
   const createEquipo = async (nombre: string, descripcion: string, maxMiembros: number) => {
     try {
-      const { data, error } = await supabase
+      const { data: newEquipo, error } = await supabase
         .from('equipos')
         .insert({
           nombre,
@@ -230,12 +226,12 @@ export default function EquiposPage() {
 
       // Upload banner if provided
       let bannerUrl = null;
-      if (bannerFile) {
-        bannerUrl = await uploadBanner(bannerFile, data.id);
+      if (bannerFile && newEquipo) {
+        bannerUrl = await uploadBanner(bannerFile, newEquipo.id);
         await supabase
           .from('equipos')
           .update({ banner_url: bannerUrl })
-          .eq('id', data.id);
+          .eq('id', newEquipo.id);
       }
 
       // Agregar al líder como miembro
@@ -254,15 +250,16 @@ export default function EquiposPage() {
       setBannerPreview(null);
       fetchData();
       alert('Equipo creado exitosamente!');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error creating equipo:', error);
-      alert('Error al crear el equipo: ' + error.message);
+      const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
+      alert('Error al crear el equipo: ' + errorMessage);
     }
   };
 
   const editEquipo = async (equipoId: string, nombre: string, descripcion: string, maxMiembros: number) => {
     try {
-      let updateData: any = {
+      const updateData: Record<string, unknown> = {
         nombre,
         descripcion,
         max_miembros: maxMiembros
@@ -289,9 +286,10 @@ export default function EquiposPage() {
       setEditingEquipo(null);
       fetchData();
       alert('Equipo actualizado exitosamente!');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error updating equipo:', error);
-      alert('Error al actualizar el equipo: ' + error.message);
+      const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
+      alert('Error al actualizar el equipo: ' + errorMessage);
     }
   };
 
@@ -322,9 +320,10 @@ export default function EquiposPage() {
       } else {
         alert('Error: ' + data.error);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error inviting user:', error);
-      alert('Error al enviar invitación: ' + error.message);
+      const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
+      alert('Error al enviar invitación: ' + errorMessage);
     }
   };
 
@@ -343,9 +342,10 @@ export default function EquiposPage() {
 
       fetchData();
       alert(accept ? 'Invitación aceptada!' : 'Invitación rechazada');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error responding to invitation:', error);
-      alert('Error al procesar invitación: ' + error.message);
+      const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
+      alert('Error al procesar invitación: ' + errorMessage);
     }
   };
 
