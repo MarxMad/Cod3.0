@@ -133,7 +133,7 @@ export default function ProjectPage() {
     // Upload images
     for (const file of imageFiles) {
       const fileExt = file.name.split('.').pop();
-      const fileName = `${address}-${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+      const fileName = `${user?.email || 'user'}-${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
       
       const { error } = await supabase.storage
         .from('project-images')
