@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useAccount } from 'wagmi';
+import { useAuth } from '../../lib/auth';
 import { supabase } from '@/lib/supabase';
 import { 
   Users, 
@@ -49,55 +49,34 @@ interface ProjectData {
 }
 
 export default function Dashboard() {
-  const { address, isConnected } = useAccount();
+  const { user, isAuthenticated, loading: authLoading } = useAuth();
   const [userData, setUserData] = useState<UserData | null>(null);
   const [projectData, setProjectData] = useState<ProjectData | null>(null);
   const [loading, setLoading] = useState(true);
-  // const [authMethod, setAuthMethod] = useState<string | null>(null);
 
   const fetchUserData = useCallback(async () => {
+    if (!user) return;
+    
     try {
-      // Verificar método de autenticación
-      const storedAuthMethod = localStorage.getItem('authMethod');
+      // Obtener datos completos del usuario desde la base de datos
+      const { data, error } = await supabase
+        .from('registros_hackathon')
+        .select('*')
+        .eq('email', user.email)
+        .single();
 
-      if (storedAuthMethod === 'email') {
-        // Usuario autenticado por email
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-          setUserData(JSON.parse(storedUser));
-        } else {
-          // Redirigir a login si no hay datos de usuario
-          window.location.href = '/login';
-          return;
-        }
-      } else {
-        // Usuario autenticado por wallet (admin)
-        if (!isConnected || !address) {
-          window.location.href = '/login';
-          return;
-        }
-
-        const { data, error } = await supabase
-          .from('registros_hackathon')
-          .select('*')
-          .eq('email', address)
-          .single();
-
-        if (error) {
-          console.error('Error fetching user data:', error);
-          window.location.href = '/login';
-          return;
-        }
-
-        setUserData(data);
+      if (error) {
+        console.error('Error fetching user data:', error);
+        return;
       }
+
+      setUserData(data);
     } catch (error) {
       console.error('Error:', error);
-      window.location.href = '/login';
     } finally {
       setLoading(false);
     }
-  }, [address, isConnected]);
+  }, [user]);
 
   const fetchProjectData = useCallback(async (userEmail: string) => {
     try {
@@ -122,8 +101,10 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-    fetchUserData();
-  }, [fetchUserData]);
+    if (user && isAuthenticated) {
+      fetchUserData();
+    }
+  }, [user, isAuthenticated, fetchUserData]);
 
   useEffect(() => {
     if (userData) {
@@ -131,7 +112,7 @@ export default function Dashboard() {
     }
   }, [userData, fetchProjectData]);
 
-  if (loading) {
+  if (authLoading || loading) {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-400"></div>
