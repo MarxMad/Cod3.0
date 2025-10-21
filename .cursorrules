@@ -1,0 +1,236 @@
+# 🎯 CURSOR RULES - COD3.0 HACKATHON PLATFORM
+
+## 📋 PROTOCOLO DE DESARROLLO
+
+### 🚀 ANTES DE EMPEZAR UN ISSUE:
+1. **Crear rama específica** para el issue
+2. **Verificar que estás en main** y actualizado
+3. **Crear rama con naming convention**: `[tipo]/issue-[número]-[descripción-corta]`
+4. **Cambiar a la nueva rama** antes de empezar a codificar
+
+### 🔧 DURANTE EL DESARROLLO:
+1. **Commits frecuentes** con mensajes descriptivos
+2. **Seguir convenciones** de commits (fix:, feat:, ui:, etc.)
+3. **Testing local** antes de cada commit
+4. **Documentar cambios** importantes
+
+### 📤 AL COMPLETAR UN ISSUE:
+1. **Verificar que todo funciona** (build, tests, linting)
+2. **Crear Pull Request** automáticamente
+3. **Asignar al responsable** del proyecto
+4. **Incluir descripción detallada** del PR
+5. **Cerrar el issue** relacionado
+
+## 🏷️ NAMING CONVENTIONS
+
+### 📝 Ramas:
+```bash
+# Para bugs
+fix/issue-1-member-cards
+fix/issue-2-auth-validation
+fix/issue-3-teams-invitations
+fix/issue-4-navbar-buttons
+
+# Para features
+feature/issue-5-project-management
+feature/issue-6-email-verification
+feature/issue-7-project-evaluation
+feature/issue-8-admin-security
+
+# Para UI/UX
+ui/issue-1-member-cards-redesign
+ui/issue-4-navbar-improvements
+ui/issue-20-projects-redesign
+ui/issue-21-dark-light-theme
+```
+
+### 📝 Commits:
+```bash
+# Fixes
+fix: arreglar superposición de botones en navbar
+fix: corregir validación de autenticación en dashboard
+fix: resolver problema de envío de emails de invitación
+
+# Features
+feat: implementar sistema de gestión de proyectos
+feat: añadir verificación de emails para envío
+feat: crear sistema de entrega y evaluación
+
+# UI/UX
+ui: actualizar tarjetas de miembros en landing
+ui: mejorar diseño responsive del navbar
+ui: añadir animaciones a las tarjetas
+
+# Refactoring
+refactor: optimizar código de autenticación
+refactor: mejorar estructura de componentes
+refactor: simplificar lógica de equipos
+```
+
+## 🎯 FLUJO DE TRABAJO AUTOMATIZADO
+
+### 🚀 AL EMPEZAR UN ISSUE:
+```bash
+# 1. Verificar estado
+git status
+git checkout main
+git pull origin main
+
+# 2. Crear rama (reemplazar X con número del issue)
+git checkout -b fix/issue-X-descripcion-corta
+
+# 3. Confirmar que estás en la rama correcta
+git branch
+```
+
+### 🔧 DURANTE EL DESARROLLO:
+```bash
+# Commits frecuentes
+git add .
+git commit -m "fix: descripción del cambio"
+
+# Continuar trabajando
+git add .
+git commit -m "ui: mejora adicional"
+
+# Más cambios
+git add .
+git commit -m "refactor: optimización"
+```
+
+### 📤 AL COMPLETAR:
+```bash
+# 1. Verificar que todo funciona
+npm run build
+npm run test
+npm run lint
+
+# 2. Subir rama
+git push origin fix/issue-X-descripcion-corta
+
+# 3. Crear Pull Request
+gh pr create --title "Fix: [Descripción del issue]" \
+  --body "## 🎯 Descripción
+  [Descripción detallada del cambio]
+  
+  ## 🔧 Cambios realizados
+  - [ ] Cambio 1
+  - [ ] Cambio 2
+  - [ ] Cambio 3
+  
+  ## 🧪 Testing
+  - [ ] Probado en desktop
+  - [ ] Probado en móvil
+  - [ ] Tests unitarios pasando
+  - [ ] Tests de integración pasando
+  
+  ## 📸 Screenshots
+  [Antes/Después si aplica]
+  
+  ## 🔗 Issues relacionados
+  Closes #X" \
+  --assignee MarxMad \
+  --label "fix"
+```
+
+## 📊 ESTRUCTURA DE ISSUES POR FASE
+
+### 🚨 FASE 1: CORE PLATFORM (Issues #1-8)
+**Prioridad:** CRÍTICA
+**Tiempo estimado:** 4-6 semanas
+
+#### Issues de Bug Fix:
+- #1 - Actualizar tarjetas de miembros en la landing page
+- #2 - Mejorar validación de autenticación en dashboard
+- #3 - Arreglar sistema de equipos e invitaciones
+- #4 - Corregir problemas de navbar y botones
+
+#### Issues de Feature:
+- #5 - Sistema completo de gestión de proyectos
+- #6 - Sistema de verificación de emails para envío de proyectos
+- #7 - Sistema de entrega y evaluación de proyectos
+- #8 - Mejorar seguridad del panel de administración con wallets
+
+### 🔧 FASE 2: ADVANCED FEATURES (Issues #9-19)
+**Prioridad:** ALTA
+**Tiempo estimado:** 6-8 semanas
+
+### 🎨 FASE 3: POLISH & ANALYTICS (Issues #20-26)
+**Prioridad:** MEDIA
+**Tiempo estimado:** 4-6 semanas
+
+## 🛠️ HERRAMIENTAS DISPONIBLES
+
+### 📝 Scripts creados:
+- `create-pr-template.sh` - Crear PRs automáticamente
+- `create-all-issues.sh` - Crear todos los issues
+- `commit-conventions.md` - Convenciones de commits
+
+### 🎯 Uso de scripts:
+```bash
+# Crear PR para issue específico
+./create-pr-template.sh [issue-number] [branch-name] [pr-type]
+
+# Ejemplos:
+./create-pr-template.sh 1 fix/issue-1-member-cards fix
+./create-pr-template.sh 5 feature/issue-5-project-management feature
+./create-pr-template.sh 20 ui/issue-20-projects-redesign ui
+```
+
+## 🔍 VERIFICACIONES AUTOMÁTICAS
+
+### ✅ Antes de crear PR:
+- [ ] Código compila sin errores
+- [ ] Tests pasan correctamente
+- [ ] Linting sin errores
+- [ ] Responsive design verificado
+- [ ] Accesibilidad básica verificada
+
+### ✅ En el PR:
+- [ ] Descripción clara del cambio
+- [ ] Screenshots si aplica
+- [ ] Tests añadidos si es necesario
+- [ ] Documentación actualizada
+- [ ] Issue relacionado cerrado
+
+## 🎯 MEJORES PRÁCTICAS
+
+### 📝 Para Commits:
+- Usar mensajes descriptivos
+- Commits atómicos (un cambio por commit)
+- Referenciar issues cuando sea posible
+- Usar tipos estándar (fix:, feat:, ui:, etc.)
+
+### 📝 Para PRs:
+- Títulos claros y descriptivos
+- Descripción detallada de cambios
+- Screenshots para cambios visuales
+- Testing checklist completo
+- Asignar al responsable correcto
+
+### 📝 Para Ramas:
+- Naming convention consistente
+- Una rama por issue
+- Ramas específicas y enfocadas
+- Limpiar ramas después del merge
+
+## 🚨 REGLAS IMPORTANTES
+
+### ❌ NO HACER:
+- Trabajar directamente en main
+- Hacer commits sin mensaje
+- Crear PRs sin testing
+- Mezclar múltiples issues en una rama
+- Hacer merge sin revisión
+
+### ✅ SÍ HACER:
+- Crear rama para cada issue
+- Commits frecuentes y descriptivos
+- Testing antes de PR
+- Descripción detallada en PRs
+- Seguir convenciones de naming
+- Asignar PRs correctamente
+
+## 🎯 OBJETIVO FINAL
+
+**26 Pull Requests organizados** que transformen la plataforma en la solución de hackathons más completa del mercado, siguiendo un flujo de trabajo profesional y eficiente.
