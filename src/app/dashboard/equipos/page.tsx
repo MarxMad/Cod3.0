@@ -55,7 +55,6 @@ export default function EquiposPage() {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [showInviteForm, setShowInviteForm] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
-  const [inviteEmail, setInviteEmail] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [bannerFile, setBannerFile] = useState<File | null>(null);
   const [bannerPreview, setBannerPreview] = useState<string | null>(null);

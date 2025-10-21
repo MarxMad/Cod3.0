@@ -10,7 +10,7 @@ interface Notification {
   message: string;
   read: boolean;
   created_at: string;
-  data?: any;
+  data?: Record<string, unknown>;
 }
 
 export const useNotifications = (userEmail: string) => {
@@ -93,7 +93,7 @@ export const useNotifications = (userEmail: string) => {
     type: Notification['type'],
     title: string,
     message: string,
-    data?: any
+    data?: Record<string, unknown>
   ) => {
     try {
       const { error } = await supabase

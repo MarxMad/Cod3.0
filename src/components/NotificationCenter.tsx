@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useNotifications } from '@/hooks/useNotifications';
-import { Bell, X, Check, Users, UserPlus, UserMinus, Settings } from 'lucide-react';
+import { Bell, X, Check, Users, UserPlus, UserMinus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface NotificationCenterProps {
