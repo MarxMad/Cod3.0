@@ -87,7 +87,7 @@ export default function ProfilePage() {
   const uploadImage = async (file: File): Promise<string> => {
     // Usar la instancia de supabase importada
     const fileExt = file.name.split('.').pop();
-    const fileName = `${address}-${Date.now()}.${fileExt}`;
+    const fileName = `${user?.email || 'user'}-${Date.now()}.${fileExt}`;
     
     const { error } = await supabase.storage
       .from('profile-images')
