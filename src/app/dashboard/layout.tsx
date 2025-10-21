@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useAccount } from 'wagmi';
 import { 
   Home, 
   User, 
@@ -13,7 +12,9 @@ import {
   X
 } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useAuth } from '@/lib/auth';
+import { ProtectedRoute } from '@/components/AuthGuard';
+import { useTokenRefresh } from '@/hooks/useTokenRefresh';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -21,8 +22,11 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { address, isConnected } = useAccount();
-  const router = useRouter();
+  const { user, logout } = useAuth();
+  const { refreshToken, isSessionExpiringSoon } = useTokenRefresh({
+    onRefresh: () => console.log('Sesión refrescada'),
+    onExpired: () => console.log('Sesión expirada')
+  });
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: Home },
@@ -33,12 +37,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   ];
 
   const handleLogout = () => {
-    // Aquí implementarías la lógica de logout
-    router.push('/');
+    logout();
   };
 
   return (
-    <div className="min-h-screen bg-black">
+    <ProtectedRoute>
+      <div className="min-h-screen bg-black">
       {/* Mobile sidebar */}
       <div className={`fixed inset-0 z-50 lg:hidden ${sidebarOpen ? 'block' : 'hidden'}`}>
         <div className="fixed inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
@@ -121,10 +125,26 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <div className="flex flex-1"></div>
             <div className="flex items-center gap-x-4 lg:gap-x-6">
               <div className="text-sm text-gray-300">
-                {isConnected && address ? (
-                  <span>{address.slice(0, 6)}...{address.slice(-4)}</span>
+                {user ? (
+                  <div className="flex items-center gap-2">
+                    <span>{user.nombre} {user.apellido}</span>
+                    {user.isAdmin && (
+                      <span className="bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full text-xs">
+                        Admin
+                      </span>
+                    )}
+                    {isSessionExpiringSoon() && (
+                      <button
+                        onClick={refreshToken}
+                        className="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full text-xs hover:bg-yellow-500/30"
+                        title="Sesión próxima a expirar - Click para refrescar"
+                      >
+                        ⏰
+                      </button>
+                    )}
+                  </div>
                 ) : (
-                  <span>No conectado</span>
+                  <span>No autenticado</span>
                 )}
               </div>
             </div>
@@ -138,6 +158,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           </div>
         </main>
       </div>
-    </div>
+      </div>
+    </ProtectedRoute>
   );
 }

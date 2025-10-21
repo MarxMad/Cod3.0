@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useAccount } from 'wagmi';
+import { useAuth } from '@/lib/auth';
 import { supabase } from '@/lib/supabase';
 import { 
   FolderOpen, 
@@ -43,7 +43,7 @@ const TECH_STACK_OPTIONS = [
 ];
 
 export default function ProjectPage() {
-  const { address, isConnected } = useAccount();
+  const { user, isAuthenticated, loading: authLoading } = useAuth();
   const [projectData, setProjectData] = useState<ProjectData>({
     titulo: '',
     descripcion: '',
@@ -55,7 +55,7 @@ export default function ProjectPage() {
     video_url: '',
     imagenes: [],
     estado: 'borrador',
-    email_participante: address || ''
+    email_participante: ''
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -64,28 +64,10 @@ export default function ProjectPage() {
   const [videoFile, setVideoFile] = useState<File | null>(null);
 
   const fetchProjectData = useCallback(async () => {
+    if (!user) return;
+    
     try {
-      const storedAuthMethod = localStorage.getItem('authMethod');
-      let userEmail = '';
-      
-      if (storedAuthMethod === 'email') {
-        // Usuario autenticado por email
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-          const userData = JSON.parse(storedUser);
-          userEmail = userData.email;
-        } else {
-          window.location.href = '/login';
-          return;
-        }
-      } else {
-        // Usuario autenticado por wallet (admin)
-        if (!isConnected || !address) {
-          window.location.href = '/login';
-          return;
-        }
-        userEmail = address;
-      }
+      const userEmail = user.email;
 
       const { data, error } = await supabase
         .from('proyectos')
@@ -107,35 +89,19 @@ export default function ProjectPage() {
     } finally {
       setLoading(false);
     }
-  }, [address, isConnected]);
+  }, [user]);
 
   useEffect(() => {
-    const storedAuthMethod = localStorage.getItem('authMethod');
-    
-    if (storedAuthMethod === 'email') {
-      // Usuario autenticado por email - cargar datos inmediatamente
-      fetchProjectData();
-    } else if (isConnected && address) {
-      // Usuario autenticado por wallet - verificar conexión
+    if (user && isAuthenticated) {
       fetchProjectData();
     }
-  }, [isConnected, address, fetchProjectData]);
+  }, [user, isAuthenticated, fetchProjectData]);
 
   useEffect(() => {
-    const storedAuthMethod = localStorage.getItem('authMethod');
-    let currentEmail = '';
-    
-    if (storedAuthMethod === 'email') {
-      const storedUser = localStorage.getItem('user');
-      if (storedUser) {
-        currentEmail = JSON.parse(storedUser).email;
-      }
-    } else if (isConnected && address) {
-      currentEmail = address;
+    if (user) {
+      setProjectData(prev => ({ ...prev, email_participante: user.email }));
     }
-    
-    setProjectData(prev => ({ ...prev, email_participante: currentEmail }));
-  }, [address, isConnected]);
+  }, [user]);
 
   const handleInputChange = (field: keyof ProjectData, value: string | string[]) => {
     setProjectData({ ...projectData, [field]: value });
@@ -167,7 +133,7 @@ export default function ProjectPage() {
     // Upload images
     for (const file of imageFiles) {
       const fileExt = file.name.split('.').pop();
-      const fileName = `${address}-${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+      const fileName = `${user?.email || 'user'}-${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
       
       const { error } = await supabase.storage
         .from('project-images')
@@ -188,7 +154,7 @@ export default function ProjectPage() {
     let videoUrl = '';
     if (videoFile) {
       const fileExt = videoFile.name.split('.').pop();
-      const fileName = `${address}-${Date.now()}-video.${fileExt}`;
+      const fileName = `${user?.email || 'user'}-${Date.now()}-video.${fileExt}`;
       
       const { error } = await supabase.storage
         .from('project-videos')
@@ -211,27 +177,12 @@ export default function ProjectPage() {
   const handleSave = async (isSubmission = false) => {
     setSaving(true);
     try {
-      const storedAuthMethod = localStorage.getItem('authMethod');
-      let userEmail = '';
-      
-      if (storedAuthMethod === 'email') {
-        // Usuario autenticado por email
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-          const userData = JSON.parse(storedUser);
-          userEmail = userData.email;
-        } else {
-          window.location.href = '/login';
-          return;
-        }
-      } else {
-        // Usuario autenticado por wallet (admin)
-        if (!isConnected || !address) {
-          window.location.href = '/login';
-          return;
-        }
-        userEmail = address;
+      if (!user) {
+        window.location.href = '/login';
+        return;
       }
+      
+      const userEmail = user.email;
       
       // Upload files if any
       const { uploadedImages, videoUrl } = await uploadFiles();
@@ -275,7 +226,7 @@ export default function ProjectPage() {
     }
   };
 
-  if (loading) {
+  if (authLoading || loading) {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-400"></div>
