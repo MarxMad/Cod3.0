@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import InviteForm from '@/components/InviteForm';
 
 interface Equipo {
   id: string;
@@ -292,51 +293,48 @@ export default function EquiposPage() {
     }
   };
 
-  const inviteToEquipo = async (email: string) => {
-    if (!miEquipo) return;
+  const inviteToEquipo = async (email: string): Promise<void> => {
+    if (!miEquipo) {
+      throw new Error('No hay equipo seleccionado');
+    }
 
     // Validación de formato de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      alert('Por favor, ingresa un email válido');
-      return;
+      throw new Error('Por favor, ingresa un email válido');
     }
 
     // Verificar que no se esté invitando al mismo email
     if (email === userEmail) {
-      alert('No puedes invitarte a ti mismo');
-      return;
+      throw new Error('No puedes invitarte a ti mismo');
     }
 
-    try {
-      const response = await fetch('/api/send-team-invitation', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          equipoId: miEquipo.id,
-          equipoNombre: miEquipo.nombre,
-          invitadoPor: userEmail
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setInviteEmail('');
-        setShowInviteForm(false);
-        fetchData();
-        alert('Invitación enviada exitosamente por email!');
-      } else {
-        alert('Error: ' + data.error);
-      }
-    } catch (error: unknown) {
-      console.error('Error inviting user:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
-      alert('Error al enviar invitación: ' + errorMessage);
+    // Verificar que el equipo no esté completo
+    if (miEquipo.miembros_activos >= miEquipo.max_miembros) {
+      throw new Error('El equipo ya tiene el máximo de miembros permitidos');
     }
+
+    const response = await fetch('/api/send-team-invitation', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        equipoId: miEquipo.id,
+        equipoNombre: miEquipo.nombre,
+        invitadoPor: userEmail
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Error al enviar invitación');
+    }
+
+    // Actualizar datos después de enviar invitación exitosamente
+    fetchData();
   };
 
   const respondToInvitation = async (miembroId: string, accept: boolean) => {
@@ -667,48 +665,14 @@ export default function EquiposPage() {
       )}
 
       {/* Invite Modal */}
-      {showInviteForm && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-gray-900 border border-gray-700 rounded-lg p-6 w-full max-w-md">
-            <h3 className="text-xl font-bold text-white mb-4">Invitar a Equipo</h3>
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              inviteToEquipo(inviteEmail);
-            }}>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Email del Participante
-                  </label>
-                  <input
-                    type="email"
-                    value={inviteEmail}
-                    onChange={(e) => setInviteEmail(e.target.value)}
-                    required
-                    className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-green-500"
-                    placeholder="participante@email.com"
-                  />
-                </div>
-              </div>
-              <div className="flex justify-end gap-3 mt-6">
-                <button
-                  type="button"
-                  onClick={() => setShowInviteForm(false)}
-                  className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
-                >
-                  Cancelar
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-                >
-                  Enviar Invitación
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      <InviteForm
+        isOpen={showInviteForm}
+        onClose={() => setShowInviteForm(false)}
+        onInvite={inviteToEquipo}
+        equipoNombre={miEquipo?.nombre || ''}
+        miembrosActuales={miEquipo?.miembros_activos || 0}
+        maxMiembros={miEquipo?.max_miembros || 5}
+      />
 
       {/* Edit Team Modal */}
       {showEditForm && editingEquipo && (
