@@ -106,6 +106,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Crear notificación para el líder del equipo
+    try {
+      await supabase
+        .from('notifications')
+        .insert({
+          user_email: invitacion.invitado_por,
+          type: accept ? 'invitation_accepted' : 'invitation_rejected',
+          title: accept ? 'Invitación aceptada' : 'Invitación rechazada',
+          message: `${userEmail} ha ${accept ? 'aceptado' : 'rechazado'} la invitación al equipo "${invitacion.equipos.nombre}"`,
+          data: {
+            equipo_id: invitacion.equipo_id,
+            equipo_nombre: invitacion.equipos.nombre,
+            miembro_email: userEmail,
+            invitacion_id: invitacionId
+          },
+          read: false
+        });
+    } catch (notificationError) {
+      console.error('Error creating notification:', notificationError);
+      // No fallar la operación principal por un error de notificación
+    }
+
     // Registrar actividad en el log
     await logTeamActivity(
       invitacion.equipo_id,

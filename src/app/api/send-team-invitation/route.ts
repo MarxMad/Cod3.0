@@ -202,6 +202,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Crear notificación para el usuario invitado
+    try {
+      await supabase
+        .from('notifications')
+        .insert({
+          user_email: email,
+          type: 'invitation_received',
+          title: 'Nueva invitación al equipo',
+          message: `Has sido invitado a formar parte del equipo "${equipoNombre}"`,
+          data: {
+            equipo_id: equipoId,
+            equipo_nombre: equipoNombre,
+            invitado_por: invitadoPor,
+            invitacion_id: invitacion.id
+          },
+          read: false
+        });
+    } catch (notificationError) {
+      console.error('Error creating notification:', notificationError);
+      // No fallar la operación principal por un error de notificación
+    }
+
     // Registrar actividad en el log
     await logTeamActivity(
       equipoId,

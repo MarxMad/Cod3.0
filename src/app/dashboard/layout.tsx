@@ -15,6 +15,7 @@ import Link from 'next/link';
 import { useAuth } from '@/lib/auth';
 import { ProtectedRoute } from '@/components/AuthGuard';
 import { useTokenRefresh } from '@/hooks/useTokenRefresh';
+import NotificationCenter from '@/components/NotificationCenter';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -124,6 +125,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
             <div className="flex flex-1"></div>
             <div className="flex items-center gap-x-4 lg:gap-x-6">
+              {/* Centro de notificaciones */}
+              {user && (
+                <NotificationCenter userEmail={user.email} />
+              )}
+              
               <div className="text-sm text-gray-300">
                 {user ? (
                   <div className="flex items-center gap-2">
