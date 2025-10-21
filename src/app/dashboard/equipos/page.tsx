@@ -295,6 +295,19 @@ export default function EquiposPage() {
   const inviteToEquipo = async (email: string) => {
     if (!miEquipo) return;
 
+    // Validación de formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Por favor, ingresa un email válido');
+      return;
+    }
+
+    // Verificar que no se esté invitando al mismo email
+    if (email === userEmail) {
+      alert('No puedes invitarte a ti mismo');
+      return;
+    }
+
     try {
       const response = await fetch('/api/send-team-invitation', {
         method: 'POST',
@@ -409,7 +422,12 @@ export default function EquiposPage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="px-3 py-1 bg-green-600 text-white text-sm rounded-full">
-                  {miEquipo.miembros_activos}/{miEquipo.max_miembros} miembros
+                  <span className={`${miEquipo.miembros_activos >= miEquipo.max_miembros ? 'text-red-400' : miEquipo.miembros_activos >= miEquipo.max_miembros * 0.8 ? 'text-yellow-400' : 'text-green-400'}`}>
+                    {miEquipo.miembros_activos}/{miEquipo.max_miembros} miembros
+                  </span>
+                  {miEquipo.miembros_activos >= miEquipo.max_miembros && (
+                    <span className="ml-2 text-red-400 text-sm">(Equipo completo)</span>
+                  )}
                 </span>
                 <button
                   onClick={() => {
