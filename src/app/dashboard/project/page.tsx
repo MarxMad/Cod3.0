@@ -177,27 +177,12 @@ export default function ProjectPage() {
   const handleSave = async (isSubmission = false) => {
     setSaving(true);
     try {
-      const storedAuthMethod = localStorage.getItem('authMethod');
-      let userEmail = '';
-      
-      if (storedAuthMethod === 'email') {
-        // Usuario autenticado por email
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-          const userData = JSON.parse(storedUser);
-          userEmail = userData.email;
-        } else {
-          window.location.href = '/login';
-          return;
-        }
-      } else {
-        // Usuario autenticado por wallet (admin)
-        if (!isConnected || !address) {
-          window.location.href = '/login';
-          return;
-        }
-        userEmail = address;
+      if (!user) {
+        window.location.href = '/login';
+        return;
       }
+      
+      const userEmail = user.email;
       
       // Upload files if any
       const { uploadedImages, videoUrl } = await uploadFiles();
