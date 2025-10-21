@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useAccount } from 'wagmi';
+import { useAuth } from '../../lib/auth';
 import { supabase } from '@/lib/supabase';
 import { User, Camera, Save, Check } from 'lucide-react';
 import Image from 'next/image';
@@ -27,7 +27,7 @@ interface UserData {
 }
 
 export default function ProfilePage() {
-  const { address, isConnected } = useAccount();
+  const { user, isAuthenticated, loading: authLoading } = useAuth();
   const [userData, setUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -36,69 +36,41 @@ export default function ProfilePage() {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   const fetchUserData = useCallback(async () => {
+    if (!user) return;
+    
     try {
-      // Verificar método de autenticación
-      const storedAuthMethod = localStorage.getItem('authMethod');
+      setLoading(true);
       
-      if (storedAuthMethod === 'email') {
-        // Usuario autenticado por email
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-          const userData = JSON.parse(storedUser);
-          setUserData(userData);
-          if (userData.foto_perfil) {
-            setPreviewImage(userData.foto_perfil);
-          }
-        } else {
-          // Redirigir a login si no hay datos de usuario
-          window.location.href = '/login';
-          return;
-        }
-      } else {
-        // Usuario autenticado por wallet (admin)
-        if (!isConnected || !address) {
-          window.location.href = '/login';
-          return;
-        }
+      // Obtener datos completos del usuario desde la base de datos
+      const { data: userData, error } = await supabase
+        .from('registros_hackathon')
+        .select('*')
+        .eq('email', user.email)
+        .single();
 
-        const { data: userData, error } = await supabase
-          .from('registros_hackathon')
-          .select('*')
-          .eq('email', address)
-          .single();
+      if (error) {
+        console.error('Error fetching user data:', error);
+        return;
+      }
 
-        if (error) {
-          console.error('Error fetching user data:', error);
-          window.location.href = '/login';
-          return;
-        }
-
-        if (userData) {
-          setUserData(userData);
-          if (userData.foto_perfil) {
-            setPreviewImage(userData.foto_perfil);
-          }
+      if (userData) {
+        setUserData(userData);
+        if (userData.foto_perfil) {
+          setPreviewImage(userData.foto_perfil);
         }
       }
     } catch (error) {
       console.error('Error:', error);
-      window.location.href = '/login';
     } finally {
       setLoading(false);
     }
-  }, [address, isConnected]);
+  }, [user]);
 
   useEffect(() => {
-    const storedAuthMethod = localStorage.getItem('authMethod');
-    
-    if (storedAuthMethod === 'email') {
-      // Usuario autenticado por email - cargar datos inmediatamente
-      fetchUserData();
-    } else if (isConnected && address) {
-      // Usuario autenticado por wallet - verificar conexión
+    if (user && isAuthenticated) {
       fetchUserData();
     }
-  }, [isConnected, address, fetchUserData]);
+  }, [user, isAuthenticated, fetchUserData]);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -181,7 +153,7 @@ export default function ProfilePage() {
     }
   };
 
-  if (loading) {
+  if (authLoading || loading) {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-400"></div>
