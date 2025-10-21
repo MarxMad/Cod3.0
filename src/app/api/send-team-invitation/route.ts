@@ -2,16 +2,53 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { Resend } from 'resend';
 
+// Función para registrar logs de actividad de equipos
+async function logTeamActivity(equipoId: string, action: string, details: string, userEmail: string) {
+  try {
+    await supabase
+      .from('team_activity_logs')
+      .insert({
+        equipo_id: equipoId,
+        action,
+        details,
+        user_email: userEmail,
+        timestamp: new Date().toISOString()
+      });
+  } catch (error) {
+    console.error('Error logging team activity:', error);
+    // No fallar la operación principal por un error de logging
+  }
+}
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
     const { email, equipoId, equipoNombre, invitadoPor } = await request.json();
 
+    // Validación de parámetros requeridos
     if (!email || !equipoId || !equipoNombre || !invitadoPor) {
       return NextResponse.json(
         { error: 'Faltan parámetros requeridos' },
         { status: 400 }
+      );
+    }
+
+    // Validación de formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: 'Formato de email inválido' },
+        { status: 400 }
+      );
+    }
+
+    // Verificar que Resend esté configurado
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY no está configurado');
+      return NextResponse.json(
+        { error: 'Servicio de email no configurado' },
+        { status: 500 }
       );
     }
 
@@ -38,9 +75,33 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (equipoError || !equipo) {
+      console.error('Error fetching equipo:', equipoError);
       return NextResponse.json(
         { error: 'No tienes permisos para invitar a este equipo' },
         { status: 403 }
+      );
+    }
+
+    // Verificar que el equipo no esté completo
+    const { data: miembrosActuales, error: miembrosError } = await supabase
+      .from('equipo_miembros')
+      .select('id')
+      .eq('equipo_id', equipoId)
+      .eq('estado_invitacion', 'aceptada');
+
+    if (miembrosError) {
+      console.error('Error fetching miembros:', miembrosError);
+      return NextResponse.json(
+        { error: 'Error al verificar miembros del equipo' },
+        { status: 500 }
+      );
+    }
+
+    const cantidadMiembros = miembrosActuales?.length || 0;
+    if (cantidadMiembros >= equipo.max_miembros) {
+      return NextResponse.json(
+        { error: `El equipo ya tiene el máximo de ${equipo.max_miembros} miembros` },
+        { status: 400 }
       );
     }
 
@@ -128,11 +189,48 @@ export async function POST(request: NextRequest) {
 
     if (emailError) {
       console.error('Error sending email:', emailError);
+      
+      // Intentar eliminar la invitación creada si el email falló
+      await supabase
+        .from('equipo_miembros')
+        .delete()
+        .eq('id', invitacion.id);
+      
       return NextResponse.json(
-        { error: 'Error al enviar el email' },
+        { error: 'Error al enviar el email de invitación. Por favor, intenta nuevamente.' },
         { status: 500 }
       );
     }
+
+    // Crear notificación para el usuario invitado
+    try {
+      await supabase
+        .from('notifications')
+        .insert({
+          user_email: email,
+          type: 'invitation_received',
+          title: 'Nueva invitación al equipo',
+          message: `Has sido invitado a formar parte del equipo "${equipoNombre}"`,
+          data: {
+            equipo_id: equipoId,
+            equipo_nombre: equipoNombre,
+            invitado_por: invitadoPor,
+            invitacion_id: invitacion.id
+          },
+          read: false
+        });
+    } catch (notificationError) {
+      console.error('Error creating notification:', notificationError);
+      // No fallar la operación principal por un error de notificación
+    }
+
+    // Registrar actividad en el log
+    await logTeamActivity(
+      equipoId,
+      'invitation_sent',
+      `Invitación enviada a ${email} para el equipo ${equipoNombre}`,
+      invitadoPor
+    );
 
     return NextResponse.json({
       success: true,

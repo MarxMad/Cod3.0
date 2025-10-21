@@ -81,29 +81,36 @@ export default function InvitacionPage() {
 
     setProcessing(true);
     try {
-      const { error } = await supabase
-        .from('equipo_miembros')
-        .update({
+      const response = await fetch('/api/respond-invitation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          invitacionId,
+          accept,
+          userEmail: invitacion.email_miembro
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message);
+        setSuccess(true);
+        
+        // Actualizar el estado local
+        setInvitacion(prev => prev ? {
+          ...prev,
           estado_invitacion: accept ? 'aceptada' : 'rechazada'
-        })
-        .eq('id', invitacionId);
-
-      if (error) {
-        throw error;
+        } : null);
+      } else {
+        setMessage(data.error || 'Error al procesar la invitación');
       }
-
-      setMessage(accept ? '¡Te has unido al equipo exitosamente!' : 'Has rechazado la invitación');
-      setSuccess(true);
-      
-      // Actualizar el estado local
-      setInvitacion(prev => prev ? {
-        ...prev,
-        estado_invitacion: accept ? 'aceptada' : 'rechazada'
-      } : null);
 
     } catch (error) {
       console.error('Error responding to invitation:', error);
-      setMessage('Error al procesar la invitación');
+      setMessage('Error de conexión. Por favor, intenta nuevamente.');
     } finally {
       setProcessing(false);
     }
