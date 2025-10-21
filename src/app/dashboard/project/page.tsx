@@ -154,7 +154,7 @@ export default function ProjectPage() {
     let videoUrl = '';
     if (videoFile) {
       const fileExt = videoFile.name.split('.').pop();
-      const fileName = `${address}-${Date.now()}-video.${fileExt}`;
+      const fileName = `${user?.email || 'user'}-${Date.now()}-video.${fileExt}`;
       
       const { error } = await supabase.storage
         .from('project-videos')
