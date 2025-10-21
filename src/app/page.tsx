@@ -25,7 +25,8 @@ import {
   Car,
   Building,
   Navigation,
-  Heart
+  Heart,
+  Menu
 } from 'lucide-react';
 import MemberCard from '../components/MemberCard';
 import MemberFilter from '../components/MemberFilter';
@@ -435,6 +436,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
   const [isClient, setIsClient] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -640,15 +642,16 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-black/90 backdrop-blur-xl border-b-2 border-green-400 scan-line">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-16 sm:h-18 lg:h-20">
+            {/* Logo */}
             <motion.div 
               className="flex items-center"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="relative w-16 h-16">
-        <Image
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16">
+                <Image
                   src="/CODEB.png"
                   alt="CODEB Logo"
                   fill
@@ -657,12 +660,13 @@ export default function Home() {
               </div>
             </motion.div>
             
-            <div className="hidden md:flex items-center space-x-8">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
               {['home', 'about', 'schedule', 'prizes', 'sponsors', 'proyectos', 'register'].map((section) => (
                 <motion.a
                   key={section}
                   href={section === 'proyectos' ? '/proyectos' : `#${section}`}
-                  className={`text-gray-300 hover:text-green-400 transition-colors relative font-mono ${
+                  className={`text-gray-300 hover:text-green-400 transition-colors relative font-mono text-sm xl:text-base ${
                     activeSection === section ? 'text-green-400' : ''
                   }`}
                   onClick={() => section !== 'proyectos' && setActiveSection(section)}
@@ -678,7 +682,7 @@ export default function Home() {
                   {section === 'register' && '<REGISTRO/>'}
                   {activeSection === section && (
                     <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-1 bg-green-400"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-green-400"
                       layoutId="activeSection"
                       initial={false}
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -688,10 +692,23 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="flex items-center space-x-4">
+            {/* Mobile Menu Button */}
+            <div className="lg:hidden">
+              <motion.button
+                className="text-gray-300 hover:text-green-400 transition-colors p-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                <Menu className="h-6 w-6" />
+              </motion.button>
+            </div>
+
+            {/* Desktop Auth Buttons */}
+            <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
               <motion.a
                 href="/login"
-                className="text-gray-300 hover:text-green-400 transition-colors font-mono text-sm"
+                className="text-gray-300 hover:text-green-400 transition-colors font-mono text-xs xl:text-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -703,7 +720,7 @@ export default function Home() {
               
               <motion.a
                 href="/registro"
-                className="tech-button px-4 py-2 text-sm font-bold transition-all duration-300 inline-block"
+                className="tech-button px-3 py-1.5 xl:px-4 xl:py-2 text-xs xl:text-sm font-bold transition-all duration-300 inline-block"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -714,6 +731,59 @@ export default function Home() {
               </motion.a>
             </div>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden border-t border-gray-700 bg-black/95 backdrop-blur-xl"
+            >
+              <div className="px-4 py-4 space-y-3">
+                {['home', 'about', 'schedule', 'prizes', 'sponsors', 'proyectos', 'register'].map((section) => (
+                  <motion.a
+                    key={section}
+                    href={section === 'proyectos' ? '/proyectos' : `#${section}`}
+                    className={`block text-gray-300 hover:text-green-400 transition-colors font-mono text-sm py-2 ${
+                      activeSection === section ? 'text-green-400' : ''
+                    }`}
+                    onClick={() => {
+                      section !== 'proyectos' && setActiveSection(section);
+                      setMobileMenuOpen(false);
+                    }}
+                    whileHover={{ x: 5 }}
+                  >
+                    {section === 'home' && '<INICIO/>'}
+                    {section === 'about' && '<ACERCA/>'}
+                    {section === 'schedule' && '<PROGRAMA/>'}
+                    {section === 'prizes' && '<PREMIOS/>'}
+                    {section === 'sponsors' && '<SPONSORS/>'}
+                    {section === 'proyectos' && '<PROYECTOS/>'}
+                    {section === 'register' && '<REGISTRO/>'}
+                  </motion.a>
+                ))}
+                
+                <div className="pt-4 border-t border-gray-700 space-y-3">
+                  <motion.a
+                    href="/login"
+                    className="block text-gray-300 hover:text-green-400 transition-colors font-mono text-sm py-2"
+                    whileHover={{ x: 5 }}
+                  >
+                    &lt;LOGIN/&gt;
+                  </motion.a>
+                  
+                  <motion.a
+                    href="/registro"
+                    className="block tech-button text-center py-2 text-sm font-bold transition-all duration-300"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    &lt;REGÍSTRATE/&gt;
+                  </motion.a>
+                </div>
+              </div>
+            </motion.div>
+          )}
         </div>
       </nav>
 
