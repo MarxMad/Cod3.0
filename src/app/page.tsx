@@ -25,8 +25,6 @@ import {
   Car,
   Building,
   Navigation,
-  User,
-  Award,
   Heart
 } from 'lucide-react';
 import MemberCard from '../components/MemberCard';

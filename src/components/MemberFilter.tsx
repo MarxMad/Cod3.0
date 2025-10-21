@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 type Category = 'all' | 'organizer' | 'sponsor' | 'mentor' | 'participant';
