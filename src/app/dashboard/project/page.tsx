@@ -55,7 +55,7 @@ export default function ProjectPage() {
     video_url: '',
     imagenes: [],
     estado: 'borrador',
-    email_participante: address || ''
+    email_participante: ''
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
