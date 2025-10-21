@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useAuth } from '../../lib/auth';
+import { useAuth } from '../../../lib/auth';
 import { supabase } from '@/lib/supabase';
 import { User, Camera, Save, Check } from 'lucide-react';
 import Image from 'next/image';

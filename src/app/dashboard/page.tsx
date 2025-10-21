@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useAuth } from '../../lib/auth';
+import { useAuth } from '../../../lib/auth';
 import { supabase } from '@/lib/supabase';
 import { 
   Users, 

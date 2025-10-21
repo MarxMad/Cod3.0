@@ -12,9 +12,9 @@ import {
   X
 } from 'lucide-react';
 import Link from 'next/link';
-import { useAuth } from '../../lib/auth';
-import { ProtectedRoute } from '../../components/AuthGuard';
-import { useTokenRefresh } from '../../hooks/useTokenRefresh';
+import { useAuth } from '../../../lib/auth';
+import { ProtectedRoute } from '../../../components/AuthGuard';
+import { useTokenRefresh } from '../../../hooks/useTokenRefresh';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
