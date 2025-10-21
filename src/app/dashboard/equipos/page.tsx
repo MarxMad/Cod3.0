@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { useAuth } from '../../lib/auth';
 import { supabase } from '@/lib/supabase';
 import { 
   Users, 
@@ -45,6 +46,7 @@ interface MiembroEquipo {
 }
 
 export default function EquiposPage() {
+  const { user, isAuthenticated, loading: authLoading } = useAuth();
   const [equipos, setEquipos] = useState<Equipo[]>([]);
   const [miEquipo, setMiEquipo] = useState<Equipo | null>(null);
   const [miembros, setMiembros] = useState<MiembroEquipo[]>([]);
@@ -59,16 +61,11 @@ export default function EquiposPage() {
   const [editingEquipo, setEditingEquipo] = useState<Equipo | null>(null);
 
   useEffect(() => {
-    const storedAuthMethod = localStorage.getItem('authMethod');
-    if (storedAuthMethod === 'email') {
-      const storedUser = localStorage.getItem('user');
-      if (storedUser) {
-        const user = JSON.parse(storedUser);
-        setUserEmail(user.email);
-      }
+    if (user && isAuthenticated) {
+      setUserEmail(user.email);
+      fetchData();
     }
-    fetchData();
-  }, []);
+  }, [user, isAuthenticated]);
 
   const fetchData = useCallback(async () => {
     try {
@@ -351,7 +348,7 @@ export default function EquiposPage() {
     }
   };
 
-  if (loading) {
+  if (authLoading || loading) {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-400"></div>
