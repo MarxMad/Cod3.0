@@ -25,10 +25,11 @@ import {
   Car,
   Building,
   Navigation,
-  User,
-  Award,
   Heart
 } from 'lucide-react';
+import MemberCard from '../components/MemberCard';
+import MemberFilter from '../components/MemberFilter';
+import { useMembers } from '../hooks/useMembers';
 // import LazySplineScene from '../components/LazySplineScene';
 
 // Enhanced prize data with detailed information
@@ -430,6 +431,7 @@ function PrizesAnimation() {
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const { members, activeFilter, loading, filterMembers } = useMembers();
   const [activeSection, setActiveSection] = useState('home');
   const [isClient, setIsClient] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -2237,109 +2239,50 @@ export default function Home() {
           </motion.div>
 
           {/* Organizers Grid */}
+          {/* Filtro de miembros */}
+          <MemberFilter 
+            onFilterChange={filterMembers}
+            activeFilter={activeFilter}
+          />
+
+          {/* Grid de miembros */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-12 px-4 sm:px-0 max-w-6xl mx-auto">
-            {[
-              {
-                name: "Kinari Sabina",
-                role: "Co-Founder & Strategy",
-                description: "Estratega innovadora especializada en desarrollo de ecosistemas tech",
-                image: "/Organizadores/kinari-sabina.jpg",
-                social: {
-                  twitter: "#",
-                  linkedin: "#",
-                  github: "#"
-                }
-              },
-              {
-                name: "Fernanda Tello",
-                role: "Head of Operations",
-                description: "Experta en operaciones y gestión de eventos tecnológicos de gran escala",
-                image: "/Organizadores/fernanda-tello.jpg",
-                social: {
-                  twitter: "#",
-                  linkedin: "#",
-                  github: "#"
-                }
-              },
-              {
-                name: "Gerardo Vela",
-                role: "Lead Developer & CTO",
-                description: "Desarrollador full-stack y arquitecto de soluciones tecnológicas avanzadas",
-                image: "/Organizadores/gerardo-vela.jpg",
-                social: {
-                  twitter: "#",
-                  linkedin: "#",
-                  github: "#"
-                }
-              }
-            ].map((organizer, index) => (
-              <motion.div
-                key={organizer.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                viewport={{ once: true }}
-                className="group relative bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl p-6 border-2 border-purple-400/20 hover:border-purple-400/40 transition-all duration-300 hover:scale-102 shadow-lg hover:shadow-purple-500/20"
-              >
-                {/* Background Pattern */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Photo */}
-                <div className="relative mb-6">
-                  <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-purple-400 to-pink-400 p-1 group-hover:scale-110 transition-transform duration-500">
-                    <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
-                      <User className="h-12 w-12 text-purple-400" />
+            {loading ? (
+              // Loading state
+              Array.from({ length: 3 }).map((_, index) => (
+                <div key={index} className="animate-pulse">
+                  <div className="bg-gray-800/50 rounded-2xl p-6 h-80">
+                    <div className="w-24 h-24 mx-auto rounded-full bg-gray-700 mb-6"></div>
+                    <div className="h-6 bg-gray-700 rounded mb-3"></div>
+                    <div className="h-4 bg-gray-700 rounded mb-2"></div>
+                    <div className="h-4 bg-gray-700 rounded mb-4"></div>
+                    <div className="flex justify-center space-x-3">
+                      <div className="w-8 h-8 bg-gray-700 rounded-full"></div>
+                      <div className="w-8 h-8 bg-gray-700 rounded-full"></div>
+                      <div className="w-8 h-8 bg-gray-700 rounded-full"></div>
                     </div>
                   </div>
-                  
-                  {/* Decorative Ring - Simplified */}
-                  <div className="absolute inset-0 rounded-full border-2 border-purple-400/30" />
                 </div>
-
-                {/* Info */}
-                <div className="text-center space-y-3">
-                  <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors duration-300">
-                    {organizer.name}
-                  </h3>
-                  
-                  <div className="flex items-center justify-center space-x-2">
-                    <Award className="h-4 w-4 text-purple-400" />
-                    <span className="text-purple-400 font-semibold text-sm">
-                      {organizer.role}
-                    </span>
-                  </div>
-                  
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    {organizer.description}
-                  </p>
-                  
-                  {/* Social Links - Simplified */}
-                  <div className="flex items-center justify-center space-x-3 pt-2">
-                    <a
-                      href={organizer.social.twitter}
-                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300 hover:scale-105"
-                    >
-                      <Twitter className="h-4 w-4 text-purple-400" />
-                    </a>
-                    <a
-                      href={organizer.social.linkedin}
-                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300 hover:scale-105"
-                    >
-                      <Linkedin className="h-4 w-4 text-purple-400" />
-                    </a>
-                    <a
-                      href={organizer.social.github}
-                      className="p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/40 transition-colors duration-300 hover:scale-105"
-                    >
-                      <Github className="h-4 w-4 text-purple-400" />
-                    </a>
-                  </div>
+              ))
+            ) : members.length > 0 ? (
+              members.map((member, index) => (
+                <MemberCard 
+                  key={member.id} 
+                  member={member} 
+                  index={index} 
+                />
+              ))
+            ) : (
+              // Empty state
+              <div className="col-span-full text-center py-12">
+                <div className="text-gray-400 text-lg mb-4">
+                  No se encontraron miembros en esta categoría
                 </div>
-
-                {/* Hover Effect - Simplified */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </motion.div>
-                ))}
+                <div className="text-gray-500 text-sm">
+                  Prueba con otra categoría o contacta al administrador
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Call to Action */}
