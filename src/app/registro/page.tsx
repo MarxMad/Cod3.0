@@ -460,13 +460,13 @@ export default function RegistroPage() {
       {/* Enhanced Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b-2 border-green-400/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-16 sm:h-18 lg:h-20">
             <motion.div
               className="flex items-center group"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16">
                 <Image
                   src="/CODEB.png"
                   alt="CODEB Logo"
@@ -477,7 +477,7 @@ export default function RegistroPage() {
             </motion.div>
 
             <motion.button
-              className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-green-500/25 overflow-hidden"
+              className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-green-500/25 overflow-hidden text-sm sm:text-base"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => window.history.back()}
@@ -488,8 +488,8 @@ export default function RegistroPage() {
                 whileHover={{ x: "100%" }}
                 transition={{ duration: 0.6 }}
               />
-              <span className="relative z-10 flex items-center space-x-2">
-                <ArrowLeft className="w-4 h-4" />
+              <span className="relative z-10 flex items-center space-x-1 sm:space-x-2">
+                <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span>&lt;VOLVER/&gt;</span>
               </span>
             </motion.button>
