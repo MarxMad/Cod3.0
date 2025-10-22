@@ -292,7 +292,7 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
           
           <!-- Botón de Acción -->
             <div style="text-align: center; margin: 35px 0;">
-            <a href="https://cod3-0.vercel.app/" class="mobile-button" style="background: #00ff00; color: #000000; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 10px; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);">
+            <a href="https://www.code3mx.com/" class="mobile-button" style="background: #00ff00; color: #000000; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 10px; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);">
                 🌐 Visitar Sitio Web
               </a>
             </div>
