@@ -2189,7 +2189,7 @@ export default function Home() {
                   INFORMACIÓN CLAVE
                 </h3>
                 
-                <div className="grid grid-cols-2 gap-2 sm:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {[
                     { icon: Navigation, text: "Dirección", subtext: "Polanco, CDMX" },
                     { icon: Car, text: "Estacionamiento", subtext: "Gratuito" },
@@ -2198,15 +2198,15 @@ export default function Home() {
                   ].map((item, index) => (
                     <motion.div
                       key={index}
-                      className="bg-black/20 rounded-xl p-4 text-center hover:bg-black/30 transition-colors duration-300"
-                      initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      className="bg-black/20 rounded-xl p-3 sm:p-4 text-center hover:bg-black/30 transition-colors duration-300 overflow-hidden"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
                     >
-                      <item.icon className="h-6 w-6 text-blue-400 mx-auto mb-2" />
-                      <div className="text-white font-bold text-sm">{item.text}</div>
-                      <div className="text-gray-400 text-xs">{item.subtext}</div>
+                      <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400 mx-auto mb-2" />
+                      <div className="text-white font-bold text-xs sm:text-sm break-words">{item.text}</div>
+                      <div className="text-gray-400 text-xs break-words">{item.subtext}</div>
                     </motion.div>
                   ))}
                     </div>
@@ -2464,7 +2464,7 @@ export default function Home() {
                     <Calendar className="h-6 w-6 mr-3 text-green-400" />
                     Información del Evento
                   </h3>
-                  <div className="grid grid-cols-2 gap-2 sm:gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {[
                       { icon: Calendar, text: "27-29 Marzo", subtext: "2026" },
                       { icon: Clock, text: "48 horas", subtext: "continuas" },
@@ -2473,15 +2473,15 @@ export default function Home() {
                     ].map((item, index) => (
                       <motion.div
                         key={index}
-                        className="bg-black/20 rounded-xl p-4 text-center hover:bg-black/30 transition-colors duration-300"
-                        initial={{ opacity: 0, x: -20 }}
+                        className="bg-black/20 rounded-xl p-3 sm:p-4 text-center hover:bg-black/30 transition-colors duration-300 overflow-hidden"
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
                       >
-                        <item.icon className="h-6 w-6 text-green-400 mx-auto mb-2" />
-                        <div className="text-white font-bold text-sm">{item.text}</div>
-                        <div className="text-gray-400 text-xs">{item.subtext}</div>
+                        <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-green-400 mx-auto mb-2" />
+                        <div className="text-white font-bold text-xs sm:text-sm break-words">{item.text}</div>
+                        <div className="text-gray-400 text-xs break-words">{item.subtext}</div>
                       </motion.div>
                     ))}
                   </div>
@@ -2503,14 +2503,14 @@ export default function Home() {
                     ].map((benefit, index) => (
                       <motion.div
                         key={index}
-                        className="flex items-center text-gray-300 hover:text-white transition-colors duration-300"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        className="flex items-center text-gray-300 hover:text-white transition-colors duration-300 overflow-hidden"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
                       >
                         <div className="w-2 h-2 bg-blue-400 rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-sm">{benefit}</span>
+                        <span className="text-xs sm:text-sm break-words">{benefit}</span>
                       </motion.div>
                     ))}
                   </div>
