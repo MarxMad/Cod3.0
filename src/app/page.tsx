@@ -661,12 +661,12 @@ export default function Home() {
             </motion.div>
             
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
               {['home', 'about', 'schedule', 'prizes', 'sponsors', 'proyectos', 'register'].map((section) => (
                 <motion.a
                   key={section}
                   href={section === 'proyectos' ? '/proyectos' : `#${section}`}
-                  className={`text-gray-300 hover:text-green-400 transition-colors relative font-mono text-sm xl:text-base ${
+                  className={`text-gray-300 hover:text-green-400 transition-colors relative font-mono text-xs xl:text-sm ${
                     activeSection === section ? 'text-green-400' : ''
                   }`}
                   onClick={() => section !== 'proyectos' && setActiveSection(section)}
@@ -705,10 +705,10 @@ export default function Home() {
             </div>
 
             {/* Desktop Auth Buttons */}
-            <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
+            <div className="hidden lg:flex items-center space-x-2 xl:space-x-3">
               <motion.a
                 href="/login"
-                className="text-gray-300 hover:text-green-400 transition-colors font-mono text-xs xl:text-sm"
+                className="text-gray-300 hover:text-green-400 transition-colors font-mono text-xs xl:text-sm whitespace-nowrap"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -720,7 +720,7 @@ export default function Home() {
               
               <motion.a
                 href="/registro"
-                className="tech-button px-3 py-1.5 xl:px-4 xl:py-2 text-xs xl:text-sm font-bold transition-all duration-300 inline-block"
+                className="tech-button px-2 py-1 xl:px-3 xl:py-1.5 text-xs xl:text-sm font-bold transition-all duration-300 inline-block whitespace-nowrap"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}

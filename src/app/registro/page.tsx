@@ -477,7 +477,7 @@ export default function RegistroPage() {
             </motion.div>
 
             <motion.button
-              className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-green-500/25 overflow-hidden text-sm sm:text-base"
+              className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-green-500/25 overflow-hidden text-xs sm:text-sm whitespace-nowrap"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => window.history.back()}
