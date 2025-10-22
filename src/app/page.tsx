@@ -661,12 +661,12 @@ export default function Home() {
             </motion.div>
             
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
               {['home', 'about', 'schedule', 'prizes', 'sponsors', 'proyectos', 'register'].map((section) => (
                 <motion.a
                   key={section}
                   href={section === 'proyectos' ? '/proyectos' : `#${section}`}
-                  className={`text-gray-300 hover:text-green-400 transition-colors relative font-mono text-sm xl:text-base ${
+                  className={`text-gray-300 hover:text-green-400 transition-colors relative font-mono text-xs xl:text-sm ${
                     activeSection === section ? 'text-green-400' : ''
                   }`}
                   onClick={() => section !== 'proyectos' && setActiveSection(section)}
@@ -705,10 +705,10 @@ export default function Home() {
             </div>
 
             {/* Desktop Auth Buttons */}
-            <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
+            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
               <motion.a
                 href="/login"
-                className="text-gray-300 hover:text-green-400 transition-colors font-mono text-xs xl:text-sm"
+                className="text-gray-300 hover:text-green-400 transition-colors font-mono text-sm xl:text-base whitespace-nowrap px-2 py-1"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -720,7 +720,7 @@ export default function Home() {
               
               <motion.a
                 href="/registro"
-                className="tech-button px-3 py-1.5 xl:px-4 xl:py-2 text-xs xl:text-sm font-bold transition-all duration-300 inline-block"
+                className="tech-button px-4 py-2 xl:px-6 xl:py-3 text-sm xl:text-base font-bold transition-all duration-300 inline-block whitespace-nowrap"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -1401,36 +1401,36 @@ export default function Home() {
           >
             {/* Feature 1 - Create Team */}
             <motion.div
-              className="tech-card p-8 text-center group hover:scale-105 transition-all duration-300"
+              className="tech-card p-6 sm:p-8 text-center group hover:scale-105 transition-all duration-300 overflow-hidden"
               whileHover={{ y: -10 }}
             >
-              <div className="text-6xl mb-4">👥</div>
-              <h3 className="text-2xl font-bold text-white mb-4">Crea tu Equipo</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <div className="text-5xl sm:text-6xl mb-4">👥</div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 break-words">Crea tu Equipo</h3>
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base break-words">
                 Forma tu equipo ideal con hasta 5 miembros. Define roles, objetivos y visión compartida.
               </p>
             </motion.div>
 
             {/* Feature 2 - Invite Members */}
             <motion.div
-              className="tech-card p-8 text-center group hover:scale-105 transition-all duration-300"
+              className="tech-card p-6 sm:p-8 text-center group hover:scale-105 transition-all duration-300 overflow-hidden"
               whileHover={{ y: -10 }}
             >
-              <div className="text-6xl mb-4">📧</div>
-              <h3 className="text-2xl font-bold text-white mb-4">Invita Miembros</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <div className="text-5xl sm:text-6xl mb-4">📧</div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 break-words">Invita Miembros</h3>
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base break-words">
                 Invita a otros participantes registrados por email. Sistema de invitaciones automático.
               </p>
             </motion.div>
 
             {/* Feature 3 - Collaborate */}
             <motion.div
-              className="tech-card p-8 text-center group hover:scale-105 transition-all duration-300"
+              className="tech-card p-6 sm:p-8 text-center group hover:scale-105 transition-all duration-300 overflow-hidden"
               whileHover={{ y: -10 }}
             >
-              <div className="text-6xl mb-4">🚀</div>
-              <h3 className="text-2xl font-bold text-white mb-4">Colabora</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <div className="text-5xl sm:text-6xl mb-4">🚀</div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 break-words">Colabora</h3>
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base break-words">
                 Trabaja en equipo, comparte ideas y construye proyectos increíbles juntos.
               </p>
             </motion.div>
@@ -2189,7 +2189,7 @@ export default function Home() {
                   INFORMACIÓN CLAVE
                 </h3>
                 
-                <div className="grid grid-cols-2 gap-2 sm:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {[
                     { icon: Navigation, text: "Dirección", subtext: "Polanco, CDMX" },
                     { icon: Car, text: "Estacionamiento", subtext: "Gratuito" },
@@ -2198,15 +2198,15 @@ export default function Home() {
                   ].map((item, index) => (
                     <motion.div
                       key={index}
-                      className="bg-black/20 rounded-xl p-4 text-center hover:bg-black/30 transition-colors duration-300"
-                      initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      className="bg-black/20 rounded-xl p-3 sm:p-4 text-center hover:bg-black/30 transition-colors duration-300 overflow-hidden"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
                     >
-                      <item.icon className="h-6 w-6 text-blue-400 mx-auto mb-2" />
-                      <div className="text-white font-bold text-sm">{item.text}</div>
-                      <div className="text-gray-400 text-xs">{item.subtext}</div>
+                      <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400 mx-auto mb-2" />
+                      <div className="text-white font-bold text-xs sm:text-sm break-words">{item.text}</div>
+                      <div className="text-gray-400 text-xs break-words">{item.subtext}</div>
                     </motion.div>
                   ))}
                     </div>
@@ -2464,7 +2464,7 @@ export default function Home() {
                     <Calendar className="h-6 w-6 mr-3 text-green-400" />
                     Información del Evento
                   </h3>
-                  <div className="grid grid-cols-2 gap-2 sm:gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {[
                       { icon: Calendar, text: "27-29 Marzo", subtext: "2026" },
                       { icon: Clock, text: "48 horas", subtext: "continuas" },
@@ -2473,15 +2473,15 @@ export default function Home() {
                     ].map((item, index) => (
                       <motion.div
                         key={index}
-                        className="bg-black/20 rounded-xl p-4 text-center hover:bg-black/30 transition-colors duration-300"
-                        initial={{ opacity: 0, x: -20 }}
+                        className="bg-black/20 rounded-xl p-3 sm:p-4 text-center hover:bg-black/30 transition-colors duration-300 overflow-hidden"
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
                       >
-                        <item.icon className="h-6 w-6 text-green-400 mx-auto mb-2" />
-                        <div className="text-white font-bold text-sm">{item.text}</div>
-                        <div className="text-gray-400 text-xs">{item.subtext}</div>
+                        <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-green-400 mx-auto mb-2" />
+                        <div className="text-white font-bold text-xs sm:text-sm break-words">{item.text}</div>
+                        <div className="text-gray-400 text-xs break-words">{item.subtext}</div>
                       </motion.div>
                     ))}
                   </div>
@@ -2503,14 +2503,14 @@ export default function Home() {
                     ].map((benefit, index) => (
                       <motion.div
                         key={index}
-                        className="flex items-center text-gray-300 hover:text-white transition-colors duration-300"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        className="flex items-center text-gray-300 hover:text-white transition-colors duration-300 overflow-hidden"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
                       >
                         <div className="w-2 h-2 bg-blue-400 rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-sm">{benefit}</span>
+                        <span className="text-xs sm:text-sm break-words">{benefit}</span>
                       </motion.div>
                     ))}
                   </div>
