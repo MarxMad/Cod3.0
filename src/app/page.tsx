@@ -705,10 +705,10 @@ export default function Home() {
             </div>
 
             {/* Desktop Auth Buttons */}
-            <div className="hidden lg:flex items-center space-x-2 xl:space-x-3">
+            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
               <motion.a
                 href="/login"
-                className="text-gray-300 hover:text-green-400 transition-colors font-mono text-xs xl:text-sm whitespace-nowrap"
+                className="text-gray-300 hover:text-green-400 transition-colors font-mono text-sm xl:text-base whitespace-nowrap px-2 py-1"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -720,7 +720,7 @@ export default function Home() {
               
               <motion.a
                 href="/registro"
-                className="tech-button px-2 py-1 xl:px-3 xl:py-1.5 text-xs xl:text-sm font-bold transition-all duration-300 inline-block whitespace-nowrap"
+                className="tech-button px-4 py-2 xl:px-6 xl:py-3 text-sm xl:text-base font-bold transition-all duration-300 inline-block whitespace-nowrap"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -1401,36 +1401,36 @@ export default function Home() {
           >
             {/* Feature 1 - Create Team */}
             <motion.div
-              className="tech-card p-8 text-center group hover:scale-105 transition-all duration-300"
+              className="tech-card p-6 sm:p-8 text-center group hover:scale-105 transition-all duration-300 overflow-hidden"
               whileHover={{ y: -10 }}
             >
-              <div className="text-6xl mb-4">👥</div>
-              <h3 className="text-2xl font-bold text-white mb-4">Crea tu Equipo</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <div className="text-5xl sm:text-6xl mb-4">👥</div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 break-words">Crea tu Equipo</h3>
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base break-words">
                 Forma tu equipo ideal con hasta 5 miembros. Define roles, objetivos y visión compartida.
               </p>
             </motion.div>
 
             {/* Feature 2 - Invite Members */}
             <motion.div
-              className="tech-card p-8 text-center group hover:scale-105 transition-all duration-300"
+              className="tech-card p-6 sm:p-8 text-center group hover:scale-105 transition-all duration-300 overflow-hidden"
               whileHover={{ y: -10 }}
             >
-              <div className="text-6xl mb-4">📧</div>
-              <h3 className="text-2xl font-bold text-white mb-4">Invita Miembros</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <div className="text-5xl sm:text-6xl mb-4">📧</div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 break-words">Invita Miembros</h3>
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base break-words">
                 Invita a otros participantes registrados por email. Sistema de invitaciones automático.
               </p>
             </motion.div>
 
             {/* Feature 3 - Collaborate */}
             <motion.div
-              className="tech-card p-8 text-center group hover:scale-105 transition-all duration-300"
+              className="tech-card p-6 sm:p-8 text-center group hover:scale-105 transition-all duration-300 overflow-hidden"
               whileHover={{ y: -10 }}
             >
-              <div className="text-6xl mb-4">🚀</div>
-              <h3 className="text-2xl font-bold text-white mb-4">Colabora</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <div className="text-5xl sm:text-6xl mb-4">🚀</div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 break-words">Colabora</h3>
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base break-words">
                 Trabaja en equipo, comparte ideas y construye proyectos increíbles juntos.
               </p>
             </motion.div>
