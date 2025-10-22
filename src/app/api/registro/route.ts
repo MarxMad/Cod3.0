@@ -256,22 +256,38 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
           <div style="background: #f0f8ff; padding: 25px; border-radius: 12px; margin: 25px 0; border: 2px solid #0066ff;">
             <h3 style="color: #000000; margin: 0 0 20px 0; font-size: 20px; font-weight: 700;">📬 ¿Qué sigue ahora?</h3>
             <p class="mobile-text" style="color: #333333; line-height: 1.7; margin-bottom: 15px;">
-              Te mantendremos informado sobre todos los detalles del evento a medida que los confirmemos. 
-              Recibirás actualizaciones sobre:
+              <strong style="color: #0066ff;">¡Es hora de prepararte para el hackathon!</strong> 
+              Te mantendremos informado sobre todos los detalles del evento y recibirás actualizaciones sobre:
             </p>
             <ul style="color: #333333; line-height: 1.8; margin: 0; padding-left: 20px;">
               <li class="mobile-text" style="color: #333333;">📍 Ubicación exacta del evento</li>
               <li class="mobile-text" style="color: #333333;">📅 Horarios detallados</li>
               <li class="mobile-text" style="color: #333333;">🍕 Información sobre comidas</li>
               <li class="mobile-text" style="color: #333333;">💻 Requisitos técnicos</li>
-              <li class="mobile-text" style="color: #333333;">👥 Formación de equipos</li>
+              <li class="mobile-text" style="color: #333333;">🎓 <strong style="color: #0066ff;">Capacitaciones organizadas para todos los asistentes</strong></li>
               </ul>
             </div>
             
-          <!-- Imagen del Evento -->
-          <div style="text-align: center; margin: 30px 0;">
-            <img src="https://cod3-0.vercel.app/Stage.jpeg" alt="Stage del Evento" style="width: 100%; max-width: 500px; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-            <p style="color: #666666; font-size: 14px; margin-top: 10px; font-style: italic;">Espacio donde se desarrollará el COD3.0 HACKATHON</p>
+          <!-- Acciones Importantes -->
+          <div style="background: #fff8e1; padding: 25px; border-radius: 12px; margin: 25px 0; border: 2px solid #ff9800;">
+            <h3 style="color: #000000; margin: 0 0 20px 0; font-size: 20px; font-weight: 700;">🚀 ¡Prepara tu participación!</h3>
+            <p class="mobile-text" style="color: #333333; line-height: 1.7; margin-bottom: 20px;">
+              <strong style="color: #ff9800;">¡Es hora de completar tu perfil y formar tu equipo!</strong>
+            </p>
+            <div style="text-align: center; margin: 20px 0;">
+              <a href="https://cod3-0.vercel.app/dashboard/profile" class="mobile-button" style="background: #00ff00; color: #000000; padding: 15px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 8px; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);">
+                👤 Completar Perfil
+              </a>
+              <a href="https://cod3-0.vercel.app/dashboard/equipos" class="mobile-button" style="background: #0066ff; color: #ffffff; padding: 15px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 8px; box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);">
+                👥 Crear/Unirse a Equipo
+              </a>
+            </div>
+            <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #0066ff;">
+              <p class="mobile-text" style="color: #333333; margin: 0; font-size: 14px; line-height: 1.6;">
+                <strong style="color: #0066ff;">💡 Tip:</strong> Puedes invitar hasta <strong>5 participantes</strong> a tu equipo. 
+                ¡Forma el mejor equipo y prepárate para ganar!
+              </p>
+            </div>
           </div>
           
           <!-- Botón de Acción -->
@@ -285,7 +301,8 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
           <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center; margin: 25px 0; border: 1px solid #e9ecef;">
             <p style="color: #333333; line-height: 1.6; margin: 0; font-size: 16px;">
                 <strong style="color: #00ff00;">¡Estamos emocionados de verte en el COD3.0 HACKATHON!</strong><br>
-              Prepárate para una experiencia increíble llena de innovación y aprendizaje.
+              Prepárate para una experiencia increíble llena de innovación y aprendizaje.<br>
+              <strong style="color: #0066ff;">🎓 Recuerda que organizaremos capacitaciones especiales para todos los asistentes.</strong>
               </p>
             </div>
             
