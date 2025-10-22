@@ -272,21 +272,21 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
           <div style="background: #fff8e1; padding: 25px; border-radius: 12px; margin: 25px 0; border: 2px solid #ff9800;">
             <h3 style="color: #000000; margin: 0 0 20px 0; font-size: 20px; font-weight: 700;">🚀 ¡Prepara tu participación!</h3>
             <p class="mobile-text" style="color: #333333; line-height: 1.7; margin-bottom: 20px;">
-              <strong style="color: #ff9800;">¡Es hora de completar tu perfil y formar tu equipo!</strong>
+              <strong style="color: #ff9800;">¡Es hora de acceder a tu dashboard y gestionar tu proyecto!</strong>
             </p>
-            <div style="text-align: center; margin: 20px 0;">
-              <a href="https://cod3-0.vercel.app/dashboard/profile" class="mobile-button" style="background: #00ff00; color: #000000; padding: 15px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 8px; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);">
-                👤 Completar Perfil
+            <p class="mobile-text" style="color: #333333; line-height: 1.7; margin-bottom: 20px;">
+              Desde tu dashboard podrás:
+            </p>
+            <ul style="color: #333333; line-height: 1.8; margin: 0; padding-left: 20px;">
+              <li class="mobile-text" style="color: #333333;">👤 Completar tu perfil</li>
+              <li class="mobile-text" style="color: #333333;">👥 Crear o unirte a un equipo (máximo 5 participantes)</li>
+              <li class="mobile-text" style="color: #333333;">💻 Gestionar tu proyecto</li>
+              <li class="mobile-text" style="color: #333333;">📊 Seguir tu progreso</li>
+            </ul>
+            <div style="text-align: center; margin: 25px 0;">
+              <a href="https://www.code3mx.com/login" class="mobile-button" style="background: #00ff00; color: #000000; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 10px; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);">
+                🔐 Acceder al Dashboard
               </a>
-              <a href="https://cod3-0.vercel.app/dashboard/equipos" class="mobile-button" style="background: #0066ff; color: #ffffff; padding: 15px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin: 8px; box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);">
-                👥 Crear/Unirse a Equipo
-              </a>
-            </div>
-            <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #0066ff;">
-              <p class="mobile-text" style="color: #333333; margin: 0; font-size: 14px; line-height: 1.6;">
-                <strong style="color: #0066ff;">💡 Tip:</strong> Puedes invitar hasta <strong>5 participantes</strong> a tu equipo. 
-                ¡Forma el mejor equipo y prepárate para ganar!
-              </p>
             </div>
           </div>
           
