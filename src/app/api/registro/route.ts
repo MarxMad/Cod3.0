@@ -214,7 +214,7 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
         
         <!-- Header con Logo -->
         <div class="mobile-header" style="background: #000000; padding: 40px 30px; text-align: center;">
-          <img src="https://cod3-0.vercel.app/CODEN.png" alt="COD3.0 Logo" class="mobile-logo" style="width: 150px; height: 150px; margin: 0 auto 20px; display: block;">
+          <img src="https://www.code3mx.com/CODEN.png" alt="COD3.0 Logo" class="mobile-logo" style="width: 150px; height: 150px; margin: 0 auto 20px; display: block;">
           <h1 class="mobile-title" style="color: #00ff00; margin: 0; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">¡REGISTRO CONFIRMADO!</h1>
           <p class="mobile-subtitle" style="color: #ffffff; margin: 10px 0 0 0; font-size: 18px; font-weight: 600;">COD3.0 HACKATHON</p>
         </div>
@@ -314,7 +314,7 @@ async function sendConfirmationEmail(registro: RegistroHackathon) {
         
         <!-- Footer -->
         <div style="background: #000000; padding: 25px; text-align: center; border-top: 2px solid #00ff00;">
-          <img src="https://cod3-0.vercel.app/CODEB.png" alt="CODEB Logo" style="width: 80px; height: 80px; margin: 0 auto 15px; display: block;">
+          <img src="https://www.code3mx.com/CODEB.png" alt="CODEB Logo" style="width: 80px; height: 80px; margin: 0 auto 15px; display: block;">
           <div style="color: #00ff00; font-size: 18px; font-weight: bold; margin-bottom: 10px;">COD3.0 HACKATHON</div>
           <p style="color: #888888; margin: 0; font-size: 12px;">
             © 2026 COD3.0 HACKATHON. Todos los derechos reservados.
