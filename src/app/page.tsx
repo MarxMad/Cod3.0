@@ -1236,26 +1236,26 @@ export default function Home() {
             className="mt-12 p-8 rounded-2xl bg-gradient-to-r from-purple-900/30 via-pink-900/30 to-purple-900/30 border-2 border-purple-500/50"
           >
             <div className="text-center">
-              <div className="flex items-center justify-center mb-4">
-                <Sparkles className="h-8 w-8 text-purple-400 mr-3" />
-                <h3 className="text-3xl md:text-4xl font-black text-white">
+              <div className="flex flex-col sm:flex-row items-center justify-center mb-4 gap-2 sm:gap-0">
+                <Sparkles className="h-6 w-6 sm:h-8 sm:w-8 text-purple-400 sm:mr-3" />
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white text-center">
                   CONCIERTO DE <span className="text-purple-400">CIERRE</span>
                 </h3>
-                <Sparkles className="h-8 w-8 text-purple-400 ml-3" />
+                <Sparkles className="h-6 w-6 sm:h-8 sm:w-8 text-purple-400 sm:ml-3" />
                   </div>
-              <p className="text-xl text-gray-300 mb-6">
+              <p className="text-lg sm:text-xl text-gray-300 mb-6 px-4">
                 ¡Celebra el final del hackathon con música en vivo!
               </p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-                <div className="flex items-center">
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-gray-400 px-4">
+                <div className="flex items-center justify-center">
                   <Calendar className="h-4 w-4 mr-2 text-purple-400" />
                   29 de Marzo - 20:00 hrs
               </div>
-                <div className="flex items-center">
+                <div className="flex items-center justify-center">
                   <MapPin className="h-4 w-4 mr-2 text-purple-400" />
                   Parque Bicentenario - Escenario Principal
           </div>
-                <div className="flex items-center">
+                <div className="flex items-center justify-center">
                   <Users className="h-4 w-4 mr-2 text-purple-400" />
                   Evento abierto a todos los participantes
                 </div>
@@ -2230,14 +2230,14 @@ export default function Home() {
                   ].map((feature, index) => (
                     <motion.div
                       key={index}
-                      className="flex items-center text-gray-300 hover:text-white transition-colors duration-300"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      className="flex items-center text-gray-300 hover:text-white transition-colors duration-300 overflow-hidden"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       viewport={{ once: true }}
                     >
                       <div className="w-2 h-2 bg-green-400 rounded-full mr-3 flex-shrink-0" />
-                      <span className="text-sm">{feature}</span>
+                      <span className="text-xs sm:text-sm break-words">{feature}</span>
                     </motion.div>
                   ))}
                     </div>
